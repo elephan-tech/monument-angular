@@ -39,6 +39,7 @@ $colors: (
   primary: #042f54,
   secondary: #fecf31,
   accent: #7d24ff,
+  links: #6aa3d4,
   white: #fff,
   black: #000,
 );
@@ -76,9 +77,11 @@ h2 {
   font-weight: bold !important;
 }
 h3 {
-  font-family: "Montserrat", sans-serif;
-  font-size: 2.5em;
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 1.7em !important;
   color: color(primary);
+  line-height: 1.5em !important;
+  font-weight: 600;
 }
 h4 {
   font-family: "Montserrat", sans-serif;
@@ -94,6 +97,18 @@ p {
   color: color(primary);
   line-height: 1.5em;
 }
+.text-center {
+  text-align: center;
+}
+a {
+  color: color(links);
+  font-size: 1.1em;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  font-weight: bold;
+  margin-top: 1.5em;
+  margin-bottom: 1.5em;
+}
 header.main-hero {
   background-image: url("assets/hero-bg.svg");
   background-repeat: no-repeat;
@@ -104,8 +119,19 @@ header.main-hero {
 div.yellow-section {
   background-color: color(secondary);
   width: 100%;
+  padding-top: 3em;
+  padding-bottom: 3em;
 }
 section {
   width: 90%;
   margin: auto;
+  padding-top: 2em;
+  padding-bottom: 2em;
+}
+h2.marker {
+  font-family: "Segoe UI";
+  text-align: center;
+}
+p.marker {
+  text-align: center;
 }

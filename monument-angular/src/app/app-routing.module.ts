@@ -41,6 +41,26 @@ const routes: Routes = [
   },
   { path: 'programs', component: ProgramsComponent },
   { path: 'donate', component: DonateComponent },
+  { path: 'a-day-at-monument', component: ADayAtMonumentComponent },
+  { path: 'academics', component: AcademicsComponent },
+  {
+    path: 'boarding-student-life-program',
+    component: BoardingStudentLifeProgramComponent,
+  },
+  {
+    path: 'boarding-student-life-program',
+    component: BoardingStudentLifeProgramComponent,
+  },
+  { path: 'life-skills-program', component: LifeSkillsComponent },
+  { path: 'well-being-program', component: WellBeingComponent },
+  {
+    path: 'national-lunch-program',
+    component: NationalSchoolLunchProgramComponent,
+  },
+  { path: 'careers', component: CareersComponent },
+  { path: 'enrollment', component: EnrollmentComponent },
+  { path: 'family-resources', component: FamilyResourcesComponent },
+  { path: 'knowledge-center', component: KnowledgeCenterComponent },
 ];
 
 @NgModule({

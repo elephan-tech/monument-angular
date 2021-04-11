@@ -1,7 +1,7 @@
 <nav class="topnav" id="myTopnav">
   <div class="red-top-banner" id="red-top-banner">
     <div>
-      <a routerLink="/" class="esp"> </a>
+      <a routerLink="/"> </a>
     </div>
   </div>
   <section class="section-nav">
@@ -36,7 +36,7 @@
         </mat-menu>
       </div>
 
-      <!-- <div
+      <div
         mat-button
         [matMenuTriggerFor]="Programs"
         class="dropdown underline nav-items"
@@ -44,19 +44,23 @@
       >
         Our Programs
         <i class="fas fa-angle-down"></i>
-        <mat-menu #AboutUs="matMenu">
-          <a routerLink="" mat-menu-item>A Day At Monument</a>
-          <a routerLink="" mat-menu-item>Academics</a>
-          <a routerLink="" mat-menu-item>Well-Being</a>
-          <a routerLink="/" mat-menu-item>Life Skills</a>
-          <a routerLink="/" mat-menu-item>Boarding & Student Life Program</a>
-          <a routerLink="/" mat-menu-item>National Schools Lunch Program</a>
+        <mat-menu #Programs="matMenu">
+          <a routerLink="/a-day-at-monument" mat-menu-item>A Day At Monument</a>
+          <a routerLink="/academics" mat-menu-item>Academics</a>
+          <a routerLink="/well-being-program" mat-menu-item>Well-Being</a>
+          <a routerLink="/life-skills-program" mat-menu-item>Life Skills</a>
+          <a routerLink="/boarding-student-life-program" mat-menu-item
+            >Boarding & Student Life Program</a
+          >
+          <a routerLink="/national-lunch-program" mat-menu-item
+            >National Schools Lunch Program</a
+          >
         </mat-menu>
-      </div> -->
-      <a routerLink="">Enrollment</a>
-      <a routerLink="">Careers</a>
-      <a routerLink="">Knowledge Center</a>
-      <a routerLink="">Family Resources</a>
+      </div>
+      <a routerLink="/enrollment" class="nav-items">Enrollment</a>
+      <a routerLink="/careers">Careers</a>
+      <a routerLink="/knowledge-center">Knowledge Center</a>
+      <a routerLink="/family-resources">Family Resources</a>
       <a routerLink="/donate" class="nav-items nav-item-bg">Donate</a>
     </span>
   </section>
