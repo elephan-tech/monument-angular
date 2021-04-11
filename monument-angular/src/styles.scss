@@ -54,11 +54,10 @@ $shadow: 3px 5px 15px rgba(0, 95, 255, 0.15);
 
 html,
 body {
-  height: 100%;
-}
-body {
   margin: 0;
-  font-family: Roboto, "Montserrat", sans-serif;
+  font-family: "Montserrat", sans-serif;
+  position: inherit !important;
+  overflow-y: inherit !important;
 }
 h1 {
   font-size: 64px;
@@ -70,19 +69,43 @@ h1.hero-main {
   text-align: right;
   text-transform: capitalize;
 }
+h2 {
+  font-family: "Oswald", sans-serif !important;
+  color: color(primary);
+  font-size: 3em !important;
+  font-weight: bold !important;
+}
 h3 {
+  font-family: "Montserrat", sans-serif;
+  font-size: 2.5em;
+  color: color(primary);
 }
 h4 {
   font-family: "Montserrat", sans-serif;
   text-transform: uppercase;
   font-size: 32px;
+  color: color(primary);
 }
 h5 {
 }
-
+p {
+  font-size: 1em;
+  font-family: "Montserrat", sans-serif;
+  color: color(primary);
+  line-height: 1.5em;
+}
 header.main-hero {
   background-image: url("assets/hero-bg.svg");
   background-repeat: no-repeat;
-  min-height: 50vh;
+  // min-height: 50vh;
   padding: 2em;
+}
+
+div.yellow-section {
+  background-color: color(secondary);
+  width: 100%;
+}
+section {
+  width: 90%;
+  margin: auto;
 }
