@@ -1,0 +1,63 @@
+<nav class="topnav" id="myTopnav">
+  <div class="red-top-banner" id="red-top-banner">
+    <div>
+      <a routerLink="/" class="esp"> </a>
+    </div>
+  </div>
+  <section class="section-nav">
+    <a routerLink="/" class="first-icon" style="padding: 0px; margin: 0px">
+      <img
+        src="assets/monument-main-logo.png"
+        class="top-logo"
+        id="top-logo-switch"
+        alt="Monument Academy logo"
+      />
+    </a>
+
+    <a style="cursor: pointer" class="icon" (click)="openNav()"
+      ><i class="material-icons" rounded>menu</i></a
+    >
+    <span class="nav-span" id="responsive">
+      <div
+        mat-button
+        [matMenuTriggerFor]="AboutUs"
+        class="dropdown underline nav-items"
+        matTooltip="click to open menu"
+      >
+        About Us
+        <i class="fas fa-angle-down"></i>
+        <mat-menu #AboutUs="matMenu">
+          <a routerLink="" mat-menu-item>About Us</a>
+          <a routerLink="" mat-menu-item>team</a>
+          <a routerLink="/" mat-menu-item>Board of Directors</a>
+          <a routerLink="/" mat-menu-item>Partnerships</a>
+          <a routerLink="/" mat-menu-item>Awards</a>
+          <a routerLink="/" mat-menu-item>Donate</a>
+        </mat-menu>
+      </div>
+
+      <!-- <div
+        mat-button
+        [matMenuTriggerFor]="Programs"
+        class="dropdown underline nav-items"
+        matTooltip="click to open menu"
+      >
+        Our Programs
+        <i class="fas fa-angle-down"></i>
+        <mat-menu #AboutUs="matMenu">
+          <a routerLink="" mat-menu-item>A Day At Monument</a>
+          <a routerLink="" mat-menu-item>Academics</a>
+          <a routerLink="" mat-menu-item>Well-Being</a>
+          <a routerLink="/" mat-menu-item>Life Skills</a>
+          <a routerLink="/" mat-menu-item>Boarding & Student Life Program</a>
+          <a routerLink="/" mat-menu-item>National Schools Lunch Program</a>
+        </mat-menu>
+      </div> -->
+      <a routerLink="">Enrollment</a>
+      <a routerLink="">Careers</a>
+      <a routerLink="">Knowledge Center</a>
+      <a routerLink="">Family Resources</a>
+      <a routerLink="/donate" class="nav-items nav-item-bg">Donate</a>
+    </span>
+  </section>
+</nav>
