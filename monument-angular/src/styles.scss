@@ -106,13 +106,12 @@ p {
   text-align: center;
 }
 a {
-  color: color(links);
+  color: color(links) !important;
   font-size: 1.1em;
   text-transform: uppercase;
   font-family: "Montserrat";
   font-weight: bold;
-  margin-top: 1.5em;
-  margin-bottom: 1.5em;
+  cursor: pointer;
 }
 header.main-hero {
   background-image: url("assets/hero-bg.svg");

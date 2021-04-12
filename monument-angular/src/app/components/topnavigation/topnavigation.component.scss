@@ -109,7 +109,7 @@
 .topnav a,
 .nav-items {
   display: inline-block;
-  color: #042f54;
+  color: #042f54 !important;
   text-align: center;
   padding: 10px 16px;
   text-decoration: none;
@@ -119,6 +119,9 @@
   margin: 3px;
   cursor: pointer;
   text-transform: none !important;
+}
+.link-drop {
+  color: #042f54 !important;
 }
 .fa-angle-down {
   color: #042f54;
