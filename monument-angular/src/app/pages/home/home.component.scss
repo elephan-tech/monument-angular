@@ -1,0 +1,31 @@
+.image-section {
+  background-image: url("../../../assets/bg_home_section2.jpeg");
+  background-position: center;
+  background-size: cover;
+}
+
+h2.brush {
+  background-image: url("../../../assets/brush1.png");
+  background-position: left center;
+  background-repeat: no-repeat;
+  background-size: 100% 100%;
+  color: white;
+  text-shadow: 1px 1px var(--ion-color-primary);
+}
+
+.slider-image{
+  border-radius: 50%;
+  height: 500px;
+  width: 500px;
+
+}
+
+.slider-fab{
+  position: relative;
+  right: 50;
+  border-radius: 24px;
+}
+
+.fullHeight {
+  height: 80vh
+}

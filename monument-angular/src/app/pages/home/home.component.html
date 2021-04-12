@@ -1,4 +1,4 @@
-<header class="main-hero">
+<section class="main-hero">
   <ion-grid>
     <ion-row>
       <ion-col
@@ -8,11 +8,41 @@
         />
       </ion-col>
       <ion-col>
-        <h1 class="hero-main">More than just a school, a home.</h1>
+        <header>
+          <h1 class="hero-main">More than just a school, a home.</h1>
+        </header>
       </ion-col>
     </ion-row>
   </ion-grid>
-</header>
+</section>
+<div class="image-section">
+  <section>
+    <ion-grid>
+      <ion-row>
+        <div style="min-height: 500px; flex-grow: 1"></div>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+          <h2 class="brush">
+            Monument Academy Public Charter School is one-of-a-kind Boarding
+            School located in the nation's Capital.
+          </h2>
+        </ion-col>
+        <ion-col
+          style="
+            display: flex;
+            align-items: flex-end;
+            justify-content: flex-end;
+          "
+        >
+          <ion-button size="large" expand="full" color="primary">
+            Learn More
+          </ion-button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+</div>
 <div class="yellow-section">
   <section>
     <ion-grid>
@@ -242,3 +272,22 @@
     </ion-row>
   </ion-grid>
 </section>
+<div class="yellow-section">
+  <section class="fullHeight">
+    <h2 class="text-center">Monumental Moments</h2>
+    <img
+      src="assets/underline-stroke.svg"
+      style="width: 180px; display: flex; align-self: center; margin: auto"
+    />
+    <ion-grid style="height: 100%;">
+      <ion-row class="ion-justify-content-space-evenly" >
+        <ion-col class="ion-align-items-center" >
+          <h3>{{ currentSlide.title }}</h3>
+          <p>{{ currentSlide.description }}</p>
+        </ion-col>
+        <ion-col>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+</div>
