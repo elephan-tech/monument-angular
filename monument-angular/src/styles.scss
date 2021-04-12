@@ -42,6 +42,7 @@ $colors: (
   links: #6aa3d4,
   white: #fff,
   black: #000,
+  grey: #888888,
 );
 @function color($color-name) {
   @return map-get($colors, $color-name);
@@ -61,14 +62,14 @@ body {
   overflow-y: inherit !important;
 }
 h1 {
-  font-size: 64px;
+  font-size: 64px !important;
   font-family: "Oswald", sans-serif;
   color: color(primary);
 }
 h1.hero-main {
-  font-size: 72px;
-  text-align: right;
-  text-transform: capitalize;
+  font-size: 72px !important;
+  text-align: right !important;
+  text-transform: capitalize !important;
 }
 h2 {
   font-family: "Oswald", sans-serif !important;
@@ -90,6 +91,10 @@ h4 {
   color: color(primary);
 }
 h5 {
+  font-family: "Montserrat", sans-serif;
+  text-transform: uppercase;
+  font-size: 24px;
+  color: color(primary);
 }
 p {
   font-size: 1em;
@@ -134,4 +139,8 @@ h2.marker {
 }
 p.marker {
   text-align: center;
+}
+
+hr {
+  background: color(accent);
 }

@@ -114,10 +114,11 @@
   padding: 10px 16px;
   text-decoration: none;
   font-size: 16px;
-  font-family: "Cabin", sans-serif;
-  font-weight: 400;
+  font-family: "Montserrat", sans-serif;
+  font-weight: 600;
   margin: 3px;
   cursor: pointer;
+  text-transform: none !important;
 }
 .fa-angle-down {
   color: #042f54;
@@ -126,6 +127,9 @@
   background-color: #fed02f;
   color: #042f54;
   border-radius: 7px;
+}
+mat-menu {
+  background-color: #fed02f;
 }
 /* Change the color of links on hover */
 /*.topnav a:hover {

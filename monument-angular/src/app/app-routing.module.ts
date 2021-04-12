@@ -36,8 +36,12 @@ const routes: Routes = [
     component: AwardsComponent,
   },
   {
-    path: 'a-day-at-monument',
+    path: 'contact-us',
     component: ContactUsComponent,
+  },
+  {
+    path: 'a-day-at-monument',
+    component: ADayAtMonumentComponent,
   },
   { path: 'programs', component: ProgramsComponent },
   { path: 'donate', component: DonateComponent },
