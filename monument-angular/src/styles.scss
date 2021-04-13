@@ -140,6 +140,15 @@ h2.marker {
 p.marker {
   text-align: center;
 }
+.underline-stroke {
+  width: 150px;
+}
+.underline-stroke-centered {
+  width: 150px;
+  display: flex;
+  align-self: center;
+  margin: auto;
+}
 
 hr {
   background: color(accent);

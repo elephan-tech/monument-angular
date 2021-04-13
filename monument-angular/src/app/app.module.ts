@@ -28,6 +28,7 @@ import { DonateComponent } from './pages/donate/donate.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { IonicModule } from '@ionic/angular';
+import { HeroComponent } from './components/hero/hero.component';
 
 @NgModule({
   declarations: [
@@ -53,6 +54,7 @@ import { IonicModule } from '@ionic/angular';
     FamilyResourcesComponent,
     KnowledgeCenterComponent,
     DonateComponent,
+    HeroComponent,
   ],
   imports: [
     BrowserModule,

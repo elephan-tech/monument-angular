@@ -8,9 +8,15 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   template: `<div [innerHTML]="data"></div>`,
 })
 export class TeamComponent implements OnInit {
+  pageTitle: string;
+  heroImg: string;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.pageTitle = 'Monument Team';
+    this.heroImg = 'assets/images/hero-main.png';
+  }
 
   team = [
     {
