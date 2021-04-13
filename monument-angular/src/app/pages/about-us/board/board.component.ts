@@ -8,9 +8,15 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   template: `<div [innerHTML]="data"></div>`,
 })
 export class BoardComponent implements OnInit {
+  pageTitle: string;
+  heroImg: string;
+
   constructor() {}
 
-  ngOnInit(): void {}
+  ngOnInit() {
+    this.pageTitle = 'Board of Directors';
+    this.heroImg = '';
+  }
 
   board = [
     {

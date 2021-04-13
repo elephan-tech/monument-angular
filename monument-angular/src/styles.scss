@@ -65,6 +65,7 @@ h1 {
   font-size: 64px !important;
   font-family: "Oswald", sans-serif;
   color: color(primary);
+  text-transform: capitalize;
 }
 h1.hero-main {
   font-size: 72px !important;
@@ -113,10 +114,14 @@ a {
   font-weight: bold;
   cursor: pointer;
 }
-header.main-hero {
+header {
   background-image: url("assets/hero-bg.svg");
   background-repeat: no-repeat;
-  // min-height: 50vh;
+  background-attachment: fixed;
+  background-position: bottom;
+}
+header.main-hero {
+  min-height: 80vh;
   padding: 2em;
 }
 
@@ -139,6 +144,15 @@ h2.marker {
 }
 p.marker {
   text-align: center;
+}
+.underline-stroke {
+  width: 150px;
+}
+.underline-stroke-centered {
+  width: 150px;
+  display: flex;
+  align-self: center;
+  margin: auto;
 }
 
 hr {
