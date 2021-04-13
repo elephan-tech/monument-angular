@@ -113,10 +113,14 @@ a {
   font-weight: bold;
   cursor: pointer;
 }
-header.main-hero {
+header {
   background-image: url("assets/hero-bg.svg");
   background-repeat: no-repeat;
-  // min-height: 50vh;
+  background-attachment: fixed;
+  background-position: bottom;
+}
+header.main-hero {
+  min-height: 80vh;
   padding: 2em;
 }
 
