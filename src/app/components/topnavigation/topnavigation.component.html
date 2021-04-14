@@ -1,88 +1,104 @@
-<nav class="topnav" id="myTopnav">
-  <div class="red-top-banner" id="red-top-banner">
-    <div>
-      <a routerLink="/"> </a>
-    </div>
+<ion-toolbar color="danger" id="emergency-toolbar" *ngIf="showEmergency">
+  <ion-note color="light"> {{emergencyMessage}} </ion-note>
+  <ion-buttons slot="primary">
+    <ion-button fill="clear" (click)="dismissEmergency()">
+      <ion-icon name="close-outline"> </ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+
+<ion-toolbar color="primary" id="toolbar">
+  <ion-note color="light">{{ phoneNumber }}</ion-note>
+  <ion-buttons slot="primary">
+    <ion-button fill="clear">
+      <ion-icon name="logo-facebook"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear">
+      <ion-icon  name="logo-twitter"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear">
+      <ion-icon  name="logo-instagram"></ion-icon>
+    </ion-button>
+    <ion-button fill="clear">
+      <ion-icon  name="logo-linkedin"></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
+
+
+<ion-toolbar slot="start" id="topNav">
+
+<div style="display: flex;">
+  <a href="/">
+    <ion-img id="logo" [src]="monumentLogo" href="/"></ion-img>
+  </a>
+
+
+  <ion-buttons slot="secondary" *ngIf="isDesktop"> 
+
+      <ion-button 
+      *ngFor="let nav of navItems" 
+      (mouseenter)="navHover($event, nav)"
+      (mouseleave)="navHover($event, nav)"
+      id="nav-item"
+      [round]="nav.isFilledButton"
+      [ngClass]="{
+        'filled-menu-item' : nav.isFilledButton,
+        'nav-button' : !nav.subMenus,
+        'nav-button-submenus' : nav.subMenus
+      }"
+      [routerLink]="nav.href"
+      routerLinkActive="nav-active-link"
+      routerLink="root"
+      > {{ nav.name }} 
+      <!-- <ion-img [src]="brushStroke"> </ion-img> -->
+    </ion-button>
+
+ 
+  </ion-buttons>
+
+
+
+  <ion-buttons slot="secondary" *ngIf="!isDesktop" style="margin-left: auto"> 
+    <ion-button fill="clear" (click)="toggleMenu()">
+      <ion-icon class="menu-icon" [name]="menuIsOpen ? 'close-outline' : 'menu-outline' "></ion-icon>
+    </ion-button>
+  </ion-buttons>
+</div>
+
+  <ion-list *ngIf="menuIsOpen && !isDesktop">
+  <div *ngFor="let nav of navItems" > 
+    <div 
+    (mouseenter)="subMenuToggle(nav)"
+    (mouseleave)="subMenuToggle(nav)">
+
+    <ion-item button [detail]="nav.subMenus ? true : false"
+    [routerLink]="nav.href"
+    routerLinkActive='active-link'
+    routerLink="root"
+    [ngClass]="nav.isFilledButton === true ? 'filled-menu-item' : '' "
+>
+    <ion-label class="menu-label" routerLinkActive='active-link'> {{ nav.name | uppercase }} </ion-label>
+  </ion-item>
+  
+  <div *ngIf="nav.subMenuOpen">
+    <ion-item *ngFor="let subMenu of nav.subMenus" button 
+    [routerLink]="subMenu.href" 
+    routerLinkActive='active-sub-link'
+    class="submenu-item"> 
+      <ion-label class="submenu-label" routerLinkActive='active-sub-link'> 
+        {{subMenu.name}}
+      </ion-label>
+    </ion-item>
   </div>
-  <section class="section-nav">
-    <a routerLink="/" class="first-icon" style="padding: 0px; margin: 0px">
-      <img
-        src="assets/monument-main-logo.png"
-        class="top-logo"
-        id="top-logo-switch"
-        alt="Monument Academy logo"
-      />
-    </a>
+</div>
+</div>
+</ion-list>
+</ion-toolbar>
 
-    <a style="cursor: pointer" class="icon" (click)="openNav()"
-      ><i class="material-icons" rounded>menu</i></a
-    >
-    <span class="nav-span" id="responsive">
-      <div
-        mat-button
-        [matMenuTriggerFor]="AboutUs"
-        class="dropdown underline nav-items"
-        matTooltip="click to open menu"
-      >
-        About Us
-        <ion-icon name="chevron-down-outline"></ion-icon>
-        <mat-menu #AboutUs="matMenu">
-          <a routerLink="/about-us" mat-menu-item class="link-drop">About Us</a>
-          <a routerLink="/team" mat-menu-item class="link-drop">team</a>
-          <a routerLink="/board" mat-menu-item class="link-drop"
-            >Board of Directors</a
-          >
-          <a routerLink="/partnerships" mat-menu-item class="link-drop"
-            >Partnerships</a
-          >
-          <a routerLink="/awards" mat-menu-item class="link-drop">Awards</a>
-          <a routerLink="/contact-us" mat-menu-item class="link-drop"
-            >Contact Us</a
-          >
-          <a routerLink="/donate" mat-menu-item class="link-drop">Donate</a>
-        </mat-menu>
-      </div>
 
-      <div
-        mat-button
-        [matMenuTriggerFor]="Programs"
-        class="dropdown underline nav-items"
-        matTooltip="click to open menu"
-      >
-        Our Programs
-        <ion-icon name="chevron-down-outline"></ion-icon>
-        <mat-menu #Programs="matMenu">
-          <a routerLink="/a-day-at-monument" mat-menu-item class="link-drop"
-            >A Day At Monument</a
-          >
-          <a routerLink="/academics" mat-menu-item class="link-drop"
-            >Academics</a
-          >
-          <a routerLink="/well-being-program" mat-menu-item class="link-drop"
-            >Well-Being</a
-          >
-          <a routerLink="/life-skills-program" mat-menu-item class="link-drop"
-            >Life Skills</a
-          >
-          <a
-            routerLink="/boarding-student-life-program"
-            mat-menu-item
-            class="link-drop"
-            >Boarding & Student Life Program</a
-          >
-          <a
-            routerLink="/national-lunch-program"
-            mat-menu-item
-            class="link-drop"
-            >National Schools Lunch Program</a
-          >
-        </mat-menu>
-      </div>
-      <a routerLink="/enrollment" class="nav-items">Enrollment</a>
-      <a routerLink="/careers">Careers</a>
-      <a routerLink="/knowledge-center">Knowledge Center</a>
-      <a routerLink="/family-resources">Family Resources</a>
-      <a routerLink="/donate" class="nav-items nav-item-bg">Donate</a>
-    </span>
-  </section>
-</nav>
+
+
+
+
