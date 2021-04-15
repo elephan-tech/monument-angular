@@ -1,6 +1,7 @@
 import { slideOpts } from './slider.config';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { loremIpsum } from 'lorem-ipsum';
+import { Platform } from '@ionic/angular';
 
 type Slide = {
   isBeginningSlide: boolean;
@@ -19,14 +20,21 @@ export class HomeComponent implements OnInit {
   currentSlide: Slide;
   slides: Slide[];
 
-  slideOpts = slideOpts.coverflow;
+  slideOpts = slideOpts;
   lorem = loremIpsum({
     units: 'paragraph',
   });
 
-  constructor() {}
+  screenWidth: number;
+
+  constructor(private platform: Platform) {
+    this.screenWidth = this.platform.width();
+  }
 
   ngOnInit(): void {
+    this.platform.resize.subscribe(async () => {
+      this.screenWidth = this.platform.width();
+    });
     this.slides = [
       {
         isBeginningSlide: true,
@@ -47,41 +55,11 @@ export class HomeComponent implements OnInit {
     this.currentSlide = this.slides[0];
   }
 
-  slideNext(slideView, i) {
-    console.log({ slideView });
-    slideView.slideNext(500).then((d) => {
-      console.log({ d });
-      this.checkIfNavDisabled(slideView, i);
-    });
+  slideNext(slideView) {
+    slideView.slideNext(300);
   }
 
-  //Move to previous slide
-  slidePrev(slideView, i) {
-    slideView.slidePrev(500).then(() => {
-      this.checkIfNavDisabled(slideView, i);
-    });
-  }
-
-  //Method called when slide is changed by drag or navigation
-  SlideDidChange(slideView, i) {
-    this.checkIfNavDisabled(slideView, i);
-  }
-
-  //Call methods to check if slide is first or last to enable disbale navigation
-  checkIfNavDisabled(slideView, i) {
-    console.log('is disabled', { slideView });
-    this.checkisBeginning(slideView, i);
-    this.checkisEnd(slideView, i);
-  }
-
-  checkisBeginning(slideView, i) {
-    slideView.isBeginning().then((istrue) => {
-      this.slides[i].isBeginningSlide = istrue;
-    });
-  }
-  checkisEnd(slideView, i) {
-    slideView.isEnd().then((istrue) => {
-      this.slides[i].isEndSlide = istrue;
-    });
+  slidePrev(slideView) {
+    slideView.slidePrev(300);
   }
 }
