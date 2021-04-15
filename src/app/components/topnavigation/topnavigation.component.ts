@@ -1,14 +1,23 @@
-import { Component, OnInit, HostListener, Inject, Input } from '@angular/core';
+import { Component, OnInit} from '@angular/core';
 import { ScreensizeService } from '../../services/screensize.service';
 import { MenuController } from '@ionic/angular';
+import {Router} from '@angular/router';
+
+
 
 export interface NavItem {
 	name: string;
 	code: string;
 	href?: string;
-	subMenu?: NavItem[];
-  subMenuOpen?: boolean
+	subMenus?: NavItem[];
+  subMenuOpen?: boolean;
 	isFilledButton?: boolean;
+}
+
+export interface Social {
+  icon: string;
+  href: string;
+  fill: string;
 }
 
 @Component({
@@ -143,7 +152,45 @@ export class TopnavigationComponent implements OnInit {
 		}
 	];
 
-	constructor(private screensizeService: ScreensizeService, private menu: MenuController) {
+  socials: Social[] =[
+    {
+        icon: 'mail',
+        href: '/',
+        fill: 'clear'
+    },
+    {
+        icon: 'logo-facebook',
+        href: 'https://www.facebook.com/monumentacademy',
+        fill: 'clear'
+    },
+    {
+        icon: 'logo-twitter',
+        href: 'https://twitter.com/monumentacademy',
+        fill: 'clear'
+    },
+    {
+        icon: 'logo-instagram',
+        href: 'https://www.instagram.com/monumentacademy',
+        fill: 'clear'
+    },
+    {
+        icon: 'logo-linkedin',
+        href: 'https://www.linkedin.com/company/monument-academy-public-charter-school/',
+        fill: 'clear'
+    },
+    {
+        icon: 'logo-vimeo',
+        href: 'https://www.instagram.com/explore/locations/307312599426465/monument-academy/',
+        fill: 'clear'
+    }
+  ]
+  aboutUsSubMenu = false;
+
+	constructor(
+    private screensizeService: ScreensizeService,
+    private menu: MenuController,
+    private router: Router
+    ) {
 		this.screensizeService.isDesktopView().subscribe((isDesktop) => {
 			console.log('is desktop view:', isDesktop);
 			this.isDesktop = isDesktop;
@@ -160,18 +207,55 @@ export class TopnavigationComponent implements OnInit {
 		menuItem.subMenuOpen = !menuItem.subMenuOpen;
 	}
 
-  navHover(e, nav) {
-   console.log(e.type);
-   console.log(nav);
-   if (nav.subMenus) {
-     console.log('open sub menus');
-   } else {
-     console.log('nothing');
-   }
-  }
 
   dismissEmergency() {
     this.showEmergency = false;
   }
+
+showSubMenus(nav: NavItem) {
+  this.closeAllMenus();
+  if (nav.subMenus) {
+  nav.subMenuOpen = true;
+  }
+}
+
+hideSubMenus(nav: NavItem) {
+  if (nav.subMenus) {
+  nav.subMenuOpen = false;
+  }
+}
+
+getOpenMenu(typeToReturn: string): boolean | NavItem {
+ let openMenu: NavItem;
+ this.navItems.forEach((element) => {
+    if (element.subMenuOpen === true) {
+      openMenu = element;
+    }
+  });
+
+  if (typeToReturn === 'navItem') {
+    return openMenu;
+  } else if (typeToReturn=== 'boolean') {
+    if (openMenu) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+}
+
+closeAllMenus() {
+  this.navItems.forEach((element) => {
+    element.subMenuOpen ? element.subMenuOpen = false:'';
+  })
+}
+
+navClick(nav: NavItem) {
+  if (nav.subMenus) {
+    this.subMenuToggle(nav);
+  } else {
+    this.router.navigate([nav.href]);
+  }
+}
 
 }
