@@ -29,6 +29,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { IonicModule } from '@ionic/angular';
 import { HeroComponent } from './components/hero/hero.component';
+import { SliderComponent } from './components/slider/slider.component';
 
 @NgModule({
   declarations: [
@@ -55,6 +56,7 @@ import { HeroComponent } from './components/hero/hero.component';
     KnowledgeCenterComponent,
     DonateComponent,
     HeroComponent,
+    SliderComponent,
   ],
   imports: [
     BrowserModule,
