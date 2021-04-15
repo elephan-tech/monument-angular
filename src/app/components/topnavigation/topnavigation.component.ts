@@ -202,7 +202,7 @@ export class TopnavigationComponent implements OnInit {
 			console.log('is desktop view:', isDesktop);
 			this.isDesktop = isDesktop;
 		});
-    console.log(this.activatedRoute);
+
 	}
 
 	ngOnInit() {}
