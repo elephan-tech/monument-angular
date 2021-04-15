@@ -27,7 +27,7 @@ box-shadow: 0px 5px 15px -7px var(--ion-color-primary);
 .nav-button:hover {
   height: 7vh;
   background-image: url("../../../assets/underline-stroke.svg");
-  background-position: center 50px;
+  background-position: center 100%;
   background-size: 70px;
   background-repeat: no-repeat;
 }
@@ -48,7 +48,7 @@ box-shadow: 0px 5px 15px -7px var(--ion-color-primary);
 .nav-active-link {
   height: 7vh;
   background-image: url("../../../assets/underline-stroke-blue.svg");
-  background-position: center 50px;
+  background-position: center 100%;
   background-size: 70px;
   background-repeat: no-repeat;
 }
