@@ -1,0 +1,51 @@
+.spacer {
+  flex: 1;
+}
+
+.toolbar {
+  height: 60px;
+  margin: -8px;
+  display: flex;
+  align-items: center;
+  background-color: #1976d2;
+  color: white;
+  font-weight: 600;
+}
+
+.toolbar img {
+  margin: 0 16px;
+  max-width: 25%;
+  display: block;
+  height: auto;
+}
+
+.sections {
+  display: flex;
+  margin: 20px;
+  width: 100%;
+  flex-direction: row;
+  position: unset;
+  align-items: start;
+  justify-content: space-evenly;
+}
+
+.brush {
+  display: none !important;
+}
+
+a {
+  text-decoration: none;
+  font-size: auto;
+  font-weight: bold;
+  color: #1976d2;
+
+  &:hover {
+    color: purple;
+    .brush {
+      display: block !important;
+    }
+  }
+  &:active {
+    color: red;
+  }
+}
