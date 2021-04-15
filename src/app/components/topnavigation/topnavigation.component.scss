@@ -82,6 +82,18 @@ ion-item {
   --detail-icon-opacity: 1;
 }
 
+.list-background {
+  background: var(--ion-color-secondary);
+}
+
+  .desktop-list {
+  background: var(--ion-color-secondary);
+    position: absolute;
+  z-index: 1000000;
+  width: 100%;
+  box-shadow: 0px 5px 15px -7px var(--ion-color-primary);
+  }
+
 .submenu-item {
   --background: var(--ion-color-secondary);
   margin: 0px 10px 0px 10px;
@@ -98,8 +110,8 @@ ion-item {
 }
 
 .active-link {
-  color: var(--ion-color-tertiary);
   font-weight: bold;
+  --color: var(--ion-color-tertiary) !important
 }
 
 .active-sub-link {

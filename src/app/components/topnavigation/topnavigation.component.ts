@@ -18,6 +18,7 @@ export interface Social {
   icon: string;
   href: string;
   fill: string;
+  target: string;
 }
 
 @Component({
@@ -155,33 +156,39 @@ export class TopnavigationComponent implements OnInit {
   socials: Social[] =[
     {
         icon: 'mail',
-        href: '/',
-        fill: 'clear'
+        href: '/contact-us',
+        fill: 'clear',
+        target: ""
     },
     {
         icon: 'logo-facebook',
         href: 'https://www.facebook.com/monumentacademy',
-        fill: 'clear'
+        fill: 'clear',
+        target: "_blank"
     },
     {
         icon: 'logo-twitter',
         href: 'https://twitter.com/monumentacademy',
-        fill: 'clear'
+        fill: 'clear',
+        target: "_blank"
     },
     {
         icon: 'logo-instagram',
         href: 'https://www.instagram.com/monumentacademy',
-        fill: 'clear'
+        fill: 'clear',
+        target: "_blank"
     },
     {
         icon: 'logo-linkedin',
         href: 'https://www.linkedin.com/company/monument-academy-public-charter-school/',
-        fill: 'clear'
+        fill: 'clear',
+        target: "_blank"
     },
     {
         icon: 'logo-vimeo',
         href: 'https://www.instagram.com/explore/locations/307312599426465/monument-academy/',
-        fill: 'clear'
+        fill: 'clear',
+        target: "_blank"
     }
   ]
   aboutUsSubMenu = false;
@@ -195,6 +202,7 @@ export class TopnavigationComponent implements OnInit {
 			console.log('is desktop view:', isDesktop);
 			this.isDesktop = isDesktop;
 		});
+    console.log(this.activatedRoute);
 	}
 
 	ngOnInit() {}
@@ -253,9 +261,9 @@ closeAllMenus() {
 navClick(nav: NavItem) {
   if (nav.subMenus) {
     this.subMenuToggle(nav);
-  } else {
-    this.router.navigate([nav.href]);
   }
+  return null;
 }
+
 
 }

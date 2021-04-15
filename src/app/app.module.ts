@@ -31,6 +31,8 @@ import { IonicModule } from '@ionic/angular';
 import { HeroComponent } from './components/hero/hero.component';
 import { SliderComponent } from './components/slider/slider.component';
 
+import { ReactiveFormsModule } from '@angular/forms';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -65,6 +67,7 @@ import { SliderComponent } from './components/slider/slider.component';
     MatMenuModule,
     MatGridListModule,
     IonicModule.forRoot(),
+    ReactiveFormsModule
   ],
   exports: [MatMenuModule, MatGridListModule],
   providers: [],
