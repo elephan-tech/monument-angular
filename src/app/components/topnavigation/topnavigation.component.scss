@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 #emergency-toolbar {
 --min-height:20px!important;
 }
@@ -7,7 +9,7 @@
 }
 
 #topNav {
-box-shadow: 0px 5px 15px -7px var(--ion-color-primary);
+box-shadow: $deep-shadow;
 }
 
 #logo {
@@ -91,7 +93,7 @@ ion-item {
     position: absolute;
   z-index: 1000000;
   width: 100%;
-  box-shadow: 0px 5px 15px -7px var(--ion-color-primary);
+  box-shadow: $deep-shadow;
   }
 
 .submenu-item {
