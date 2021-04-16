@@ -50,6 +50,7 @@
       routerLinkActive="nav-active-link"
       routerLink="root"
       (mouseenter)="showSubMenus(nav)"
+      (click)="hideSubMenus(getOpenMenu('navItem'))"
       >
       {{ nav.name }}
     </ion-button>
