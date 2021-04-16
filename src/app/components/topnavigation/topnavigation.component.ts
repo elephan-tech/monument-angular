@@ -52,7 +52,7 @@ export class TopnavigationComponent implements OnInit {
         {
           name: 'Board Of Directors',
           code: 'BOD',
-          href: '/board-of-directors',
+          href: '/board',
         },
         {
           name: 'Partnerships',
@@ -100,22 +100,22 @@ export class TopnavigationComponent implements OnInit {
         {
           name: 'Well Being',
           code: 'wellBeing',
-          href: 'well-being',
+          href: 'well-being-program',
         },
         {
           name: 'Life Skills',
           code: 'lifeSkills',
-          href: 'life-skills',
+          href: 'life-skills-program',
         },
         {
           name: 'Boarding and Student Life Program',
           code: 'BSLP',
-          href: 'boarding-and-life',
+          href: 'boarding-student-life-program',
         },
         {
           name: 'National School Lunch Program',
           code: 'NSLP',
-          href: 'national-school-lunch',
+          href: 'national-lunch-program',
         },
       ],
       subMenuOpen: false,

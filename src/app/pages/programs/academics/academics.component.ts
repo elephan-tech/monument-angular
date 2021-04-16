@@ -13,6 +13,6 @@ export class AcademicsComponent implements OnInit {
 
   ngOnInit() {
     this.pageTitle = 'Academics';
-    this.heroImg = 'assets/images/monument-1.png';
+    this.heroImg = 'assets/images/monument-6.png';
   }
 }

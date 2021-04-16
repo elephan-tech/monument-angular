@@ -45,7 +45,6 @@ const routes: Routes = [
   },
   { path: 'programs', component: ProgramsComponent },
   { path: 'donate', component: DonateComponent },
-  { path: 'a-day-at-monument', component: ADayAtMonumentComponent },
   { path: 'academics', component: AcademicsComponent },
   {
     path: 'boarding-student-life-program',

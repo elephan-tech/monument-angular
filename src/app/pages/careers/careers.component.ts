@@ -15,7 +15,7 @@ export class CareersComponent implements OnInit {
 
   ngOnInit() {
     this.pageTitle = 'Careers';
-    this.heroImg = 'assets/images/monument-5.png';
+    this.heroImg = 'assets/images/monument-7.png';
   }
   jobOpenings = [
     {
