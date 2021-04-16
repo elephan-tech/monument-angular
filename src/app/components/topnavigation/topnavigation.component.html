@@ -99,6 +99,7 @@
   *ngFor="let subMenu of getOpenMenu('navItem').subMenus"
   button
   class="submenu-item"
+  (click)="hideSubMenus(getOpenMenu('navItem'))"
   [routerLink]="subMenu.href"
   routerLinkActive="active-sub-link"
   routerLink="root"
