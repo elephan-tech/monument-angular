@@ -1,0 +1,78 @@
+@import "../../../styles.scss";
+
+.sticky {
+    position: fixed;
+    /* top: 80%; */
+    height: 50%;
+    z-index: 100000;
+    width: 100vw;
+}
+
+.main-icon {
+  font-size: 3em !important;
+}
+
+ion-icon::part(close-icon) {
+  font-size: 3em !important;
+
+}
+
+.main-button {
+  --border-radius: 25% 0 0 25% !important;
+  --border-color: var(--ion-color-primary);
+  --border-width: .2em;
+  --border-style: solid;
+  width: 100%;
+  height: 100%;
+}
+
+
+ion-fab {
+  right: -2px !important;
+  height: 75px;
+  width: 75px;
+}
+
+.fab-list {
+  height: 75vh;
+    width: 91vw;
+    top: -58vh;
+    position: absolute;
+    background-color: #F2F2F2;
+    box-shadow: $deep-shadow;
+    border-radius: 20px;
+    z-index: -1;
+    margin-inline: 20px;
+}
+
+.event-content {
+  width: 100%;
+    height: 90%;
+    margin: 25px;
+    background-image: url('../../../assets/brush1.png');
+    background-position: center center;
+    background-size: 20%;
+    background-repeat: no-repeat;
+}
+
+.fab:active {
+  border-radius: 25% 0 0 25% !important;
+  box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
+              0 8px 10px 1px rgba(0, 0, 0, 0.14),
+              0 3px 14px 2px rgba(0, 0, 0, 0.12);
+
+}
+
+.boundary {
+    height: 77vh;
+    max-width: 100%;
+}
+
+ion-grid {
+  margin-top: 10vh;
+}
+
+ion-row {
+  color: var(--ion-color-primary);
+  text-align: center;
+}

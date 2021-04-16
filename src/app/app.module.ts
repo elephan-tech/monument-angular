@@ -27,11 +27,13 @@ import { KnowledgeCenterComponent } from './pages/knowledge-center/knowledge-cen
 import { DonateComponent } from './pages/donate/donate.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import { IonicModule } from '@ionic/angular';
 import { HeroComponent } from './components/hero/hero.component';
 import { SliderComponent } from './components/slider/slider.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
+import { EventCalendarComponent } from './components/event-calendar/event-calendar.component';
 
 @NgModule({
   declarations: [
@@ -59,6 +61,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     DonateComponent,
     HeroComponent,
     SliderComponent,
+    EventCalendarComponent,
   ],
   imports: [
     BrowserModule,
@@ -66,6 +69,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     BrowserAnimationsModule,
     MatMenuModule,
     MatGridListModule,
+    DragDropModule,
     IonicModule.forRoot(),
     ReactiveFormsModule
   ],

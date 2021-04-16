@@ -1,0 +1,54 @@
+<div class="sticky">
+
+  <div class="boundary" >
+  <ion-fab
+  class="fab"
+  edge
+  vertical="bottom"
+  horizontal="end"  slot="fixed"
+  cdkDragLockAxis="y"
+  cdkDrag
+  [cdkDragStartDelay]="10"
+  cdkDragBoundary=".boundary"
+  [cdkDragFreeDragPosition]="dragPosition"
+  (cdkDragStarted)="handleDragStart($event)"
+  (click)="handleClick($event)"
+  [activated]="dragging === false">
+
+  <ion-fab-button class="main-button" color="secondary"
+>
+    <ion-fab vertical="top" horizontal="start" slot="fixed"></ion-fab>
+    <ion-icon class="main-icon" color="light" name="calendar"></ion-icon>
+  </ion-fab-button>
+
+  <ion-fab-list class="fab-list" side="start" cdkDragBoundary=".boundary">
+      <div class="event-content" >
+           <h2 class="text-center">Updates & Events</h2>
+    <img src="assets/underline-stroke-blue.svg" class="underline-stroke-centered" />
+    <ion-grid>
+
+      <ion-row class="ion-justify-content-center ">
+        Interested in joining our team?
+      </ion-row>
+      <ion-row class="ion-justify-content-center ">
+        Attend our upcoming virtual job fair!
+Register below or email careers@monumentacademydc.org with any questions.</ion-row>
+      <ion-row class="ion-justify-content-center ">
+        Tuesday, March 16th, 4 PM – 6 PM
+Our next open board meeting is Wednesday, March 17th at 6 PM.
+Register here.</ion-row>
+      <ion-row class="ion-justify-content-center ">
+        Check out our recent feature on CBS This Morning HERE!
+      </ion-row>
+
+    </ion-grid>
+      </div>
+
+    </ion-fab-list>
+  </ion-fab>
+</div>
+</div>
+
+
+
+
