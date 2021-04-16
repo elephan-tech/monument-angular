@@ -35,6 +35,7 @@ $monument-angular-theme: mat-light-theme(
 @include angular-material-theme($monument-angular-theme);
 
 /* You can add global styles to this file, and also import other style files */
+
 $colors: (
   primary: #042f54,
   secondary: #fecf31,
@@ -124,6 +125,7 @@ header {
 header.main-hero {
   min-height: 80vh;
   padding: 2em;
+  padding-top: 180px;
 }
 
 div.yellow-section {
@@ -131,6 +133,21 @@ div.yellow-section {
   width: 100%;
   padding-top: 3em;
   padding-bottom: 3em;
+}
+div.violet-section {
+  background-color: color(accent);
+  width: 100%;
+  padding-top: 3em;
+  padding-bottom: 3em;
+}
+div.violet-section p {
+  color: color(white) !important;
+}
+div.violet-section h3 {
+  color: color(white) !important;
+}
+div.violet-section a {
+  color: color(primary) !important;
 }
 section {
   width: 90%;
@@ -166,4 +183,7 @@ ion-slides {
 
 ion-note {
   margin: 10px;
+}
+ion-card {
+  box-shadow: $shadow;
 }

@@ -1,1 +1,52 @@
-<p>careers works!</p>
+<app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
+<section>
+  <h2>Career Opportunities for the 2021-22 School Year</h2>
+  <img src="assets/underline-stroke.svg" class="underline-stroke" />
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let j of jobOpenings">
+        <ion-card>
+          <ion-card-header>
+            <ion-card-subtitle>{{ j.category }}</ion-card-subtitle>
+            <ion-card-title>{{ j.jobTitle }}</ion-card-title>
+            <img src="assets/underline-stroke.svg" class="underline-stroke" />
+          </ion-card-header>
+          <ion-card-content>
+            <!-- {{ j.shortDescription }} -->
+            <br />
+            <a [href]="j.url" target="_blank">Learn more about this position</a>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</section>
+<div class="violet-section">
+  <section>
+    <h3>
+      Interested in joining our team? Attend one of our upcoming virtual job
+      fairs! Register below or email careers@monumentacademydc.org with any
+      questions.
+    </h3>
+    <p>Saturday, March 13th, 10 AM – 12 PM</p>
+    <p>Tuesday, March 16th, 4 PM – 6 PM</p>
+
+    <p>
+      <a
+        href="https://monumentacademy.tedk12.com/hire/index.aspx"
+        target="_blank"
+        >APPLY HERE</a
+      >. You will be asked to create a profile, then fill out an application,
+      including uploading your resume and cover letter. Salary and benefits are
+      competitive, and commensurate with education, and level of work
+      experience. Monument Academy is an equal opportunity employer, committed
+      to inclusive hiring and encourages applicants from all backgrounds. We do
+      not discriminate on the basis of race, color, national origin, marital
+      status, religion, sex, age, sexual orientation, disability, or any other
+      protected status. All employment decisions are made solely on the basis of
+      the individual’s qualifications, as related to the requirements of the
+      position being filled.
+    </p>
+  </section>
+</div>

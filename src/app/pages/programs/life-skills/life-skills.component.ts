@@ -3,13 +3,17 @@ import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-life-skills',
   templateUrl: './life-skills.component.html',
-  styleUrls: ['./life-skills.component.scss']
+  styleUrls: ['./life-skills.component.scss'],
+  template: `<div [innerHTML]="data"></div>`,
 })
 export class LifeSkillsComponent implements OnInit {
+  pageTitle: string;
+  heroImg: string;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.pageTitle = 'Life Skills';
+    this.heroImg = 'assets/images/monument-5.png';
   }
-
 }
