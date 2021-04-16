@@ -40,9 +40,9 @@ export class TopnavigationComponent implements OnInit {
       href: '/about-us',
       subMenus: [
         {
-          name: 'Mission, Values, Philosophy',
-          code: 'MVP',
-          href: '/mission-values-philosophy',
+          name: 'About Us',
+          code: 'aboutUs',
+          href: '/about-us',
         },
         {
           name: 'Team',
@@ -75,11 +75,6 @@ export class TopnavigationComponent implements OnInit {
           href: '/donate',
         },
         {
-          name: 'About Us',
-          code: 'aboutUs',
-          href: '/about-us',
-        },
-        {
           name: 'Contact Us',
           code: 'contact us',
           href: '/contact-us',
@@ -95,7 +90,7 @@ export class TopnavigationComponent implements OnInit {
         {
           name: 'A Day At Monument Academy',
           code: 'ADAMA',
-          href: 'day-at-monument',
+          href: 'a-day-at-monument',
         },
         {
           name: 'Academics',

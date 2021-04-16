@@ -1,0 +1,16 @@
+@import "../../../styles.scss";
+
+ion-card {
+  border-radius: $radius;
+}
+ion-card-title {
+  color: color(accent);
+  font-family: "Oswald", sans-serif !important;
+  font-size: 2.2em !important;
+  font-weight: bold !important;
+}
+ion-card-subtitle {
+  color: color(primary);
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 1.2em !important;
+}
