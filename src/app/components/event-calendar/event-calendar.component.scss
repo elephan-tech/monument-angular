@@ -3,8 +3,8 @@
 .sticky {
     position: fixed;
     /* top: 80%; */
-    height: 50%;
-    z-index: 100000;
+    height: 88%;
+    z-index: 1;
     width: 100vw;
 }
 
@@ -34,7 +34,7 @@ ion-fab {
 }
 
 .fab-list {
-  height: 75vh;
+  height: 70vh;
     width: 91vw;
     top: -58vh;
     position: absolute;
@@ -42,7 +42,7 @@ ion-fab {
     box-shadow: $deep-shadow;
     border-radius: 20px;
     z-index: -1;
-    margin-inline: 20px;
+    margin-inline: auto 50%;
 }
 
 .event-content {
@@ -64,8 +64,9 @@ ion-fab {
 }
 
 .boundary {
-    height: 77vh;
+     height: 70vh;
     max-width: 100%;
+    margin-top: 178px;
 }
 
 ion-grid {
