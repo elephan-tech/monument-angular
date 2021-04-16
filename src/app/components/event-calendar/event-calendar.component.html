@@ -1,19 +1,20 @@
-<div class="sticky">
+<!-- <div [ngStyle]="{'z-index': dragging ? '1' : '2' }" class="sticky"> -->
 
-  <div class="boundary" >
+  <!-- <div> -->
   <ion-fab
   class="fab"
-  edge
+  style="position: fixed;"
   vertical="bottom"
-  horizontal="end"  slot="fixed"
+  horizontal="end"
+  slot="fixed"
   cdkDragLockAxis="y"
   cdkDrag
   [cdkDragStartDelay]="10"
-  cdkDragBoundary=".boundary"
   [cdkDragFreeDragPosition]="dragPosition"
   (cdkDragStarted)="handleDragStart($event)"
   (click)="handleClick($event)"
-  [activated]="dragging === false">
+  [activated]="dragging === false"
+  >
 
   <ion-fab-button class="main-button" color="secondary"
 >
@@ -21,7 +22,8 @@
     <ion-icon class="main-icon" color="light" name="calendar"></ion-icon>
   </ion-fab-button>
 
-  <ion-fab-list class="fab-list" side="start" cdkDragBoundary=".boundary">
+  <ion-fab-list class="fab-list" side="start"
+  >
       <div class="event-content" >
            <h2 class="text-center">Updates & Events</h2>
     <img src="assets/underline-stroke-blue.svg" class="underline-stroke-centered" />
@@ -46,8 +48,8 @@ Register here.</ion-row>
 
     </ion-fab-list>
   </ion-fab>
-</div>
-</div>
+<!-- </div> -->
+<!-- </div> -->
 
 
 

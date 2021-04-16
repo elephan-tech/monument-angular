@@ -16,7 +16,7 @@ export class EventCalendarComponent implements OnInit {
   public dragging: boolean;
   public clickedInside: boolean;
 
-dragPosition = {x: 0, y: 0};
+dragPosition = {x: 0, y: -100};
 
   constructor() {
   }

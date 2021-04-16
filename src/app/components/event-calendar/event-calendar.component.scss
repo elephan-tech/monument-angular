@@ -31,6 +31,7 @@ ion-fab {
   right: -2px !important;
   height: 75px;
   width: 75px;
+  z-index: 100000 !important;
 }
 
 .fab-list {
@@ -42,7 +43,7 @@ ion-fab {
     box-shadow: $deep-shadow;
     border-radius: 20px;
     z-index: -1;
-    margin-inline: auto 50%;
+    right: -50%;
 }
 
 .event-content {
@@ -63,11 +64,11 @@ ion-fab {
 
 }
 
-.boundary {
-     height: 70vh;
-    max-width: 100%;
-    margin-top: 178px;
-}
+// .boundary {
+//      height: 70vh;
+//     max-width: 100%;
+//     margin-top: 178px;
+// }
 
 ion-grid {
   margin-top: 10vh;
