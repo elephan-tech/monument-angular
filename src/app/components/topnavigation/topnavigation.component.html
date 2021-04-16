@@ -10,7 +10,7 @@
 
 <ion-toolbar color="primary" id="toolbar">
   <ion-buttons slot="start">
-    <ion-button>
+    <ion-button href="tel:+{{phoneNumber}}">
       <ion-icon name="call"> </ion-icon>
     </ion-button>
     <ion-note color="light">
@@ -29,8 +29,8 @@
 <ion-toolbar slot="start" id="topNav">
 
 <div style="display: flex;">
-  <a href="/">
-    <ion-img id="logo" [src]="monumentLogo" href="/"></ion-img>
+  <a routerLink="/">
+    <ion-img id="logo" [src]="monumentLogo"></ion-img>
   </a>
 
   <ion-buttons slot="secondary" *ngIf="isDesktop" style="width: 100%;">
