@@ -1,28 +1,124 @@
+nav {
+  position: fixed;
+  z-index: 100;
+  width: 100%;
+}
 #emergency-toolbar {
---min-height:20px!important;
+  --min-height: 20px !important;
 }
 
 #toolbar {
-
 }
 
 #topNav {
-box-shadow: 0px 5px 15px -7px var(--ion-color-primary);
+  box-shadow: 0 5px 10px rgba(154, 160, 185, 0.05),
+    0 15px 40px rgba(166, 173, 201, 0.2);
 }
 
-#logo {
-  height: 100%;
-  margin: 10px;
-  min-width: 100px;
-  max-width: 500px;
+// #logo {
+//   height: 100%;
+//   margin: 10px;
+//   min-width: 100px;
+//   max-width: 500px;
+// }
+// ion-button:hover{
+// background-color: ;
+// }
+// [Juani]
+
+.scroll-display {
+  display: block;
+  animation: slide-down 0.3s ease;
+  -webkit-animation: slide-down 0.3s ease;
+  -moz-animation: slide-down 0.3s ease;
 }
+.scroll-display-none {
+  display: none;
+  animation: slide-up 0.3s ease;
+  -webkit-animation: slide-up 0.3s ease;
+  -moz-animation: slide-up 0.3s ease;
+}
+@keyframes slide-up {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes slide-up {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+@-moz-keyframes slide-up {
+  0% {
+    opacity: 0;
+    -moz-transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    -moz-transform: translateY(0);
+  }
+}
+@keyframes slide-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@-webkit-keyframes slide-down {
+  0% {
+    opacity: 0;
+    -webkit-transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    -webkit-transform: translateY(0);
+  }
+}
+@-moz-keyframes slide-down {
+  0% {
+    opacity: 0;
+    -moz-transform: translateY(-100%);
+  }
+  100% {
+    opacity: 1;
+    -moz-transform: translateY(0);
+  }
+}
+.first-icon {
+  float: left;
+  padding: 0px;
+  margin: 0px;
+}
+.top-logo {
+  width: 220px;
+  margin: 5px;
+  transition: all 0.5s ease;
+}
+.top-logo-smaller {
+  width: 180px;
+  margin: 5px;
+  transition: all 0.5s ease;
+}
+// [/Juani]
 
 #nav-item {
   --color: var(--ion-color-primary);
-  text-transform: capitalize  !important;
-
+  text-transform: capitalize !important;
 }
-
 
 .nav-button:hover {
   height: 7vh;
@@ -31,7 +127,6 @@ box-shadow: 0px 5px 15px -7px var(--ion-color-primary);
   background-size: 70px;
   background-repeat: no-repeat;
 }
-
 
 .nav-button-submenus:hover {
   height: 100%;
@@ -53,7 +148,6 @@ box-shadow: 0px 5px 15px -7px var(--ion-color-primary);
   background-repeat: no-repeat;
 }
 
-
 .filled-menu-item {
   --background: var(--ion-color-secondary);
   text-align: center;
@@ -71,11 +165,35 @@ box-shadow: 0px 5px 15px -7px var(--ion-color-primary);
   height: 100%;
 }
 
-
-@media screen and (max-width: 850px) {
-ion-img {
-  max-width: 400px;
-}
+@media screen and (max-width: 1000px) {
+  .top-logo {
+    width: 180px !important;
+  }
+  @media screen and (max-width: 850px) {
+    // ion-img {
+    //   max-width: 400px;
+    // }
+    @media screen and (max-width: 550px) {
+      .top-logo {
+        width: 150px !important;
+        margin: 5px !important;
+        margin-top: 15px !important;
+      }
+      .top-logo-smaller {
+        width: 140px !important;
+        margin: 5px !important;
+      }
+      @media screen and (max-width: 350px) {
+        .top-logo {
+          width: 130px;
+          margin: 5px !important;
+        }
+        .top-logo-smaller {
+          width: 125px !important;
+        }
+      }
+    }
+  }
 }
 
 ion-item {
@@ -86,13 +204,13 @@ ion-item {
   background: var(--ion-color-secondary);
 }
 
-  .desktop-list {
+.desktop-list {
   background: var(--ion-color-secondary);
-    position: absolute;
+  position: absolute;
   z-index: 1000000;
   width: 100%;
   box-shadow: 0px 5px 15px -7px var(--ion-color-primary);
-  }
+}
 
 .submenu-item {
   --background: var(--ion-color-secondary);
@@ -111,7 +229,7 @@ ion-item {
 
 .active-link {
   font-weight: bold;
-  --color: var(--ion-color-tertiary) !important
+  --color: var(--ion-color-tertiary) !important;
 }
 
 .active-sub-link {
@@ -122,4 +240,3 @@ ion-item {
 .menu-icon {
   font-size: 5vh;
 }
-

@@ -1,114 +1,149 @@
-<ion-toolbar color="danger" id="emergency-toolbar" *ngIf="showEmergency">
-  <ion-note color="light" > {{emergencyMessage}} </ion-note>
-  <ion-buttons slot="primary">
-    <ion-button fill="clear" (click)="dismissEmergency()">
-      <ion-icon name="close-outline"> </ion-icon>
-    </ion-button>
-  </ion-buttons>
-</ion-toolbar>
-
-
-<ion-toolbar color="primary" id="toolbar">
-  <ion-buttons slot="start">
-    <ion-button>
-      <ion-icon name="call"> </ion-icon>
-    </ion-button>
-    <ion-note color="light">
-      {{ phoneNumber }}
-    </ion-note>
-  </ion-buttons>
-  <ion-buttons slot="primary">
-
-    <ion-button *ngFor="let social of socials" [fill]="social.fill" [href]="social.href" [target]="social.target">
-      <ion-icon [name]="social.icon" ></ion-icon>
-    </ion-button>
-  </ion-buttons>
-</ion-toolbar>
-
-
-<ion-toolbar slot="start" id="topNav">
-
-<div style="display: flex;">
-  <a href="/">
-    <ion-img id="logo" [src]="monumentLogo" href="/"></ion-img>
-  </a>
-
-  <ion-buttons slot="secondary" *ngIf="isDesktop" style="width: 100%;">
-
-      <ion-button
-      style="width: 100%;"
-      *ngFor="let nav of navItems"
-      id="nav-item"
-      [round]="nav.isFilledButton"
-      [ngClass]="{
-        'filled-menu-item' : (nav.isFilledButton && !nav.subMenus),
-        'nav-button' : (!nav.subMenus && !nav.isFilledButton),
-        'nav-button-submenus' : (nav.subMenus && !nav.isFilledButton),
-        'nav-button-submenus-hover' : (nav.subMenus && nav === getOpenMenu('navItem') && !nav.isFilledButton)
-      }"
-      [routerLink]="nav.href"
-      routerLinkActive="nav-active-link"
-      routerLink="root"
-      (mouseenter)="showSubMenus(nav)"
-      >
-      {{ nav.name }}
-    </ion-button>
-
-
-  </ion-buttons>
-
-  <ion-buttons slot="secondary" *ngIf="!isDesktop" style="margin-left: auto">
-    <ion-button fill="clear" (click)="toggleMenu()">
-      <ion-icon class="menu-icon" [name]="menuIsOpen ? 'close-outline' : 'menu-outline' "></ion-icon>
-    </ion-button>
-  </ion-buttons>
-</div>
-
-  <ion-list *ngIf="menuIsOpen && !isDesktop" >
-  <div *ngFor="let nav of navItems" >
-
-    <ion-item button
-    [detail]="nav.subMenus ? true : false"
-    (click)="navClick(nav)"
-    [routerLink]="nav.subMenus ? null : nav.href"
-    class="menu-label"
-    [ngClass]="nav.isFilledButton === true ? 'filled-menu-item' : '' "
->
-    <ion-label
-    [routerLinkActive]="nav.subMenus ? '' : 'active-link'"> {{ nav.name | uppercase }} </ion-label>
-  </ion-item>
-
-  <div *ngIf="nav.subMenuOpen" class="list-background">
-    <ion-item *ngFor="let subMenu of nav.subMenus" button
-    [routerLink]="subMenu.href"
-    routerLinkActive='active-sub-link'
-    class="submenu-item">
-      <ion-label class="submenu-label" routerLinkActive='active-sub-link'>
-        {{subMenu.name}}
-      </ion-label>
-    </ion-item>
-  </div>
-</div>
-</ion-list>
-</ion-toolbar>
-
-<ion-list *ngIf="getOpenMenu('boolean') && isDesktop"
-  (mouseleave)="hideSubMenus(getOpenMenu('navItem'))"
-  class="desktop-list">
-  <ion-item
-  *ngFor="let subMenu of getOpenMenu('navItem').subMenus"
-  button
-  class="submenu-item"
-  [routerLink]="subMenu.href"
-  routerLinkActive="active-sub-link"
-  routerLink="root"
+<nav>
+  <ion-toolbar
+    color="danger"
+    id="emergency-toolbar"
+    *ngIf="showEmergency"
+    id="scroll-display"
+    class="scroll-display"
   >
-    <ion-label> {{subMenu.name}} </ion-label>
-  </ion-item>
-</ion-list>
+    <ion-note color="light"> {{ emergencyMessage }} </ion-note>
+    <ion-buttons slot="primary">
+      <ion-button fill="clear" (click)="dismissEmergency()">
+        <ion-icon name="close-outline"> </ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 
+  <ion-toolbar
+    color="primary"
+    id="toolbar"
+    id="scroll-display"
+    class="scroll-display"
+    style="--min-height: 5px !important"
+  >
+    <ion-buttons slot="start">
+      <ion-button>
+        <ion-icon name="call"> </ion-icon>
+      </ion-button>
+      <ion-note color="light">
+        {{ phoneNumber }}
+      </ion-note>
+    </ion-buttons>
+    <ion-buttons slot="primary">
+      <ion-button
+        *ngFor="let social of socials"
+        [fill]="social.fill"
+        [href]="social.href"
+        [target]="social.target"
+      >
+        <ion-icon [name]="social.icon"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
 
+  <ion-toolbar slot="start" id="topNav">
+    <div style="display: flex">
+      <!-- <a routerLink="/" class="first-icon">
+        <ion-img class="top-logo" id="top-logo-switch" [src]="monumentLogo">
+        </ion-img>
+      </a> -->
+      <a routerLink="/" class="first-icon">
+        <img class="top-logo" id="top-logo-switch" [src]="monumentLogo" />
+      </a>
 
+      <!-- style="width: 100%" -->
+      <ion-buttons
+        slot="secondary"
+        *ngIf="isDesktop"
+        style="
+          width: 95%;
+          float: right;
+          text-align: right;
+          justify-content: flex-end;
+        "
+      >
+        <ion-button
+          *ngFor="let nav of navItems"
+          id="nav-item"
+          [round]="nav.isFilledButton"
+          [ngClass]="{
+            'filled-menu-item': nav.isFilledButton && !nav.subMenus,
+            'nav-button': !nav.subMenus && !nav.isFilledButton,
+            'nav-button-submenus': nav.subMenus && !nav.isFilledButton,
+            'nav-button-submenus-hover':
+              nav.subMenus &&
+              nav === getOpenMenu('navItem') &&
+              !nav.isFilledButton
+          }"
+          [routerLink]="nav.href"
+          routerLinkActive="nav-active-link"
+          routerLink="root"
+          (mouseenter)="showSubMenus(nav)"
+        >
+          {{ nav.name }}
+        </ion-button>
+      </ion-buttons>
 
+      <ion-buttons
+        slot="secondary"
+        *ngIf="!isDesktop"
+        style="margin-left: auto"
+      >
+        <ion-button fill="clear" (click)="toggleMenu()">
+          <ion-icon
+            class="menu-icon"
+            [name]="menuIsOpen ? 'close-outline' : 'menu-outline'"
+          ></ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </div>
 
+    <ion-list *ngIf="menuIsOpen && !isDesktop">
+      <div *ngFor="let nav of navItems">
+        <ion-item
+          button
+          [detail]="nav.subMenus ? true : false"
+          (click)="navClick(nav)"
+          [routerLink]="nav.subMenus ? null : nav.href"
+          class="menu-label"
+          [ngClass]="nav.isFilledButton === true ? 'filled-menu-item' : ''"
+        >
+          <ion-label [routerLinkActive]="nav.subMenus ? '' : 'active-link'">
+            {{ nav.name | uppercase }}
+          </ion-label>
+        </ion-item>
 
+        <div *ngIf="nav.subMenuOpen" class="list-background">
+          <ion-item
+            *ngFor="let subMenu of nav.subMenus"
+            button
+            [routerLink]="subMenu.href"
+            routerLinkActive="active-sub-link"
+            class="submenu-item"
+          >
+            <ion-label class="submenu-label" routerLinkActive="active-sub-link">
+              {{ subMenu.name }}
+            </ion-label>
+          </ion-item>
+        </div>
+      </div>
+    </ion-list>
+  </ion-toolbar>
+
+  <ion-list
+    *ngIf="getOpenMenu('boolean') && isDesktop"
+    (mouseleave)="hideSubMenus(getOpenMenu('navItem'))"
+    class="desktop-list"
+  >
+    <ion-item
+      *ngFor="let subMenu of getOpenMenu('navItem').subMenus"
+      button
+      class="submenu-item"
+      [routerLink]="subMenu.href"
+      routerLinkActive="active-sub-link"
+      routerLink="root"
+    >
+      <ion-label> {{ subMenu.name }} </ion-label>
+    </ion-item>
+  </ion-list>
+</nav>
