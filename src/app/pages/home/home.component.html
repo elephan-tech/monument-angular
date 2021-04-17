@@ -1,12 +1,11 @@
 <header class="main-hero">
   <ion-grid>
     <ion-row>
-      <ion-col size="7">
-        <img
-          src="assets/images/hero-main.png"
-          style="width: 100%; margin: auto; max-width: 500px"
-        />
-      </ion-col>
+      <div data-aos="fade-right">
+        <ion-col size="7">
+          <img src="assets/images/hero-main.png" style="width: 100%; margin: auto; max-width: 500px" />
+        </ion-col>
+      </div>
       <ion-col size="5">
         <h1 class="hero-main">More than just a school, a home.</h1>
       </ion-col>
@@ -20,22 +19,25 @@
         <div style="min-height: 75vh; flex-grow: 1"></div>
       </ion-row>
       <ion-row>
-        <ion-col>
-          <h2 class="brush">
-            Monument Academy Public Charter School is one-of-a-kind Boarding
-            School located in the nation's Capital.
-          </h2>
+        <ion-col size-xs="12" size-md="6">
+          <div data-aos="fade-right">
+            <h2 class="brush">
+              Monument Academy Public Charter School is one-of-a-kind Boarding
+              School located in the nation's Capital.
+            </h2>
+          </div>
         </ion-col>
-        <ion-col
-          style="
+        <ion-col style="
             display: flex;
             align-items: flex-end;
             justify-content: flex-end;
-          "
-        >
-          <ion-button size="large" expand="full" color="primary">
-            Learn More
-          </ion-button>
+          " size-xs="12" size-md="6">
+          <div data-aos="fade-left">
+
+            <ion-button size="large" expand="full" color="primary">
+              Learn More
+            </ion-button>
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -46,33 +48,30 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <h2>Our Mission</h2>
-          <img
-            src="assets/underline-stroke-blue.svg"
-            class="underline-stroke"
-          />
-          <p>
-            To provide students, particularly those who have had or might have
-            contact with the foster care system, with the requisite academic,
-            social, emotional, and life skills to be successful in college,
-            career, and community, and to create an outstanding school that
-            attracts, supports, and retains exceptional and caring people.
-          </p>
-          <h2>We Change Lives</h2>
-          <img
-            src="assets/underline-stroke-blue.svg"
-            class="underline-stroke"
-          />
-          <p>
-            We believe all students have the capacity to succeed at high
-            academic levels and experience positive life outcomes.
-          </p>
+          <div data-aos="fade-right">
+
+            <h2>Our Mission</h2>
+            <img src="assets/underline-stroke-blue.svg" class="underline-stroke" />
+            <p>
+              To provide students, particularly those who have had or might have
+              contact with the foster care system, with the requisite academic,
+              social, emotional, and life skills to be successful in college,
+              career, and community, and to create an outstanding school that
+              attracts, supports, and retains exceptional and caring people.
+            </p>
+            <h2>We Change Lives</h2>
+            <img src="assets/underline-stroke-blue.svg" class="underline-stroke" />
+            <p>
+              We believe all students have the capacity to succeed at high
+              academic levels and experience positive life outcomes.
+            </p>
+          </div>
         </ion-col>
         <ion-col>
-          <img
-            src="assets/column-white.svg"
-            style="width: 100%; max-width: 400px; min-width: 100px"
-          />
+          <div data-aos="fade-left">
+
+            <img src="assets/column-white.svg" style="width: 100%; max-width: 400px; min-width: 100px" />
+          </div>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -106,7 +105,10 @@
         <a routerLin="/academics">Learn more about Academics</a>
       </ion-col>
       <ion-col>
-        <img src="assets/images/monument-1.png" alt="" />
+        <div data-aos="fade-up-left">
+
+          <img src="assets/images/monument-1.png" alt="" />
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -122,7 +124,9 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <img src="assets/images/monument-2.png" />
+        <div data-aos="fade-up-right">
+          <img src="assets/images/monument-2.png" />
+        </div>
       </ion-col>
       <ion-col>
         <p>
@@ -131,9 +135,7 @@
           share a personal daily goal with their family and head to advisory for
           community building.
         </p>
-        <a routerLin="/boarding-student-life-program"
-          >Learn more about Family-Style Boarding</a
-        >
+        <a routerLin="/boarding-student-life-program">Learn more about Family-Style Boarding</a>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -164,12 +166,12 @@
           Well-Being staff provide evidenced-based behavioral, emotional, and
           therapeutic support for the students.
         </p>
-        <a routerLin="/well-being-program"
-          >Learn more about Well-Being Program</a
-        >
+        <a routerLin="/well-being-program">Learn more about Well-Being Program</a>
       </ion-col>
       <ion-col>
-        <img src="assets/images/monument-3.png" alt="" />
+        <div data-aos="fade-up-left">
+          <img src="assets/images/monument-3.png" alt="" />
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -181,7 +183,9 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <img src="assets/images/monument-4.png" />
+        <div data-aos="fade-up-right">
+          <img src="assets/images/monument-4.png" />
+        </div>
       </ion-col>
       <ion-col>
         <p>
@@ -191,9 +195,7 @@
           trips, and guest speakers, our students will connect their learning to
           their immediate community and the world.
         </p>
-        <a routerLin="/boarding-student-life-program"
-          >Learn more about Extended Day Learning</a
-        >
+        <a routerLin="/boarding-student-life-program">Learn more about Extended Day Learning</a>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -202,14 +204,13 @@
 <div class="yellow-section">
   <section>
     <h2 class="text-center">Monumental Markers</h2>
-    <img
-      src="assets/underline-stroke-blue.svg"
-      class="underline-stroke-centered"
-    />
+    <img src="assets/underline-stroke-blue.svg" class="underline-stroke-centered" />
     <ion-grid>
       <ion-row>
         <ion-col>
-          <h2 class="marker">95%</h2>
+          <h2 class="marker">
+            95%
+          </h2>
           <p class="marker">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
@@ -268,7 +269,9 @@
         </ul>
       </ion-col>
       <ion-col>
-        <img src="assets/mascot.svg" alt="Monument Academy Mascot" />
+        <div data-aos="fade-left">
+          <img src="assets/mascot.svg" alt="Monument Academy Mascot" />
+        </div>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -276,39 +279,27 @@
 <div class="yellow-section">
   <section>
     <h2 class="text-center">Monumental Moments</h2>
-    <img
-      src="assets/underline-stroke-blue.svg"
-      style="width: 180px; display: flex; align-self: center; margin: auto"
-    />
-    <ion-slides
-      #momentsSlider
-      [hidden]="screenWidth <= 768"
-      [options]="slideOpts.coverflow"
-    >
-      <ion-slide *ngFor="let slide of slides; let i = index">
-        <ion-grid class="slide-container">
-          <ion-row>
-            <ion-col
-              size-xs="12"
-              size-md="6"
-              class="ion-align-items-flex-start"
-            >
-              <h3 class="align-start">{{ slide.title }}</h3>
-              <p class="align-start">{{ slide.description }}</p>
-            </ion-col>
-            <ion-col size-xs="12" size-md="6">
-              <img [src]="slide.image" class="rounded slider-image" />
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-slide>
-    </ion-slides>
+    <img src="assets/underline-stroke-blue.svg" style="width: 180px; display: flex; align-self: center; margin: auto" />
 
-    <ion-slides
-      #responsiveSlider
-      [hidden]="screenWidth > 768"
-      [options]="slideOpts.normal"
-    >
+    <div data-aos="fade-up">
+      <ion-slides #momentsSlider [hidden]="screenWidth <= 768" [options]="slideOpts.coverflow">
+        <ion-slide *ngFor="let slide of slides; let i = index">
+          <ion-grid class="slide-container">
+            <ion-row>
+              <ion-col size-xs="12" size-md="6" class="ion-align-items-flex-start">
+                <h3 class="align-start">{{ slide.title }}</h3>
+                <p class="align-start">{{ slide.description }}</p>
+              </ion-col>
+              <ion-col size-xs="12" size-md="6">
+                <img [src]="slide.image" class="rounded slider-image" />
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </ion-slide>
+      </ion-slides>
+    </div>
+
+    <ion-slides #responsiveSlider [hidden]="screenWidth > 768" [options]="slideOpts.normal">
       <ion-slide *ngFor="let slide of slides; let i = index">
         <div class="slides-responsive">
           <img [src]="slide.image" class="rounded small" />
@@ -322,30 +313,15 @@
     </ion-slides>
 
     <div [class]="screenWidth > 768 ? 'swiper-nav' : 'swiper-nav responsive'">
-      <ion-fab
-        class="right"
-        vertical="center"
-        horizontal="end"
-        edge="true"
-        slot="fixed"
-      >
-        <ion-fab-button
-          (click)="
+      <ion-fab class="right" vertical="center" horizontal="end" edge="true" slot="fixed">
+        <ion-fab-button (click)="
             slideNext(screenWidth > 768 ? momentsSlider : responsiveSlider)
-          "
-        >
+          ">
           <ion-icon name="chevron-forward-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab>
 
-      <ion-fab
-        class="left"
-        vertical="center"
-        horizontal="start"
-        edge="true"
-        slot="fixed"
-        [hidden]="screenWidth > 768"
-      >
+      <ion-fab class="left" vertical="center" horizontal="start" edge="true" slot="fixed" [hidden]="screenWidth > 768">
         <ion-fab-button (click)="slidePrev(responsiveSlider)">
           <ion-icon name="chevron-back-outline"></ion-icon>
         </ion-fab-button>

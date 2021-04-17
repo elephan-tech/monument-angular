@@ -1,0 +1,53 @@
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+ion-item {
+  background-image: url("../../../assets/monument_logo-short.png");
+  background-position: left top;
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 54px;
+  padding-left: 44px;
+  // padding-top: 16px;
+  vertical-align: middle;
+}
+
+ion-card {
+  max-height: 340px;
+  min-height: 300px;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transform: perspective(1px) translateZ(0);
+  &:hover {
+    transform: scale(1.1);
+    border: 3px solid var(--ion-color-secondary);
+  }
+  .card-bg {
+    span {
+      color: var(--ion-color-dark);
+      font-weight: 700;
+      font-size: larger;
+      text-align: center;
+      text-transform: uppercase;
+      border-bottom: 4px solid var(--ion-color-secondary);
+      width: 70%;
+      margin: auto;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 8px;
+    min-height: 150px;
+    background-image: url("../../../assets/hero-bg.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  figure {
+    margin: 0;
+  }
+}

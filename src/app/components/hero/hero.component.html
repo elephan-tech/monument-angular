@@ -1,5 +1,7 @@
 <header>
-  <section class="section-header">
+  <section [class]="bgImage ? 'section-header withBg' : 'section-header'" [ngStyle]="{background: 'url(' + bgImage +')', backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover'}">
     <ion-grid>
       <ion-row>
         <ion-col>

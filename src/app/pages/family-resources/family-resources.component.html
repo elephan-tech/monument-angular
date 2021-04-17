@@ -1,1 +1,84 @@
-<p>family-resources works!</p>
+<app-hero pageTitle="Family Resources"></app-hero>
+<section>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <app-animated class="animated-child" [animation]="'fade-right'">
+
+          <h3>
+            Monument Academy believes in the importance of family engagement and connection, because even though
+            your
+            child
+            boards with us during the week, you are their primary caretaker. Guardians and mentors involved in our
+            students’
+            lives are essential to our team, and we are committed to including you at the table, whether that table is
+            at
+            the school, home or in the community.
+          </h3>
+        </app-animated>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <app-animated class="animated-child" [animation]="'fade-right'">
+
+        <ion-col>
+          <ion-text>
+            <h6 class="mat-h2">
+              Our model is guided by the work and best-ion-textractices of the Flamboyan Foundation. We know that
+              caretakers
+              want
+              to
+              stay in touch with students and their progress, which is why we look forward to connecting with you in
+              some
+              of
+              the following ways:
+            </h6>
+          </ion-text>
+        </ion-col>
+      </app-animated>
+    </ion-row>
+    <ion-row>
+      <ion-col>
+        <ul>
+          <app-animated [animation]="'fade-right'" *ngFor="let item of items" class="animated-child">
+            <ion-item>
+              <ion-label>{{item}}</ion-label>
+            </ion-item>
+          </app-animated>
+        </ul>
+      </ion-col>
+    </ion-row>
+
+  </ion-grid>
+</section>
+
+<section class="violet-section">
+
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <app-animated class="animated-child" [animation]="'fade-right'">
+          <h2>Resource Links</h2>
+        </app-animated>
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col size-xs="10" offset-xs="1" size-sm="8" offset-sm="2" size-md="6" offset-md="0" size-lg="3"
+        *ngFor="let rs of resources">
+        <app-animated class="animated-child" [animation]="'fade-up'">
+          <ion-card [href]="rs.url" target="_blank">
+            <img [src]="rs.image || '../../../assets/yellow-background.png'">
+            <ion-card-header [ngStyle]="{}">
+              <ion-card-title>
+                <ion-text>{{rs.title}}</ion-text>
+              </ion-card-title>
+              <ion-card-subtitle>{{rs.subtitle || rs.description}}</ion-card-subtitle>
+            </ion-card-header>
+
+
+          </ion-card>
+        </app-animated>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</section>
