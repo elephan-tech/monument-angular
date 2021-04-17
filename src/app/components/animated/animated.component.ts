@@ -13,7 +13,5 @@ export class AnimatedComponent implements OnInit {
   @Input() animation: string;
   @Input() children: any;
 
-  ngOnInit(): void {
-    console.log({ a: this.animation, c: this.children });
-  }
+  ngOnInit(): void {}
 }
