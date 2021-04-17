@@ -1,1 +1,38 @@
-<p>awards works!</p>
+<app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
+<section>
+  <h3>
+    Monument Academy has been recognized for its innovative work in education,
+    and was awarded the
+    <a
+      href="https://www.nextgenlearning.org/grantee/monument-academy"
+      target="_blank"
+      rel="nofollow"
+      >Next Generation Learning Challenge Grant for Breakthrough Schools</a
+    >
+    by the Bill & Melinda Gates Foundation, as well as the
+    <a
+      href="https://www.waltonfamilyfoundation.org/grants/public-charter-startup-grants"
+      target="_blank"
+      rel="nofollow"
+      >Public Charter Startup Grant
+    </a>
+    by the Walton Family Foundation.
+  </h3>
+  <img src="assets/underline-stroke.svg" class="underline-stroke" />
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let a of awards">
+        <a [href]="a.url" target="_blank" rel="nofollow">
+          <div class="col-container">
+            <ion-img
+              [src]="a.src"
+              [alt]="a.name"
+              class="awards-icons"
+            ></ion-img>
+            <h4>{{ a.name }}</h4>
+          </div>
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</section>
