@@ -20,13 +20,34 @@
         </ion-col>
         <ion-col>
           <h4>Contact us</h4>
-          <p>500 19th Street NE, Washington, DC 20002</p>
-          <p>(202) 545-3180</p>
+          <p>
+            <ion-icon name="pin" color="secondary"></ion-icon> 500 19th Street
+            NE, Washington, DC 20002
+          </p>
+          <p>
+            <ion-icon
+              name="phone-portrait-outline"
+              color="secondary"
+            ></ion-icon>
+            (202) 545-3180
+          </p>
           <p>Fax: (202) 478-2824</p>
           <h4>Quick Links</h4>
         </ion-col>
-        <ion-col
-          ><h4>Stay Connected</h4>
+        <ion-col>
+          <h4>Stay Connected</h4>
+          <ion-toolbar color="primary" style="--min-height: 10px !important">
+            <ion-buttons>
+              <ion-button
+                *ngFor="let social of socials"
+                [fill]="social.fill"
+                [href]="social.href"
+                [target]="social.target"
+              >
+                <ion-icon [name]="social.icon"></ion-icon>
+              </ion-button>
+            </ion-buttons>
+          </ion-toolbar>
           <h4>Legal</h4>
         </ion-col>
       </ion-row>

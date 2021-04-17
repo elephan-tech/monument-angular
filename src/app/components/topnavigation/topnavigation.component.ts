@@ -29,7 +29,7 @@ export class TopnavigationComponent implements OnInit {
   showEmergency = true;
   emergencyMessage =
     'this is an example for an emergency message. this is an example for an emergency message. this is an example for an emergency message. ';
-  phoneNumber = '123-987-6540';
+  phoneNumber = '(202) 545-3180';
   monumentLogo = '../../../assets/monument-main-logo.png';
   brushStroke = '../../../assets/underline-stroke-blue.svg';
   menuIsOpen = false;
