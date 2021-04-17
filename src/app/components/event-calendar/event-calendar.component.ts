@@ -1,11 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CdkDragStart } from '@angular/cdk/drag-drop';
 
-interface Position {
-	left: number;
-	top: number;
-}
-
 @Component({
   selector: 'app-event-calendar',
   templateUrl: './event-calendar.component.html',
