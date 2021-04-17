@@ -1,3 +1,5 @@
+@import "../../../styles.scss";
+
 .image-section {
   background-image: url("../../../assets/bg_home_section2.jpeg");
   background-position: center;
@@ -26,7 +28,7 @@ h2.brush {
     min-height: 400px;
     height: auto;
     width: 400px;
-    box-shadow: 0px 9px 11px 0px rgba(0, 0, 0, 0.33);
+    box-shadow: $deep-shadow;
     background-color: white;
   }
   .align-start {
@@ -39,7 +41,7 @@ h2.brush {
     position: relative;
     top: 90px;
     z-index: 1000;
-    box-shadow: 0px 9px 11px 0px rgba(0, 0, 0, 0.33);
+    box-shadow: $deep-shadow;
     background: white;
   }
   ion-card {
@@ -63,7 +65,7 @@ h2.brush {
     position: relative;
     bottom: 300px;
     z-index: 1000;
-    box-shadow: 0px 9px 11px 0px rgba(0, 0, 0, 0.33);
+    box-shadow: $deep-shadow;
   }
 }
 
