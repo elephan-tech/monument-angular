@@ -4,25 +4,31 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
-  styleUrls: ['./contact-us.component.scss']
+  styleUrls: ['./contact-us.component.scss'],
 })
 export class ContactUsComponent implements OnInit {
-
   contactForm = new FormGroup({
-  firstName: new FormControl('', [Validators.required]),
-  lastName: new FormControl('', [Validators.required]),
-  email: new FormControl('', [Validators.required, Validators.email]),
-  message: new FormControl('', [Validators.required, Validators.minLength(10)])
-});
+    firstName: new FormControl('', [Validators.required]),
+    lastName: new FormControl('', [Validators.required]),
+    email: new FormControl('', [Validators.required, Validators.email]),
+    message: new FormControl('', [
+      Validators.required,
+      Validators.minLength(10),
+    ]),
+  });
 
-  constructor() { }
+  pageTitle: string;
+  heroImg: string;
 
-  ngOnInit(): void {
+  constructor() {}
+
+  ngOnInit() {
+    this.pageTitle = 'Contact Us';
+    this.heroImg = '';
   }
 
   onSubmit() {
     // Logic here to submit
     console.log(this.contactForm);
   }
-
 }
