@@ -1,6 +1,3 @@
-<!-- <div [ngStyle]="{'z-index': dragging ? '1' : '2' }" class="sticky"> -->
-
-  <!-- <div> -->
   <ion-fab
   class="fab"
   style="position: fixed;"
@@ -28,19 +25,8 @@
            <h2 class="text-center">Updates & Events</h2>
     <img src="assets/underline-stroke-blue.svg" class="underline-stroke-centered" />
     <ion-grid>
-
-      <ion-row class="ion-justify-content-center ">
-        Interested in joining our team?
-      </ion-row>
-      <ion-row class="ion-justify-content-center ">
-        Attend our upcoming virtual job fair!
-Register below or email careers@monumentacademydc.org with any questions.</ion-row>
-      <ion-row class="ion-justify-content-center ">
-        Tuesday, March 16th, 4 PM – 6 PM
-Our next open board meeting is Wednesday, March 17th at 6 PM.
-Register here.</ion-row>
-      <ion-row class="ion-justify-content-center ">
-        Check out our recent feature on CBS This Morning HERE!
+      <ion-row *ngFor="let cont of content | keyvalue"class="ion-justify-content-center " >
+        <div [innerHTML]="cont.value"> </div>
       </ion-row>
 
     </ion-grid>
@@ -48,8 +34,7 @@ Register here.</ion-row>
 
     </ion-fab-list>
   </ion-fab>
-<!-- </div> -->
-<!-- </div> -->
+
 
 
 
