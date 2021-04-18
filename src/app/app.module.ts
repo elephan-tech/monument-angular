@@ -27,13 +27,14 @@ import { KnowledgeCenterComponent } from './pages/knowledge-center/knowledge-cen
 import { DonateComponent } from './pages/donate/donate.component';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatGridListModule } from '@angular/material/grid-list';
-import {DragDropModule} from '@angular/cdk/drag-drop';
+import { DragDropModule } from '@angular/cdk/drag-drop';
 import { IonicModule } from '@ionic/angular';
 import { HeroComponent } from './components/hero/hero.component';
 import { SliderComponent } from './components/slider/slider.component';
 
 import { ReactiveFormsModule } from '@angular/forms';
 import { EventCalendarComponent } from './components/event-calendar/event-calendar.component';
+import { AnimatedComponent } from './components/animated/animated.component';
 
 @NgModule({
   declarations: [
@@ -62,6 +63,7 @@ import { EventCalendarComponent } from './components/event-calendar/event-calend
     HeroComponent,
     SliderComponent,
     EventCalendarComponent,
+    AnimatedComponent,
   ],
   imports: [
     BrowserModule,
@@ -71,7 +73,7 @@ import { EventCalendarComponent } from './components/event-calendar/event-calend
     MatGridListModule,
     DragDropModule,
     IonicModule.forRoot(),
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   exports: [MatMenuModule, MatGridListModule],
   providers: [],
