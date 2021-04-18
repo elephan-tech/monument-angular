@@ -1,1 +1,113 @@
-<p>knowledge-center works!</p>
+<app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
+<section>
+  <h3>
+    The Knowledge Center is where we seek to share our design and learning
+    journey with other practitioners, school designers, and experts from the
+    field. Search and explore artifacts organized around our six model elements
+    and six key enablers shown below.
+  </h3>
+  <img src="assets/underline-stroke.svg" class="underline-stroke" />
+  <ion-grid>
+    <ion-row>
+      <ion-col size="7">
+        <h3>
+          Take a look at a video of the founder and former CEO, Emily
+          Bloomfield!
+        </h3>
+      </ion-col>
+      <ion-col
+        ><div style="padding: 56.25% 0 0 0; position: relative">
+          <iframe
+            src="https://player.vimeo.com/video/225397741"
+            style="
+              position: absolute;
+              top: 0;
+              left: 0;
+              width: 100%;
+              height: 100%;
+            "
+            frameborder="0"
+            allow="autoplay; fullscreen; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+        </div>
+        <script src="https://player.vimeo.com/api/player.js"></script>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <h2>Our Model</h2>
+  <img src="assets/underline-stroke.svg" class="underline-stroke" />
+
+  <!-- <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let m of model">
+        <ion-card>
+          <ion-card-header>
+            <h4>{{ m.title }}</h4>
+          </ion-card-header>
+          <ion-card-content>
+            <p>{{ m.description }}</p>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid> -->
+
+  <mat-expansion-panel *ngFor="let m of model">
+    <mat-expansion-panel-header>
+      <mat-panel-title>
+        <h5>
+          <b>{{ m.title }}</b>
+        </h5>
+      </mat-panel-title>
+      <mat-panel-description>
+        <p>{{ m.description }}</p>
+      </mat-panel-description>
+    </mat-expansion-panel-header>
+    <h4>
+      {{ m.mainContent }}
+      <a [routerLink]="m.routingUrl">
+        {{ m.routingTitle }}
+      </a>
+    </h4>
+    <div *ngIf="m.violetContent" class="violet-section">
+      <section>
+        <p>
+          {{ m.violetContent }}
+        </p>
+      </section>
+    </div>
+  </mat-expansion-panel>
+
+  <h2>Key Enablers</h2>
+  <img src="assets/underline-stroke.svg" class="underline-stroke" />
+  <div>
+    <mat-expansion-panel *ngFor="let ke of keyEnablers">
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          <h5>
+            <b>{{ ke.title }}</b>
+          </h5>
+        </mat-panel-title>
+        <mat-panel-description>
+          <p>{{ ke.description }}</p>
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <h4>{{ ke.mainContent }}</h4>
+      <div *ngIf="ke.violetContent" class="violet-section">
+        <section>
+          <p>{{ ke.violetContent }}</p>
+        </section>
+      </div>
+    </mat-expansion-panel>
+  </div>
+</section>
+<div class="violet-section">
+  <section>
+    <h2>Our design Journey</h2>
+    <img src="assets/underline-stroke.svg" class="underline-stroke" />
+    <p>Join us behind the scenes and explore our design journey.</p>
+    <h3>[Coming Soon]</h3>
+  </section>
+</div>

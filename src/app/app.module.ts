@@ -35,6 +35,7 @@ import { SliderComponent } from './components/slider/slider.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EventCalendarComponent } from './components/event-calendar/event-calendar.component';
 import { AnimatedComponent } from './components/animated/animated.component';
+import { MatExpansionModule } from '@angular/material/expansion';
 
 @NgModule({
   declarations: [
@@ -74,8 +75,9 @@ import { AnimatedComponent } from './components/animated/animated.component';
     DragDropModule,
     IonicModule.forRoot(),
     ReactiveFormsModule,
+    MatExpansionModule,
   ],
-  exports: [MatMenuModule, MatGridListModule],
+  exports: [MatMenuModule, MatGridListModule, MatExpansionModule],
   providers: [],
   bootstrap: [AppComponent],
 })
