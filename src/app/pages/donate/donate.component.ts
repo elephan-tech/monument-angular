@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 
 @Component({
   selector: 'app-donate',
   templateUrl: './donate.component.html',
-  styleUrls: ['./donate.component.scss']
+  styleUrls: ['./donate.component.scss'],
+  encapsulation: ViewEncapsulation.None,
+  template: `<div [innerHTML]="data"></div>`,
 })
 export class DonateComponent implements OnInit {
+  pageTitle: string;
+  heroImg: string;
 
-  constructor() { }
+  constructor() {}
 
-  ngOnInit(): void {
+  ngOnInit() {
+    this.pageTitle = 'Donate';
+    this.heroImg = 'assets/images/monument-10.png';
   }
-
 }
