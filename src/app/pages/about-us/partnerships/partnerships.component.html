@@ -1,1 +1,75 @@
-<p>partnerships works!</p>
+<app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
+<section>
+  <h2>Key Partners</h2>
+  <img src="assets/underline-stroke.svg" class="underline-stroke" />
+  <h3>
+    Monument Academy’s work is made possible through the generous support and
+    contributions of our partners and collaborators. To learn about
+    opportunities to partner with us, please
+    <a routerLink="/contact-us">contact us</a>.
+  </h3>
+  <h4>
+    Monument Academy works in partnership with the following organizations:
+  </h4>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let p of partners">
+        <a [href]="p.url" target="_blank" rel="nofollow">
+          <div class="col-container">
+            <ion-img
+              [src]="p.src"
+              [alt]="p.name"
+              class="awards-icons"
+            ></ion-img>
+            <h4>{{ p.name }}</h4>
+          </div>
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <hr />
+  <h3>
+    Monument Academy participates in Professional Learning Communities with the
+    following organizations:
+  </h3>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let l of leraningCommunities">
+        <a [href]="l.url" target="_blank" rel="nofollow">
+          <div class="col-container">
+            <ion-img
+              [src]="l.src"
+              [alt]="l.name"
+              class="awards-icons"
+            ></ion-img>
+            <h4>{{ l.name }}</h4>
+          </div>
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+  <hr />
+  <h3>
+    Monument Academy is a beneficiary of pro-bono assistance from the following
+    companies:
+  </h3>
+  <ion-grid>
+    <ion-row>
+      <ion-col size="4" *ngFor="let a of proBonoAssistance">
+        <a [href]="a.url" target="_blank" rel="nofollow">
+          <div class="col-container">
+            <ion-img
+              [src]="a.src"
+              [alt]="a.name"
+              class="awards-icons"
+            ></ion-img>
+            <h4>{{ a.name }}</h4>
+          </div>
+        </a>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</section>
