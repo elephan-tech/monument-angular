@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, Scroll, Event  } from '@angular/router';
-import { ViewportScroller, viewportScroller } from '@angular/common';
+import { ViewportScroller } from '@angular/common';
 import { filter } from 'rxjs/operators';
 
 @Component({
