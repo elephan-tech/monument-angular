@@ -86,8 +86,14 @@ import { environment } from '../environments/environment';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule
   ],
+  exports: [
+    MatMenuModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatGridListModule,
+    MatExpansionModule,
+  ],
   providers: [HttpClient, HttpClientModule],
-  exports: [MatMenuModule, MatGridListModule, MatExpansionModule],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {}
