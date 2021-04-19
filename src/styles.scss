@@ -133,27 +133,28 @@ header.main-hero {
   padding-top: 180px;
 }
 
-div.yellow-section {
+.yellow-section {
   background-color: color(secondary);
   width: 100%;
   padding-top: 3em;
   padding-bottom: 3em;
 }
-div.violet-section {
+.violet-section {
   background-color: color(accent);
   width: 100%;
   padding-top: 3em;
   padding-bottom: 3em;
+
+  p,
+  h2,
+  h3 {
+    color: color(white) !important;
+  }
+  a {
+    color: color(primary) !important;
+  }
 }
-div.violet-section p {
-  color: color(white) !important;
-}
-div.violet-section h3 {
-  color: color(white) !important;
-}
-div.violet-section a {
-  color: color(primary) !important;
-}
+
 section {
   width: 90%;
   margin: auto;
@@ -230,9 +231,9 @@ a.desktop-anchor {
   cursor: pointer;
   display: block;
   ion-button {
-     --padding-start: 0 !important;
-     height: 5em !important;
-  };
+    --padding-start: 0 !important;
+    height: 5em !important;
+  }
 }
 
 a.desktop-anchor:hover {
@@ -242,27 +243,25 @@ a.desktop-anchor:hover {
   font-family: "Montserrat";
   font-weight: bold;
   cursor: pointer;
-  background-image: url('./assets/underline-stroke.svg');
+  background-image: url("./assets/underline-stroke.svg");
   background-position: 0 100%;
   background-size: 6em;
   background-repeat: no-repeat;
   display: block;
   ion-button {
-     --padding-start: 0 !important;
-     height: 5em !important;
-  };
+    --padding-start: 0 !important;
+    height: 5em !important;
+  }
 }
 
 a.desktop-anchor:after {
-    content: '\2014';
-    color: color(links) !important;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    vertical-align: sub;
+  content: "\2014";
+  color: color(links) !important;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  vertical-align: sub;
 }
-
-
 
 a.mobile-anchor {
   color: color(links) !important;
@@ -274,7 +273,19 @@ a.mobile-anchor {
   cursor: pointer;
   // display: block;
   ion-button {
-     --padding-start: 0 !important;
-     height: 5em !important;
-  };
+    --padding-start: 0 !important;
+    height: 5em !important;
+  }
+}
+
+ion-card.hover-card {
+  max-height: 340px;
+  min-height: 300px;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transform: perspective(1px) translateZ(0);
+  &:hover {
+    transform: scale(1.1);
+    border: 3px solid var(--ion-color-secondary);
+  }
 }

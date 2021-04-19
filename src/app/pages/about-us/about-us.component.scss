@@ -1,0 +1,23 @@
+.principle {
+  text-align: center;
+  padding: 16px;
+  ion-card-title {
+    font-size: medium;
+    font-weight: 600;
+    color: var(--ion-color-primary);
+  }
+  ion-card-subtitle {
+    font-size: small;
+    color: var(--ion-color-medium);
+  }
+}
+
+.round {
+  border-radius: 50%;
+  width: 300px;
+  margin: auto;
+}
+
+section {
+  min-height: 50vh;
+}
