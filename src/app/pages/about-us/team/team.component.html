@@ -22,9 +22,9 @@
             <b>{{ t.name }}</b>
           </h4>
           <h5>{{ t.title }}</h5>
-          <a routerLink="." [fragment]="t.scrollId">
-            <ion-button>Full bio</ion-button>
-          </a>
+
+            <ion-button routerLink="." [fragment]="t.scrollId">Full bio</ion-button>
+
         </ion-col>
       </ion-row>
     </ion-grid>
