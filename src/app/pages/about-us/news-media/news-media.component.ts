@@ -11,11 +11,17 @@ import { EventsCalendarService } from '../../../services/events/events-calendar.
 export class NewsMediaComponent implements OnInit {
   pageTitle: string;
   heroImg: string;
-  content = [
-    {type: 'title', content: 'NO EVENTS'},
-    {type: 'info', content: 'No calendar'}
-  ]
+  // content = [
+  //   {type: 'title', content: 'NO EVENTS'},
+  //   {type: 'info', content: 'No calendar'}
+  // ]
 
+  content = [
+    {type: "title",content: "Interested in joining our team?"},
+    {type:'info', content: "<b> Attend </b> our upcoming virtual job fair! Register below or email careers@monumentacademydc.org with any questions." },
+    {type:"paragraph",content: "Tuesday, March 16th, 4 PM – 6 PM Our next open board meeting is Wednesday, March 17th at 6 PM. Register here." },
+    {type:"closing",content: "Check out our recent feature on CBS This Morning HERE!" }
+  ]
   constructor(private eventService: EventsCalendarService) { }
 
   ngOnInit(): void {

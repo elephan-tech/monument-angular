@@ -289,3 +289,15 @@ ion-card.hover-card {
     border: 3px solid var(--ion-color-secondary);
   }
 }
+
+span.emphasize {
+  background-image: url("assets/brush1.png");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+span.white {
+  background-image: url("assets/brush1_white-01.png");
+
+}
