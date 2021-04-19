@@ -36,6 +36,8 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { EventCalendarComponent } from './components/event-calendar/event-calendar.component';
 import { AnimatedComponent } from './components/animated/animated.component';
 import { MatExpansionModule } from '@angular/material/expansion';
+import { NewsMediaComponent } from './pages/about-us/news-media/news-media.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -65,6 +67,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     SliderComponent,
     EventCalendarComponent,
     AnimatedComponent,
+    NewsMediaComponent,
   ],
   imports: [
     BrowserModule,
@@ -76,6 +79,7 @@ import { MatExpansionModule } from '@angular/material/expansion';
     IonicModule.forRoot(),
     ReactiveFormsModule,
     MatExpansionModule,
+    HttpClientModule
   ],
   exports: [MatMenuModule, MatGridListModule, MatExpansionModule],
   providers: [],

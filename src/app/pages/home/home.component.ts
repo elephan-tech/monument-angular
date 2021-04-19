@@ -1,7 +1,7 @@
 import { slideOpts } from './slider.config';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { loremIpsum } from 'lorem-ipsum';
-import { Platform } from '@ionic/angular';
+import { ScreensizeService } from '../../services/screen-size/screensize.service';
 
 type Slide = {
   isBeginningSlide: boolean;
@@ -25,16 +25,16 @@ export class HomeComponent implements OnInit {
     units: 'paragraph',
   });
 
-  screenWidth: number;
+  isDesktop: boolean;
 
-  constructor(private platform: Platform) {
-    this.screenWidth = this.platform.width();
+  constructor(private screenSizeService: ScreensizeService) {
+        this.screenSizeService.isDesktopView().subscribe((isDesktop) => {
+      this.isDesktop = isDesktop;
+    });
   }
 
   ngOnInit(): void {
-    this.platform.resize.subscribe(async () => {
-      this.screenWidth = this.platform.width();
-    });
+
     this.slides = [
       {
         isBeginningSlide: true,

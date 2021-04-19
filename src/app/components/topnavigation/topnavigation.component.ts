@@ -1,5 +1,5 @@
 import { Component, OnInit, HostListener } from '@angular/core';
-import { ScreensizeService } from '../../services/screensize.service';
+import { ScreensizeService } from '../../services/screen-size/screensize.service';
 import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
 

@@ -7,6 +7,7 @@
       <ion-row>
         <ion-col size="3">
           <img
+            loading="lazy"
             src="assets/monument_logo-short.png"
             alt="Monument Academy Logo"
             style="width: 200px"
@@ -17,7 +18,7 @@
             <b>{{ b.name }}</b>
           </h4>
           <h5>{{ b.title }}</h5>
-          <p *ngIf="b.bio" [innerHTML]="b.bio"></p>
+          <p [innerHTML]="b.bio | safeHtml"></p>
         </ion-col>
       </ion-row>
     </ion-grid>

@@ -78,3 +78,7 @@ ion-row {
   color: var(--ion-color-primary);
   text-align: center;
 }
+
+.cdk-drag:not(.cdk-drag-dragging) {
+  transition: transform 500ms cubic-bezier(0, 0, 0.2, 1);
+}

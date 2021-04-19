@@ -3,11 +3,11 @@
     <ion-row>
       <div data-aos="fade-right">
         <ion-col size="7">
-          <img src="assets/images/hero-main.png" style="width: 100%; margin: auto; max-width: 500px" />
+          <img loading="lazy" src="assets/images/hero-main.png" style="width: 100%; margin: auto; max-width: 500px" />
         </ion-col>
       </div>
       <ion-col size="5">
-        <h1 class="hero-main">More than just a school, a home.</h1>
+        <h1 class="hero-main">More than just a school, a <span class="emphasize">home</span>.</h1>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -51,7 +51,7 @@
           <div data-aos="fade-right">
 
             <h2>Our Mission</h2>
-            <img src="assets/underline-stroke-blue.svg" class="underline-stroke" />
+            <img loading="lazy" src="assets/underline-stroke-blue.svg" class="underline-stroke" />
             <p>
               To provide students, particularly those who have had or might have
               contact with the foster care system, with the requisite academic,
@@ -60,7 +60,7 @@
               attracts, supports, and retains exceptional and caring people.
             </p>
             <h2>We Change Lives</h2>
-            <img src="assets/underline-stroke-blue.svg" class="underline-stroke" />
+            <img loading="lazy" src="assets/underline-stroke-blue.svg" class="underline-stroke" />
             <p>
               We believe all students have the capacity to succeed at high
               academic levels and experience positive life outcomes.
@@ -70,7 +70,7 @@
         <ion-col>
           <div data-aos="fade-left">
 
-            <img src="assets/column-white.svg" style="width: 100%; max-width: 400px; min-width: 100px" />
+            <img loading="lazy" src="assets/column-white.svg" style="width: 100%; max-width: 400px; min-width: 100px" />
           </div>
         </ion-col>
       </ion-row>
@@ -82,7 +82,7 @@
     <ion-row>
       <ion-col>
         <h2>Academics</h2>
-        <img src="assets/underline-stroke.svg" class="underline-stroke" />
+        <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
         <h3>
           Monument Academy’s academic programs are centered on thematic
           planning, project-based learning with principles of Webb’s Depth of
@@ -91,7 +91,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col class="top-col">
         <p>
           Targeted Learning to Student Needs Each Monument Academy student
           engages in a targeted learning journey that is rooted in data driven
@@ -102,12 +102,16 @@
           how students access content, practice new skills, and demonstrate
           mastery of the standards using technology and research.
         </p>
-        <a routerLin="/academics">Learn more about Academics</a>
+        <a [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'" >
+          <ion-button color="tertiary" [fill]="isDesktop ? 'none' : 'solid'" [expand]="isDesktop ? '' : 'block'" routerLink="/academics">
+            Learn more about Academics
+          </ion-button>
+        </a>
       </ion-col>
       <ion-col>
         <div data-aos="fade-up-left">
 
-          <img src="assets/images/monument-1.png" alt="" />
+          <img loading="lazy" src="assets/images/monument-1.png" alt="" />
         </div>
       </ion-col>
     </ion-row>
@@ -115,7 +119,7 @@
 </section>
 <section>
   <h2>Family-Style Boarding</h2>
-  <img src="assets/underline-stroke.svg" class="underline-stroke" />
+  <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
   <h3>
     Students board at Monument Academy from Sunday evening through to Friday
     afternoon. They live in small, family-style single gender homes, with two
@@ -125,17 +129,21 @@
     <ion-row>
       <ion-col>
         <div data-aos="fade-up-right">
-          <img src="assets/images/monument-2.png" />
+          <img loading="lazy" src="assets/images/monument-2.png" />
         </div>
       </ion-col>
-      <ion-col>
+      <ion-col class="top-col">
         <p>
           Students receive a personal wake-up and eat a family-style breakfast
           every morning with their Houseparent and Student Life Family. Students
           share a personal daily goal with their family and head to advisory for
           community building.
         </p>
-        <a routerLin="/boarding-student-life-program">Learn more about Family-Style Boarding</a>
+        <a [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'" >
+        <ion-button color="tertiary" [fill]="isDesktop ? 'none' : 'solid'" [expand]="isDesktop ? '' : 'block'" routerLink="/boarding-student-life-program">
+            Learn more about Family-Style Boarding
+        </ion-button>
+      </a>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -146,7 +154,7 @@
     <ion-row>
       <ion-col>
         <h2>Well-Being Program</h2>
-        <img src="assets/underline-stroke.svg" class="underline-stroke" />
+        <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
         <h3>
           At Monument Academy, the nurturing of students’ social and emotional
           well-being is at the center of our work.
@@ -154,7 +162,7 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col>
+      <ion-col class="top-col">
         <p>
           Monument Academy is staffed with 3 school counselors, a well-being
           clinical manager, and a director. Related services (psychological,
@@ -166,28 +174,33 @@
           Well-Being staff provide evidenced-based behavioral, emotional, and
           therapeutic support for the students.
         </p>
-        <a routerLin="/well-being-program">Learn more about Well-Being Program</a>
+        <a [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'">
+          <ion-button color="tertiary" [fill]="isDesktop ? 'none' : 'solid'" [expand]="isDesktop ? '' : 'block'" routerLink="/well-being-program">
+            Learn more about Well-Being Program
+          </ion-button>
+        </a>
       </ion-col>
       <ion-col>
         <div data-aos="fade-up-left">
-          <img src="assets/images/monument-3.png" alt="" />
+          <img loading="lazy" src="assets/images/monument-3.png" alt="" />
         </div>
       </ion-col>
     </ion-row>
   </ion-grid>
 </section>
 
+
 <section>
   <h2>Extended Day Learning</h2>
-  <img src="assets/underline-stroke.svg" class="underline-stroke" />
+  <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
   <ion-grid>
     <ion-row>
       <ion-col>
         <div data-aos="fade-up-right">
-          <img src="assets/images/monument-4.png" />
+          <img loading="lazy" src="assets/images/monument-4.png" />
         </div>
       </ion-col>
-      <ion-col>
+      <ion-col class="top-col">
         <p>
           In addition to learning in a traditional classroom, our students have
           opportunities to be exposed to the educational landscape of
@@ -195,7 +208,11 @@
           trips, and guest speakers, our students will connect their learning to
           their immediate community and the world.
         </p>
-        <a routerLin="/boarding-student-life-program">Learn more about Extended Day Learning</a>
+        <a [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'">
+          <ion-button color="tertiary" [fill]="isDesktop ? 'none' : 'solid'" [expand]="isDesktop ? '' : 'block'" routerLink="/boarding-student-life-program">
+              Learn more about Extended Day Learning
+          </ion-button>
+        </a>
       </ion-col>
     </ion-row>
   </ion-grid>
@@ -204,25 +221,29 @@
 <div class="yellow-section">
   <section>
     <h2 class="text-center">Monumental Markers</h2>
-    <img src="assets/underline-stroke-blue.svg" class="underline-stroke-centered" />
+    <img loading="lazy" src="assets/underline-stroke-blue.svg" class="underline-stroke-centered" />
     <ion-grid>
       <ion-row>
         <ion-col>
           <h2 class="marker">
-            95%
+            <span class="emphasize white"> 95% </span>
           </h2>
           <p class="marker">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </ion-col>
         <ion-col>
-          <h2 class="marker">100%</h2>
+          <h2 class="marker">
+            <span class="emphasize white">100%</span>
+          </h2>
           <p class="marker">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </ion-col>
         <ion-col>
-          <h2 class="marker">300</h2>
+          <h2 class="marker">
+            <span class="emphasize white">300</span>
+          </h2>
           <p class="marker">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
@@ -230,19 +251,25 @@
       </ion-row>
       <ion-row>
         <ion-col>
-          <h2 class="marker">1-10</h2>
+          <h2 class="marker">
+            <span class="emphasize white">1-10</span>
+          </h2>
           <p class="marker">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </ion-col>
         <ion-col>
-          <h2 class="marker">100</h2>
+          <h2 class="marker">
+            <span class="emphasize white">100</span>
+          </h2>
           <p class="marker">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </ion-col>
         <ion-col>
-          <h2 class="marker">45</h2>
+          <h2 class="marker">
+            <span class="emphasize white">45</span>
+          </h2>
           <p class="marker">
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
@@ -254,7 +281,7 @@
 
 <section>
   <h2 class="text-center">Monumental Sports</h2>
-  <img src="assets/underline-stroke.svg" class="underline-stroke-centered" />
+  <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke-centered" />
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -270,7 +297,7 @@
       </ion-col>
       <ion-col>
         <div data-aos="fade-left">
-          <img src="assets/mascot.svg" alt="Monument Academy Mascot" />
+          <img loading="lazy" src="assets/mascot.svg" alt="Monument Academy Mascot" />
         </div>
       </ion-col>
     </ion-row>
@@ -279,10 +306,10 @@
 <div class="yellow-section">
   <section>
     <h2 class="text-center">Monumental Moments</h2>
-    <img src="assets/underline-stroke-blue.svg" style="width: 180px; display: flex; align-self: center; margin: auto" />
+    <img loading="lazy" src="assets/underline-stroke-blue.svg" style="width: 180px; display: flex; align-self: center; margin: auto" />
 
     <div data-aos="fade-up">
-      <ion-slides #momentsSlider [hidden]="screenWidth <= 768" [options]="slideOpts.coverflow">
+      <ion-slides #momentsSlider [hidden]="!isDesktop" [options]="slideOpts.coverflow">
         <ion-slide *ngFor="let slide of slides; let i = index">
           <ion-grid class="slide-container">
             <ion-row>
@@ -291,7 +318,7 @@
                 <p class="align-start">{{ slide.description }}</p>
               </ion-col>
               <ion-col size-xs="12" size-md="6">
-                <img [src]="slide.image" class="rounded slider-image" />
+                <img loading="lazy" [src]="slide.image" class="rounded slider-image" />
               </ion-col>
             </ion-row>
           </ion-grid>
@@ -299,10 +326,10 @@
       </ion-slides>
     </div>
 
-    <ion-slides #responsiveSlider [hidden]="screenWidth > 768" [options]="slideOpts.normal">
+    <ion-slides #responsiveSlider [hidden]="isDesktop" [options]="slideOpts.normal">
       <ion-slide *ngFor="let slide of slides; let i = index">
         <div class="slides-responsive">
-          <img [src]="slide.image" class="rounded small" />
+          <img loading="lazy" [src]="slide.image" class="rounded small" />
 
           <ion-card class="slide-card">
             <h3>{{ slide.title }}</h3>
@@ -312,16 +339,16 @@
       </ion-slide>
     </ion-slides>
 
-    <div [class]="screenWidth > 768 ? 'swiper-nav' : 'swiper-nav responsive'">
+    <div [class]="isDesktop ? 'swiper-nav' : 'swiper-nav responsive'">
       <ion-fab class="right" vertical="center" horizontal="end" edge="true" slot="fixed">
         <ion-fab-button (click)="
-            slideNext(screenWidth > 768 ? momentsSlider : responsiveSlider)
+            slideNext(isDesktop ? momentsSlider : responsiveSlider)
           ">
           <ion-icon name="chevron-forward-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab>
 
-      <ion-fab class="left" vertical="center" horizontal="start" edge="true" slot="fixed" [hidden]="screenWidth > 768">
+      <ion-fab class="left" vertical="center" horizontal="start" edge="true" slot="fixed" [hidden]="isDesktop">
         <ion-fab-button (click)="slidePrev(responsiveSlider)">
           <ion-icon name="chevron-back-outline"></ion-icon>
         </ion-fab-button>

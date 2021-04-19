@@ -5,7 +5,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   templateUrl: './donate.component.html',
   styleUrls: ['./donate.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  template: `<div [innerHTML]="data"></div>`,
+  template: `<div [innerHTML]="data | safeHtml"></div>`,
 })
 export class DonateComponent implements OnInit {
   pageTitle: string;
