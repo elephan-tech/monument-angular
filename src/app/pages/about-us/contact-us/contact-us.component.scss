@@ -13,6 +13,12 @@ ion-card {
   border-radius: 20px;
   // box-shadow: 5px 10px 20px rgb(0 0 0 / 62%);
   box-shadow: $deep-shadow;
+  margin: 10px 10px 0px 0px;
+}
+
+ion-grid {
+  margin: 0;
+  padding: 0;
 }
 
 
