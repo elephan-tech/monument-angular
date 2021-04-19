@@ -218,7 +218,6 @@ ion-col {
   min-width: 200px;
 }
 
-
 .top-col {
   z-index: 1;
 }
@@ -232,9 +231,9 @@ a.desktop-anchor {
   cursor: pointer;
   display: block;
   ion-button {
-     --padding-start: 0 !important;
-     height: 5em !important;
-  };
+    --padding-start: 0 !important;
+    height: 5em !important;
+  }
 }
 
 a.desktop-anchor:hover {
@@ -244,27 +243,25 @@ a.desktop-anchor:hover {
   font-family: "Montserrat";
   font-weight: bold;
   cursor: pointer;
-  background-image: url('./assets/underline-stroke.svg');
+  background-image: url("./assets/underline-stroke.svg");
   background-position: 0 100%;
   background-size: 6em;
   background-repeat: no-repeat;
   display: block;
   ion-button {
-     --padding-start: 0 !important;
-     height: 5em !important;
-  };
+    --padding-start: 0 !important;
+    height: 5em !important;
+  }
 }
 
 a.desktop-anchor:after {
-    content: '\2014';
-    color: color(links) !important;
-    font-size: 1.1em;
-    font-weight: bold;
-    cursor: pointer;
-    vertical-align: sub;
+  content: "\2014";
+  color: color(links) !important;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  vertical-align: sub;
 }
-
-
 
 a.mobile-anchor {
   color: color(links) !important;
@@ -276,9 +273,9 @@ a.mobile-anchor {
   cursor: pointer;
   // display: block;
   ion-button {
-     --padding-start: 0 !important;
-     height: 5em !important;
-  };
+    --padding-start: 0 !important;
+    height: 5em !important;
+  }
 }
 
 ion-card.hover-card {
@@ -291,3 +288,4 @@ ion-card.hover-card {
     transform: scale(1.1);
     border: 3px solid var(--ion-color-secondary);
   }
+}
