@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { EventsCalendarService } from '../../../services/events/events-calendar.service';
 
 @Component({
   selector: 'app-news-media',
@@ -8,14 +9,23 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   template: `<div [innerHTML]="data | safeHtml"></div>`
 })
 export class NewsMediaComponent implements OnInit {
-    pageTitle: string;
+  pageTitle: string;
   heroImg: string;
-  content: string;
+  content = [
+    {type: 'title', content: 'NO EVENTS'},
+    {type: 'info', content: 'No calendar'}
+  ]
 
-  constructor() { }
+  constructor(private eventService: EventsCalendarService) { }
 
   ngOnInit(): void {
     this.pageTitle = 'News & Media';
+
+    this.eventService.getAll().subscribe(
+        res => this.content = res,
+        err => console.log('not running mock api. run npm run server'),
+        () => console.log('HTTP request completed.')
+  );
   }
 
 }

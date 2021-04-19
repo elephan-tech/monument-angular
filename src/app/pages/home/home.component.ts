@@ -1,7 +1,7 @@
 import { slideOpts } from './slider.config';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { loremIpsum } from 'lorem-ipsum';
-import { ScreensizeService } from '../../services/screensize.service';
+import { ScreensizeService } from '../../services/screen-size/screensize.service';
 
 type Slide = {
   isBeginningSlide: boolean;

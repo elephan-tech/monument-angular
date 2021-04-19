@@ -1,7 +1,7 @@
 import { Component, HostListener } from '@angular/core';
 
 import { Platform } from '@ionic/angular';
-import { ScreensizeService } from './services/screensize.service';
+import { ScreensizeService } from './services/screen-size/screensize.service';
 
 @Component({
 	selector: 'app-root',
