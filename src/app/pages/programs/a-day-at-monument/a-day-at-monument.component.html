@@ -1,127 +1,23 @@
 <app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
 <section>
   <ion-grid>
-    <ion-row>
+    <ion-row *ngFor="let a of activity" style="align-items: center">
       <ion-col size="3">
         <img
           loading="lazy"
-          src="assets/monument_logo-short.png"
-          alt="Monument Academy Logo"
-          style="width: 200px"
-        />
-      </ion-col>
-      <ion-col size="9">
-        <h4>Rise and Shine</h4>
-        <p>
-          Students receive a personal wake-up and eat a family-style breakfast
-          with their Houseparent and Student Life Family. Students share a
-          personal daily goal with their family and head to advisory for
-          community building and DBT skills practice. After advisory, the
-          students move to through their daily class schedule.
-        </p>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="3">
-        <img
-          loading="lazy"
-          src="assets/images/bulldog-meditating.svg"
-          alt="Monument Academy Logo"
+          [src]="a.src"
+          [alt]="a.title"
           style="width: 300px"
         />
       </ion-col>
       <ion-col size="9">
-        <h4>Morning Focus</h4>
-        <p>
-          Well-being is weaved throughout all aspects of our program. Every
-          morning, students and staff practice mindfulness and engage in a group
-          lesson around important social skills. The morning block sets students
-          up for a focused, successful day.
-        </p>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="3">
+        <h2>{{ a.title }}</h2>
         <img
           loading="lazy"
-          src="assets/monument_logo-short.png"
-          alt="Monument Academy Logo"
-          style="width: 200px"
+          src="assets/underline-stroke.svg"
+          class="underline-stroke"
         />
-      </ion-col>
-      <ion-col size="9">
-        <h4>Academic Blocks</h4>
-        <p>
-          Students have daily academic blocks with a maximum of a 1:15 adult to
-          student ratio, focusing on Literacy and Humanities, Math, and Science.
-          Between these blocks, students have a social lunch, recess, and
-          opportunities for electives such as PE, Health, Performing Arts,
-          Instrumental Music and Spanish. Classroom instruction is targeted to
-          meet student needs and is designed to provide all students with
-          choice, movement, and authentic learning experiences.
-        </p>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="3">
-        <img
-          loading="lazy"
-          src="assets/monument_logo-short.png"
-          alt="Monument Academy Logo"
-          style="width: 200px"
-        />
-      </ion-col>
-      <ion-col size="9">
-        <h4>Student Life Activities</h4>
-        <p>
-          After the academic day, students engage in enrichment activities that
-          might include sports, cooking club, choir, theater, or service clubs.
-          Dinner is eaten family-style, then students do their reading homework
-          and have time to relax with evening family activities like community
-          meetings, board games, or movie night. We provide a warm, home-like
-          environment in the boarding program while embedding students’
-          acquisition of important independent living skills.
-        </p>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="3">
-        <img
-          loading="lazy"
-          src="assets/monument_logo-short.png"
-          alt="Monument Academy Logo"
-          style="width: 200px"
-        />
-      </ion-col>
-      <ion-col size="9">
-        <h4>Closing the Day</h4>
-        <p>
-          Before students prepare for bed, they reflect on the daily goal they
-          set in the morning. The Houseparent and the other students in the
-          family celebrate and support one another in this process. Students
-          then read or journal in their rooms until lights out.
-        </p>
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col size="3">
-        <img
-          loading="lazy"
-          src="assets/monument_logo-short.png"
-          alt="Monument Academy Logo"
-          style="width: 200px"
-        />
-      </ion-col>
-      <ion-col size="9">
-        <h4>Drop-off and Pickup</h4>
-        <p>
-          Early Sunday evening, students are dropped off and families have a
-          chance to speak with staff. The same opportunity exists on Friday
-          afternoon when students are picked up for the weekend. The purpose of
-          a structured drop-off and pick-up is to establish and develop
-          relationships with caregivers and to keep lines of communication open
-          to ensure a seamless transition between home and school life.
-        </p>
+        <p>{{ a.content }}</p>
       </ion-col>
     </ion-row>
   </ion-grid>
