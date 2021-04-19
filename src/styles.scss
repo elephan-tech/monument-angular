@@ -30,6 +30,7 @@ $monument-angular-theme: mat-light-theme(
 );
 :root {
   --ion-color-tertiary: #7d24ff;
+  scroll-padding-top: 115px !important;
 }
 // Include theme styles for core and each component used in your app.
 // Alternatively, you can import and @include the theme mixins for each component
@@ -57,7 +58,9 @@ $deep-shadow: 0px 5px 15px -7px var(--ion-color-primary);
 #primary {
   color: #042f54;
 }
-
+html {
+  scroll-behavior: smooth !important;
+}
 html,
 body {
   margin: 0;
@@ -87,7 +90,7 @@ h3 {
   font-size: 1.7em !important;
   color: color(primary);
   line-height: 1.5em !important;
-  font-weight: 600;
+  font-weight: 600 !important;
 }
 h4 {
   font-family: "Montserrat", sans-serif;
@@ -98,8 +101,8 @@ h4 {
 }
 h5 {
   font-family: "Montserrat", sans-serif;
-  text-transform: uppercase;
-  font-size: 24px;
+  // text-transform: uppercase;
+  font-size: 18px;
   color: color(primary);
 }
 h6 {
@@ -117,14 +120,7 @@ p {
 .text-center {
   text-align: center;
 }
-a {
-  color: color(links) !important;
-  font-size: 1.1em;
-  text-transform: uppercase;
-  font-family: "Montserrat";
-  font-weight: bold;
-  cursor: pointer;
-}
+
 header {
   background-image: url("assets/hero-bg.svg");
   background-repeat: no-repeat;
@@ -137,27 +133,28 @@ header.main-hero {
   padding-top: 180px;
 }
 
-div.yellow-section {
+.yellow-section {
   background-color: color(secondary);
   width: 100%;
   padding-top: 3em;
   padding-bottom: 3em;
 }
-div.violet-section {
+.violet-section {
   background-color: color(accent);
   width: 100%;
   padding-top: 3em;
   padding-bottom: 3em;
+
+  p,
+  h2,
+  h3 {
+    color: color(white) !important;
+  }
+  a {
+    color: color(primary) !important;
+  }
 }
-div.violet-section p {
-  color: color(white) !important;
-}
-div.violet-section h3 {
-  color: color(white) !important;
-}
-div.violet-section a {
-  color: color(primary) !important;
-}
+
 section {
   width: 90%;
   margin: auto;
@@ -184,6 +181,26 @@ p.marker {
 
 hr {
   background: color(accent);
+  height: 2px !important;
+  margin-top: 2em;
+  margin-bottom: 2em;
+  text-align: center;
+  overflow: visible;
+}
+hr:after {
+  content: " - ";
+  display: inline-block;
+  position: relative;
+  top: -0.7em;
+  font-size: 2.5em;
+  padding: 0 0.25em;
+  background: white;
+  color: rgb(255 255 255 / 0%) !important;
+  font-weight: bold;
+  background-image: url("assets/monument_logo-short.png");
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
 }
 
 ion-slides {
@@ -195,4 +212,92 @@ ion-note {
 }
 ion-card {
   box-shadow: $shadow;
+}
+
+ion-col {
+  min-width: 200px;
+}
+
+.top-col {
+  z-index: 1;
+}
+
+a.desktop-anchor {
+  color: color(links) !important;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  font-weight: bold;
+  cursor: pointer;
+  display: block;
+  ion-button {
+    --padding-start: 0 !important;
+    height: 5em !important;
+  }
+}
+
+a.desktop-anchor:hover {
+  color: color(accent) !important;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  font-weight: bold;
+  cursor: pointer;
+  background-image: url("./assets/underline-stroke.svg");
+  background-position: 0 100%;
+  background-size: 6em;
+  background-repeat: no-repeat;
+  display: block;
+  ion-button {
+    --padding-start: 0 !important;
+    height: 5em !important;
+  }
+}
+
+a.desktop-anchor:after {
+  content: "\2014";
+  color: color(links) !important;
+  font-size: 1.1em;
+  font-weight: bold;
+  cursor: pointer;
+  vertical-align: sub;
+}
+
+a.mobile-anchor {
+  color: color(links) !important;
+  font-size: 1.1em;
+  text-transform: uppercase;
+  font-family: "Montserrat";
+  font-weight: bold;
+  width: 85vw;
+  cursor: pointer;
+  // display: block;
+  ion-button {
+    --padding-start: 0 !important;
+    height: 5em !important;
+  }
+}
+
+ion-card.hover-card {
+  max-height: 340px;
+  min-height: 300px;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transform: perspective(1px) translateZ(0);
+  &:hover {
+    transform: scale(1.1);
+    border: 3px solid var(--ion-color-secondary);
+  }
+}
+
+span.emphasize {
+  background-image: url("assets/brush1.png");
+  background-position: center center;
+  background-size: contain;
+  background-repeat: no-repeat;
+}
+
+span.white {
+  background-image: url("assets/brush1_white-01.png");
+
 }

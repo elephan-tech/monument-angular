@@ -20,12 +20,15 @@ import { CareersComponent } from './pages/careers/careers.component';
 import { EnrollmentComponent } from './pages/enrollment/enrollment.component';
 import { FamilyResourcesComponent } from './pages/family-resources/family-resources.component';
 import { KnowledgeCenterComponent } from './pages/knowledge-center/knowledge-center.component';
+import { NewsMediaComponent } from './pages/about-us/news-media/news-media.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, //this makes the landing page
   { path: 'about-us', component: AboutUsComponent },
   { path: 'team', component: TeamComponent },
   { path: 'board', component: BoardComponent },
+  { path: 'news-media', component: NewsMediaComponent },
+
 
   {
     path: 'partnerships',
@@ -67,7 +70,12 @@ const routes: Routes = [
 ];
 
 @NgModule({
-  imports: [RouterModule.forRoot(routes, {scrollPositionRestoration: 'enabled'})],
+  imports: [
+    RouterModule.forRoot(routes, {
+      scrollPositionRestoration: 'enabled',
+      anchorScrolling: 'enabled',
+    }),
+  ],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

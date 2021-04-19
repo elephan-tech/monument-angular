@@ -1,0 +1,27 @@
+@import "../../../../styles.scss";
+.awards-icons {
+  width: 90%;
+  margin: auto;
+  max-width: 210px;
+}
+.col-container {
+  height: auto;
+  min-height: 300px;
+  padding: 1em;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-shadow: $shadow;
+  border-radius: $radius;
+  text-align: center;
+}
+a > h4 {
+  text-decoration: none;
+}
+a {
+  text-transform: none;
+  text-decoration: none;
+}
+ion-col {
+  min-width: 220px;
+}

@@ -1,4 +1,4 @@
-import { ScreensizeService } from './../../services/screensize.service';
+import { ScreensizeService } from './../../services/screen-size/screensize.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({

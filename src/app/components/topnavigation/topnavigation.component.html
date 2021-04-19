@@ -48,7 +48,7 @@
         </ion-img>
       </a> -->
       <a routerLink="/" class="first-icon">
-        <img class="top-logo" id="top-logo-switch" [src]="monumentLogo" />
+        <img loading="lazy" class="top-logo" id="top-logo-switch" [src]="monumentLogo" />
       </a>
 
       <!-- style="width: 100%" -->
@@ -120,6 +120,7 @@
             [routerLink]="subMenu.href"
             routerLinkActive="active-sub-link"
             class="submenu-item"
+            (click)="closeAllMenus()"
           >
             <ion-label class="submenu-label" routerLinkActive="active-sub-link">
               {{ subMenu.name }}
@@ -142,6 +143,7 @@
       [routerLink]="subMenu.href"
       routerLinkActive="active-sub-link"
       routerLink="root"
+      (click)="closeAllMenus()"
     >
       <ion-label> {{ subMenu.name }} </ion-label>
     </ion-item>
