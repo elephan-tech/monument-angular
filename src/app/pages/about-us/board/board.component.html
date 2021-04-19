@@ -2,21 +2,26 @@
 
 <section>
   <div *ngFor="let b of board">
+    <hr />
     <ion-grid>
       <ion-row>
         <ion-col size="3">
-          <img loading="lazy"
+          <img
+            loading="lazy"
             src="assets/monument_logo-short.png"
             alt="Monument Academy Logo"
             style="width: 200px"
           />
         </ion-col>
         <ion-col size="9">
-          <h4>{{ b.name }}</h4>
+          <h4>
+            <b>{{ b.name }}</b>
+          </h4>
           <h5>{{ b.title }}</h5>
           <p [innerHTML]="b.bio"></p>
         </ion-col>
       </ion-row>
     </ion-grid>
+    <hr />
   </div>
 </section>
