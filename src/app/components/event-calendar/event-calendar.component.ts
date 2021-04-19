@@ -11,6 +11,14 @@ export class EventCalendarComponent implements OnInit {
   public dragging: boolean;
   public clickedInside: boolean;
 
+  content = {
+    title: 'Interested in joining our team?',
+    info: '<b> Attend </b> our upcoming virtual job fair! Register below or email careers@monumentacademydc.org with any questions.',
+    paragraph: 'Tuesday, March 16th, 4 PM – 6 PM Our next open board meeting is Wednesday, March 17th at 6 PM. Register here.',
+    closing: 'Check out our recent feature on CBS This Morning HERE!'
+  }
+
+
 dragPosition = {x: 0, y: -100};
 
   constructor() {
