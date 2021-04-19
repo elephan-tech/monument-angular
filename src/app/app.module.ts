@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -35,6 +36,9 @@ import { SliderComponent } from './components/slider/slider.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { EventCalendarComponent } from './components/event-calendar/event-calendar.component';
 import { AnimatedComponent } from './components/animated/animated.component';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -74,9 +78,12 @@ import { AnimatedComponent } from './components/animated/animated.component';
     DragDropModule,
     IonicModule.forRoot(),
     ReactiveFormsModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    HttpClientModule,
   ],
   exports: [MatMenuModule, MatGridListModule],
-  providers: [],
+  providers: [HttpClient, HttpClientModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
