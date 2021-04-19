@@ -12,7 +12,7 @@ export class WellBeingComponent implements OnInit {
   constructor() {}
 
   ngOnInit() {
-    this.pageTitle = 'Well Beign Program';
+    this.pageTitle = 'Well Being Program';
     this.heroImg = 'assets/images/monument-3.png';
   }
 }

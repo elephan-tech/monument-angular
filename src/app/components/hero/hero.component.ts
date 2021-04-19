@@ -8,7 +8,7 @@ import { Component, Input, OnInit } from '@angular/core';
 export class HeroComponent implements OnInit {
   constructor() {}
   @Input() pageTitle: string;
-  @Input() heroImg: string;
-  @Input() bgImage: string;
+  @Input() heroImg?: string;
+  @Input() bgImage?: string;
   ngOnInit() {}
 }
