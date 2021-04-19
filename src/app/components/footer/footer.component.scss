@@ -46,3 +46,8 @@ footer section {
   color: #042f54;
   font-weight: 500;
 }
+
+img[alt="logo"]:hover {
+  content:url('../../../assets/monument-logo_blue.svg');
+  cursor: pointer;
+ }
