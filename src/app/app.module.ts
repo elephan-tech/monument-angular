@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -38,6 +39,9 @@ import { AnimatedComponent } from './components/animated/animated.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NewsMediaComponent } from './pages/about-us/news-media/news-media.component';
 import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -80,7 +84,12 @@ import { HttpClientModule } from '@angular/common/http';
     ReactiveFormsModule,
     MatExpansionModule,
     HttpClientModule
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule,
+    HttpClientModule,
   ],
+  exports: [MatMenuModule, MatGridListModule],
+  providers: [HttpClient, HttpClientModule],
   exports: [MatMenuModule, MatGridListModule, MatExpansionModule],
   providers: [],
   bootstrap: [AppComponent],

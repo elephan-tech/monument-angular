@@ -1,3 +1,4 @@
+import { MailService } from './../../../services/mail.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 
@@ -20,7 +21,7 @@ export class ContactUsComponent implements OnInit {
   pageTitle: string;
   heroImg: string;
 
-  constructor() {}
+  constructor(private mailService: MailService) {}
 
   ngOnInit() {
     this.pageTitle = 'Contact Us';
@@ -28,7 +29,7 @@ export class ContactUsComponent implements OnInit {
   }
 
   onSubmit() {
-    // Logic here to submit
-    console.log(this.contactForm);
+    const data = this.contactForm.value;
+    this.mailService.sendContactMail(data);
   }
 }
