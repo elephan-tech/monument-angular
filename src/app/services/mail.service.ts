@@ -1,18 +1,15 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
 import axios from 'axios';
-import nodemailer from 'nodemailer';
-import cors from 'cors';
 
 @Injectable({
   providedIn: 'root',
 })
 export class MailService {
-  private sendMailUrl =
+  public sendMailUrl =
     'https://us-central1-monument-academy.cloudfunctions.net/sendMail';
   constructor() {}
 
-  contactForm(data: {
+  sendContactMail(data: {
     firstName: string;
     lastName: string;
     email: string;
@@ -59,32 +56,35 @@ export class MailService {
     ${data.message}
 </body>
     `;
-    const mailData = {
-      from: 'team@elephan.tech',
-      to: 'team@elephan.tech',
-      subject: 'New Contact',
-      html,
-    };
-
-    const mailTransport = nodemailer.createTransport({
-      service: 'gmail',
-      auth: {
-        user: 'pablo@elephan.tech',
-        pass: 'Pipicaca123',
+    this.sendMail(
+      {
+        from: 'info@monumentacademydc.org',
+        to: [
+          'info@monumentacademydc.org',
+          'anna.scudiero@mapcsdc.org',
+          'jeff.mchugh@mapcsdc.org',
+        ],
+        subject: 'New Contact 📫',
+        html,
       },
-    });
-    this.sendMail(mailTransport, mailData);
+      { ...data }
+    );
   }
 
   sendMail(
-    transport: any,
     config: {
-      from?: string | any;
-      to?: string;
-      subject?: string;
-      html?: string;
-    }
+      from: string | any;
+      to: string | string[];
+      subject: string;
+      html: string;
+    },
+    data?: any
   ) {
-    console.log({ transport, config });
+    axios
+      .post(this.sendMailUrl, { config, data })
+      .then((res) => {
+        return res.data;
+      })
+      .catch((err) => err.message);
   }
 }

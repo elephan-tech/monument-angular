@@ -30,6 +30,6 @@ export class ContactUsComponent implements OnInit {
 
   onSubmit() {
     const data = this.contactForm.value;
-    this.mailService.contactForm(data);
+    this.mailService.sendContactMail(data);
   }
 }
