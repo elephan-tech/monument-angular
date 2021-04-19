@@ -1,0 +1,12 @@
+ion-card {
+  max-height: 340px;
+  min-height: 300px;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transform: perspective(1px) translateZ(0);
+  &:hover {
+    transform: scale(1.1);
+    border: 3px solid var(--ion-color-tertiary);
+    cursor: pointer;
+  }
+}

@@ -1,3 +1,4 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -37,7 +38,9 @@ import { EventCalendarComponent } from './components/event-calendar/event-calend
 import { AnimatedComponent } from './components/animated/animated.component';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { NewsMediaComponent } from './pages/about-us/news-media/news-media.component';
-import { HttpClientModule } from '@angular/common/http';
+import { AngularFireModule } from '@angular/fire';
+import { AngularFireDatabaseModule } from '@angular/fire/database';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -79,10 +82,18 @@ import { HttpClientModule } from '@angular/common/http';
     IonicModule.forRoot(),
     ReactiveFormsModule,
     MatExpansionModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebaseConfig),
+    AngularFireDatabaseModule
   ],
-  exports: [MatMenuModule, MatGridListModule, MatExpansionModule],
-  providers: [],
+  exports: [
+    MatMenuModule,
+    MatGridListModule,
+    MatMenuModule,
+    MatGridListModule,
+    MatExpansionModule,
+  ],
+  providers: [HttpClient, HttpClientModule],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
