@@ -5,7 +5,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   templateUrl: './knowledge-center.component.html',
   styleUrls: ['./knowledge-center.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  template: `<div [innerHTML]="data"></div>`,
+  template: `<div [innerHTML]="data | safeHtml"></div>`,
 })
 export class KnowledgeCenterComponent implements OnInit {
   pageTitle: string;

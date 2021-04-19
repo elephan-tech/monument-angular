@@ -5,7 +5,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   templateUrl: './board.component.html',
   styleUrls: ['./board.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  template: `<div [innerHTML]="data"></div>`,
+  template: `<div [innerHTML]="data | safeHtml"></div>`,
 })
 export class BoardComponent implements OnInit {
   pageTitle: string;

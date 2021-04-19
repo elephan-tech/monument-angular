@@ -22,7 +22,7 @@
             <b>{{ t.name }}</b>
           </h4>
           <h5>{{ t.title }}</h5>
-          <a routerLink="/team" [fragment]="t.scrollId">
+          <a routerLink="." [fragment]="t.scrollId">
             <ion-button>Full bio</ion-button>
           </a>
         </ion-col>
@@ -31,12 +31,12 @@
   </section>
 </div>
 <section>
-  <hr />
-  <div *ngFor="let t of team">
+  <!-- <hr /> -->
+  <div *ngFor="let t of team; let i = index">
     <ion-grid>
       <ion-row>
         <ion-col size="3"
-          ><div [id]="t.scrollId"></div>
+          ><div [attr.id]="t.scrollId"></div>
           <img [src]="t.pic" [alt]="t.name" style="width: 200px" />
         </ion-col>
         <ion-col size="9">
@@ -49,6 +49,6 @@
         </ion-col>
       </ion-row>
     </ion-grid>
-    <hr />
+    <hr *ngIf="i !== team.length - 1"/>
   </div>
 </section>

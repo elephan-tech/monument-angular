@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-life-skills',
   templateUrl: './life-skills.component.html',
   styleUrls: ['./life-skills.component.scss'],
-  template: `<div [innerHTML]="data"></div>`,
+  template: `<div [innerHTML]="data | safeHtml"></div>`,
 })
 export class LifeSkillsComponent implements OnInit {
   pageTitle: string;

@@ -5,7 +5,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   templateUrl: './partnerships.component.html',
   styleUrls: ['./partnerships.component.scss'],
   encapsulation: ViewEncapsulation.None,
-  template: `<div [innerHTML]="data"></div>`,
+  template: `<div [innerHTML]="data | safeHtml"></div>`,
 })
 export class PartnershipsComponent implements OnInit {
   pageTitle: string;

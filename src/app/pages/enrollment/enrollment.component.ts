@@ -4,7 +4,7 @@ import { Component, OnInit } from '@angular/core';
   selector: 'app-enrollment',
   templateUrl: './enrollment.component.html',
   styleUrls: ['./enrollment.component.scss'],
-  template: `<div [innerHTML]="data"></div>`,
+  template: `<div [innerHTML]="data | safeHtml"></div>`,
 })
 export class EnrollmentComponent implements OnInit {
   pageTitle: string;
