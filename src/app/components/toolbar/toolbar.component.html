@@ -1,5 +1,5 @@
 <div [ngStyle]="styleObject" class="toolbar" role="banner">
-  <img *ngIf="src" [alt]="alt" [src]="src" />
+  <img loading="lazy" *ngIf="src" [alt]="alt" [src]="src" />
   <div class="spacer"></div>
 
   <div *ngIf="headerSections" class="sections">
@@ -9,7 +9,7 @@
       title="{{ section.title }}"
     >
       {{ section.title }}
-      <img src="assets/public/underline-stroke.svg" class="brush" />
+      <img loading="lazy" src="assets/public/underline-stroke.svg" class="brush" />
     </a>
   </div>
 </div>

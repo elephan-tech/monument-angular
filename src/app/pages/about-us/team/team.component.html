@@ -13,7 +13,7 @@
           *ngFor="let t of team"
           style="text-align: center; padding: 1em"
         >
-          <img
+          <img loading="lazy"
             [src]="t.pic"
             [alt]="t.name"
             style="width: 100px; margin: auto"
@@ -37,13 +37,13 @@
       <ion-row>
         <ion-col size="3"
           ><div [attr.id]="t.scrollId"></div>
-          <img [src]="t.pic" [alt]="t.name" style="width: 200px" />
+          <img loading="lazy" [src]="t.pic" [alt]="t.name" style="width: 200px" />
         </ion-col>
         <ion-col size="9">
           <h4>
             <b>{{ t.name }}</b>
           </h4>
-          <img src="assets/underline-stroke.svg" class="underline-stroke" />
+          <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
           <h5>{{ t.title }}</h5>
           <p [innerHTML]="t.bio"></p>
         </ion-col>
