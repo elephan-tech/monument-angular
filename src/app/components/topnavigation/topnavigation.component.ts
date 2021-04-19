@@ -28,7 +28,7 @@ export class TopnavigationComponent implements OnInit {
   isDesktop: boolean;
   showEmergency = true;
   emergencyMessage =
-    'this is an example for an emergency message. this is an example for an emergency message. this is an example for an emergency message. ';
+    'EMERGENCY MESSAGE HERE';
   phoneNumber = '(202) 545-3180';
   monumentLogo = '../../../assets/monument-main-logo.png';
   brushStroke = '../../../assets/underline-stroke-blue.svg';

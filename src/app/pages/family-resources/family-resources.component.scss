@@ -24,6 +24,7 @@ ion-card {
   &:hover {
     transform: scale(1.1);
     border: 3px solid var(--ion-color-tertiary);
+    cursor: pointer;
   }
   .card-bg {
     span {

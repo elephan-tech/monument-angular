@@ -1,1 +1,26 @@
-<p>programs works!</p>
+<app-hero pageTitle="Programs"></app-hero>
+
+<section>
+  <h3> At Monument Academy, we believe in the capacity of every student to learn, grow, and experience positive life outcomes. </h3>
+  <hr>
+  <ion-grid>
+    <ion-row>
+            <ion-col size-xs="10" offset-xs="1" size-sm="8" offset-sm="2" size-md="6" offset-md="0" size-lg="3"
+            *ngFor="let program of programs">
+        <app-animated class="animated" [animation]="'fade-up'">
+          <ion-card [href]="program.href" >
+            <img loading="lazy" loading="lazy" loading="lazy" [src]=" program.image|| '../../../assets/yellow-background.png'">
+            <ion-card-header [ngStyle]="{}">
+              <ion-card-title>
+                <ion-text>{{ program.title }}</ion-text>
+              </ion-card-title>
+              <ion-card-subtitle>{{ program.description }}</ion-card-subtitle>
+            </ion-card-header>
+
+
+          </ion-card>
+        </app-animated>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</section>
