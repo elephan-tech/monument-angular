@@ -132,7 +132,10 @@ header.main-hero {
   padding: 2em;
   padding-top: 180px;
 }
-
+a {
+  color: color(links) !important;
+  font-weight: bold !important;
+}
 .yellow-section {
   background-color: color(secondary);
   width: 100%;

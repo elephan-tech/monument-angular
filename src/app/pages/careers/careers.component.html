@@ -1,7 +1,11 @@
 <app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
 <section>
   <h2>Career Opportunities for the 2021-22 School Year</h2>
-  <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
+  <img
+    loading="lazy"
+    src="assets/underline-stroke.svg"
+    class="underline-stroke"
+  />
 
   <ion-grid>
     <ion-row>
@@ -10,12 +14,22 @@
           <ion-card-header>
             <ion-card-subtitle>{{ j.category }}</ion-card-subtitle>
             <ion-card-title>{{ j.jobTitle }}</ion-card-title>
-            <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
+            <img
+              loading="lazy"
+              src="assets/underline-stroke.svg"
+              class="underline-stroke"
+            />
           </ion-card-header>
           <ion-card-content>
             <!-- {{ j.shortDescription }} -->
             <br />
-            <a [href]="j.url" target="_blank">Learn more about this position</a>
+            <a
+              [href]="j.url"
+              [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'"
+              target="_blank"
+            >
+              Learn more about this position
+            </a>
           </ion-card-content>
         </ion-card>
       </ion-col>
