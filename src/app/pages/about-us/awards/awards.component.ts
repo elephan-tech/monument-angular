@@ -46,7 +46,7 @@ export class AwardsComponent implements OnInit {
     {
       name: 'George Frederick Foundation East',
       src: 'assets/images/awards/george-frederick-foundation.png',
-      url: '',
+      url: 'https://projects.propublica.org/nonprofits/organizations/272954428',
     },
     {
       name: 'The Morris & Gwendolyn Cafritz Foundation',
