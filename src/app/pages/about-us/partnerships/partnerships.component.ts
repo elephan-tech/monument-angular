@@ -57,14 +57,18 @@ export class PartnershipsComponent implements OnInit {
     {
       name: 'Junior Achievement',
       src: 'assets/images/partners/junior-achievement.png',
+      url:
+        'https://jausa.ja.org/about/?gclid=EAIaIQobChMI9fiqqMOM8AIVrW5vBB0KawOgEAAYASAAEgINCvD_BwE',
     },
     {
       name: 'Friendship Public Charter School',
       src: 'assets/images/partners/friendship.svg',
+      url: 'https://www.friendshipschools.org/',
     },
     {
       name: 'Smile Therapy Services',
       src: 'assets/images/partners/smile-therapy-services.png',
+      url: 'https://www.smiletherapyservices.com/',
     },
     {
       name: 'Elaine Ellis Center of Health',
