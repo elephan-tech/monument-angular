@@ -6,6 +6,20 @@
   background-size: cover;
 }
 
+.hero-img {
+  height: 75vh;
+    background-image: url('../../../assets/images/hero-main.png');
+    background-position: 0vw;
+    background-repeat: no-repeat;
+    background-size: 70%;
+}
+
+@media screen and (max-width: 475px) {
+  .hero-img {
+        background-image: none;
+  }
+}
+
 h2.brush {
   position: relative;
   color: white;
