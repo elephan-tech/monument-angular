@@ -282,7 +282,9 @@ a.mobile-anchor {
 }
 
 ion-card.hover-card {
-  min-height: 300px;
+  min-height: 350px;
+  padding: 16px;
+  border-radius: 25px;
   transition-duration: 0.3s;
   transition-property: transform;
   transform: perspective(1px) translateZ(0);

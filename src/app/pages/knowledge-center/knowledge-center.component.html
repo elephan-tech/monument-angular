@@ -1,108 +1,96 @@
 <app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
 <section>
-  <h3>
-    The Knowledge Center is where we seek to share our design and learning
-    journey with other practitioners, school designers, and experts from the
-    field. Search and explore artifacts organized around our six model elements
-    and six key enablers shown below.
-  </h3>
-  <!-- <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" /> -->
   <ion-grid>
     <ion-row>
-      <ion-col size="7">
+      <ion-col size="12">
         <h3>
+          The Knowledge Center is where we seek to share our design and learning
+          journey with other practitioners, school designers, and experts from the
+          field. Search and explore artifacts organized around our six model elements
+          and six key enablers shown below.
+        </h3>
+        <h6>
           Take a look at a video of the founder and former CEO, Emily
           Bloomfield!
-        </h3>
+        </h6>
+
       </ion-col>
-      <ion-col
-        ><div style="padding: 56.25% 0 0 0; position: relative">
-          <iframe
-            src="https://player.vimeo.com/video/225397741"
-            style="
+
+    </ion-row>
+    <ion-row class="ion-justify-content-center">
+      <ion-col size="10">
+        <div>
+          <div style="padding: 56.25% 0 0 0; position: relative">
+            <iframe src="https://player.vimeo.com/video/225397741" style="
               position: absolute;
               top: 0;
               left: 0;
               width: 100%;
               height: 100%;
-            "
-            frameborder="0"
-            allow="autoplay; fullscreen; picture-in-picture"
-            allowfullscreen
-          ></iframe>
+              border-radius: 25px;
+              margin-top: 16px;
+            " frameborder="0" allow="autoplay; fullscreen; picture-in-picture" allowfullscreen></iframe>
+            <script src="https://player.vimeo.com/api/player.js"></script>
+
+          </div>
         </div>
-        <script src="https://player.vimeo.com/api/player.js"></script>
       </ion-col>
     </ion-row>
   </ion-grid>
-
-  <h2>Our Model</h2>
-  <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
-
-  <!-- <ion-grid>
+</section>
+<section>
+  <ion-grid>
     <ion-row>
-      <ion-col size="4" *ngFor="let m of model">
-        <ion-card>
+      <ion-col>
+        <h2>Our Model</h2>
+        <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
+      </ion-col>
+    </ion-row>
+    <ion-row>
+      <ion-col *ngFor="let m of model" size-xs="12" size-md="6" size-lg="4" size-xl="3">
+        <ion-card class="hover-card" [href]="m.routingUrl" [attr.alt]="m.routingTitle">
           <ion-card-header>
-            <h4>{{ m.title }}</h4>
+            <ion-card-title>
+              {{m.title}}
+            </ion-card-title>
+            <ion-card-subtitle>
+              {{m.description}}
+            </ion-card-subtitle>
           </ion-card-header>
-          <ion-card-content>
-            <p>{{ m.description }}</p>
-          </ion-card-content>
+          <ion-card-details>
+            {{m.mainContent}}
+          </ion-card-details>
         </ion-card>
       </ion-col>
     </ion-row>
-  </ion-grid> -->
-
-  <mat-expansion-panel *ngFor="let m of model">
-    <mat-expansion-panel-header>
-      <mat-panel-title>
-        <h5>
-          <b>{{ m.title }}</b>
-        </h5>
-      </mat-panel-title>
-      <mat-panel-description>
-        <p>{{ m.description }}</p>
-      </mat-panel-description>
-    </mat-expansion-panel-header>
-    <h4>
-      {{ m.mainContent }}
-      <a [routerLink]="m.routingUrl">
-        {{ m.routingTitle }}
-      </a>
-    </h4>
-    <div *ngIf="m.violetContent" class="violet-section">
-      <section>
-        <p>
-          {{ m.violetContent }}
-        </p>
-      </section>
-    </div>
-  </mat-expansion-panel>
-
-  <h2>Key Enablers</h2>
-  <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
-  <div>
-    <mat-expansion-panel *ngFor="let ke of keyEnablers">
-      <mat-expansion-panel-header>
-        <mat-panel-title>
-          <h5>
-            <b>{{ ke.title }}</b>
-          </h5>
-        </mat-panel-title>
-        <mat-panel-description>
-          <p>{{ ke.description }}</p>
-        </mat-panel-description>
-      </mat-expansion-panel-header>
-      <h4>{{ ke.mainContent }}</h4>
-      <div *ngIf="ke.violetContent" class="violet-section">
-        <section>
-          <p>{{ ke.violetContent }}</p>
-        </section>
-      </div>
-    </mat-expansion-panel>
-  </div>
+  </ion-grid>
 </section>
+<section>
+  <ion-grid>
+    <ion-row>
+      <h2>Key Enablers</h2>
+      <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
+    </ion-row>
+    <ion-row>
+      <ion-col *ngFor="let k of keyEnablers" size-xs="12" size-md="6" size-lg="4" size-xl="3">
+        <ion-card class="hover-card">
+          <ion-card-header>
+            <ion-card-title>
+              {{k.title}}
+            </ion-card-title>
+            <ion-card-subtitle>
+              {{k.description}}
+            </ion-card-subtitle>
+          </ion-card-header>
+          <ion-card-details>
+            {{k.mainContent}}
+          </ion-card-details>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</section>
+
 <div class="violet-section">
   <section>
     <h2>Our design Journey</h2>
