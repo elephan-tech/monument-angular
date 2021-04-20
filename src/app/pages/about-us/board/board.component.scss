@@ -1,0 +1,17 @@
+@import "../../../../styles.scss";
+mat-expansion-panel {
+  margin-bottom: 1em !important;
+  box-shadow: $shadow !important;
+}
+mat-expansion-panel-header {
+  height: auto !important;
+  padding: 10px !important;
+}
+
+mat-panel-title {
+  font-family: "Montserrat", sans-serif;
+  text-transform: capitalize;
+  font-size: 18px;
+  color: color(primary) !important;
+  font-weight: bold;
+}

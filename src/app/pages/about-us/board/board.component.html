@@ -9,7 +9,7 @@
     partners and supporters of Monument Academy.
   </p>
   <p>
-    Board Members: Click on
+    <b>Board Members</b>: Click on
     <a
       href="https://app.powerbi.com/reportEmbed?reportId=6052bc2a-e1db-465c-b522-20e03e144979&autoAuth=true&ctid=10ced1c6-e0a7-47ad-97c6-d9a9256ad96f&config=eyJjbHVzdGVyVXJsIjoiaHR0cHM6Ly93YWJpLXVzLWVhc3QyLWItcHJpbWFyeS1yZWRpcmVjdC5hbmFseXNpcy53aW5kb3dzLm5ldC8ifQ%3D%3D"
       target="_blank"
@@ -39,6 +39,28 @@
           </h4>
           <h5>{{ b.title }}</h5>
           <p [innerHTML]="b.bio"></p>
+
+          <mat-expansion-panel *ngIf="b.excites">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h5>What Excites You About Monument Academy</h5>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>
+              {{ b.excites }}
+            </p>
+          </mat-expansion-panel>
+
+          <mat-expansion-panel *ngIf="b.favTeacher">
+            <mat-expansion-panel-header>
+              <mat-panel-title>
+                <h5>Favorite Teacher</h5>
+              </mat-panel-title>
+            </mat-expansion-panel-header>
+            <p>
+              {{ b.favTeacher }}
+            </p>
+          </mat-expansion-panel>
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -57,7 +79,7 @@
     meetings may do so by registering at the meeting link listed next to the
     meeting date. If you have any questions, issues with registration, or
     require any accommodations for the virtual meeting, please reach out to
-    boardmeetings@mapcsdc.org.
+    <a href="mailto:boardmeetings@mapcsdc.org">boardmeetings@mapcsdc.org.</a>
   </p>
 
   <ul>

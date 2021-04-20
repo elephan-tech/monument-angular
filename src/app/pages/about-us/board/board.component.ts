@@ -24,6 +24,10 @@ export class BoardComponent implements OnInit {
       title: 'Board Chair',
       bio:
         'Tycely Williams is the Vice President of Development at the YWCA.Prior to that, she served as Regional Chief Development Officer at Red Cross. She has raised and managed more than $69 million dollars for nonprofit organizations. Prior to Red Cross, she was Association Director of Major Gifts for the YMCA of Metropolitan Washington, and before that she founded and led a professional services consulting company for six years. Over the past 18 years, she has served as a Director of Development for two health and human services organizations, the Artistic Director of two community-based dance studios, and the Executive Director for a nonprofit organization founded by a Fortune 500 Company. Ms. Williams holds an Executive Masters in Leadership from The McDonough School of Business at Georgetown University. A Cum Laude graduate of Wake Forest University, Tycely possesses a Bachelor of Arts degree in Communications with distinguished departmental honors and a minor in Journalism.Ms. Williams serves on the governing boards of the Association of Fundraising Professionals Washington Metro Chapter and Calvary Healthcare.',
+      excites:
+        'I am honored to stand with the visionary Emily Bloomfield, lock hearts with the Monument Academy Board of Trustees so we may partner with compassionate parents and devoted teachers to create a safe place for children to learn, laugh and love. The strikingly beautiful smiles of our parents, teachers and children excite and inspire me.',
+      favTeacher:
+        'I loved every teacher; my mother and father were teachers. My high school debate coach Ms. Marilee Dukes tops the lists of teachers I loved. Ms. Dukes taught me to dream. She would say, “Tycely stop paying attention to me and pay attention to you….look out the window and dream child, prepare to become who you want to be and do what you’ve yet to see.”',
     },
     {
       name: 'Tameria Lewis',
@@ -59,6 +63,10 @@ export class BoardComponent implements OnInit {
       title: 'Board Member',
       bio:
         'Neela has worked in public education in the District of Columbia for over a decade, including eight years at the District of Columbia Public Schools (DCPS) in a variety of roles. As Deputy Chief of Special Education Compliance, she managed DCPS’ response to four major federal lawsuits and monitoring by state and federal government. DCPS has since exited three out of four lawsuits, including two that were nearly two decades old. She was also the Chief of Staff in the Office of General Counsel, Deputy Chief of Central Office Effectiveness in the Office of Human Capital and a member of the Chancellor’s critical response team. Additionally, she served as the Assistant Superintendent of Operations in the Office of the State Superintendent of Education (OSSE), the state education agency of D.C., overseeing grants management, dispute resolution, enrollment and residency support, building operations and procurement planning. Neela is currently an independent consultant. She has a J.D. from the University of Virginia School of Law and a B.A. in government from the College of William and Mary. She lives in Washington, D.C. with her husband and two daughters.',
+      excites:
+        'Monument Academy serves children in a fundamentally different way than a traditional school. I’m excited about the school’s focus on meeting students where they are, operating a weekday boarding program, filling their lives with supportive adults who believe in their potential, and focusing on the needs of the entire family so that each student can achieve greatness.',
+      favTeacher:
+        'I’ve been blessed to have many important teachers in my life, my parents being the most important of all. My high school history teacher, Ms. Wood, is the person I credit with challenging my world view and daring me to dream. She taught me the importance and power of a single person believing in you, which is what I hope that each student at Monument Academy feels in their time at the school.',
     },
     {
       name: 'James Waller',
