@@ -1,4 +1,13 @@
 <app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
+<section>
+  <p>
+    The Monument Academy team is led by an experienced and diverse group of
+    leaders with deep expertise in education, organizational development,
+    psychology, child development, and more. To learn about Monument Academy’s
+    Board of Directors, please visit our
+    <a routerLink="/board">Board of Directors page</a>.
+  </p>
+</section>
 <div class="yellow-section">
   <section>
     <h3>
@@ -13,7 +22,8 @@
           *ngFor="let t of team"
           style="text-align: center; padding: 1em"
         >
-          <img loading="lazy"
+          <img
+            loading="lazy"
             [src]="t.pic"
             [alt]="t.name"
             style="width: 100px; margin: auto"
@@ -23,8 +33,9 @@
           </h4>
           <h5>{{ t.title }}</h5>
 
-            <ion-button routerLink="." [fragment]="t.scrollId">Full bio</ion-button>
-
+          <ion-button routerLink="." [fragment]="t.scrollId"
+            >Full bio</ion-button
+          >
         </ion-col>
       </ion-row>
     </ion-grid>
@@ -37,18 +48,27 @@
       <ion-row>
         <ion-col size="3"
           ><div [attr.id]="t.scrollId"></div>
-          <img loading="lazy" [src]="t.pic" [alt]="t.name" style="width: 200px" />
+          <img
+            loading="lazy"
+            [src]="t.pic"
+            [alt]="t.name"
+            style="width: 200px"
+          />
         </ion-col>
         <ion-col size="9">
           <h4>
             <b>{{ t.name }}</b>
           </h4>
-          <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
+          <img
+            loading="lazy"
+            src="assets/underline-stroke.svg"
+            class="underline-stroke"
+          />
           <h5>{{ t.title }}</h5>
           <p [innerHTML]="t.bio"></p>
         </ion-col>
       </ion-row>
     </ion-grid>
-    <hr *ngIf="i !== team.length - 1"/>
+    <hr *ngIf="i !== team.length - 1" />
   </div>
 </section>
