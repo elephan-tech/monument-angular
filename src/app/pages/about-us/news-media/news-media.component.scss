@@ -1,3 +1,5 @@
+
+
 ion-row {
   margin: 10px;
 }
@@ -47,4 +49,14 @@ ion-card-subtitle {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+}
+
+ion-card-title {
+  font-family: "Montserrat", sans-serif;
+  color: var(--ion-color-primary);
+}
+
+ion-card-subtitle {
+  font-family: "Montserrat", sans-serif;
+  color: var(--ion-color-primary-tint);
 }
