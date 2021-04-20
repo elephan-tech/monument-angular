@@ -21,6 +21,7 @@ import { EnrollmentComponent } from './pages/enrollment/enrollment.component';
 import { FamilyResourcesComponent } from './pages/family-resources/family-resources.component';
 import { KnowledgeCenterComponent } from './pages/knowledge-center/knowledge-center.component';
 import { NewsMediaComponent } from './pages/about-us/news-media/news-media.component';
+import { BlogComponent } from './components/blog/blog.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, //this makes the landing page
@@ -28,7 +29,10 @@ const routes: Routes = [
   { path: 'team', component: TeamComponent },
   { path: 'board', component: BoardComponent },
   { path: 'news-media', component: NewsMediaComponent },
-
+  {
+    path: 'news-media/:blogID',
+    component: BlogComponent
+  },
 
   {
     path: 'partnerships',

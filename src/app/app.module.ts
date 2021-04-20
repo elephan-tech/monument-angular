@@ -41,6 +41,7 @@ import { NewsMediaComponent } from './pages/about-us/news-media/news-media.compo
 import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
+import { BlogComponent } from './components/blog/blog.component';
 
 @NgModule({
   declarations: [
@@ -71,6 +72,7 @@ import { environment } from '../environments/environment';
     EventCalendarComponent,
     AnimatedComponent,
     NewsMediaComponent,
+    BlogComponent,
   ],
   imports: [
     BrowserModule,

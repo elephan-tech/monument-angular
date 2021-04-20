@@ -1,0 +1,20 @@
+<section style="padding-top: 200px;">
+
+    <ion-button fill="clear" routerLink="/news-media"> <ion-icon name="chevron-back-outline"></ion-icon>back </ion-button>
+    <img loading="lazy" [src]="blog.image || '../../../assets/yellow-background.png'">
+
+  <div class="title-date-container">
+    <h3 style="width: 100%">{{blog.title}}</h3>
+    <div class="date-container">
+      <div class="month"> {{blog.date | date:'MMM'}} </div>
+      <div class="day"> {{blog.date | date:'d'}}</div>
+      <div class="year">{{blog.date | date:'yyyy'}} </div>
+    </div>
+  </div>
+  <h4> {{blog.subtitle}} </h4>
+  <h5> This article originally appeared in <a [href]="blog.article.articleLink">{{blog.article.articleLocation}}</a> on  {{ blog.date | date }} </h5>
+  <h6 [innerHtml]="blog.content">
+  </h6>
+</section>
+
+<hr>
