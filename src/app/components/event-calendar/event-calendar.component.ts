@@ -21,7 +21,7 @@ export class EventCalendarComponent implements OnInit {
   content = [
     {type: "title",content: "Interested in joining our team?"},
     {type:'info', content: "<b> Attend </b> our upcoming virtual job fair! Register below or email careers@monumentacademydc.org with any questions." },
-    {type:"paragraph",content: "Tuesday, March 16th, 4 PM – 6 PM Our next open board meeting is Wednesday, March 17th at 6 PM. Register here." },
+    {type:"paragraph",content: "Tuesday, March 16th, 4 PM – 6 PM Our next open board meeting is Wednesday, March 17th at 6 PM. <a href='/' >Register here. </a>" },
     {type:"closing",content: "Check out our recent feature on CBS This Morning HERE!" }
   ]
 

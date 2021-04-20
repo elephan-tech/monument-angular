@@ -1,3 +1,50 @@
 ion-row {
   margin: 10px;
 }
+
+ion-card {
+  height: 400px;
+  min-height: 300px;
+  transition-duration: 0.3s;
+  transition-property: transform;
+  transform: perspective(1px) translateZ(0);
+  &:hover {
+    transform: scale(1.1);
+    border: 3px solid var(--ion-color-tertiary);
+    cursor: pointer;
+  }
+  .card-bg {
+    span {
+      color: var(--ion-color-dark);
+      font-weight: 700;
+      font-size: larger;
+      text-align: center;
+      text-transform: uppercase;
+      border-bottom: 4px solid var(--ion-color-secondary);
+      width: 70%;
+      margin: auto;
+    }
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: auto;
+    padding: 8px;
+    min-height: 150px;
+    background-image: url("../../../../assets/hero-bg.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+  }
+
+  figure {
+    margin: 0;
+  }
+}
+
+ion-card-subtitle {
+      overflow: hidden;
+    text-overflow: ellipsis;
+    /* white-space: nowrap; */
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+}

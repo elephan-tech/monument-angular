@@ -1,11 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ArticleInfo, BlogPost, blogPosts } from '../../blog-posts';
 
-export interface Content {
-  type: string, // title, info, paragraph, closing, action
-  content: string
-}
 
 
 @Injectable({
@@ -13,9 +10,13 @@ export interface Content {
 })
 export class EventsCalendarService {
    private baseUrl = 'http://localhost:8000/news-events';
-  constructor(private http: HttpClient) { }
+   blogPostsArray = blogPosts;
 
- getAll(): Observable<Content[]> {
+
+  constructor(private http: HttpClient) {
+  }
+
+ getAll(): Observable<any[]> {
     return this.http.get<any>(this.baseUrl);
   }
 // get(id: string): Observable<Content> {
@@ -30,4 +31,13 @@ export class EventsCalendarService {
 // delete(id: string) {
 //     return this.http.delete<any>(this.baseUrl + '/' + id);
 //   }
+
+
+getAllBlogPosts(): BlogPost[] {
+  return this.blogPostsArray;
+}
+
+getBlogPostByID(id: string): BlogPost {
+  return this.blogPostsArray.find(b => b.blogID === id);
+}
 }

@@ -36,7 +36,7 @@ ion-fab {
 
 .fab-list {
   height: 70vh;
-    width: 91vw;
+    width: 95vw;
     top: -58vh;
     position: absolute;
     background-color: #F2F2F2;
@@ -48,14 +48,21 @@ ion-fab {
 
 .fab-content {
     margin: 25px;
+    height: 100%;
+    margin: auto;
+    background-image: url(../../../assets/brush1.png), url(../../../assets/column-white.svg);
+    background-position: center center, right bottom;
+    background-size: 30vh, 35vh;
+    background-repeat: no-repeat, no-repeat;
+
 
 }
 
 .event-content {
-    background-image: url('../../../assets/brush1.png');
-    background-position: center center;
-    background-size: contain;
-    background-repeat: no-repeat;
+    // background-image: url('../../../assets/brush1.png');
+    // background-position: center center;
+    // background-size: contain;
+    // background-repeat: no-repeat;
 }
 
 .fab:active {
@@ -73,7 +80,7 @@ ion-fab {
 // }
 
 ion-grid {
-  // margin-top: 10vh;
+  margin-top: 5%;
 }
 
 ion-row {

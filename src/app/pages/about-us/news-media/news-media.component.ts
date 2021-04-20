@@ -1,5 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { EventsCalendarService } from '../../../services/events/events-calendar.service';
+import { BlogPost } from '../../../blog-posts';
 
 @Component({
   selector: 'app-news-media',
@@ -11,10 +12,7 @@ import { EventsCalendarService } from '../../../services/events/events-calendar.
 export class NewsMediaComponent implements OnInit {
   pageTitle: string;
   heroImg: string;
-  // content = [
-  //   {type: 'title', content: 'NO EVENTS'},
-  //   {type: 'info', content: 'No calendar'}
-  // ]
+  blogPosts: BlogPost[];
 
   content = [
     {type: "title",content: "Interested in joining our team?"},
@@ -26,6 +24,7 @@ export class NewsMediaComponent implements OnInit {
 
   ngOnInit(): void {
     this.pageTitle = 'News & Media';
+    this.blogPosts = this.eventService.getAllBlogPosts();
 
     this.eventService.getAll().subscribe(
         res => this.content = res,

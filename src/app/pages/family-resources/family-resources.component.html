@@ -67,7 +67,7 @@
         *ngFor="let rs of resources">
         <app-animated class="animated" [animation]="'fade-up'">
           <ion-card [href]="rs.url" target="_blank">
-            <img loading="lazy" loading="lazy" loading="lazy" [src]="rs.image || '../../../assets/yellow-background.png'">
+            <img loading="lazy" [src]="rs.image || '../../../assets/yellow-background.png'">
             <ion-card-header [ngStyle]="{}">
               <ion-card-title>
                 <ion-text>{{rs.title}}</ion-text>

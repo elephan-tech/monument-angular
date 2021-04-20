@@ -1,0 +1,34 @@
+img {
+  max-height: 400px;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.title-date-container {
+  display: flex;
+  align-items: center;
+}
+
+.date-container {
+margin-right: 20px;
+text-align: right;
+}
+
+.month {
+  font-size: xx-large;
+  font-weight: bold;
+  color: var(--ion-color-dark);
+}
+
+.day {
+  font-size: x-large;
+    font-weight: bold;
+    color: var(--ion-color-medium);
+}
+
+.year {
+  font-size: medium;
+  color: var(--ion-color-medium-tint);
+}
+
