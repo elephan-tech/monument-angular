@@ -1,5 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Router, Scroll, Event  } from '@angular/router';
+import { Router, Scroll, Event } from '@angular/router';
 import { ViewportScroller } from '@angular/common';
 import { filter } from 'rxjs/operators';
 
@@ -16,27 +16,26 @@ export class TeamComponent implements OnInit {
   headerOffset = 200;
 
   constructor(router: Router, viewportScroller: ViewportScroller) {
-    router.events.pipe(
-      filter((e: Event): e is Scroll => e instanceof Scroll)
-    ).subscribe(e => {
-      if (e.position) {
-        // backward navigation
-        viewportScroller.setOffset([0, this.headerOffset]);
-        viewportScroller.scrollToPosition(e.position);
-      } else if (e.anchor) {
-        // anchor navigation
-        viewportScroller.setOffset([0, this.headerOffset]);
-        viewportScroller.scrollToAnchor(e.anchor);
-      } else {
-        // forward navigation
-        viewportScroller.setOffset([0, this.headerOffset]);
-      }
-    });
+    router.events
+      .pipe(filter((e: Event): e is Scroll => e instanceof Scroll))
+      .subscribe((e) => {
+        if (e.position) {
+          // backward navigation
+          viewportScroller.setOffset([0, this.headerOffset]);
+          viewportScroller.scrollToPosition(e.position);
+        } else if (e.anchor) {
+          // anchor navigation
+          viewportScroller.setOffset([0, this.headerOffset]);
+          viewportScroller.scrollToAnchor(e.anchor);
+        } else {
+          // forward navigation
+          viewportScroller.setOffset([0, this.headerOffset]);
+        }
+      });
   }
 
-
   ngOnInit() {
-    this.pageTitle = 'Monument Team';
+    this.pageTitle = 'The Monument Team';
     //this.heroImg = 'assets/images/hero-main.png';
   }
 
