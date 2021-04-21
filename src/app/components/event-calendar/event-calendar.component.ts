@@ -18,12 +18,19 @@ export class EventCalendarComponent implements OnInit {
   //   {type: 'info', content: 'No calendar'}
   // ]
 
-  content = [
-    {type: "title",content: "Interested in joining our team?"},
-    {type:'info', content: "<b> Attend </b> our upcoming virtual job fair! Register below or email careers@monumentacademydc.org with any questions." },
-    {type:"paragraph",content: "Tuesday, March 16th, 4 PM – 6 PM Our next open board meeting is Wednesday, March 17th at 6 PM. <a href='/' >Register here. </a>" },
-    {type:"closing",content: "Check out our recent feature on CBS This Morning HERE!" }
-  ]
+  // content = [
+  //   {type: "title",content: "Interested in joining our team?"},
+  //   {type:'info', content: "<b> Attend </b> our upcoming virtual job fair! Register below or email careers@monumentacademydc.org with any questions." },
+  //   {type:"paragraph",content: "Tuesday, March 16th, 4 PM – 6 PM Our next open board meeting is Wednesday, March 17th at 6 PM. <a href='/' >Register here. </a>" },
+  //   {type:"closing",content: "Check out our recent feature on CBS This Morning HERE!" }
+  // ]
+
+  content: any = `
+  <div> <b>April Board Meeting:</b> Wednesday, April, 21st at 6 PM </div>
+  <div> <b>May Board Meeting:</b> Wednesday, May 19th at 6 PM </div>
+  </br>
+  <div> <b>More Information</b> and <b>Detailed Calendar</b> <a href="/updates-calendar"> HERE </a> </div>
+  `;
 
 dragPosition = {x: 0, y: -100};
 

@@ -288,8 +288,18 @@
       src="assets/underline-stroke-blue.svg"
       class="underline-stroke-centered"
     />
-    <ion-grid>
+    <ion-grid class="monumental-markers">
       <ion-row>
+        <ion-col *ngFor="let marker of monumentalMarkers" size="4" class="emphasize white">
+          <h2 class="marker">
+            <span > {{marker.stat}} </span>
+          </h2>
+          <p class="marker">
+            {{ marker.description }}
+          </p>
+        </ion-col>
+      </ion-row>
+      <!-- <ion-row>
         <ion-col>
           <h2 class="marker">
             <span class="emphasize white"> 95% </span>
@@ -340,7 +350,7 @@
             Lorem ipsum dolor sit amet consectetur adipisicing elit.
           </p>
         </ion-col>
-      </ion-row>
+      </ion-row> -->
     </ion-grid>
   </section>
 </div>

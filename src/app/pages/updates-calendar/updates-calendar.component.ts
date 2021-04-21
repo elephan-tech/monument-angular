@@ -13,6 +13,5 @@ export class UpdatesCalendarComponent implements OnInit {
 
   ngOnInit() {
     this.pageTitle = 'Calendar Updates & Events';
-    //this.heroImg = 'assets/images/monument-7.png';
   }
 }

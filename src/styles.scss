@@ -297,13 +297,13 @@ ion-card.hover-card {
   }
 }
 
-span.emphasize {
+ion-col.emphasize {
   background-image: url("assets/brush1.png");
-  background-position: center center;
+  background-position: top;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-span.white {
+ion-col.white {
   background-image: url("assets/brush1_white-01.png");
 }
