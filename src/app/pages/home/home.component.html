@@ -1,5 +1,6 @@
 <header class="main-hero">
-  <ion-grid class="hero-img">
+  <ion-grid
+    ><!-- class="hero-img" -->
     <ion-row class="wrap-reverse">
       <!-- <ion-col data-aos="fade-up">
         <img
@@ -9,11 +10,15 @@
         />
       </ion-col> -->
 
-      <ion-col data-aos="fade-right">
-        <!-- <img loading="lazy" src="assets/images/hero-main.png" style="width: 100%; margin: auto; max-width: 500px" /> -->
+      <ion-col data-aos="fade-right" class="hero-responsive-col">
+        <img
+          loading="lazy"
+          src="assets/images/hero-main-crop.png"
+          style="width: 100%; margin: auto; max-width: 500px"
+        />
       </ion-col>
 
-      <ion-col>
+      <ion-col class="hero-responsive-col">
         <h1 class="hero-main">
           More than just a school, a <span class="emphasize">home</span>.
         </h1>
@@ -350,10 +355,18 @@
           Monument Academy offers a variety of sports for students such as:
         </h3>
         <ul>
-          <li>Basketball</li>
-          <li>Football</li>
-          <li>Soccer</li>
-          <li>Kickball</li>
+          <li>
+            <p><b>Basketball</b></p>
+          </li>
+          <li>
+            <p><b>Football</b></p>
+          </li>
+          <li>
+            <p><b>Soccer</b></p>
+          </li>
+          <li>
+            <p><b>Kickball</b></p>
+          </li>
         </ul>
       </ion-col>
       <ion-col>
