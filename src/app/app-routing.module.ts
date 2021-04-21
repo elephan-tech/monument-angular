@@ -22,6 +22,7 @@ import { FamilyResourcesComponent } from './pages/family-resources/family-resour
 import { KnowledgeCenterComponent } from './pages/knowledge-center/knowledge-center.component';
 import { NewsMediaComponent } from './pages/about-us/news-media/news-media.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { UpdatesCalendarComponent } from './pages/updates-calendar/updates-calendar.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, //this makes the landing page
@@ -31,7 +32,7 @@ const routes: Routes = [
   { path: 'news-media', component: NewsMediaComponent },
   {
     path: 'news-media/:blogID',
-    component: BlogComponent
+    component: BlogComponent,
   },
 
   {
@@ -71,6 +72,7 @@ const routes: Routes = [
   { path: 'enrollment', component: EnrollmentComponent },
   { path: 'family-resources', component: FamilyResourcesComponent },
   { path: 'knowledge-center', component: KnowledgeCenterComponent },
+  { path: 'updates-calendar', component: UpdatesCalendarComponent },
 ];
 
 @NgModule({

@@ -42,6 +42,7 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { BlogComponent } from './components/blog/blog.component';
+import { UpdatesCalendarComponent } from './pages/updates-calendar/updates-calendar.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +74,7 @@ import { BlogComponent } from './components/blog/blog.component';
     AnimatedComponent,
     NewsMediaComponent,
     BlogComponent,
+    UpdatesCalendarComponent,
   ],
   imports: [
     BrowserModule,
