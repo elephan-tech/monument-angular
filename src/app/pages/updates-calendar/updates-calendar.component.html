@@ -1,5 +1,13 @@
 <app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
 <section>
-  <div> list of pdfs here </div>
-  <div> calednar here</div>
+  <div *ngFor="let calendar of calendars" style="margin-bottom: 25px">
+
+    <a  *ngIf="calendar.pdf" [href]="calendar.pdf" target="_blank">
+      {{calendar.year}} School Year Calendar
+    </a>
+    <a *ngIf="!calendar.pdf">
+      {{calendar.year}} School Year Calendar (Coming Soon)
+    </a>
+  </div>
+  <div> Calendar Coming Soon </div>
 </section>

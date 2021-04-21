@@ -30,6 +30,8 @@ export class EventCalendarComponent implements OnInit {
   <div> <b>May Board Meeting:</b> Wednesday, May 19th at 6 PM </div>
   </br>
   <div> <b>More Information</b> and <b>Detailed Calendar</b> <a href="/updates-calendar"> HERE </a> </div>
+  </br>
+  <div> Check out our recent feature on CBS This Morning <a href="https://www.cbs.com/shows/cbs_this_morning/video/0BkYuV4u6P3B_DE4bL0xwnaS8CGFHdwB/monument-academy-in-washington-d-c-is-providing-a-safe-space-for-its-students-amid-pandemic/" target="_blank"> HERE!</a>  </div>
   `;
 
 dragPosition = {x: 0, y: -100};

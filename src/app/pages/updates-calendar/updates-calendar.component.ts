@@ -9,6 +9,17 @@ export class UpdatesCalendarComponent implements OnInit {
   pageTitle: string;
   heroImg: string;
 
+  calendars = [
+    {
+    year: '2021',
+    pdf: '#'
+    },
+    {
+    year: '2022',
+    // pdf: ''
+    }
+  ]
+
   constructor() {}
 
   ngOnInit() {
