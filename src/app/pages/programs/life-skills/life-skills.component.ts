@@ -14,6 +14,6 @@ export class LifeSkillsComponent implements OnInit {
 
   ngOnInit() {
     this.pageTitle = 'Life Skills';
-    this.heroImg = 'assets/images/monument-5.png';
+    this.heroImg = 'assets/images/monument-13.png';
   }
 }

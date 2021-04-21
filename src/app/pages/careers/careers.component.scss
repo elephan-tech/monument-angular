@@ -2,6 +2,7 @@
 
 ion-card {
   border-radius: $radius;
+  min-height: 200px !important;
 }
 ion-card-title {
   color: color(accent);

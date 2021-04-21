@@ -1,10 +1,12 @@
+
+
 ion-row {
   margin: 10px;
 }
 
 ion-card {
-  height: 400px;
-  min-height: 300px;
+  // height: 400px;
+  min-height: 400px;
   transition-duration: 0.3s;
   transition-property: transform;
   transform: perspective(1px) translateZ(0);
@@ -47,4 +49,14 @@ ion-card-subtitle {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+}
+
+ion-card-title {
+  font-family: "Montserrat", sans-serif;
+  color: var(--ion-color-primary);
+}
+
+ion-card-subtitle {
+  font-family: "Montserrat", sans-serif;
+  color: var(--ion-color-primary-tint);
 }

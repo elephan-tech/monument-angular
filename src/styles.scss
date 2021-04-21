@@ -215,6 +215,7 @@ ion-note {
 }
 ion-card {
   box-shadow: $shadow;
+  min-width: 300px;
 }
 
 ion-col {
@@ -236,6 +237,7 @@ a.desktop-anchor {
   ion-button {
     --padding-start: 0 !important;
     height: 5em !important;
+    white-space: normal !important;
   }
 }
 
@@ -278,6 +280,7 @@ a.mobile-anchor {
   ion-button {
     --padding-start: 0 !important;
     height: 5em !important;
+    white-space: normal !important;
   }
 }
 

@@ -16,7 +16,7 @@ export class KnowledgeCenterComponent implements OnInit {
 
   ngOnInit() {
     this.pageTitle = 'Knowledge Center';
-    this.heroImg = 'assets/images/monument-7.png';
+    this.heroImg = 'assets/images/monument-16.png';
   }
 
   model = [
