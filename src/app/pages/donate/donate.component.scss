@@ -1,0 +1,18 @@
+.donate-iframe {
+  height: 1200px;
+}
+@media only screen and (max-width: 600px) {
+  .donate-iframe {
+    height: 1300px;
+  }
+}
+@media only screen and (max-width: 500px) {
+  .donate-iframe {
+    height: 1400px;
+  }
+}
+@media only screen and (max-width: 350px) {
+  .donate-iframe {
+    height: 1500px;
+  }
+}
