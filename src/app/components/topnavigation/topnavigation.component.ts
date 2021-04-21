@@ -27,8 +27,7 @@ export interface Social {
 export class TopnavigationComponent implements OnInit {
   isDesktop: boolean;
   showEmergency = true;
-  emergencyMessage =
-    'EMERGENCY MESSAGE HERE';
+  emergencyMessage = 'EMERGENCY MESSAGE HERE';
   phoneNumber = '(202) 545-3180';
   monumentLogo = '../../../assets/monument-main-logo.png';
   brushStroke = '../../../assets/underline-stroke-blue.svg';
@@ -73,6 +72,11 @@ export class TopnavigationComponent implements OnInit {
           name: 'Donate',
           code: 'donate',
           href: '/donate',
+        },
+        {
+          name: 'Calendar',
+          code: 'calendar',
+          href: '/updates-calendar',
         },
         {
           name: 'Contact Us',
