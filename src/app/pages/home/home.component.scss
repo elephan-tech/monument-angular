@@ -28,7 +28,7 @@ h2.brush {
 }
 
 h2.brush::before {
-  content: '';
+  content: "";
   background-image: url("../../../assets/brush1.png");
   background-position: left center;
   background-repeat: no-repeat;
@@ -39,12 +39,12 @@ h2.brush::before {
   bottom: 0px;
   left: 0px;
   z-index: -1;
-  opacity: .8;
-  transition: .3s;
+  opacity: 0.8;
+  transition: 0.3s;
 }
 
 h2.brush:hover::before {
-opacity: 1;
+  opacity: 1;
 }
 
 .slide-container {
@@ -140,11 +140,11 @@ ion-fab {
 }
 
 .learn-more {
-  transition: .3s;
+  transition: 0.3s;
 }
 
 .learn-more:hover {
-// --background: rgba(254, 208, 47, .3);
+  // --background: rgba(254, 208, 47, .3);
   --background: transparent;
 
   background-image: url("../../../assets/brush1.png");
@@ -160,21 +160,27 @@ ion-fab {
 .column {
   width: 100%;
   max-width: 400px;
-  min-width: 100px
+  min-width: 100px;
 }
 
 .pillar {
-  background-image: url('../../../assets/column-white.svg');
-  background-position: bottom right;
-  background-size: 50%;
+  background-image: url("../../../assets/column-white.svg");
+  background-position: top right;
+  background-size: 40%;
   background-repeat: no-repeat;
-  transition: .3s;
-
+  transition: 0.3s;
 }
 
 .pillar:hover {
-  background-image: url('../../../assets/images/monument-11.png');
+  background-image: url("../../../assets/images/monument-11.png");
   background-position: right center;
-  background-size: 50%;
+  background-size: 40%;
   background-repeat: no-repeat;
+}
+
+@media only screen and (max-width: 900px) {
+  .pillar {
+    background-position: bottom right;
+    background-size: 50%;
+  }
 }

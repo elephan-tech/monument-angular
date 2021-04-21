@@ -13,7 +13,7 @@ export class ADayAtMonumentComponent implements OnInit {
 
   ngOnInit() {
     this.pageTitle = 'A Day At Monument Academy';
-    this.heroImg = 'assets/images/monument-1.png';
+    this.heroImg = 'assets/images/monument-15.png';
   }
   activity = [
     {
