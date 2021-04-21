@@ -13,6 +13,6 @@ export class BoardingStudentLifeProgramComponent implements OnInit {
 
   ngOnInit() {
     this.pageTitle = 'family-style boarding program';
-    this.heroImg = 'assets/images/monument-2.png';
+    this.heroImg = 'assets/images/monument-17.png';
   }
 }

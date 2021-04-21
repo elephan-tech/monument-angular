@@ -13,31 +13,23 @@ h4 {
   color: #fff;
 }
 
-.btn-footer {
-  //color: #4f9fa6;
-  background-color: #fff;
-  background: #fff;
-  box-shadow: none;
-}
 footer a:link {
-  color: #fff;
+  color: #fff !important;
   text-decoration: none;
+  display: block;
 }
 footer a:visited {
   color: #aaa;
   text-decoration: none;
 }
 footer a:hover {
-  color: #f2f2f2;
+  color: #fecf31 !important;
 }
 footer section {
   width: 90%;
   margin: auto;
 }
-.logo-footer {
-  max-width: 500px;
-  padding: 10px;
-}
+
 .footer-bottom {
   background-color: #fecf31;
   padding: 1em;
@@ -48,6 +40,6 @@ footer section {
 }
 
 img[alt="logo"]:hover {
-  content:url('../../../assets/monument-logo_blue.svg');
+  content: url("../../../assets/monument-logo_blue.svg");
   cursor: pointer;
- }
+}
