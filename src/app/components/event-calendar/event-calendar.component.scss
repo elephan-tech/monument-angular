@@ -49,13 +49,11 @@ ion-fab {
 .fab-content {
     margin: 25px;
     height: 100%;
-    margin: auto;
     background-image: url(../../../assets/brush1.png), url(../../../assets/column-white.svg);
     background-position: center center, right bottom;
     background-size: 30vh, 35vh;
     background-repeat: no-repeat, no-repeat;
-
-
+    flex: 1 1;
 }
 
 .event-content {
@@ -81,6 +79,7 @@ ion-fab {
 
 ion-grid {
   margin-top: 5%;
+  text-align: center;
 }
 
 ion-row {
@@ -90,4 +89,9 @@ ion-row {
 
 .cdk-drag:not(.cdk-drag-dragging) {
   transition: transform 500ms cubic-bezier(0, 0, 0.2, 1);
+}
+
+.innerHtml {
+  color: var(--ion-color-primary);
+  font-family: "Montserrat", sans-serif;
 }

@@ -10,7 +10,11 @@
         />
       </ion-col> -->
 
-      <ion-col data-aos="fade-right" class="hero-responsive-col">
+      <ion-col
+        data-aos="fade-right"
+        data-aos-duration="600"
+        class="hero-responsive-col"
+      >
         <img
           loading="lazy"
           src="assets/images/hero-main-crop.png"
@@ -34,7 +38,7 @@
       </ion-row>
       <ion-row>
         <ion-col size-xs="12" size-md="6">
-          <div data-aos="fade-up">
+          <div data-aos="fade-up" data-aos-duration="700">
             <h2 class="brush">
               Monument Academy Public Charter School is one-of-a-kind Boarding
               School located in the nation's Capital.
@@ -50,7 +54,7 @@
           size-xs="12"
           size-md="6"
         >
-          <div data-aos="fade-up">
+          <div data-aos="fade-up" data-aos-duration="500">
             <ion-button size="large" expand="full" class="learn-more">
               Learn More
             </ion-button>
@@ -65,7 +69,7 @@
     <ion-grid>
       <ion-row>
         <ion-col>
-          <div data-aos="fade-up">
+          <div data-aos="fade-up" data-aos-duration="600">
             <h2>Our Mission</h2>
             <img
               loading="lazy"
@@ -93,7 +97,7 @@
           <!-- <ion-button> See Our Programs </ion-button> -->
         </ion-col>
         <ion-col>
-          <div data-aos="fade-up">
+          <div data-aos="fade-up" data-aos-duration="600">
             <div class="column"></div>
           </div>
         </ion-col>
@@ -164,7 +168,7 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <div data-aos="fade-up-right">
+        <div data-aos="fade-up-right" data-aos-duration="700">
           <img loading="lazy" src="assets/images/monument-2.png" />
         </div>
       </ion-col>
@@ -231,7 +235,7 @@
         </a>
       </ion-col>
       <ion-col>
-        <div data-aos="fade-up">
+        <div data-aos="fade-up" data-aos-duration="700">
           <img loading="lazy" src="assets/images/monument-3.png" alt="" />
         </div>
       </ion-col>
@@ -249,7 +253,7 @@
   <ion-grid>
     <ion-row>
       <ion-col>
-        <div data-aos="fade-up-right">
+        <div data-aos="fade-up-right" data-aos-duration="700">
           <img loading="lazy" src="assets/images/monument-4.png" />
         </div>
       </ion-col>
@@ -284,56 +288,14 @@
       src="assets/underline-stroke-blue.svg"
       class="underline-stroke-centered"
     />
-    <ion-grid>
+    <ion-grid class="monumental-markers">
       <ion-row>
-        <ion-col>
+        <ion-col *ngFor="let marker of monumentalMarkers" size="4" class="emphasize white">
           <h2 class="marker">
-            <span class="emphasize white"> 95% </span>
+            <span > {{marker.stat}} </span>
           </h2>
           <p class="marker">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </ion-col>
-        <ion-col>
-          <h2 class="marker">
-            <span class="emphasize white">100%</span>
-          </h2>
-          <p class="marker">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </ion-col>
-        <ion-col>
-          <h2 class="marker">
-            <span class="emphasize white">300</span>
-          </h2>
-          <p class="marker">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </ion-col>
-      </ion-row>
-      <ion-row>
-        <ion-col>
-          <h2 class="marker">
-            <span class="emphasize white">1-10</span>
-          </h2>
-          <p class="marker">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </ion-col>
-        <ion-col>
-          <h2 class="marker">
-            <span class="emphasize white">100</span>
-          </h2>
-          <p class="marker">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
-          </p>
-        </ion-col>
-        <ion-col>
-          <h2 class="marker">
-            <span class="emphasize white">45</span>
-          </h2>
-          <p class="marker">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            {{ marker.description }}
           </p>
         </ion-col>
       </ion-row>
@@ -370,7 +332,7 @@
         </ul>
       </ion-col>
       <ion-col>
-        <div data-aos="fade-up">
+        <div data-aos="fade-down" data-aos-duration="500">
           <img
             loading="lazy"
             src="assets/mascot.svg"
@@ -390,7 +352,7 @@
       style="width: 180px; display: flex; align-self: center; margin: auto"
     />
 
-    <div data-aos="fade-up">
+    <div data-aos="fade-up" data-aos-duration="700">
       <ion-slides
         #momentsSlider
         [hidden]="!isDesktop"

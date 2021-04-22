@@ -15,9 +15,77 @@ export interface BlogPost {
 }
 
 
-
-
 export const blogPosts: BlogPost[] = [
+    {
+    title: `Learning loss, smaller class sizes, creative hybrid model are focus of schools' futures`,
+    subtitle: 'Some charter schools will remain hybrid until 2023. ',
+    article: {
+      articleLocation: 'wusa9.com',
+      articleLink: 'https://www.wusa9.com/article/news/education/recovery-can-take-years-dc-school-leaders-look-future-education/65-fde73454-846a-45ce-83dd-5166c719de51'
+    },
+    content: `<p>WASHINGTON — As the COVID-19 vaccine rollout continues, school leaders are meeting to plan what’s next for education. Shannon Hodge is the founding executive director of the D.C. Charter School Alliance and said the path forward looks different at each school, but one thing is certain: social distancing is here to stay for a while.</p>
+<p>“It’s not going to be just flipping on a switch, we will have to relearn how to be in spaces together,” she said. “Recovery is not going to be as quick as getting here was, it is going to take us a while to really get back to where we were fully and so for many that's likely going to take multiple years.”</p>
+<p>At IDEA Public Charter School, about 30% of its 325 students are learning in-person in socially distanced classrooms and sometimes even in outdoor tents. School leaders are following a timeline from InstructionPartners.org that indicates the new normal will be in the 2023-2024 school year. For IDEA, that means two years of hybrid learning. </p>
+<p>At the much smaller Monument Academy PCS, CEO Dr. Jefferey Grant expects 90% of the 94 students to return to the boarding middle school in August 2021. Monument will be piloting a 12-month education model next school year, broken into trimesters with remediation breaks in between. </p>
+<p>“So, we're not waiting until June or July to address those deficits and deficiencies,” Grant said, noting that the pandemic has forced educators to reimage schools and how they serve students. “The current education system has not been benefiting everybody, and we must do something about it." </p>
+<p>Grant said it's focusing on learning loss, investing in smaller class sizes that cater to social distancing and finding creative ways to make the hybrid model work for those students in-person and virtual.</p>
+<p>“The school leaders who are trying to put together plans, they're putting together 1,000 piece puzzles every day,” explained Hodge, “they get a new piece of information that changes the whole puzzle, and they've got to go back and start over again.”</p>`,
+    blogID: '12',
+    date: new Date(2021, 2, 19),
+    image: 'https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fmedia.wusa9.com%2Fassets%2FWUSA%2Fimages%2F715e1e1a-ca2a-4f66-9b73-9e12763ef355%2F715e1e1a-ca2a-4f66-9b73-9e12763ef355_1140x641.jpg'
+  },
+    {
+    title: 'D.C. charter school might double number of students after success of boarding program',
+    subtitle: 'Monument Academy Public Charter school in Northeast DC decided to try something different. It became a boarding school for a dozen middle school students who needed more attention because of their special ed status, or their coming from large families with limited resources. (ABC7)',
+    article: {
+      articleLocation: 'WJLA',
+      articleLink: 'https://wjla.com/news/local/dc-charter-school-might-double-number-of-students-after-success-of-boarding-program'
+    },
+    content: `<p>
+    WASHINGTON (ABC7) — Monument Academy Public Charter school in Northeast DC decided to try something different. It became a boarding school for a dozen middle school students who needed more attention because of their special ed status, or their coming from large families with limited resources.
+    </p>
+    <p>
+    The object was twofold: give them the extra help they need to succeed academically and keep them COVID free.
+    </p>
+    <p>
+    Since the first week in October, the students have spent 24/7 in the school building. Like a hundred or so other students at Monument, they take their instruction via laptop computers or tablets. The difference here is the staffers also serve as coaches to help the young people who may have trouble understanding something presented in their virtual classes.
+    </p>
+    <p>
+    And CEO Jeffery Grant says, so far, no student or staffer has tested positive for COVID.
+    </p>
+    <p>
+    “Make sure they have social and emotional supports to keep them steady and level during this pandemic,” Grant said.
+    </p>
+      <p>
+      Twelve-year-old Krystal Moore says she’s learning.
+    </p>
+      <p>
+      “Academically, it's fun. I love all my classes and it’s just plain fun,” she said.
+    </p>
+      <p>
+      They released the students today for Thanksgiving break which will end November 30. The school leaders said they will test the students for COVID a few days before they return.
+    </p>
+    <p>
+    The program has become popular enough, they’re talking about doubling the number of students participating.
+    </p>
+    `,
+    blogID: '11',
+    date: new Date(2020, 10, 19),
+    image: 'https://wjla.com/resources/media2/original/full/1280/center/80/db05c7f4-e2c1-45f6-bd4e-97816f9f07da-DCSCHOOLSVO_frame_277.jpg'
+  },
+  {
+    title: 'MA on CBS This Morning with Gayle King',
+    subtitle: 'Watch CBS This Morning: Monument Academy provides safe reopening - Full show on CBS',
+    article: {
+      articleLocation: 'CBS This Morning',
+      articleLink: 'https://www.cbs.com/shows/cbs_this_morning/video/0BkYuV4u6P3B_DE4bL0xwnaS8CGFHdwB/monument-academy-in-washington-d-c-is-providing-a-safe-space-for-its-students-amid-pandemic/'
+    },
+    content: ``,
+    blogID: '10',
+    date: new Date(2020, 10, 19),
+    image: 'https://slack-imgs.com/?c=1&o1=ro&url=https%3A%2F%2Fthumbnails.cbsig.net%2F_x%2Fw1200%2FCBS_Production_News_VMS%2F2020%2F11%2F19%2F1821781059910%2FCBSN_fusion_monument-academy-in-washington-dc-is-providing-a-safe-space-for-its-students-amid-pandemic_thumbnail_591144_1920x1080.jpg'
+  },
+
     {
       title: 'COULD A CHARTER BOARDING SCHOOL HELP ROCHESTER’S MOST AT-RISK KIDS?',
       subtitle: 'Monument Academy Public Charter School — educating some of our nation’s most disadvantaged, traumatized, and at-risk kids.',
@@ -82,7 +150,7 @@ export const blogPosts: BlogPost[] = [
 </div>
 </div>`,
       blogID: '9',
-      date: new Date(2019, 4, 1),
+      date: new Date(2019, 3, 1),
       image: '../../../../assets/images/news_media/Rochester-Pic.jpeg'
     },
     {
@@ -103,7 +171,7 @@ export const blogPosts: BlogPost[] = [
 <p>The National Commission on Social, Emotional and Academic Development released a unanimous report from top scientists highlighting the latest evidence: “Children with stronger social and emotional competencies are also more likely to enter and graduate from college, succeed in their careers, have positive work and family relationships, better mental and physical health, reduced criminal behavior, and to become engaged citizens.”</p>
 <p>Places like Monument Academy that educate and support the whole child are showing the nation what can be achieved.  At a time when student homelessness is on the rise, schools can be places of stability and inspiration that unleash a generation of young people from the most vulnerable circumstances to reach for the American Dream.</p> `,
       blogID: '8',
-      date: new Date(2019, 3, 18),
+      date: new Date(2019, 2, 18),
       image: '../../../../assets/images/news_media/New-Hope-for-the-Homeless.png'
     },
         {
@@ -158,7 +226,7 @@ export const blogPosts: BlogPost[] = [
 <p><em>Mike Unger is a writer based in Washington, D.C.</em></p>
 `,
       blogID: '7',
-      date: new Date(2019, 1, 15),
+      date: new Date(2019, 0, 15),
       image: '../../../../assets/images/news_media/Harvard.png'
     },
     {
@@ -178,7 +246,7 @@ export const blogPosts: BlogPost[] = [
 <p>Barksdale has high hopes for her son. &#8220;I want him to strive in school. I want him to stay on point with his academics which he is doing well,&#8221; she said.</p>
 `,
       blogID: '6',
-      date: new Date(2018, 12, 23),
+      date: new Date(2018, 11, 23),
       image: '../../../../assets/images/news_media/mental_health.jpeg'
     },
         {
@@ -198,7 +266,7 @@ export const blogPosts: BlogPost[] = [
 <p>Access the <a href="https://www.forbes.com/sites/emilylanghorne/2018/10/25/the-dating-app-that-helps-teachers-find-a-best-fit-school/">full article here</a>.</p>
 `,
       blogID: '5',
-      date: new Date(2018, 10, 23),
+      date: new Date(2018, 9, 23),
       image: '../../../../assets/images/news_media/forbes.jpg'
     },
         {
@@ -229,7 +297,7 @@ export const blogPosts: BlogPost[] = [
 <p>With the number of children in foster care <a href="https://www.acf.hhs.gov/media/press/2017/number-of-children-in-foster-care-continues-to-increase" target="_blank" rel="nofollow noopener noreferrer" data-ga-track="ExternalLink:https://www.acf.hhs.gov/media/press/2017/number-of-children-in-foster-care-continues-to-increase">rising</a>, partly as a result of the opioid epidemic, more school districts might want to look to Monument as a model—and the school has devoted <a href="https://monumentacademy.org/knowledge-center/" target="_blank" rel="nofollow noopener noreferrer" data-ga-track="ExternalLink:https://monumentacademy.org/knowledge-center/">a section of its website</a> to providing information for those who do.</p>
 <p>One potential obstacle is financing. D.C.’s student funding formula is unusually generous. But before dismissing the idea of a therapeutic boarding school as unrealistic, authorities in other jurisdictions should take into account the steep costs of continuing to leave childhood trauma largely unaddressed.</p>`,
       blogID: '4',
-      date: new Date(2018, 6, 19),
+      date: new Date(2018, 5, 19),
       image: '../../../../assets/images/news_media/forbes-2.jpg'
     },
         {
@@ -277,7 +345,7 @@ export const blogPosts: BlogPost[] = [
 <p>The Pascale Sykes Foundation is spending a little less than $10,000 per child per year. Other donors include Give Something Back, led by Robert Carr. It offers participants four-year-college scholarships to several institutions in New Jersey, as long as they maintain a B average and are of good character.</p>
 <p>Frances Sykes says her foundation “is always focused on family as the primary determinant of the physical and emotional wellbeing of a child.” Its insistence on involving foster parents, not just kids, has influenced other First Star branches to do more to incorporate the family in their interventions.</p>`,
       blogID: '3',
-      date: new Date(2018, 3, 23),
+      date: new Date(2018, 2, 23),
       image: '../../../../assets/images/news_media/2018_spring_riley_photo1.jpeg'
     },
         {
@@ -322,7 +390,7 @@ export const blogPosts: BlogPost[] = [
 <p>School leaders, who will add an eighth grade next year and hope to expand to high school after that, have learned a lot since they started three years ago, including what has become “blindingly obvious” — the importance of trusting relationships between adults and students.</p>
 <p>“Building those relationships is the foundation on which you can then move forward,” Bloomfield said.</p>`,
       blogID: '2',
-      date: new Date(2017, 9, 24),
+      date: new Date(2017, 8, 24),
       image: '../../../../assets/images/news_media/Monument2.jpeg'
     },
     {
@@ -450,7 +518,7 @@ export const blogPosts: BlogPost[] = [
 </div>
 </div>`,
       blogID: '1',
-      date: new Date(2015, 12, 26),
+      date: new Date(2015, 11, 26),
       image: '../../../../assets/images/news_media/rise_of_urban_schools.jpeg'
     },
   ];

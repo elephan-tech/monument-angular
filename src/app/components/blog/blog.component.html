@@ -1,7 +1,7 @@
 <section style="padding-top: 200px;">
 
     <ion-button fill="clear" routerLink="/news-media"> <ion-icon name="chevron-back-outline"></ion-icon>back </ion-button>
-    <img loading="lazy" [src]="blog.image || '../../../assets/yellow-background.png'">
+    <img loading="lazy" [src]="blog.image || '../../../assets/yellow-background.png'" class="blog-img">
 
   <div class="title-date-container">
     <h3 style="width: 100%">{{blog.title}}</h3>
@@ -14,6 +14,7 @@
   <h4> {{blog.subtitle}} </h4>
   <h5> This article originally appeared in <a [href]="blog.article.articleLink">{{blog.article.articleLocation}}</a> on  {{ blog.date | date }} </h5>
   <p [innerHtml]="blog.content">
+
   </p>
 </section>
 

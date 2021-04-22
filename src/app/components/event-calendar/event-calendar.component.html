@@ -21,20 +21,19 @@
 
   <ion-fab-list class="fab-list" side="start"
   >
-  <!-- <ion-content> -->
         <div class="fab-content" >
              <h2 class="text-center">Upcoming Events</h2>
       <img loading="lazy" src="assets/underline-stroke-blue.svg" class="underline-stroke-centered" />
 
 
       <ion-grid class="event-content">
-        <ion-row *ngFor="let cont of content"class="ion-justify-content-center " >
+      <div [innerHtml]="content" class="innerHtml"></div>
+        <!-- <ion-row *ngFor="let cont of content"class="ion-justify-content-center " >
           <div [innerHTML]="cont.content"> </div>
-        </ion-row>
+        </ion-row> -->
       </ion-grid>
         </div>
 
-      <!-- </ion-content> -->
       </ion-fab-list>
   </ion-fab>
 
