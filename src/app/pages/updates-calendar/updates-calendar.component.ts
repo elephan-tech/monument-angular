@@ -11,11 +11,11 @@ export class UpdatesCalendarComponent implements OnInit {
 
   calendars = [
     {
-    year: '2021',
-    pdf: '#'
+    year: '2020-2021',
+    pdf: '../../../assets/documents/2020-2021 Calendar  - 2020-21 Calendar.pdf'
     },
     {
-    year: '2022',
+    year: '2021-2022',
     // pdf: ''
     }
   ]
