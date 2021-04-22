@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
 
   monumentalMarkers = [
     {
-      stat: 'Top 5%',
+      stat: 'Top 5% In Instructional Culture',
       description: `Amongst DC Charter Schools, Per the Fall 2020 Teacher Insight Survey`
     },
     {
