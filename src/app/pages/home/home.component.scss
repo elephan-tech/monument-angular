@@ -187,6 +187,16 @@ ion-fab {
   }
 }
 
+@media only screen and (max-width: 480px) {
+  .pillar:hover {
+      background-image: url("../../../assets/column-white.svg");
+  background-position: bottom right;
+  background-size: 40%;
+  background-repeat: no-repeat;
+  transition: 0.3s;
+  }
+}
+
 .monumental-markers {
   margin-top: 30px;
 }
