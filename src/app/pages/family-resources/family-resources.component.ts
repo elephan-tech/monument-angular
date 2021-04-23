@@ -64,7 +64,7 @@ export class FamilyResourcesComponent implements OnInit {
         'https://monumentacademy.org/wp-content/uploads/2019/06/MA-Bullying-Prevention-Policy-SY-19-20.pdf',
     },
     {
-      title: 'Meeting/ School Visit Request Form',
+      title: 'Meeting/School Visit Request Form',
       subtitle: '',
       description: '',
       image: '',
@@ -98,7 +98,7 @@ export class FamilyResourcesComponent implements OnInit {
     {
       title: 'PCSB Lead Test Results',
       subtitle: '',
-      description: 'our water is completely safe for students and staff',
+      description: 'Our water is completely safe for students and staff',
       image: '',
       url:
         'https://monumentacademy.org/wp-content/uploads/2020/01/DC-PCSB-2020-Sampling-Monument-Academy-PCS-web-posting.pdf',
