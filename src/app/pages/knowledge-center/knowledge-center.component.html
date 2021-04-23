@@ -39,56 +39,6 @@
   </ion-grid>
 </section>
 <section>
-  <ion-grid>
-    <ion-row>
-      <ion-col>
-        <h2>Our Model</h2>
-        <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
-      </ion-col>
-    </ion-row>
-    <ion-row>
-      <ion-col *ngFor="let m of model" size-xs="12" size-md="6" size-lg="4" size-xl="3">
-        <ion-card class="hover-card" [href]="m.routingUrl" [attr.alt]="m.routingTitle">
-          <ion-card-header>
-            <ion-card-title>
-              {{m.title}}
-            </ion-card-title>
-            <ion-card-subtitle>
-              {{m.description}}
-            </ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-details>
-            {{m.mainContent}}
-          </ion-card-details>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</section>
-<section>
-  <ion-grid>
-    <ion-row>
-      <h2>Key Enablers</h2>
-      <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
-    </ion-row>
-    <ion-row>
-      <ion-col *ngFor="let k of keyEnablers" size-xs="12" size-md="6" size-lg="4" size-xl="3">
-        <ion-card class="hover-card">
-          <ion-card-header>
-            <ion-card-title>
-              {{k.title}}
-            </ion-card-title>
-            <ion-card-subtitle>
-              {{k.description}}
-            </ion-card-subtitle>
-          </ion-card-header>
-          <ion-card-details>
-            {{k.mainContent}}
-          </ion-card-details>
-        </ion-card>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
 </section>
 
 <div class="violet-section">

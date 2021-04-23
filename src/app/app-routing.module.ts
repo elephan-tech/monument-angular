@@ -1,3 +1,4 @@
+import { KnowledgeTemplateComponent } from './components/knowledge-template/knowledge-template.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AwardsComponent } from './pages/about-us/awards/awards.component';
@@ -31,7 +32,7 @@ const routes: Routes = [
   { path: 'news-media', component: NewsMediaComponent },
   {
     path: 'news-media/:blogID',
-    component: BlogComponent
+    component: BlogComponent,
   },
 
   {
@@ -70,7 +71,14 @@ const routes: Routes = [
   { path: 'careers', component: CareersComponent },
   { path: 'enrollment', component: EnrollmentComponent },
   { path: 'family-resources', component: FamilyResourcesComponent },
-  { path: 'knowledge-center', component: KnowledgeCenterComponent },
+  {
+    path: 'knowledge-center',
+    component: KnowledgeCenterComponent,
+  },
+  {
+    path: 'knowledge-center/:id',
+    component: KnowledgeTemplateComponent,
+  },
 ];
 
 @NgModule({

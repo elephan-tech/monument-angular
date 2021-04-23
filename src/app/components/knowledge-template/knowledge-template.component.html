@@ -1,0 +1,32 @@
+<ion-grid>
+  <ion-row class="ion-justify-content-center">
+    <ion-col>
+      <section class="violet-section"
+        style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+        <h1>{{title}}</h1>
+      </section>
+    </ion-col>
+  </ion-row>
+
+  <ion-row>
+    <ion-col size="10" offset="1" style="min-height: fit-content!important;">
+      <ion-card color="tertiary" class="hover-card" style="height: fit-content;">
+        <ion-card-content>
+          {{mainContent}}
+        </ion-card-content>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+  <ion-row>
+    <ion-segment (ionChange)="segmentChanged($event)">
+      <ion-segment-button *ngFor="let tab of tabs">
+        <ion-label>{{tab.name}}</ion-label>
+      </ion-segment-button>
+    </ion-segment>
+  </ion-row>
+  <ion-row>
+    <ion-card size="3" *ngFor="let item of tabs[currentSegment].items">
+      {{item.itemTitle}}
+    </ion-card>
+  </ion-row>
+</ion-grid>

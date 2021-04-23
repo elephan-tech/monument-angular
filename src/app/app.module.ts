@@ -42,6 +42,8 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { BlogComponent } from './components/blog/blog.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { KnowledgeTemplateComponent } from './components/knowledge-template/knowledge-template.component';
 
 @NgModule({
   declarations: [
@@ -73,6 +75,8 @@ import { BlogComponent } from './components/blog/blog.component';
     AnimatedComponent,
     NewsMediaComponent,
     BlogComponent,
+    ModalComponent,
+    KnowledgeTemplateComponent,
   ],
   imports: [
     BrowserModule,
@@ -86,7 +90,7 @@ import { BlogComponent } from './components/blog/blog.component';
     MatExpansionModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
   ],
   exports: [
     MatMenuModule,
