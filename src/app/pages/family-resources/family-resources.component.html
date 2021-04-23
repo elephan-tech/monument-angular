@@ -69,10 +69,10 @@
           <ion-card [href]="rs.url" target="_blank">
             <img loading="lazy" [src]="rs.image || '../../../assets/yellow-background.png'">
             <ion-card-header [ngStyle]="{}">
-              <ion-card-title style="text-align: center">
+              <ion-card-title class="card-text">
                 <ion-text>{{rs.title}}</ion-text>
               </ion-card-title>
-              <ion-card-subtitle>{{rs.subtitle || rs.description}}</ion-card-subtitle>
+              <ion-card-subtitle class="card-text">{{rs.subtitle || rs.description}}</ion-card-subtitle>
             </ion-card-header>
 
 
