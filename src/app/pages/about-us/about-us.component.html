@@ -13,7 +13,9 @@
               src="assets/underline-stroke.svg"
               class="underline-stroke"
             />
-            <h3 class="matt-overline">Since 2015</h3>
+            <h3 class="matt-overline">Since 2014</h3>
+            <h3> Monument Academy is a weekday boarding school for students in Washington, DC, currently open to 5-8th graders. </h3>
+            <p> Monument Academy’s DC PCSB Profile can be found <a href="https://www.dcpcsb.org/school/monument-academy-pcs" target="_blank">here.</a></p>
             <p>
               Monument Academy PCS is a weekday boarding school with a mission
               to empower students, particularly those who have experienced
@@ -152,7 +154,7 @@
     </div>
     <ion-row class="ion-justify-content-center">
       <ion-col
-        *ngFor="let item of guidingPrinciples"
+        *ngFor="let principle of guidingPrinciples"
         size-xs="8"
         size-md="4"
         size-lg="3"
@@ -172,11 +174,11 @@
           </div>
           <ion-card-header>
             <ion-card-title>
-              <h4>{{ item.title }}</h4>
+              <h4>{{ principle.title }}</h4>
             </ion-card-title>
           </ion-card-header>
           <ion-card-content>
-            <p>{{ item.description }}</p>
+            <p>{{ principle.description }}</p>
           </ion-card-content>
         </ion-card>
       </ion-col>
@@ -195,7 +197,7 @@
     </div>
     <ion-row class="ion-justify-content-center">
       <ion-col
-        *ngFor="let item of coreValues"
+        *ngFor="let value of coreValues"
         size-xs="8"
         size-md="4"
         size-lg="4"
@@ -213,10 +215,16 @@
           >
             <ion-icon> </ion-icon>
           </div>
-          <ion-card-header>
-            <ion-card-title>
-              {{ item.title }}
+          <ion-card-header class="values-text">
+            <ion-card-title color="primary">
+              {{ value.title }}
             </ion-card-title>
+            <ion-card-subtitle>
+              {{ value.spelling }}
+            </ion-card-subtitle>
+            <ion-card-content>
+              {{ value.description }}
+            </ion-card-content>
           </ion-card-header>
         </ion-card>
       </ion-col>

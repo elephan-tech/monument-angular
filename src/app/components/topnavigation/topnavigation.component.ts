@@ -27,7 +27,7 @@ export interface Social {
 export class TopnavigationComponent implements OnInit {
   isDesktop: boolean;
   showEmergency = true;
-  emergencyMessage = 'EMERGENCY MESSAGE HERE';
+  emergencyMessage = 'COVID-19 INFORMATION';
   phoneNumber = '(202) 545-3180';
   monumentLogo = '../../../assets/monument-main-logo.png';
   brushStroke = '../../../assets/underline-stroke-blue.svg';
@@ -52,6 +52,11 @@ export class TopnavigationComponent implements OnInit {
           name: 'Board Of Directors',
           code: 'BOD',
           href: '/board',
+        },
+        {
+          name: 'Meet Our CEO',
+          code: 'CEO',
+          href: '/meet-our-ceo',
         },
         {
           name: 'Partnerships',
@@ -120,6 +125,11 @@ export class TopnavigationComponent implements OnInit {
           name: 'National School Lunch Program',
           code: 'NSLP',
           href: 'national-lunch-program',
+        },
+        {
+          name: 'Extended Day Learning Opportunities',
+          code: 'EDL',
+          href: 'extended-day-learning',
         },
       ],
       subMenuOpen: false,

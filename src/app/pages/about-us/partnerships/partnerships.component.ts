@@ -21,65 +21,70 @@ export class PartnershipsComponent implements OnInit {
   partners = [
     {
       name: 'City Bridge Foundation',
-      src: 'assets/images/partners/cbf_logo.svg',
+      src: 'cbf_logo.svg',
       url: 'https://citybridge.org/',
     },
     {
       name: 'DC Special Education Cooperative',
-      src: 'assets/images/partners/DC-Special-Education-Cooperative.jpg',
+      src: 'DC-Special-Education-Cooperative.jpg',
       url: 'https://specialedcoop.org/',
     },
     {
       name: 'Milton Hershey School',
-      src: 'assets/images/partners/MHS.png',
+      src: 'MHS.png',
       url: 'https://www.mhskids.org/',
     },
     {
       name: 'EdOps',
-      src: 'assets/images/partners/EdOps.png',
+      src: 'EdOps.png',
       url: 'https://www.ed-ops.com/',
     },
     {
       name: 'Flamboyan Foundation',
-      src: 'assets/images/partners/Flamboyan-Foundation.png',
+      src: 'Flamboyan-Foundation.png',
       url: 'https://flamboyanfoundation.org/',
     },
     {
       name: 'DBT in Schools',
-      src: 'assets/images/partners/DBT.png',
+      src: 'DBT.png',
       url: 'https://www.dbtinschools.com/',
     },
     {
-      name: 'Books',
-      src: 'assets/images/partners/books.png',
+      name: 'Boks',
+      src: 'books.png',
     },
 
     {
       name: 'Junior Achievement',
-      src: 'assets/images/partners/junior-achievement.png',
+      src: 'junior-achievement.png',
       url:
         'https://jausa.ja.org/about/?gclid=EAIaIQobChMI9fiqqMOM8AIVrW5vBB0KawOgEAAYASAAEgINCvD_BwE',
     },
     {
       name: 'Friendship Public Charter School',
-      src: 'assets/images/partners/friendship.svg',
+      src: 'friendship.svg',
       url: 'https://www.friendshipschools.org/',
     },
     {
       name: 'Smile Therapy Services',
-      src: 'assets/images/partners/smile-therapy-services.png',
+      src: 'smile-therapy-services.png',
       url: 'https://www.smiletherapyservices.com/',
     },
     {
       name: 'Elaine Ellis Center of Health',
-      src: 'assets/images/partners/elain-ellis.png',
+      src: 'elain-ellis.png',
       url: 'https://eechealth.com/',
     },
     {
       name: 'The George Washington University',
-      src: 'assets/images/partners/gwu.jpg',
+      src: 'gwu.jpg',
       url: 'https://www.gwu.edu/',
     },
+    {
+      name: 'Chicago School of Professional Psychology',
+      src: 'Chicago-PP-Logo.png',
+      url: 'https://www.thechicagoschool.edu/'
+    }
   ];
 
   leraningCommunities = [
@@ -114,6 +119,11 @@ export class PartnershipsComponent implements OnInit {
       url:
         'https://www.bridgespan.org/bridgespan-services/philanthropy/leading-for-impact-consulting-for-nonprofit-leader',
     },
+    {
+      name: 'Collins Writing Program',
+      src: 'assets/images/partners/cea-logo.jpeg',
+      url: 'https://collinsed.com/'
+    }
   ];
   proBonoAssistance = [
     {

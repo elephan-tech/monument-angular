@@ -43,6 +43,8 @@ import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { BlogComponent } from './components/blog/blog.component';
 import { UpdatesCalendarComponent } from './pages/updates-calendar/updates-calendar.component';
+import { ExtendedDayLearningComponent } from './pages/programs/extended-day-learning/extended-day-learning.component';
+import { MeetOurCeoComponent } from './pages/about-us/meet-our-ceo/meet-our-ceo.component';
 
 @NgModule({
   declarations: [
@@ -75,6 +77,8 @@ import { UpdatesCalendarComponent } from './pages/updates-calendar/updates-calen
     NewsMediaComponent,
     BlogComponent,
     UpdatesCalendarComponent,
+    ExtendedDayLearningComponent,
+    MeetOurCeoComponent,
   ],
   imports: [
     BrowserModule,
