@@ -25,6 +25,7 @@ import { BlogComponent } from './components/blog/blog.component';
 import { UpdatesCalendarComponent } from './pages/updates-calendar/updates-calendar.component';
 import { ExtendedDayLearningComponent } from './pages/programs/extended-day-learning/extended-day-learning.component';
 import { MeetOurCeoComponent } from './pages/about-us/meet-our-ceo/meet-our-ceo.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, //this makes the landing page
@@ -76,6 +77,8 @@ const routes: Routes = [
   { path: 'family-resources', component: FamilyResourcesComponent },
   { path: 'knowledge-center', component: KnowledgeCenterComponent },
   { path: 'updates-calendar', component: UpdatesCalendarComponent },
+  {path: '404', component: NotFoundComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({
