@@ -30,7 +30,7 @@ export class FamilyResourcesComponent implements OnInit {
       subtitle: '',
       description: '',
       image: '',
-      url: 'https://monumentacademy.org/about-us/partnerships/',
+      url: '/partnerships',
     },
     {
       title: 'Family and Student Handbook',
@@ -38,7 +38,7 @@ export class FamilyResourcesComponent implements OnInit {
       description: '',
       image: '',
       url:
-        'https://monumentacademy.org/wp-content/uploads/2020/09/SY20-21_-Family-and-Student-Handbook.pdf',
+        'assets/documents/family-resources/SY20-21_Family-and-Student-Handbook.pdf',
     },
     {
       title: 'Home Access Center',
@@ -61,7 +61,7 @@ export class FamilyResourcesComponent implements OnInit {
       description: '',
       image: '',
       url:
-        'https://monumentacademy.org/wp-content/uploads/2019/06/MA-Bullying-Prevention-Policy-SY-19-20.pdf',
+        'assets/documents/family-resources/MA-Bullying-Prevention-Policy-SY19-20.pdf',
     },
     {
       title: 'Meeting/School Visit Request Form',
@@ -77,7 +77,7 @@ export class FamilyResourcesComponent implements OnInit {
       description: '',
       image: '',
       url:
-        'https://monumentacademy.org/wp-content/uploads/2020/09/Special-Ed-Handbook-2020-2021-Monument-Academy.pdf',
+        'assets/documents/family-resources/Special-Ed-Handbook-2020-2021-Monument-Academy.pdf',
     },
     {
       title: 'School Health Profile 2019-2020',
@@ -85,7 +85,7 @@ export class FamilyResourcesComponent implements OnInit {
       description: '',
       image: '',
       url:
-        'https://monumentacademy.org/wp-content/uploads/2020/07/2020HSAMonument-Academy-PCS_Monument-Academy-PCS.pdf',
+        'https://osse.dc.gov/sites/default/files/dc/sites/osse/page_content/attachments/2020HSA_Monument%20Academy%20PCS_Monument%20Academy%20PCS.pdf',
     },
     {
       title: 'Local Wellness Policy 2019-2020',
@@ -93,7 +93,7 @@ export class FamilyResourcesComponent implements OnInit {
       description: '',
       image: '',
       url:
-        'https://monumentacademy.org/wp-content/uploads/2019/12/MAPCS-Wellness-Policy-SY19-20.pdf',
+        'assets/documents/family-resources/MAPCS-Wellness-Policy-SY19-20.pdf',
     },
     {
       title: 'PCSB Lead Test Results',
@@ -101,7 +101,7 @@ export class FamilyResourcesComponent implements OnInit {
       description: 'Our water is completely safe for students and staff',
       image: '',
       url:
-        'https://monumentacademy.org/wp-content/uploads/2020/01/DC-PCSB-2020-Sampling-Monument-Academy-PCS-web-posting.pdf',
+        'assets/documents/family-resources/FY21-DCPCSB-Lead-in-Water-Sampling-Results-Monument-Academy-PCS.pdf',
     },
   ];
 
