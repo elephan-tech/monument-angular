@@ -18,7 +18,7 @@
         <img
           loading="lazy"
           src="assets/images/hero-main-crop.png"
-          style="width: 100%; margin: auto; max-width: 500px"
+          style="width: 100%; margin: auto"
         />
       </ion-col>
 
@@ -294,7 +294,7 @@
     />
     <ion-grid class="monumental-markers">
       <ion-row style="align-items: center;">
-        <ion-col *ngFor="let marker of monumentalMarkers" size="4" class="emphasize white">
+        <ion-col *ngFor="let marker of monumentalMarkers" size="4" class="emphasize white" style="padding: 5em;">
           <h2 class="marker">
             <span > {{marker.stat}} </span>
           </h2>
