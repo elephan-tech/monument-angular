@@ -364,8 +364,9 @@
       >
         <ion-slide *ngFor="let slide of slides; let i = index">
           <ion-grid class="slide-container">
-            <ion-row>
+            <ion-row style="width: 100%">
               <ion-col
+              size="8"
                 size-xs="12"
                 size-md="6"
                 class="ion-align-items-flex-start"
@@ -373,7 +374,7 @@
                 <h3 class="align-start">{{ slide.title }}</h3>
                 <p class="align-start">{{ slide.description }}</p>
               </ion-col>
-              <ion-col size-xs="12" size-md="6">
+              <ion-col size="4" size-xs="12" size-md="6" >
                 <img
                   loading="lazy"
                   [src]="slide.image"
