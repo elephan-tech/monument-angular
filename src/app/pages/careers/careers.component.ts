@@ -21,19 +21,19 @@ export class CareersComponent implements OnInit {
     {
       jobTitle: 'Houseparent',
       category: 'Student Life',
-      url: '/careers',
+      url: '/assets/documents/careers/Houseparent-Job-Description.pdf',
       shortDescription: '',
     },
     {
       jobTitle: 'School Psychologist',
       category: 'Well-Being',
-      url: '/careers',
+      url: '/assets/documents/careers/School-Psychologist-Job-Description.pdf',
       shortDescription: '',
     },
     {
       jobTitle: 'School Counselor',
       category: 'Well-Being',
-      url: '/careers',
+      url: '/assets/documents/careers/School-Counselor-Job Description.pdf',
       shortDescription: '',
     },
     {
