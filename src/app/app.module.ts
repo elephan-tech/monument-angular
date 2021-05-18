@@ -44,6 +44,7 @@ import { environment } from '../environments/environment';
 import { BlogComponent } from './components/blog/blog.component';
 import { ModalComponent } from './components/modal/modal.component';
 import { KnowledgeTemplateComponent } from './components/knowledge-template/knowledge-template.component';
+import { GraphQLModule } from './graphql.module';
 
 @NgModule({
   declarations: [
@@ -91,6 +92,7 @@ import { KnowledgeTemplateComponent } from './components/knowledge-template/know
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFireDatabaseModule,
+    GraphQLModule,
   ],
   exports: [
     MatMenuModule,
