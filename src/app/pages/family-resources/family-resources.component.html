@@ -24,7 +24,7 @@
         <ion-col>
           <ion-text>
             <h6 class="mat-h2">
-              Our model is guided by the work and best-ion-textractices of the Flamboyan Foundation. We know that
+              Our model is guided by the work and best practices of the Flamboyan Foundation. We know that
               caretakers
               want
               to
@@ -63,16 +63,16 @@
       </ion-col>
     </ion-row>
     <ion-row>
-      <ion-col size-xs="10" offset-xs="1" size-sm="8" offset-sm="2" size-md="6" offset-md="0" size-lg="3"
+      <ion-col sizeXl="3" sizeLg="4" sizeMd="6" sizeSm="6" sizeXs="12"
         *ngFor="let rs of resources">
         <app-animated class="animated" [animation]="'fade-up'">
           <ion-card [href]="rs.url" target="_blank">
             <img loading="lazy" [src]="rs.image || '../../../assets/yellow-background.png'">
             <ion-card-header [ngStyle]="{}">
-              <ion-card-title>
+              <ion-card-title class="card-text">
                 <ion-text>{{rs.title}}</ion-text>
               </ion-card-title>
-              <ion-card-subtitle>{{rs.subtitle || rs.description}}</ion-card-subtitle>
+              <ion-card-subtitle class="card-text">{{rs.subtitle || rs.description}}</ion-card-subtitle>
             </ion-card-header>
 
 

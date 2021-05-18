@@ -1,6 +1,6 @@
 <app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
 
-<section>
+<section id="board-section">
   <p>
     Monument Academy benefits from the leadership of a seasoned Board of
     Directors with extensive expertise across a range of industries. Read on to
@@ -23,47 +23,49 @@
     you need a password reset.
   </p>
   <div *ngFor="let b of board">
-    <ion-grid>
-      <ion-row>
-        <ion-col size="3">
-          <img
-            loading="lazy"
-            [src]="b.bioPic"
-            [alt]="b.name"
-            style="width: 200px"
-          />
-        </ion-col>
-        <ion-col size="9">
-          <h4>
-            <b>{{ b.name }}</b>
-          </h4>
-          <h5>{{ b.title }}</h5>
-          <p [innerHTML]="b.bio"></p>
+    <div [attr.id]="b.scrollId">
+      <ion-grid>
+        <ion-row>
+          <ion-col size="3">
+            <img
+              loading="lazy"
+              [src]="b.bioPic"
+              [alt]="b.name"
+              style="width: 200px"
+            />
+          </ion-col>
+          <ion-col size="9">
+            <h4>
+              <b>{{ b.name }}</b>
+            </h4>
+            <h5>{{ b.title }}</h5>
+            <p [innerHTML]="b.bio"></p>
 
-          <mat-expansion-panel *ngIf="b.excites">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <h5>What Excites You About Monument Academy</h5>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>
-              {{ b.excites }}
-            </p>
-          </mat-expansion-panel>
+            <mat-expansion-panel *ngIf="b.excites">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h5>What Excites You About Monument Academy</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>
+                {{ b.excites }}
+              </p>
+            </mat-expansion-panel>
 
-          <mat-expansion-panel *ngIf="b.favTeacher">
-            <mat-expansion-panel-header>
-              <mat-panel-title>
-                <h5>Favorite Teacher</h5>
-              </mat-panel-title>
-            </mat-expansion-panel-header>
-            <p>
-              {{ b.favTeacher }}
-            </p>
-          </mat-expansion-panel>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+            <mat-expansion-panel *ngIf="b.favTeacher">
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  <h5>Favorite Teacher</h5>
+                </mat-panel-title>
+              </mat-expansion-panel-header>
+              <p>
+                {{ b.favTeacher }}
+              </p>
+            </mat-expansion-panel>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
     <hr />
   </div>
 
