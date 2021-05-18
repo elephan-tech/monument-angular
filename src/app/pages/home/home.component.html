@@ -18,7 +18,7 @@
         <img
           loading="lazy"
           src="assets/images/hero-main-crop.png"
-          style="width: 100%; margin: auto; max-width: 500px"
+          style="width: 100%; margin: auto"
         />
       </ion-col>
 
@@ -294,7 +294,7 @@
     />
     <ion-grid class="monumental-markers">
       <ion-row style="align-items: center;">
-        <ion-col *ngFor="let marker of monumentalMarkers" size="4" class="emphasize white">
+        <ion-col *ngFor="let marker of monumentalMarkers" size="4" class="emphasize white" style="padding: 5em;">
           <h2 class="marker">
             <span > {{marker.stat}} </span>
           </h2>
@@ -364,8 +364,9 @@
       >
         <ion-slide *ngFor="let slide of slides; let i = index">
           <ion-grid class="slide-container">
-            <ion-row>
+            <ion-row style="width: 100%">
               <ion-col
+              size="8"
                 size-xs="12"
                 size-md="6"
                 class="ion-align-items-flex-start"
@@ -373,7 +374,7 @@
                 <h3 class="align-start">{{ slide.title }}</h3>
                 <p class="align-start">{{ slide.description }}</p>
               </ion-col>
-              <ion-col size-xs="12" size-md="6">
+              <ion-col size="4" size-xs="12" size-md="6" >
                 <img
                   loading="lazy"
                   [src]="slide.image"

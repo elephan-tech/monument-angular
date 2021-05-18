@@ -26,8 +26,13 @@ export class EventCalendarComponent implements OnInit {
   // ]
 
   content: any = `
-  <div> <b>April Board Meeting:</b> Wednesday, April, 21st at 6 PM </div>
-  <div> <b>May Board Meeting:</b> Wednesday, May 19th at 6 PM </div>
+  <div>
+  The next <b>MAPCS Board of Directors meeting </b> is Wednesday, May 19th.
+  <br/>
+<a href="https://zoom.us/meeting/register/tJ0rcuypqT4vHNGQqQZiCcCLdKq4-iw0JH8l" target="_blank"> Register </a> to attend.
+  </br>
+  <a href="assets/documents/MAPCS-May-19-2021-Board-Meeting-Agenda.docx" target="_blank">Download</a> the agenda.
+  </div>
   </br>
   <div> <b>More Information</b> and <b>Detailed Calendar</b> <a href="/updates-calendar"> HERE </a> </div>
   </br>

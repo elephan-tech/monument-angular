@@ -63,14 +63,14 @@ export class HomeComponent implements OnInit {
         isBeginningSlide: true,
         isEndSlide: false,
         title: 'Teacher of the Year',
-        description: this.lorem,
+        description: ' COMING SOON ',
         image: '../../../assets/monument-main-logo.png',
       },
       {
         isBeginningSlide: true,
         isEndSlide: false,
         title: 'Student of the Year',
-        description: this.lorem,
+        description: ' COMING SOON ',
         image: '../../../assets/images/hero-main.png',
       },
     ];
