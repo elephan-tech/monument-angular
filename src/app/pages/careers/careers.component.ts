@@ -21,57 +21,52 @@ export class CareersComponent implements OnInit {
     {
       jobTitle: 'Houseparent',
       category: 'Student Life',
-      url:
-        'https://monumentacademy.org/wp-content/uploads/2019/07/Houseparent-Job-Description_FINAL-2019-20.pdf',
+      url: '/assets/documents/careers/Houseparent-Job-Description.pdf',
       shortDescription: '',
     },
     {
       jobTitle: 'School Psychologist',
       category: 'Well-Being',
-      url:
-        'https://monumentacademy.org/wp-content/uploads/2020/07/School-Psychologist-Job-Description-SY2020-21.pdf',
+      url: '/assets/documents/careers/School-Psychologist-Job-Description.pdf',
       shortDescription: '',
     },
     {
       jobTitle: 'School Counselor',
       category: 'Well-Being',
-      url:
-        'https://monumentacademy.org/wp-content/uploads/2020/08/School-Counselor-Job-Description-Template-SY-2019-20-1.pdf',
+      url: '/assets/documents/careers/School-Counselor-Job Description.pdf',
       shortDescription: '',
     },
     {
       jobTitle: 'School Counselor/Clinical Therapist',
       category: 'Well-Being',
-      url:
-        'https://monumentacademy.org/wp-content/uploads/2021/03/School-Counselor_Clinical-Therapist-Job-Description-2020-21.docx.pdf',
+      url: 'assets/documents/careers/School-Counselor-Clinical-Therapist.pdf',
       shortDescription: '',
     },
     {
       jobTitle: 'Special Education Teacher',
       category: 'Academics',
       url:
-        'https://monumentacademy.org/wp-content/uploads/2021/02/Special-Education-Teacher-Job-Description-2020-21.pdf',
+        'assets/documents/careers/Special-Education-Teacher-Job-Description-2020-21.pdf',
       shortDescription: '',
     },
     {
       jobTitle: 'Teacher Assistant',
       category: 'Academics',
       url:
-        'https://monumentacademy.org/wp-content/uploads/2021/03/Teacher-Assistant-Job-Description-SY-2020-21-updated.docx.pdf',
+        'assets/documents/careers/Teacher-Assistant-Job-Description-SY-2020-21.pdf',
       shortDescription: '',
     },
     {
       jobTitle: 'Behavior Specialist',
       category: 'Behavior ',
-      url:
-        'https://monumentacademy.org/wp-content/uploads/2021/03/Behavior-Specialist-Job-Description-2021-22.pdf',
+      url: 'assets/documents/careers/Behavioral-Specialist-JD.pdf',
       shortDescription: '',
     },
     {
       jobTitle: 'Food and Nutrition Associate',
       category: 'Operations',
       url:
-        'https://monumentacademy.org/wp-content/uploads/2021/03/MAPCS-Food-and-Nutrition-Job-Description-2020-21.docx',
+        'assets/documents/careers/MAPCS-Food-and-Nutrition-Job-Description-2020-21.pdf',
       shortDescription: '',
     },
   ];

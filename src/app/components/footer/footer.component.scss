@@ -25,6 +25,11 @@ footer a:visited {
 footer a:hover {
   color: #fecf31 !important;
 }
+
+.active-link {
+  color: var(--ion-color-secondary) !important;
+}
+
 footer section {
   width: 90%;
   margin: auto;

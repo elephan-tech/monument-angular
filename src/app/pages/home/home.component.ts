@@ -27,6 +27,29 @@ export class HomeComponent implements OnInit {
 
   isDesktop: boolean;
 
+  monumentalMarkers = [
+    {
+      stat: 'Top 5% In Instructional Culture',
+      description: `Amongst DC Charter Schools, Per the Fall 2020 Teacher Insight Survey`
+    },
+    {
+      stat: '91.2%',
+      description: `In-Seat Attendance Rate for the 2019-20 School Year`
+    },
+    {
+      stat: `3`,
+      description: `College Visits Per Year`
+    },
+    {
+      stat: `100%`,
+      description: `Of Students Participate in Extended Day Programs`
+    },
+    {
+      stat: `100%`,
+      description: `Of Students Participate in Junior Achievement`
+    }
+  ]
+
   constructor(private screenSizeService: ScreensizeService) {
         this.screenSizeService.isDesktopView().subscribe((isDesktop) => {
       this.isDesktop = isDesktop;
@@ -40,14 +63,14 @@ export class HomeComponent implements OnInit {
         isBeginningSlide: true,
         isEndSlide: false,
         title: 'Teacher of the Year',
-        description: this.lorem,
+        description: ' COMING SOON ',
         image: '../../../assets/monument-main-logo.png',
       },
       {
         isBeginningSlide: true,
         isEndSlide: false,
         title: 'Student of the Year',
-        description: this.lorem,
+        description: ' COMING SOON ',
         image: '../../../assets/images/hero-main.png',
       },
     ];

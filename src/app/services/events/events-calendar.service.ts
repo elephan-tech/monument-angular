@@ -12,8 +12,8 @@ export class EventsCalendarService {
 
   constructor(private http: HttpClient) {}
 
-  getAll(): Observable<any[]> {
-    return this.http.get<any>(this.baseUrl);
+  constructor(private http: HttpClient) {
+
   }
   // get(id: string): Observable<Content> {
   //     return this.http.get<any>(this.baseUrl + '/' + id);
@@ -32,7 +32,10 @@ export class EventsCalendarService {
     return this.blogPostsArray;
   }
 
-  getBlogPostByID(id: string): BlogPost {
-    return this.blogPostsArray.find((b) => b.blogID === id);
-  }
+
+getAllBlogPosts(): BlogPost[] {
+  return this.blogPostsArray.sort((a, b) => {
+      return <any>new Date(b.date) - <any>new Date(a.date);
+    });
+  // return this.blogPostsArray;
 }

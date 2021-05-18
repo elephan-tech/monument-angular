@@ -1,6 +1,7 @@
 .principle {
   text-align: left;
   padding: 16px;
+  height: 100%;
   ion-card-title {
     // font-size: medium;
     // font-weight: 600;
@@ -10,6 +11,10 @@
     font-size: small;
     color: var(--ion-color-medium);
   }
+}
+
+ion-card {
+  min-width: 0px;
 }
 .principle-2 {
   text-align: center;
@@ -23,4 +28,9 @@
 
 section {
   min-height: 50vh;
+}
+
+.values-text {
+  color: var(--ion-color-primary);
+
 }

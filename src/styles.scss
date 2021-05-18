@@ -78,6 +78,7 @@ h1.hero-main {
   font-size: 72px !important;
   text-align: right !important;
   text-transform: capitalize !important;
+  font-weight: bold !important;
 }
 h2 {
   font-family: "Oswald", sans-serif !important;
@@ -128,9 +129,10 @@ header {
   background-position: bottom;
 }
 header.main-hero {
-  min-height: 80vh;
+  min-height: 75vh;
   padding: 2em;
   padding-top: 180px;
+  padding-left: 0px;
 }
 a {
   color: color(links) !important;
@@ -297,13 +299,13 @@ ion-card.hover-card {
   }
 }
 
-span.emphasize {
+.emphasize {
   background-image: url("assets/brush1.png");
-  background-position: center center;
+  background-position: top;
   background-size: contain;
   background-repeat: no-repeat;
 }
 
-span.white {
+.white {
   background-image: url("assets/brush1_white-01.png");
 }

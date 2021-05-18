@@ -6,6 +6,25 @@
   background-size: cover;
 }
 
+.hero-main {
+  margin-left: auto;
+  max-width: 500px;
+}
+
+// .hero-img {
+//   height: 75vh;
+//   background-image: url("../../../assets/images/hero-main.png");
+//   background-position: 0vw;
+//   background-repeat: no-repeat;
+//   background-size: 70%;
+// }
+
+@media screen and (max-width: 475px) {
+  .hero-img {
+    background-image: none;
+  }
+}
+
 h2.brush {
   position: relative;
   color: white;
@@ -124,7 +143,9 @@ ion-fab {
 .wrap-reverse {
   flex-wrap: wrap-reverse;
 }
-
+.hero-responsive-col {
+  min-width: 300px;
+}
 .learn-more {
   transition: 0.3s;
 }
@@ -169,4 +190,27 @@ ion-fab {
     background-position: bottom right;
     background-size: 50%;
   }
+}
+
+@media only screen and (max-width: 480px) {
+  .pillar:hover {
+      background-image: url("../../../assets/column-white.svg");
+  background-position: bottom right;
+  background-size: 40%;
+  background-repeat: no-repeat;
+  transition: 0.3s;
+  }
+}
+
+.monumental-markers {
+  margin-top: 30px;
+}
+
+h2.marker {
+  margin: auto;
+}
+
+p.marker {
+  width: 75%;
+  margin: auto;
 }

@@ -23,12 +23,17 @@ import { FamilyResourcesComponent } from './pages/family-resources/family-resour
 import { KnowledgeCenterComponent } from './pages/knowledge-center/knowledge-center.component';
 import { NewsMediaComponent } from './pages/about-us/news-media/news-media.component';
 import { BlogComponent } from './components/blog/blog.component';
+import { UpdatesCalendarComponent } from './pages/updates-calendar/updates-calendar.component';
+import { ExtendedDayLearningComponent } from './pages/programs/extended-day-learning/extended-day-learning.component';
+import { MeetOurCeoComponent } from './pages/about-us/meet-our-ceo/meet-our-ceo.component';
+import { NotFoundComponent } from './pages/not-found/not-found.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, //this makes the landing page
   { path: 'about-us', component: AboutUsComponent },
   { path: 'team', component: TeamComponent },
   { path: 'board', component: BoardComponent },
+  { path: 'meet-our-ceo', component: MeetOurCeoComponent },
   { path: 'news-media', component: NewsMediaComponent },
   {
     path: 'news-media/:blogID',
@@ -58,15 +63,15 @@ const routes: Routes = [
     path: 'boarding-student-life-program',
     component: BoardingStudentLifeProgramComponent,
   },
-  {
-    path: 'boarding-student-life-program',
-    component: BoardingStudentLifeProgramComponent,
-  },
   { path: 'life-skills-program', component: LifeSkillsComponent },
   { path: 'well-being-program', component: WellBeingComponent },
   {
     path: 'national-lunch-program',
     component: NationalSchoolLunchProgramComponent,
+  },
+  {
+    path: 'extended-day-learning',
+    component: ExtendedDayLearningComponent,
   },
   { path: 'careers', component: CareersComponent },
   { path: 'enrollment', component: EnrollmentComponent },
@@ -79,6 +84,9 @@ const routes: Routes = [
     path: 'knowledge-center/:id',
     component: KnowledgeTemplateComponent,
   },
+  { path: 'updates-calendar', component: UpdatesCalendarComponent },
+  {path: '404', component: NotFoundComponent},
+  {path: '**', redirectTo: '/404'}
 ];
 
 @NgModule({

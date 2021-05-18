@@ -59,7 +59,7 @@ export class AwardsComponent implements OnInit {
       url: 'https://fdnweb.org/ceres/',
     },
     {
-      name: 'The J. Willard and Alice S. Marriot Foundation',
+      name: 'The J. Willard and Alice S. Marriott Foundation',
       src: 'assets/images/awards/Marriott-.jpeg',
       url: 'https://www.marriottfoundation.org/',
     },
@@ -69,7 +69,7 @@ export class AwardsComponent implements OnInit {
       url: 'https://www.waltonfamilyfoundation.org/',
     },
     {
-      name: 'A. James & Alice B. Clrck Foundation',
+      name: 'A. James & Alice B. Clark Foundation',
       src: 'assets/images/awards/clarck-foundation.png',
       url: 'https://clarkfoundationdc.org/',
     },
