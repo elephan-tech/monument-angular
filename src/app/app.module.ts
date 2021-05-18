@@ -42,6 +42,9 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { BlogComponent } from './components/blog/blog.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { KnowledgeTemplateComponent } from './components/knowledge-template/knowledge-template.component';
+import { GraphQLModule } from './graphql.module';
 import { UpdatesCalendarComponent } from './pages/updates-calendar/updates-calendar.component';
 import { ExtendedDayLearningComponent } from './pages/programs/extended-day-learning/extended-day-learning.component';
 import { MeetOurCeoComponent } from './pages/about-us/meet-our-ceo/meet-our-ceo.component';
@@ -77,6 +80,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     AnimatedComponent,
     NewsMediaComponent,
     BlogComponent,
+    ModalComponent,
+    KnowledgeTemplateComponent,
     UpdatesCalendarComponent,
     ExtendedDayLearningComponent,
     MeetOurCeoComponent,
@@ -94,7 +99,8 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     MatExpansionModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    GraphQLModule,
   ],
   exports: [
     MatMenuModule,
