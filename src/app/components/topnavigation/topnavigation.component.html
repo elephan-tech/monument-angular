@@ -2,11 +2,15 @@
   <ion-toolbar
     color="danger"
     id="emergency-toolbar"
-    *ngIf="showEmergency"
+    *ngIf="showEmergency || emergencyMessage"
     id="scroll-display"
     class="scroll-display"
   >
-    <ion-note color="light"> {{ emergencyMessage }} </ion-note>
+    <ion-note color="light">
+      {{ emergencyMessage?.headline }}
+      {{ emergencyMesssage?.details || "" }}
+      {{ emergencyMessage?.link || "" }}</ion-note
+    >
     <ion-buttons slot="primary">
       <ion-button fill="clear" (click)="dismissEmergency()">
         <ion-icon name="close-outline"> </ion-icon>
@@ -22,7 +26,7 @@
     style="--min-height: 5px !important"
   >
     <ion-buttons slot="start">
-      <ion-button href="tel:+{{phoneNumber}}">
+      <ion-button href="tel:+{{ phoneNumber }}">
         <ion-icon name="call"> </ion-icon>
       </ion-button>
       <ion-note color="light">
@@ -31,7 +35,7 @@
     </ion-buttons>
     <ion-buttons slot="primary">
       <ion-button
-        *ngFor="let social of socials"
+        *ngFor="let social of socialData"
         [fill]="social.fill"
         [href]="social.href"
         [target]="social.target"
@@ -48,7 +52,12 @@
         </ion-img>
       </a> -->
       <a routerLink="/" class="first-icon">
-        <img loading="lazy" class="top-logo" id="top-logo-switch" [src]="monumentLogo" />
+        <img
+          loading="lazy"
+          class="top-logo"
+          id="top-logo-switch"
+          [src]="monumentLogo"
+        />
       </a>
 
       <!-- style="width: 100%" -->

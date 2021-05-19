@@ -2,6 +2,10 @@ import { Component, OnInit, HostListener } from '@angular/core';
 import { ScreensizeService } from '../../services/screen-size/screensize.service';
 import { MenuController } from '@ionic/angular';
 import { Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Apollo } from 'apollo-angular';
+import gql from 'graphql-tag';
+import { SOCIAL_QUERY, EMERGENCY_QUERY } from '../../apollo/queries';
 
 export interface NavItem {
   name: string;
@@ -12,11 +16,18 @@ export interface NavItem {
   isFilledButton?: boolean;
 }
 
+export interface EmergencyMessage {
+  headline: string;
+  details?: string;
+  link?: string;
+}
+
 export interface Social {
   icon: string;
   href: string;
   fill: string;
   target: string;
+  display: boolean;
 }
 
 @Component({
@@ -27,7 +38,11 @@ export interface Social {
 export class TopnavigationComponent implements OnInit {
   isDesktop: boolean;
   showEmergency = true;
-  emergencyMessage = 'COVID-19 INFORMATION';
+  emergencyMessage: EmergencyMessage | string = {
+    headline: 'COVID INFO',
+    details: '',
+    link: '',
+  };
   phoneNumber = '(202) 545-3180';
   monumentLogo = '../../../assets/monument-main-logo.png';
   brushStroke = '../../../assets/underline-stroke-blue.svg';
@@ -161,53 +176,19 @@ export class TopnavigationComponent implements OnInit {
       isFilledButton: true,
     },
   ];
+  socialData: Social[];
+  loading = true;
+  errors: any;
 
-  socials: Social[] = [
-    {
-      icon: 'mail',
-      href: '/contact-us',
-      fill: 'clear',
-      target: '',
-    },
-    {
-      icon: 'logo-facebook',
-      href: 'https://www.facebook.com/monumentacademy',
-      fill: 'clear',
-      target: '_blank',
-    },
-    {
-      icon: 'logo-twitter',
-      href: 'https://twitter.com/monumentacademy',
-      fill: 'clear',
-      target: '_blank',
-    },
-    {
-      icon: 'logo-instagram',
-      href: 'https://www.instagram.com/monumentacademy',
-      fill: 'clear',
-      target: '_blank',
-    },
-    {
-      icon: 'logo-linkedin',
-      href:
-        'https://www.linkedin.com/company/monument-academy-public-charter-school/',
-      fill: 'clear',
-      target: '_blank',
-    },
-    {
-      icon: 'logo-vimeo',
-      href:
-        'https://www.instagram.com/explore/locations/307312599426465/monument-academy/',
-      fill: 'clear',
-      target: '_blank',
-    },
-  ];
+  socials: Subscription;
+  emergencies: Subscription;
   aboutUsSubMenu = false;
 
   constructor(
     private screensizeService: ScreensizeService,
     private menu: MenuController,
-    private router: Router
+    private router: Router,
+    private apollo: Apollo
   ) {
     this.screensizeService.isDesktopView().subscribe((isDesktop) => {
       console.log('is desktop view:', isDesktop);
@@ -215,7 +196,25 @@ export class TopnavigationComponent implements OnInit {
     });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.socials = this.apollo
+      .watchQuery<any>({
+        query: SOCIAL_QUERY,
+      })
+      .valueChanges.subscribe((result) => {
+        this.socialData = result.data?.socialMedias;
+        this.loading = result.loading;
+      });
+
+    this.emergencies = this.apollo
+      .watchQuery<any>({
+        query: EMERGENCY_QUERY(1),
+      })
+      .valueChanges.subscribe((result) => {
+        console.log(result.data);
+        this.emergencyMessage = result.data.emergencyMessage;
+      });
+  }
 
   toggleMenu() {
     this.menuIsOpen = !this.menuIsOpen;
