@@ -1,3 +1,4 @@
+import { NavigationEnd, Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 export interface Social {
@@ -42,20 +43,25 @@ export class FooterComponent implements OnInit {
     },
     {
       icon: 'logo-linkedin',
-      href:
-        'https://www.linkedin.com/company/monument-academy-public-charter-school/',
+      href: 'https://www.linkedin.com/company/monument-academy-public-charter-school/',
       fill: 'clear',
       target: '_blank',
     },
     {
       icon: 'logo-vimeo',
-      href:
-        'https://www.instagram.com/explore/locations/307312599426465/monument-academy/',
+      href: 'https://www.instagram.com/explore/locations/307312599426465/monument-academy/',
       fill: 'clear',
       target: '_blank',
     },
   ];
-  constructor() {}
+  currentRoute: string;
+  constructor(public router: Router) {
+    router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.url;
+      }
+    });
+  }
 
   ngOnInit() {}
 

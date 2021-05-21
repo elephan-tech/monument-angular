@@ -1,0 +1,41 @@
+<div style="padding-top: 100px; margin: auto; width: 90%">
+  <ion-title>
+    <h1>Admin Portal</h1>
+  </ion-title>
+</div>
+
+<ion-grid style="margin: auto; width: 90%">
+  <ion-row>
+    <ion-col
+      *ngFor="let item of items"
+      sizeLg="4"
+      sizeMd="6"
+      sizeSm="6"
+      sizeXs="12"
+    >
+      <ion-card
+        class="hover-card"
+        [href]="'admin' + item.url"
+        style="width: 80%; padding: 8px; margin: 8px; min-height: 120px"
+      >
+        <div
+          style="
+            display: flex;
+            padding: 8px;
+            flex-direction: column;
+            justify-content: center !important;
+            align-items: center !important;
+          "
+        >
+          <ion-icon
+            color="primary"
+            slot="icon-only"
+            size="large"
+            [name]="item.icon"
+          ></ion-icon>
+          <h4>{{ item.name }}</h4>
+        </div>
+      </ion-card>
+    </ion-col>
+  </ion-row>
+</ion-grid>

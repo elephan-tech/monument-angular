@@ -3,20 +3,11 @@
     <ion-grid>
       <ion-row>
         <ion-col size="3" size-md="3" size-sm="12">
-          <img
-            src="assets/monument-logo.svg"
-            alt="logo"
-            style="width: 250px"
-            (click)="scrollToTop()"
-          />
+          <img src="assets/monument-logo.svg" alt="logo" style="width: 250px" (click)="scrollToTop()" />
         </ion-col>
         <ion-col size="3" size-md="3" size-sm="12">
           <h4>About Us</h4>
-          <img
-            loading="lazy"
-            src="assets/underline-stroke.svg"
-            style="width: 120px"
-          />
+          <img loading="lazy" src="assets/underline-stroke.svg" style="width: 120px" />
           <p>
             Monument Academy is a weekday boarding school serving students in
             Washington, DC. Our mission is to provide students, particularly
@@ -34,30 +25,23 @@
             NE, Washington, DC 20002
           </p>
           <p>
-            <ion-icon
-              name="phone-portrait-outline"
-              color="secondary"
-            ></ion-icon>
+            <ion-icon name="phone-portrait-outline" color="secondary"></ion-icon>
             (202) 545-3180
           </p>
           <p>Fax: (202) 478-2824</p>
           <h4>Quick Links</h4>
           <a routerLink="/programs" routerLinkActive="active-link">Programs</a>
-          <a routerLink="/news-media"routerLinkActive="active-link">News and Media</a>
-          <a routerLink="/enrollment"routerLinkActive="active-link">Enrollment</a>
-          <a routerLink="/careers"routerLinkActive="active-link">Careers</a>
-          <a routerLink="/contact-us"routerLinkActive="active-link">Contact Us</a>
+          <a routerLink="/news-media" routerLinkActive="active-link">News and Media</a>
+          <a routerLink="/enrollment" routerLinkActive="active-link">Enrollment</a>
+          <a routerLink="/careers" routerLinkActive="active-link">Careers</a>
+          <a routerLink="/contact-us" routerLinkActive="active-link">Contact Us</a>
         </ion-col>
         <ion-col size="3" size-md="3" size-sm="12">
           <h4>Stay Connected</h4>
           <ion-toolbar color="primary" style="--min-height: 10px !important">
             <ion-buttons>
-              <ion-button
-                *ngFor="let social of socials"
-                [fill]="social.fill"
-                [href]="social.href"
-                [target]="social.target"
-              >
+              <ion-button *ngFor="let social of socials" [fill]="social.fill" [href]="social.href"
+                [target]="social.target">
                 <ion-icon [name]="social.icon"></ion-icon>
               </ion-button>
             </ion-buttons>

@@ -1,4 +1,9 @@
-<div [ngStyle]="styleObject" class="toolbar" role="banner">
+<div
+  [ngStyle]="styleObject"
+  *ngIf="route !== 'admin'"
+  class="toolbar"
+  role="banner"
+>
   <img loading="lazy" *ngIf="src" [alt]="alt" [src]="src" />
   <div class="spacer"></div>
 
@@ -9,7 +14,11 @@
       title="{{ section.title }}"
     >
       {{ section.title }}
-      <img loading="lazy" src="assets/public/underline-stroke.svg" class="brush" />
+      <img
+        loading="lazy"
+        src="assets/public/underline-stroke.svg"
+        class="brush"
+      />
     </a>
   </div>
 </div>

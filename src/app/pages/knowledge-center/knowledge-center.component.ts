@@ -1,7 +1,7 @@
 import { Model } from './../../models/knowledge';
 import { KnowledgeService } from './../../services/knowledge.service';
 import { Router } from '@angular/router';
-import { ModalComponent } from './../../components/modal/modal.component';
+import { nent } from './../../components/modal/modal.component';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 
@@ -34,16 +34,16 @@ export class KnowledgeCenterComponent implements OnInit {
   }
 
   async presentModal(card) {
-    const modal = await this.modalController.create({
-      component: ModalComponent,
-      componentProps: {
-        title: card.title,
-        description: card.mainContent,
-        tabs: card.tabs,
-      },
-      cssClass: 'fullscreen',
-    });
-    return await modal.present();
+    // const modal = await this.modalController.create({
+    //   component: ModalComponent,
+    //   componentProps: {
+    //     title: card.title,
+    //     description: card.mainContent,
+    //     tabs: card.tabs,
+    //   },
+    //   cssClass: 'fullscreen',
+    // });
+    // return await modal.present();
   }
 
   navigateTo(url) {

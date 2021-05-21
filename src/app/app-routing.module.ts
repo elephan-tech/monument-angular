@@ -1,3 +1,5 @@
+import { CollectionCrudComponent } from './pages/collection-crud/collection-crud.component';
+import { AdminComponent } from './pages/admin/admin.component';
 import { KnowledgeTemplateComponent } from './components/knowledge-template/knowledge-template.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -85,8 +87,13 @@ const routes: Routes = [
     component: KnowledgeTemplateComponent,
   },
   { path: 'updates-calendar', component: UpdatesCalendarComponent },
-  {path: '404', component: NotFoundComponent},
-  {path: '**', redirectTo: '/404'}
+  { path: 'admin', component: AdminComponent },
+  { path: 'admin/careers', component: CollectionCrudComponent },
+  { path: 'admin/:collectionType', component: CollectionCrudComponent },
+
+  { path: '404', component: NotFoundComponent },
+
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({

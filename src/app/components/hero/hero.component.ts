@@ -10,5 +10,7 @@ export class HeroComponent implements OnInit {
   @Input() pageTitle: string;
   @Input() heroImg?: string;
   @Input() bgImage?: string;
+  @Input() noDecoration?: boolean;
+
   ngOnInit() {}
 }

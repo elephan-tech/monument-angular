@@ -1,0 +1,14 @@
+<table id="datatable" class="datatable">
+  <thead>
+    <tr>
+      <th *ngFor="let col of columns">
+        <ion-card>{{ col.name }}</ion-card>
+      </th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let row of rows">
+      <td>{{ row | json }}</td>
+    </tr>
+  </tbody>
+</table>

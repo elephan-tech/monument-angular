@@ -1,11 +1,11 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ScreensizeService } from '../../services/screen-size/screensize.service';
 import { MenuController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
-import { SOCIAL_QUERY, EMERGENCY_QUERY } from '../../apollo/queries';
+import { SOCIAL_QUERY, EMERGENCY_QUERY } from '../../api/queries';
 
 export interface NavItem {
   name: string;
@@ -38,11 +38,7 @@ export interface Social {
 export class TopnavigationComponent implements OnInit {
   isDesktop: boolean;
   showEmergency = true;
-  emergencyMessage: EmergencyMessage | string = {
-    headline: 'COVID INFO',
-    details: '',
-    link: '',
-  };
+  emergencyMessage: EmergencyMessage;
   phoneNumber = '(202) 545-3180';
   monumentLogo = '../../../assets/monument-main-logo.png';
   brushStroke = '../../../assets/underline-stroke-blue.svg';
@@ -183,21 +179,27 @@ export class TopnavigationComponent implements OnInit {
   socials: Subscription;
   emergencies: Subscription;
   aboutUsSubMenu = false;
+  currentRoute: string;
+  showAdmin = true;
 
   constructor(
     private screensizeService: ScreensizeService,
-    private menu: MenuController,
-    private router: Router,
+    public router: Router,
     private apollo: Apollo
   ) {
     this.screensizeService.isDesktopView().subscribe((isDesktop) => {
       console.log('is desktop view:', isDesktop);
       this.isDesktop = isDesktop;
     });
+    router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.url;
+      }
+    });
   }
 
   ngOnInit() {
-    this.socials = this.apollo
+    this.apollo
       .watchQuery<any>({
         query: SOCIAL_QUERY,
       })
@@ -206,13 +208,16 @@ export class TopnavigationComponent implements OnInit {
         this.loading = result.loading;
       });
 
-    this.emergencies = this.apollo
+    console.log({ socials: this.socials });
+
+    this.apollo
       .watchQuery<any>({
-        query: EMERGENCY_QUERY(1),
+        query: EMERGENCY_QUERY,
       })
       .valueChanges.subscribe((result) => {
-        console.log(result.data);
+        console.log({ emerg: result.data.emergencyMessage.details });
         this.emergencyMessage = result.data.emergencyMessage;
+        this.showEmergency = result.data.emergencyMessage.display;
       });
   }
 
@@ -272,6 +277,8 @@ export class TopnavigationComponent implements OnInit {
     }
     return null;
   }
+
+  login() {}
 
   //
   @HostListener('window:scroll', [])
