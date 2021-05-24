@@ -26,7 +26,7 @@ export interface Social {
 })
 export class TopnavigationComponent implements OnInit {
   isDesktop: boolean;
-  showEmergency = true;
+  showEmergency = false;
   emergencyMessage = 'COVID-19 INFORMATION';
   phoneNumber = '(202) 545-3180';
   monumentLogo = '../../../assets/monument-main-logo.png';
