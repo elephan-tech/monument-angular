@@ -172,6 +172,50 @@ export class TopnavigationComponent implements OnInit {
       isFilledButton: true,
     },
   ];
+  backupSocials: Social[] = [
+    {
+      icon: 'mail',
+      href: 'mailto:info@monumentacademydc.org',
+      fill: 'clear',
+      target: '_blank',
+      display: true,
+    },
+    {
+      icon: 'logo-facebook',
+      href: 'https://www.facebook.com/monumentacademy',
+      fill: 'clear',
+      target: '_blank',
+      display: true,
+    },
+    {
+      icon: 'logo-twitter',
+      href: 'https://twitter.com/monumentacademy',
+      fill: 'clear',
+      target: '_blank',
+      display: true,
+    },
+    {
+      icon: 'logo-instagram',
+      href: 'https://www.instagram.com/monumentacademy',
+      fill: 'clear',
+      target: '_blank',
+      display: true,
+    },
+    {
+      icon: 'logo-linkedin',
+      href: 'https://www.linkedin.com/company/monument-academy-public-charter-school/',
+      fill: 'clear',
+      target: '_blank',
+      display: true,
+    },
+    {
+      icon: 'logo-vimeo',
+      href: 'https://www.instagram.com/explore/locations/307312599426465/monument-academy/',
+      fill: 'clear',
+      target: '_blank',
+      display: true,
+    },
+  ];
   socialData: Social[];
   loading = true;
   errors: any;
@@ -215,9 +259,8 @@ export class TopnavigationComponent implements OnInit {
         query: EMERGENCY_QUERY,
       })
       .valueChanges.subscribe((result) => {
-        console.log({ emerg: result.data.emergencyMessage.details });
         this.emergencyMessage = result.data.emergencyMessage;
-        this.showEmergency = result.data.emergencyMessage.display;
+        this.showEmergency = result?.data?.emergencyMessage?.display;
       });
   }
 

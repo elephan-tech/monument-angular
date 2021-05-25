@@ -87,9 +87,9 @@ const routes: Routes = [
     component: KnowledgeTemplateComponent,
   },
   { path: 'updates-calendar', component: UpdatesCalendarComponent },
-  { path: 'admin', component: AdminComponent },
-  { path: 'admin/careers', component: CollectionCrudComponent },
-  { path: 'admin/:collectionType', component: CollectionCrudComponent },
+  // { path: 'admin', component: AdminComponent },
+  // { path: 'admin/careers', component: CollectionCrudComponent },
+  // { path: 'admin/:collectionType', component: CollectionCrudComponent },
 
   { path: '404', component: NotFoundComponent },
 
