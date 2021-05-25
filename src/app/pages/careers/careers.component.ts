@@ -1,4 +1,7 @@
+import { Apollo } from 'apollo-angular';
+import { Subscription } from 'rxjs';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { CAREER_QUERY } from '../../api/queries';
 
 @Component({
   selector: 'app-careers',
@@ -10,13 +13,24 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 export class CareersComponent implements OnInit {
   pageTitle: string;
   heroImg: string;
+  careerSub: Subscription;
+  careers: any;
 
-  constructor() {}
+  constructor(private apollo: Apollo) {}
 
   ngOnInit() {
     this.pageTitle = 'Careers';
     this.heroImg = 'assets/images/monument-7.png';
+    this.careerSub = this.apollo
+      .watchQuery<any>({
+        query: CAREER_QUERY,
+      })
+      .valueChanges.subscribe((result) => {
+        console.log({ result });
+        this.careers = result.data?.jobPostings;
+      });
   }
+
   jobOpenings = [
     {
       jobTitle: 'Administrative Assistant',
@@ -51,15 +65,13 @@ export class CareersComponent implements OnInit {
     {
       jobTitle: 'Special Education Teacher',
       category: 'Academics',
-      url:
-        'assets/documents/careers/Special-Education-Teacher-Job-Description-2020-21.pdf',
+      url: 'assets/documents/careers/Special-Education-Teacher-Job-Description-2020-21.pdf',
       shortDescription: '',
     },
     {
       jobTitle: 'Teacher Assistant',
       category: 'Academics',
-      url:
-        'assets/documents/careers/Teacher-Assistant-Job-Description-SY-2020-21.pdf',
+      url: 'assets/documents/careers/Teacher-Assistant-Job-Description-SY-2020-21.pdf',
       shortDescription: '',
     },
     {
@@ -71,8 +83,7 @@ export class CareersComponent implements OnInit {
     {
       jobTitle: 'Food and Nutrition Associate',
       category: 'Operations',
-      url:
-        'assets/documents/careers/MAPCS-Food-and-Nutrition-Job-Description-2020-21.pdf',
+      url: 'assets/documents/careers/MAPCS-Food-and-Nutrition-Job-Description-2020-21.pdf',
       shortDescription: '',
     },
   ];
