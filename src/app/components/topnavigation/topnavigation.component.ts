@@ -37,7 +37,7 @@ export interface Social {
 })
 export class TopnavigationComponent implements OnInit {
   isDesktop: boolean;
-  showEmergency = true;
+  showEmergency = false;
   emergencyMessage: EmergencyMessage;
   phoneNumber = '(202) 545-3180';
   monumentLogo = '../../../assets/monument-main-logo.png';

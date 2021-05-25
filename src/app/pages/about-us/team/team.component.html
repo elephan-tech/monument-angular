@@ -22,12 +22,15 @@
           *ngFor="let t of team"
           style="text-align: center; padding: 1em"
         >
+        <ion-avatar style="width: 100px; height: 100px; margin: auto">
           <img
             loading="lazy"
             [src]="t.pic || '../../../../assets/column-white.svg'"
             [alt]="t.name"
-            style="width: 100px; margin: auto"
+
           />
+        </ion-avatar>
+
           <h4>
             <b>{{ t.name }}</b>
           </h4>
@@ -48,12 +51,14 @@
       <ion-row>
         <ion-col size="3"
           ><div [attr.id]="t.scrollId"></div>
+          <ion-avatar style="width: 200px; height: 200px;">
           <img
             loading="lazy"
             [src]="t.pic"
             [alt]="t.name"
-            style="width: 200px"
+
           />
+        </ion-avatar>
         </ion-col>
         <ion-col size="9">
           <h4>

@@ -16,7 +16,7 @@ export class UpdatesCalendarComponent implements OnInit {
     },
     {
     year: '2021-2022',
-    // pdf: ''
+    pdf: '../../../assets/documents/2021-2022-Calendar.pdf'
     }
   ]
 

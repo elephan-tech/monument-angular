@@ -77,7 +77,7 @@ export class TeamComponent implements OnInit {
       title: 'Director of Systems and IT',
       bio:
         'Jeff orchestrated the implementation of a new Student Information System and worked with EmpowerK12 to build data-driven practices into the routines of Monument Academy. This work involves the build-out of a data warehouse and data dashboards. Previously, he spent two years as the Director of Operations at Monument Academy, during which he oversaw purchasing, facilities, compliance, registration, data, information technology, and food service for the school. He earned his MBA at the Yale School of Management and spent six years teaching high school math at the Bronx Academy of Letters in the South Bronx. He has an MA in Secondary Education from the City College of New York and a BA in English and Economics from Northwestern University. ',
-      pic: 'assets/images/team/Jeff-McHugh.png',
+      pic: 'assets/images/team/Jeff-McHugh.jpg',
       scrollId: 'jeffMcHugh',
     },
     {

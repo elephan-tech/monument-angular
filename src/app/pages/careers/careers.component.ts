@@ -33,6 +33,12 @@ export class CareersComponent implements OnInit {
 
   jobOpenings = [
     {
+      jobTitle: 'Administrative Assistant',
+      category: '',
+      url: '/assets/documents/careers/Administrative-Assistant-Description.pdf',
+      shortDescription: ''
+    },
+    {
       jobTitle: 'Houseparent',
       category: 'Student Life',
       url: '/assets/documents/careers/Houseparent-Job-Description.pdf',
@@ -44,12 +50,12 @@ export class CareersComponent implements OnInit {
       url: '/assets/documents/careers/School-Psychologist-Job-Description.pdf',
       shortDescription: '',
     },
-    {
-      jobTitle: 'School Counselor',
-      category: 'Well-Being',
-      url: '/assets/documents/careers/School-Counselor-Job Description.pdf',
-      shortDescription: '',
-    },
+    // {
+    //   jobTitle: 'School Counselor',
+    //   category: 'Well-Being',
+    //   url: '/assets/documents/careers/School-Counselor-Job Description.pdf',
+    //   shortDescription: '',
+    // },
     {
       jobTitle: 'School Counselor/Clinical Therapist',
       category: 'Well-Being',
