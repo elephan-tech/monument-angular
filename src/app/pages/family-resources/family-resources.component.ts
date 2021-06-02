@@ -37,8 +37,7 @@ export class FamilyResourcesComponent implements OnInit {
       subtitle: '',
       description: '',
       image: '',
-      url:
-        'assets/documents/family-resources/SY20-21_Family-and-Student-Handbook.pdf',
+      url: 'assets/documents/family-resources/SY20-21_Family-and-Student-Handbook.pdf',
     },
     {
       title: 'Home Access Center',
@@ -52,56 +51,49 @@ export class FamilyResourcesComponent implements OnInit {
       subtitle: '',
       description: '',
       image: '',
-      url:
-        'https://drive.google.com/file/d/1QS8yFw8KWe1FuPCdVSMkpjTX6m3P2MDB/view?usp=sharing',
+      url: 'https://drive.google.com/file/d/1QS8yFw8KWe1FuPCdVSMkpjTX6m3P2MDB/view?usp=sharing',
     },
     {
       title: 'Bullying Prevention Policy',
       subtitle: '',
       description: '',
       image: '',
-      url:
-        'assets/documents/family-resources/MA-Bullying-Prevention-Policy-SY19-20.pdf',
+      url: 'assets/documents/family-resources/MA-Bullying-Prevention-Policy-SY19-20.pdf',
     },
     {
       title: 'Meeting/School Visit Request Form',
       subtitle: '',
       description: '',
       image: '',
-      url:
-        'https://docs.google.com/forms/d/e/1FAIpQLSfr5g3k6rr2MdN1j-LMhxWRNqljh28Z76H7CiiDkmbo1lw9ag/viewform?usp=sf_link',
+      url: 'https://docs.google.com/forms/d/e/1FAIpQLSfr5g3k6rr2MdN1j-LMhxWRNqljh28Z76H7CiiDkmbo1lw9ag/viewform?usp=sf_link',
     },
     {
       title: 'Special Education Handbook 2020-2021',
       subtitle: '',
       description: '',
       image: '',
-      url:
-        'assets/documents/family-resources/Special-Ed-Handbook-2020-2021-Monument-Academy.pdf',
+      url: 'assets/documents/family-resources/Special-Ed-Handbook-2020-2021-Monument-Academy.pdf',
     },
     {
       title: 'School Health Profile 2019-2020',
       subtitle: '',
       description: '',
       image: '',
-      url:
-        'https://osse.dc.gov/sites/default/files/dc/sites/osse/page_content/attachments/2020HSA_Monument%20Academy%20PCS_Monument%20Academy%20PCS.pdf',
+      url: 'https://osse.dc.gov/sites/default/files/dc/sites/osse/page_content/attachments/2020HSA_Monument%20Academy%20PCS_Monument%20Academy%20PCS.pdf',
     },
     {
-      title: 'Local Wellness Policy 2019-2020',
+      title: 'Local Wellness Policy 2020-2021',
       subtitle: '',
       description: '',
       image: '',
-      url:
-        'assets/documents/family-resources/MAPCS-Wellness-Policy-SY19-20.pdf',
+      url: 'assets/documents/family-resources/MAPCS LWP 21-22.pdf',
     },
     {
       title: 'PCSB Lead Test Results',
       subtitle: '',
       description: 'Our water is completely safe for students and staff',
       image: '',
-      url:
-        'assets/documents/family-resources/FY21-DCPCSB-Lead-in-Water-Sampling-Results-Monument-Academy-PCS.pdf',
+      url: 'assets/documents/family-resources/FY21-DCPCSB-Lead-in-Water-Sampling-Results-Monument-Academy-PCS.pdf',
     },
   ];
 

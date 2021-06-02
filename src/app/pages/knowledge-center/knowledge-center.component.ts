@@ -28,7 +28,6 @@ export class KnowledgeCenterComponent implements OnInit {
     this.pageTitle = 'Knowledge Center';
     this.heroImg = 'assets/images/monument-16.png';
     this.knowledgeService.getAll().subscribe((obs) => {
-      console.log({ obs });
       this.knowledges = obs;
     });
   }
