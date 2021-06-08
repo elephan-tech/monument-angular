@@ -89,11 +89,7 @@ const routes: Routes = [
   { path: 'updates-calendar', component: UpdatesCalendarComponent },
 
   {path: '404', component: NotFoundComponent},
-  {path: '**', redirectTo: '/404'}
-
-  { path: 'admin', component: AdminComponent },
-  { path: 'admin/careers', component: CollectionCrudComponent },
-  { path: 'admin/:collectionType', component: CollectionCrudComponent },
+  {path: '**', redirectTo: '/404'},
 
   { path: 'admin', component: AdminComponent },
   { path: 'admin/careers', component: CollectionCrudComponent },
