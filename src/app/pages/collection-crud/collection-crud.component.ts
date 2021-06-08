@@ -5,6 +5,7 @@ import { Subscription } from 'rxjs';
 import { Apollo } from 'apollo-angular';
 import { Component, ComponentRef, OnInit } from '@angular/core';
 import { join } from 'node:path';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-collection-crud',
@@ -12,16 +13,24 @@ import { join } from 'node:path';
   styleUrls: ['./collection-crud.component.scss'],
 })
 export class CollectionCrudComponent implements OnInit {
-  collectionType: string = 'careers';
+  collectionType: string;
   rows: any;
   columns: any;
   collection: Subscription;
   collectionData: any;
   loading: boolean = true;
 
-  constructor(private apollo: Apollo, private modal: ModalController) {}
+  constructor(private apollo: Apollo, private modal: ModalController, private route: ActivatedRoute) {
+    this.collectionType = (this.route.url as any).value.pop().path;
+  }
 
   ngOnInit(): void {
+//     this.gqlservice.getQuery(CAREER_QUERY)
+//     const queryMap ={
+// careers: CAREER_QUERY,
+// ...
+// }
+// getQuery(queryMap[collectionType])
     this.collection = this.apollo
       .watchQuery<any>({
         query: gql`
@@ -44,7 +53,7 @@ export class CollectionCrudComponent implements OnInit {
         `,
       })
       .valueChanges.subscribe((result) => {
-        console.log({ result });
+        console.log( { result } );
         this.collectionData = result.data.jobPostings;
         this.columns = this.collectionData.map((job) =>
           Object.keys(job)
