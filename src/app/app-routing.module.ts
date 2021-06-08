@@ -95,9 +95,9 @@ const routes: Routes = [
   { path: 'admin/careers', component: CollectionCrudComponent },
   { path: 'admin/:collectionType', component: CollectionCrudComponent },
 
-  // { path: 'admin', component: AdminComponent },
-  // { path: 'admin/careers', component: CollectionCrudComponent },
-  // { path: 'admin/:collectionType', component: CollectionCrudComponent },
+  { path: 'admin', component: AdminComponent },
+  { path: 'admin/careers', component: CollectionCrudComponent },
+  { path: 'admin/:collectionType', component: CollectionCrudComponent },
 ];
 
 @NgModule({
