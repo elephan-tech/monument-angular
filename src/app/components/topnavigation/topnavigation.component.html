@@ -1,45 +1,64 @@
 <nav>
-  <ion-toolbar
-    color="danger"
-    id="emergency-toolbar"
-    *ngIf="showEmergency"
-    id="scroll-display"
-    class="scroll-display"
-  >
-    <ion-note color="light"> {{ emergencyMessage }} </ion-note>
-    <ion-buttons slot="primary">
-      <ion-button fill="clear" (click)="dismissEmergency()">
-        <ion-icon name="close-outline"> </ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
-
-  <ion-toolbar
-    color="primary"
-    id="toolbar"
-    id="scroll-display"
-    class="scroll-display"
-    style="--min-height: 5px !important"
-  >
-    <ion-buttons slot="start">
-      <ion-button href="tel:+{{phoneNumber}}">
-        <ion-icon name="call"> </ion-icon>
-      </ion-button>
+  <div>
+    <ion-toolbar
+      color="danger"
+      id="emergency-toolbar"
+      *ngIf="showEmergency"
+      id="scroll-display"
+      class="scroll-display"
+    >
       <ion-note color="light">
-        {{ phoneNumber }}
+        {{ emergencyMessage?.headline }}
+
+        {{ emergencyMessage?.details }}
       </ion-note>
-    </ion-buttons>
-    <ion-buttons slot="primary">
-      <ion-button
-        *ngFor="let social of socials"
-        [fill]="social.fill"
-        [href]="social.href"
-        [target]="social.target"
-      >
-        <ion-icon [name]="social.icon"></ion-icon>
-      </ion-button>
-    </ion-buttons>
-  </ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button
+          color="light"
+          target="_blank"
+          [href]="emergencyMessage?.link"
+          *ngIf="emergencyMessage?.link"
+        >
+          More details
+        </ion-button>
+      </ion-buttons>
+
+      <ion-buttons slot="end">
+        <ion-button fill="clear" (click)="dismissEmergency()">
+          <ion-icon name="close-outline"> </ion-icon>
+        </ion-button>
+      </ion-buttons>
+    </ion-toolbar>
+    <ion-toolbar
+      color="primary"
+      id="toolbar"
+      id="scroll-display"
+      class="scroll-display"
+      style="--min-height: 5px !important"
+    >
+      <ion-buttons slot="start">
+        <ion-button href="tel:+{{ phoneNumber }}">
+          <ion-icon name="call"> </ion-icon>
+        </ion-button>
+        <ion-note color="light">
+          {{ phoneNumber }}
+        </ion-note>
+      </ion-buttons>
+      <ion-buttons slot="primary">
+        <ion-button
+          *ngFor="let social of backupSocials"
+          [fill]="social.fill"
+          [href]="social.href"
+          [target]="social.target"
+        >
+          <ion-icon [name]="social.icon"></ion-icon>
+        </ion-button>
+        <!-- <ion-button style="margin-left: 8px; border-left: 1px solid white" href="/admin">
+          <ion-icon name="person-circle-outline"></ion-icon>
+        </ion-button> -->
+      </ion-buttons>
+    </ion-toolbar>
+  </div>
 
   <ion-toolbar slot="start" id="topNav">
     <div style="display: flex">
@@ -48,10 +67,16 @@
         </ion-img>
       </a> -->
       <a routerLink="/" class="first-icon">
-        <img loading="lazy" class="top-logo" id="top-logo-switch" [src]="monumentLogo" />
+        <img
+          loading="lazy"
+          class="top-logo"
+          id="top-logo-switch"
+          [src]="monumentLogo"
+        />
       </a>
 
       <!-- style="width: 100%" -->
+
       <ion-buttons
         slot="secondary"
         *ngIf="isDesktop"
@@ -129,6 +154,11 @@
         </div>
       </div>
     </ion-list>
+    <!-- <ion-buttons slot="end" *ngIf="!showAdmin">
+      <ion-button (click)="openDropdown()">
+        <ion-icon name="person-circle-outline" slot="icon-only"></ion-icon>
+      </ion-button>
+    </ion-buttons> -->
   </ion-toolbar>
 
   <ion-list

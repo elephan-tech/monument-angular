@@ -33,7 +33,7 @@ import { IonicModule } from '@ionic/angular';
 import { HeroComponent } from './components/hero/hero.component';
 import { SliderComponent } from './components/slider/slider.component';
 
-import { ReactiveFormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { EventCalendarComponent } from './components/event-calendar/event-calendar.component';
 import { AnimatedComponent } from './components/animated/animated.component';
 import { MatExpansionModule } from '@angular/material/expansion';
@@ -42,10 +42,17 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { environment } from '../environments/environment';
 import { BlogComponent } from './components/blog/blog.component';
+import { KnowledgeTemplateComponent } from './components/knowledge-template/knowledge-template.component';
+import { GraphQLModule } from './graphql.module';
 import { UpdatesCalendarComponent } from './pages/updates-calendar/updates-calendar.component';
 import { ExtendedDayLearningComponent } from './pages/programs/extended-day-learning/extended-day-learning.component';
 import { MeetOurCeoComponent } from './pages/about-us/meet-our-ceo/meet-our-ceo.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { CollectionCrudComponent } from './pages/collection-crud/collection-crud.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { DatatableComponent } from './components/datatable/datatable.component';
+import { AddcareermodalComponent } from './dialogs/careers/addcareermodal/addcareermodal.component';
 
 @NgModule({
   declarations: [
@@ -77,10 +84,15 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     AnimatedComponent,
     NewsMediaComponent,
     BlogComponent,
+    KnowledgeTemplateComponent,
     UpdatesCalendarComponent,
     ExtendedDayLearningComponent,
     MeetOurCeoComponent,
     NotFoundComponent,
+    AdminComponent,
+    CollectionCrudComponent,
+    DatatableComponent,
+    AddcareermodalComponent,
   ],
   imports: [
     BrowserModule,
@@ -94,7 +106,10 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
     MatExpansionModule,
     HttpClientModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule
+    AngularFireDatabaseModule,
+    GraphQLModule,
+    NgxDatatableModule,
+    FormsModule,
   ],
   exports: [
     MatMenuModule,

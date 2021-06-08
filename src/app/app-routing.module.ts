@@ -1,3 +1,6 @@
+import { CollectionCrudComponent } from './pages/collection-crud/collection-crud.component';
+import { AdminComponent } from './pages/admin/admin.component';
+import { KnowledgeTemplateComponent } from './components/knowledge-template/knowledge-template.component';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AwardsComponent } from './pages/about-us/awards/awards.component';
@@ -75,7 +78,14 @@ const routes: Routes = [
   { path: 'careers', component: CareersComponent },
   { path: 'enrollment', component: EnrollmentComponent },
   { path: 'family-resources', component: FamilyResourcesComponent },
-  { path: 'knowledge-center', component: KnowledgeCenterComponent },
+  {
+    path: 'knowledge-center',
+    component: KnowledgeCenterComponent,
+  },
+  {
+    path: 'knowledge-center/:id',
+    component: KnowledgeTemplateComponent,
+  },
   { path: 'updates-calendar', component: UpdatesCalendarComponent },
 
   {path: '404', component: NotFoundComponent},
@@ -85,6 +95,9 @@ const routes: Routes = [
   { path: 'admin/careers', component: CollectionCrudComponent },
   { path: 'admin/:collectionType', component: CollectionCrudComponent },
 
+  // { path: 'admin', component: AdminComponent },
+  // { path: 'admin/careers', component: CollectionCrudComponent },
+  // { path: 'admin/:collectionType', component: CollectionCrudComponent },
 ];
 
 @NgModule({

@@ -1,7 +1,11 @@
 import { Component, OnInit, HostListener } from '@angular/core';
 import { ScreensizeService } from '../../services/screen-size/screensize.service';
 import { MenuController } from '@ionic/angular';
-import { Router } from '@angular/router';
+import { NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { Apollo } from 'apollo-angular';
+import gql from 'graphql-tag';
+import { SOCIAL_QUERY, EMERGENCY_QUERY } from '../../api/queries';
 
 export interface NavItem {
   name: string;
@@ -12,11 +16,18 @@ export interface NavItem {
   isFilledButton?: boolean;
 }
 
+export interface EmergencyMessage {
+  headline: string;
+  details?: string;
+  link?: string;
+}
+
 export interface Social {
   icon: string;
   href: string;
   fill: string;
   target: string;
+  display: boolean;
 }
 
 @Component({
@@ -26,8 +37,8 @@ export interface Social {
 })
 export class TopnavigationComponent implements OnInit {
   isDesktop: boolean;
-  showEmergency = true;
-  emergencyMessage = 'COVID-19 INFORMATION';
+  showEmergency = false;
+  emergencyMessage: EmergencyMessage;
   phoneNumber = '(202) 545-3180';
   monumentLogo = '../../../assets/monument-main-logo.png';
   brushStroke = '../../../assets/underline-stroke-blue.svg';
@@ -161,61 +172,97 @@ export class TopnavigationComponent implements OnInit {
       isFilledButton: true,
     },
   ];
-
-  socials: Social[] = [
+  backupSocials: Social[] = [
     {
       icon: 'mail',
-      href: '/contact-us',
+      href: 'mailto:info@monumentacademydc.org',
       fill: 'clear',
-      target: '',
+      target: '_blank',
+      display: true,
     },
     {
       icon: 'logo-facebook',
       href: 'https://www.facebook.com/monumentacademy',
       fill: 'clear',
       target: '_blank',
+      display: true,
     },
     {
       icon: 'logo-twitter',
       href: 'https://twitter.com/monumentacademy',
       fill: 'clear',
       target: '_blank',
+      display: true,
     },
     {
       icon: 'logo-instagram',
       href: 'https://www.instagram.com/monumentacademy',
       fill: 'clear',
       target: '_blank',
+      display: true,
     },
     {
       icon: 'logo-linkedin',
-      href:
-        'https://www.linkedin.com/company/monument-academy-public-charter-school/',
+      href: 'https://www.linkedin.com/company/monument-academy-public-charter-school/',
       fill: 'clear',
       target: '_blank',
+      display: true,
     },
     {
       icon: 'logo-vimeo',
-      href:
-        'https://www.instagram.com/explore/locations/307312599426465/monument-academy/',
+      href: 'https://www.instagram.com/explore/locations/307312599426465/monument-academy/',
       fill: 'clear',
       target: '_blank',
+      display: true,
     },
   ];
+  socialData: Social[];
+  loading = true;
+  errors: any;
+
+  socials: Subscription;
+  emergencies: Subscription;
   aboutUsSubMenu = false;
+  currentRoute: string;
+  showAdmin = true;
 
   constructor(
     private screensizeService: ScreensizeService,
-    private menu: MenuController,
-    private router: Router
+    public router: Router,
+    private apollo: Apollo
   ) {
     this.screensizeService.isDesktopView().subscribe((isDesktop) => {
       console.log('is desktop view:', isDesktop);
       this.isDesktop = isDesktop;
     });
+    router.events.subscribe((event) => {
+      if (event instanceof NavigationEnd) {
+        this.currentRoute = event.url;
+      }
+    });
   }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.apollo
+      .watchQuery<any>({
+        query: SOCIAL_QUERY,
+      })
+      .valueChanges.subscribe((result) => {
+        this.socialData = result.data?.socialMedias;
+        this.loading = result.loading;
+      });
+
+    console.log({ socials: this.socials });
+
+    this.apollo
+      .watchQuery<any>({
+        query: EMERGENCY_QUERY,
+      })
+      .valueChanges.subscribe((result) => {
+        this.emergencyMessage = result.data.emergencyMessage;
+        this.showEmergency = result?.data?.emergencyMessage?.display;
+      });
+  }
 
   toggleMenu() {
     this.menuIsOpen = !this.menuIsOpen;
@@ -273,6 +320,8 @@ export class TopnavigationComponent implements OnInit {
     }
     return null;
   }
+
+  login() {}
 
   //
   @HostListener('window:scroll', [])

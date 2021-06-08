@@ -1,0 +1,36 @@
+<ion-grid class="admin-grid">
+  <ion-row class="ion-justify-content-between">
+    <ion-col size="6">
+      <ion-title>
+        <h1>{{ collectionType | uppercase }}</h1>
+      </ion-title>
+    </ion-col>
+    <ion-col size="3" class="ion-align-items-center">
+      <ion-button
+        color="primary"
+        type="outlined"
+        expand="block"
+        (click)="addNew()"
+      >
+        <ion-icon slot="start" name="add-outline"></ion-icon>
+        Add new
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size="11">
+      <ngx-datatable
+        class="material"
+        [limit]="8"
+        [rows]="rows"
+        [rowHeight]="50"
+        [columns]="columns"
+        [columnMode]="'force'"
+        [sortType]="'multi'"
+        [headerHeight]="50"
+        [footerHeight]="50"
+      >
+      </ngx-datatable>
+    </ion-col>
+  </ion-row>
+</ion-grid>

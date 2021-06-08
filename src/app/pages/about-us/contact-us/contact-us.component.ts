@@ -1,6 +1,7 @@
 import { MailService } from './../../../services/mail.service';
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { ToastController } from '@ionic/angular';
 
 @Component({
   selector: 'app-contact-us',
@@ -21,7 +22,10 @@ export class ContactUsComponent implements OnInit {
   pageTitle: string;
   heroImg: string;
 
-  constructor(private mailService: MailService) {}
+  constructor(
+    private mailService: MailService,
+    private toast: ToastController
+  ) {}
 
   ngOnInit() {
     this.pageTitle = 'Contact Us';
@@ -30,6 +34,30 @@ export class ContactUsComponent implements OnInit {
 
   onSubmit() {
     const data = this.contactForm.value;
-    this.mailService.sendContactMail(data);
+    this.mailService
+      .sendContactMail(data)
+      .then(async () => {
+        const toast = await this.toast.create({
+          header: 'Message Sent!',
+          message: 'We will reach out shortly',
+          position: 'bottom',
+          color: 'success',
+        });
+        await toast.present();
+      })
+      .catch(async (err) => {
+        const toast = await this.toast.create({
+          header: err,
+          message: 'Close',
+          position: 'bottom',
+          color: 'danger',
+        });
+        await toast.present();
+      })
+      .finally(() => this.resetForm());
+  }
+
+  resetForm() {
+    this.contactForm.reset();
   }
 }
