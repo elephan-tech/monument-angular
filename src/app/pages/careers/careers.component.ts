@@ -33,13 +33,13 @@ export class CareersComponent implements OnInit {
 
   jobOpenings = [
     {
-      jobTitle: 'Administrative Assistant',
+      jobTitle: 'Administrative Assistant (Operations)',
       category: '',
       url: '/assets/documents/careers/Administrative-Assistant-Description.pdf',
       shortDescription: ''
     },
     {
-      jobTitle: 'Houseparent',
+      jobTitle: 'Student Life Advisor',
       category: 'Student Life',
       url: '/assets/documents/careers/Houseparent-Job-Description.pdf',
       shortDescription: '',
@@ -74,12 +74,12 @@ export class CareersComponent implements OnInit {
       url: 'assets/documents/careers/Teacher-Assistant-Job-Description-SY-2020-21.pdf',
       shortDescription: '',
     },
-    {
-      jobTitle: 'Behavior Specialist',
-      category: 'Behavior ',
-      url: 'assets/documents/careers/Behavioral-Specialist-JD.pdf',
-      shortDescription: '',
-    },
+    // {
+    //   jobTitle: 'Behavior Specialist',
+    //   category: 'Behavior ',
+    //   url: 'assets/documents/careers/Behavioral-Specialist-JD.pdf',
+    //   shortDescription: '',
+    // },
     {
       jobTitle: 'Food and Nutrition Associate',
       category: 'Operations',
