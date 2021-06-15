@@ -33,6 +33,7 @@ export class AuthService {
 
 
   login(form: FormGroup): Promise<any> {
+    // TODO: use environment url
     return axios.post('http://localhost:1338/auth/local', {
       identifier: form.value.email,
       password: form.value.password,
