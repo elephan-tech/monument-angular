@@ -18,6 +18,7 @@
     </ion-col>
   </ion-row>
   <ion-row class="ion-justify-content-center">
+    {{collectionData === undefined ? 'undefined' : collectionData |json}}
     <ion-col size="11">
       <ngx-datatable
         class="material"
@@ -30,6 +31,7 @@
         [headerHeight]="50"
         [footerHeight]="50"
       >
+
       </ngx-datatable>
     </ion-col>
   </ion-row>

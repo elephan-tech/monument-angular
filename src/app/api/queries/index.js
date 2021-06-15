@@ -69,9 +69,33 @@ export const CATEGORIES_QUERY = gql`
   }
 `;
 
+export const ANNOUNCEMENT_QUERY = gql`
+ query EmergencyMessage{
+  emergencyMessage{
+    link
+    headline
+    details
+    display
+  }
+}
+`;
+
+export const MOMENTS_QUERY = gql`
+ query EmergencyMessage{
+  emergencyMessage{
+    link
+    headline
+    details
+    display
+  }
+}
+`;
+
 export default {
-  careers: CAREER_QUERY,
+careers: CAREER_QUERY,
 socials: SOCIAL_QUERY,
 articles: ARTICLES_QUERY,
 categories: CATEGORIES_QUERY,
+emergencyMessage: ANNOUNCEMENT_QUERY,
+'monumental-moments': MOMENTS_QUERY
 }

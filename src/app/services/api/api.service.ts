@@ -11,10 +11,10 @@ export class ApiService {
 
   constructor(private apollo: Apollo) { }
 
-  getData(query: any): Subscription {
+  getData(query: any, setData: any, collection?: any): Subscription {
     return this.apollo.watchQuery<any>({query}).valueChanges.subscribe(result => {
-      console.log({result})
-      return result
+      console.log(result.data)
+      return setData(result.data[collection])
     })
   }
 

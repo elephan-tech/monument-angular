@@ -1,15 +1,18 @@
+import { environment } from './../environments/environment';
 import { NgModule } from '@angular/core';
 import { APOLLO_OPTIONS } from 'apollo-angular';
 import { ApolloClientOptions, InMemoryCache } from '@apollo/client/core';
 import { HttpLink } from 'apollo-angular/http';
 
-const uri = 'https://monument-backend.herokuapp.com/graphql';
-// const prodUri = 'http://admin.monumentacademy.org/
 // <-- add the URL of the GraphQL server here
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
+  console.log({environment})
+  const uri = environment.apiUrl;
+  console.log({uri})
   return {
-    link: httpLink.create({ uri }),
+    link: httpLink.create({ uri, method: 'POST' }),
     cache: new InMemoryCache(),
+
   };
 }
 

@@ -38,7 +38,7 @@ export class AdminComponent implements OnInit {
     {
       name: 'Announcements',
       icon: 'megaphone-outline',
-      url: '/announcements',
+      url: '/emergencyMessage',
     },
     {
       name: 'Monument Moments',

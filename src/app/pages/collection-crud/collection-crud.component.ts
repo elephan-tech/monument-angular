@@ -3,7 +3,6 @@ import { AddcareermodalComponent } from './../../dialogs/careers/addcareermodal/
 import { ModalController } from '@ionic/angular';
 import { Subscription } from 'rxjs';
 import { Component, ComponentRef, OnInit } from '@angular/core';
-import { join } from 'node:path';
 import { ActivatedRoute } from '@angular/router';
 import queries from '../../api/queries'
 
@@ -16,7 +15,7 @@ export class CollectionCrudComponent implements OnInit {
   collectionType: string;
   rows: any;
   columns: any;
-  collection: string;
+  collection: Subscription;
   collectionData: any;
   loading: boolean = true;
 
@@ -25,9 +24,30 @@ export class CollectionCrudComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.collectionData = this.api.getData(queries[this.collectionType])
-    console.log({collectionData: this.collectionData})
+    const collectionType = this.collectionType;
+    console.log({collectionType})
+    const query = queries[collectionType];
+    console.log(query, collectionType)
+    const setData = (data) => {
+      console.log({data})
+      this.collectionData = data;
+      this.columns = this.generateColumns(data);
+
+    };
+    this.api.getData(query, setData, collectionType);
   }
+
+  public generateColumns(data){
+    console.log({data})
+    return typeof data === 'object' ? this.mapCols(data) : data.map(item => this.mapCols(item))[0]
+  }
+
+  mapCols(item) {
+    return Object.keys(item).filter(key=> key!== '__typename').reduce((a, b) => [...a, { name: b }], [])
+  }
+
+
+
 
   public async addNew() {
     const collectionModals = {
