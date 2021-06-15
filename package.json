@@ -8,7 +8,8 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "server": "json-server --watch ./src/app/mock.api.json --port 8000"
+    "server": "json-server --watch ./src/app/mock.api.json --port 8000",
+    "service": "cd src/app/services && mkdir $npm_config_service && ng g service $npm_config_service --flat=false"
   },
   "private": true,
   "dependencies": {

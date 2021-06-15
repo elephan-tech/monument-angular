@@ -1,11 +1,11 @@
+import { ApiService } from './../../services/api/api.service';
 import { AddcareermodalComponent } from './../../dialogs/careers/addcareermodal/addcareermodal.component';
 import { ModalController } from '@ionic/angular';
-import { gql } from 'graphql-tag';
 import { Subscription } from 'rxjs';
-import { Apollo } from 'apollo-angular';
 import { Component, ComponentRef, OnInit } from '@angular/core';
 import { join } from 'node:path';
 import { ActivatedRoute } from '@angular/router';
+import queries from '../../api/queries'
 
 @Component({
   selector: 'app-collection-crud',
@@ -16,62 +16,17 @@ export class CollectionCrudComponent implements OnInit {
   collectionType: string;
   rows: any;
   columns: any;
-  collection: Subscription;
+  collection: string;
   collectionData: any;
   loading: boolean = true;
 
-  constructor(private apollo: Apollo, private modal: ModalController, private route: ActivatedRoute) {
+  constructor(private modal: ModalController, private route: ActivatedRoute, private api: ApiService) {
     this.collectionType = (this.route.url as any).value.pop().path;
   }
 
   ngOnInit(): void {
-//     this.gqlservice.getQuery(CAREER_QUERY)
-//     const queryMap ={
-// careers: CAREER_QUERY,
-// ...
-// }
-// getQuery(queryMap[collectionType])
-    this.collection = this.apollo
-      .watchQuery<any>({
-        query: gql`
-          query JobPosting {
-            jobPostings {
-              id
-              title
-              description
-              category {
-                name
-              }
-              link
-              date_posted
-              attachment {
-                name
-                url
-              }
-            }
-          }
-        `,
-      })
-      .valueChanges.subscribe((result) => {
-        console.log( { result } );
-        this.collectionData = result.data.jobPostings;
-        this.columns = this.collectionData.map((job) =>
-          Object.keys(job)
-            .filter((key) => key !== '__typename')
-            .reduce((a, b) => [...a, { name: b }], [])
-        )[0];
-        this.rows = this.collectionData.reduce((acc, job) => {
-          const cleanData = {
-            ...job,
-            category: job.category?.name,
-            date_posted: job.date_posted,
-            attachment: !!job.attachment?.length ? '✅' : '❌',
-            actions: 'click',
-          };
-          return [...acc, cleanData];
-        }, []);
-        this.loading = result.loading;
-      });
+    this.collectionData = this.api.getData(queries[this.collectionType])
+    console.log({collectionData: this.collectionData})
   }
 
   public async addNew() {

@@ -23,7 +23,7 @@ export class AdminComponent implements OnInit {
     {
       name: 'News & Media',
       icon: 'newspaper-outline',
-      url: 'news-media',
+      url: '/news-media',
     },
     {
       name: 'Careers',

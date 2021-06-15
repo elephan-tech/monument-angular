@@ -68,3 +68,10 @@ export const CATEGORIES_QUERY = gql`
     }
   }
 `;
+
+export default {
+  careers: CAREER_QUERY,
+socials: SOCIAL_QUERY,
+articles: ARTICLES_QUERY,
+categories: CATEGORIES_QUERY,
+}
