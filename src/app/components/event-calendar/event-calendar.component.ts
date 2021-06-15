@@ -25,13 +25,22 @@ export class EventCalendarComponent implements OnInit {
   //   {type:"closing",content: "Check out our recent feature on CBS This Morning HERE!" }
   // ]
 
+
+  // Esto es lo que va a ser dinamico en el futuro. @TODO Strapi Single-Type de event-calendar
+  public dynamic = {
+    date: 'Wednesday, June 16th', // <--- date type con formato
+    url:'https://zoom.us/meeting/register/tJ0rcuypqT4vHNGQqQZiCcCLdKq4-iw0JH8l',
+    doc: 'MAPCS_June_16_2021_Board_Meeting_Agenda.pdf'
+  }
+
+
   content: any = `
   <div>
-  The next <b>MAPCS Board of Directors meeting </b> is Wednesday, May 19th.
+  The next <b>MAPCS Board of Directors meeting </b> is ${this.dynamic.date}.
   <br/>
-<a href="https://zoom.us/meeting/register/tJ0rcuypqT4vHNGQqQZiCcCLdKq4-iw0JH8l" target="_blank"> Register </a> to attend.
+<a href="${this.dynamic.url}" target="_blank"> Register </a> to attend.
   </br>
-  <a href="assets/documents/MAPCS-May-19-2021-Board-Meeting-Agenda.docx" target="_blank">Download</a> the agenda.
+  <a href="assets/documents/${this.dynamic.doc}" target="_blank">Download</a> the agenda.
   </div>
   </br>
   <div> <b>More Information</b> and <b>Detailed Calendar</b> <a href="/updates-calendar"> HERE </a> </div>
