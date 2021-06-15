@@ -1,0 +1,36 @@
+<app-hero pageTitle="Admin Login"></app-hero>
+<section>
+  <ion-card>
+    <form [formGroup]="loginForm" (submit)="login()">
+      <ion-item lines="none" *ngIf="loginForm.errors?.invalid">
+        <ion-label color="danger">
+          {{ error?.message[0]?.messages[0]?.message }}
+        </ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-label for="email" position="floating" color="primary"
+          >Email:
+        </ion-label>
+        <ion-input formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label for="password" position="floating" color="primary"
+          >Password:
+        </ion-label>
+        <ion-input formControlName="password" type="password"></ion-input>
+      </ion-item>
+
+      <div class="login-div">
+        <ion-button
+          expand="full"
+          color="secondary"
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          Login
+        </ion-button>
+      </div>
+    </form>
+  </ion-card>
+</section>
