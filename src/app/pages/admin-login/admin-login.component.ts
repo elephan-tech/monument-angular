@@ -39,23 +39,28 @@ export class AdminLoginComponent implements OnInit {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
-    })
+    });
+    if(this.authService.loggedIn) {
+        this.router.navigate(['/admin']);
+    }
   }
 
   ngOnInit(): void {
   }
 
   login() {
-    this.authService.login(this.loginForm).then((res) => {
-      this.authService.setUser(res.data);
-      this.router.navigate(['/admin']);
-      // set logged in to true and then redirect to /admin
-    }).catch((err) => {
-      console.log(err.response);
-      this.loginForm.setErrors({
+    this.authService.login(this.loginForm).then((res: any) => {
+      if(res.user) {
+        this.router.navigate(['/admin']);
+      } else {
+        this.error = res.msg;
+        this.loginForm.setErrors({
         invalid: true
       })
-      this.error = err.response.data;
+      }
+    }).catch((err) => {
+      console.log(err);
     })
   }
+
 }

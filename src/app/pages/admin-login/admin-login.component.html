@@ -4,7 +4,7 @@
     <form [formGroup]="loginForm" (submit)="login()">
       <ion-item lines="none" *ngIf="loginForm.errors?.invalid">
         <ion-label color="danger">
-          {{ error?.message[0]?.messages[0]?.message }}
+          {{ error }}
         </ion-label>
       </ion-item>
       <ion-item>

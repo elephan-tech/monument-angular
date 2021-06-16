@@ -1,7 +1,11 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import axios from 'axios';
 import { Observable, BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
+
 
 
 
@@ -10,67 +14,52 @@ import { Observable, BehaviorSubject } from 'rxjs';
 })
 export class AuthService {
   loggedInUser: any;
-  token: string;
   isLoggedIn$ =  new BehaviorSubject<boolean>(false);
 
-  constructor() { }
+  constructor(
+  private router: Router
+  ) {
+   }
 
   checkIfLoggedIn() {
-    if(this.isLoggedIn$.getValue()) {
+    if(this.loggedIn) {
       return true;
     } else {
       return false;
     }
   }
 
-  setUser(userData) {
-    this.loggedInUser = userData.user;
-    this.token = userData.jwt;
-    // TODO:
-    localStorage.setItem('access_token', userData.jwt);
-    this.isLoggedIn$.next(true);
+  public get loggedIn(): boolean {
+    // TODO: FIX LOGIC SO WE DONT GET HACKED
+    return (localStorage.getItem('access_token') !== null);
   }
 
+  private get token(): string {
+    return localStorage.getItem("access");
+  }
 
-  login(form: FormGroup): Promise<any> {
+  login(form: FormGroup): Promise<boolean> {
     // TODO: use environment url
     return axios.post('http://localhost:1338/auth/local', {
       identifier: form.value.email,
       password: form.value.password,
+    }).then((res: any) => {
+        localStorage.setItem('access_token', res.data.jwt);
+        return res.data;
+    }).catch((err: any) => {
+      // do we want to return the whole obj or just false?
+      const errObject = {
+        error: err.response.data.error,
+        msg: err.response.data.message[0].messages[0].message,
+        msgId: err.response.data.message[0].messages[0].id,
+        statusCode: err.response.data.statusCode
+      }
+      return errObject;
     })
   }
 
-// if (data) {
-//   console.log(data);
-// } else {
-
-// }
-
-//     console.log(data);
-//     console.log('loggin in !', data)
-// {
-//     "statusCode": 400,
-//     "error": "Bad Request",
-//     "message": [
-//         {
-//             "messages": [
-//                 {
-//                     "id": "Auth.form.error.invalid",
-//                     "message": "Identifier or password invalid."
-//                 }
-//             ]
-//         }
-//     ],
-//     "data": [
-//         {
-//             "messages": [
-//                 {
-//                     "id": "Auth.form.error.invalid",
-//                     "message": "Identifier or password invalid."
-//                 }
-//             ]
-//         }
-//     ]
-// }
-//   }
+  logout() {
+    localStorage.removeItem('access_token');
+    this.router.navigate(["/admin-login"]);
+  }
 }
