@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Apollo } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
@@ -11,10 +12,13 @@ interface collectionType {}
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  // Emergency Bar
-  // Calendar Widget
-  // News & Media
-  // Careers
+  apiUrl = environment.apiUrl;
+  // Emergency Bar @done
+  // TODO News & Media
+  // TODO National School Lunch Program
+  // TODO Family Resources
+  // TODO Board Of Directors (meeting minutes)
+
   items = [
     {
       name: 'Events',
@@ -53,8 +57,11 @@ export class AdminComponent implements OnInit {
     },
   ];
 
-  constructor(private menu: MenuController, private apollo: Apollo,
-  private authService: AuthService) {}
+  constructor(
+    private menu: MenuController,
+    private apollo: Apollo,
+    private authService: AuthService
+  ) {}
 
   ngOnInit(): void {}
 
