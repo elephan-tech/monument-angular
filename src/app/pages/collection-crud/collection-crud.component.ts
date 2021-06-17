@@ -1,9 +1,15 @@
+import { DocumentNode } from 'graphql';
 import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  Validators,
+} from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { ModalController } from '@ionic/angular';
-import { dropWhile, isArray, startCase, camelCase } from 'lodash';
+import { AlertController, ModalController } from '@ionic/angular';
+import { dropWhile, isArray, startCase, camelCase, map } from 'lodash';
 import { CollectionModalComponent } from 'src/app/dialogs/collections/collection-modal/collection-modal.component';
 import queries from '../../api/queries';
 import { ApiService } from './../../services/api/api.service';
@@ -13,6 +19,7 @@ type TypeType = boolean | string | object | Date | undefined;
 type CollectionData = {
   [key: string]: TypeType | TypeType[];
 };
+
 @Component({
   selector: 'app-collection-crud',
   templateUrl: './collection-crud.component.html',
@@ -25,8 +32,17 @@ export class CollectionCrudComponent implements OnInit {
   title: string;
   fields: CollectionData;
   collectionForm: FormGroup;
+  dataObs: Subscription;
   deleteSubscription: Subscription;
   editMode = false;
+  query: DocumentNode;
+  alertForm = new FormGroup({
+    Headline: new FormControl(''),
+    Details: new FormControl(''),
+    Link: new FormControl(''),
+    Display: new FormControl(''),
+  });
+  alertData: CollectionData;
   fieldTypes = {
     boolean: 'toggle',
     string: 'text',
@@ -40,23 +56,28 @@ export class CollectionCrudComponent implements OnInit {
     private modal: ModalController,
     private route: ActivatedRoute,
     private api: ApiService,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    public alertController: AlertController
   ) {
     this.collectionType = (this.route.url as any).value.pop().path;
   }
 
   ngOnInit(): void {
     this.title = startCase(this.collectionType);
-    const query = queries[this.collectionType];
-    console.log({ query });
+    this.query = queries[this.collectionType];
+    this.getData(this.query);
+  }
+
+  public getData(query) {
     const setData = (data) => {
       console.log({ data });
       this.collectionData = data;
       this.fields = this.generateKvp(data);
-      console.log('fields', this.fields);
-      this.collectionForm = this.generateForm(this.fields);
+      this.collectionForm =
+        this.collectionType !== 'emergencyMessage' &&
+        this.generateForm(this.fields);
     };
-    this.api.getData(query, setData, this.collectionType);
+    this.dataObs = this.api.getData(query, setData, this.collectionType);
   }
 
   public generateForm(data): FormGroup {
@@ -95,6 +116,7 @@ export class CollectionCrudComponent implements OnInit {
   }
 
   mapCols(item) {
+    console.log({ item });
     const kvp = Object.entries(item).map((entry) => {
       const [key, val] = entry;
       const value = () => {
@@ -138,11 +160,33 @@ export class CollectionCrudComponent implements OnInit {
     return await modal.present();
   }
 
-  public delete(e) {
-    this.deleteSubscription = this.api.delete(
-      this.collectionType,
-      e.currentTarget.id
-    );
+  async delete(e) {
+    console.log(e.currentTarget.id);
+    const id = e.currentTarget.id;
+    const alert = await this.alertController.create({
+      cssClass: 'my-custom-class',
+      subHeader: 'Deleting',
+      message: `Are you sure you want to delete this ${this.collectionType} entry?`,
+      buttons: [
+        {
+          text: 'Cancel',
+          role: 'cancel',
+          handler: () => console.log('cancel'),
+        },
+        {
+          text: 'Delete',
+          role: 'delete',
+          cssClass: 'danger',
+          handler: () => {
+            this.api.delete(this.collectionType, id);
+          },
+        },
+      ],
+    });
+
+    await alert.present();
+
+    await alert.onDidDismiss();
   }
 
   public async addNew() {
@@ -157,5 +201,14 @@ export class CollectionCrudComponent implements OnInit {
       },
     });
     return await modal.present();
+  }
+
+  public alertSubmit() {
+    const data = this.alertForm.value;
+    this.api
+      .update('emergencyMessage', 1, data)
+      .toPromise()
+      .then((r) => console.log({ r }))
+      .catch((err) => console.error({ err }));
   }
 }

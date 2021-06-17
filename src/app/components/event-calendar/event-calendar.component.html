@@ -100,6 +100,63 @@
             </ion-card>
 
             <ion-list-header lines="full">
+              <ion-text color="medium"><p>Past Events</p></ion-text>
+            </ion-list-header>
+
+            <ion-card
+              class="event-card"
+              *ngFor="let event of eventData"
+              [hidden]="!event?.display || eventDate(event?.date) >= today"
+            >
+              <ion-card-header>
+                <ion-toolbar mode="md">
+                  <ion-card-title color="primary" style="text-align: start">{{
+                    event?.name
+                  }}</ion-card-title>
+                  <ion-card-subtitle style="text-align: start">
+                    <div style="display: flex; align-items: center">
+                      <ion-icon
+                        slot="start"
+                        name="calendar-outline"
+                        style="margin-right: 4px"
+                      ></ion-icon>
+                      <ion-text>{{
+                        eventDate(event?.date) | date: "fullDate"
+                      }}</ion-text>
+                    </div>
+                    <div style="display: flex; align-items: center">
+                      <ion-icon
+                        slot="start"
+                        name="time-outline"
+                        style="margin-right: 4px"
+                      ></ion-icon>
+                      <ion-text>
+                        {{
+                          eventDate(event?.date) | date: "shortTime"
+                        }}</ion-text
+                      >
+                    </div>
+                  </ion-card-subtitle>
+                  <ion-buttons slot="end" fill="solid">
+                    <div
+                      class="event-link"
+                      *ngIf="event?.localAsset || event?.file.url"
+                    >
+                      <a
+                        [href]="
+                          '../../../assets/documents/' + event?.localAsset
+                        "
+                        target="_blank"
+                      >
+                        Download
+                      </a>
+                    </div>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-card-header>
+            </ion-card>
+
+            <ion-list-header lines="full">
               <ion-text color="medium"><p>Announcements</p></ion-text>
             </ion-list-header>
 

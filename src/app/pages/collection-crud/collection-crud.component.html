@@ -11,69 +11,96 @@
         type="outlined"
         expand="block"
         (click)="addNew()"
+        *ngIf="collectionType !== 'emergencyMessage'"
       >
         <ion-icon slot="start" name="add-outline"></ion-icon>
         Add new
       </ion-button>
     </ion-col>
   </ion-row>
-  <ion-row>
-    <ion-text *ngIf="!collectionData?.length" style="text-align: center">
-      <h6>No {{ collectionType }} data to display</h6></ion-text
-    >
-  </ion-row>
-  <ion-row *ngFor="let item of fields">
-    <ion-col>
-      <ion-card class="data-row">
-        <ion-row>
-          <ion-col
-            *ngFor="let field of item"
-            [hidden]="field.key === 'Id'"
-            size="1"
-          >
-            <div>
+  <div *ngIf="collectionType === 'emergencyMessage'">
+    <form [formGroup]="alertForm" (submit)="alertSubmit()">
+      <ion-item
+        *ngFor="let item of fields"
+        [hidden]="item.key === '__typename'"
+      >
+        <ion-label position="stacked">{{ item?.key }}</ion-label>
+        <ion-input
+          type="item?.type"
+          *ngIf="item?.key !== 'Display'"
+          [formControlName]="item?.key"
+          [value]="item?.value"
+          [placeholder]="item?.value"
+        ></ion-input>
+        <ion-toggle
+          *ngIf="item?.key === 'Display'"
+          formControlName="Display"
+          [checked]="item.value"
+        ></ion-toggle>
+      </ion-item>
+      <ion-button color="primary" (click)="alertSubmit()">Submit</ion-button>
+    </form>
+  </div>
+  <div *ngIf="collectionType !== 'emergencyMessage'">
+    <ion-row>
+      <ion-text *ngIf="!collectionData?.length" style="text-align: center">
+        {{ collectionData | json }}
+        <h6>No {{ collectionType }} data to display</h6></ion-text
+      >
+    </ion-row>
+    <ion-row *ngFor="let item of fields">
+      <ion-col>
+        <ion-card class="data-row">
+          <ion-row>
+            <ion-col
+              *ngFor="let field of item"
+              [hidden]="field.key === 'Id'"
+              size="1"
+            >
               <div>
-                <ion-text color="primary"
-                  ><b>{{ field.key | uppercase }}</b></ion-text
-                >
-              </div>
-              <div class="field-value">
-                <a *ngIf="field.key === 'Link'" [href]="field.value"
-                  ><ion-icon slot="icon-only" name="open-outline"></ion-icon
-                ></a>
-                <div *ngIf="field.key === 'Display'">
-                  {{ field.value ? "✅" : "❌" }}
+                <div>
+                  <ion-text color="primary"
+                    ><b>{{ field.key | uppercase }}</b></ion-text
+                  >
                 </div>
-                <div *ngIf="!specialFields.includes(field.key)">
-                  {{ field.value === "undefined" ? "" : field.value }}
+                <div class="field-value">
+                  <a *ngIf="field.key === 'Link'" [href]="field.value"
+                    ><ion-icon slot="icon-only" name="open-outline"></ion-icon
+                  ></a>
+                  <div *ngIf="field.key === 'Display'">
+                    {{ field.value ? "✅" : "❌" }}
+                  </div>
+                  <div *ngIf="!specialFields.includes(field.key)">
+                    {{ field.value === "undefined" ? "" : field.value }}
+                  </div>
                 </div>
               </div>
-            </div>
-          </ion-col>
-          <ion-col>
-            <div>
-              <ion-text color="primary"><b>ACTIONS</b></ion-text>
-            </div>
-            <div>
-              <ion-button
-                (click)="editEntry($event)"
-                color="primary"
-                fill="clear"
-                slot="icon-only"
-                ><ion-icon size="small" name="create-outline"></ion-icon
-              ></ion-button>
-              <ion-button
-                (click)="delete($event)"
-                [id]="item[0].value"
-                color="danger"
-                fill="clear"
-                slot="icon-only"
-                ><ion-icon size="small" name="trash-outline"></ion-icon
-              ></ion-button>
-            </div>
-          </ion-col>
-        </ion-row>
-      </ion-card>
-    </ion-col>
-  </ion-row>
+            </ion-col>
+            <ion-col>
+              <div>
+                <ion-text color="primary"><b>ACTIONS</b></ion-text>
+              </div>
+              <div>
+                <ion-button
+                  (click)="editEntry($event)"
+                  color="primary"
+                  fill="clear"
+                  slot="icon-only"
+                  ><ion-icon size="small" name="create-outline"></ion-icon
+                ></ion-button>
+                <ion-button
+                  (click)="delete($event)"
+                  [id]="item[0].value"
+                  color="danger"
+                  fill="clear"
+                  slot="icon-only"
+                  ><ion-icon size="small" name="trash-outline"></ion-icon
+                ></ion-button>
+              </div>
+            </ion-col>
+          </ion-row>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </div>
 </ion-grid>
