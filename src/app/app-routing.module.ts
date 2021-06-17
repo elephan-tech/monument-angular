@@ -29,6 +29,9 @@ import { UpdatesCalendarComponent } from './pages/updates-calendar/updates-calen
 import { ExtendedDayLearningComponent } from './pages/programs/extended-day-learning/extended-day-learning.component';
 import { MeetOurCeoComponent } from './pages/about-us/meet-our-ceo/meet-our-ceo.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
+
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, //this makes the landing page
@@ -87,11 +90,12 @@ const routes: Routes = [
     component: KnowledgeTemplateComponent,
   },
   { path: 'updates-calendar', component: UpdatesCalendarComponent },
+  { path: 'admin-login', component: AdminLoginComponent },
 
 
-  { path: 'admin', component: AdminComponent },
-  // { path: 'admin/careers', component: CollectionCrudComponent },
-  { path: 'admin/:collectionType', component: CollectionCrudComponent },
+
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard]},
+  { path: 'admin/:collectionType', component: CollectionCrudComponent, canActivate: [AuthGuard] },
 
   {path: '404', component: NotFoundComponent},
   {path: '**', redirectTo: '/404'},
