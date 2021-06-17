@@ -27,9 +27,7 @@
             ></ion-toggle>
             <ion-datetime
               *ngIf="field?.key === 'Date'"
-              displayFormat="DDD. MMM DD, YY"
               placeholder="Select Date"
-              monthShortNames="jan, feb, mar, apr, may, jun, jul, aug, sep, oct, nov, dic"
               formControlName="date"
               [value]="date"
             ></ion-datetime>

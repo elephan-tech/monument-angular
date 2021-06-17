@@ -8,8 +8,9 @@
       class="scroll-display"
     >
       <ion-note color="light">
-        {{ emergencyMessage?.headline }}
-
+        <b> {{ emergencyMessage?.headline.toUpperCase() }}</b>
+      </ion-note>
+      <ion-note color="light">
         {{ emergencyMessage?.details }}
       </ion-note>
       <ion-buttons slot="end">

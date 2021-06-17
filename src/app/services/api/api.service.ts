@@ -15,9 +15,10 @@ export class ApiService {
   constructor(private apollo: Apollo) {}
 
   private graphqlJSON(array) {
-    return replace(JSON.stringify(array), /"([^"]+)":/g, '$1:')
-      .replace(/\uFFFF/g, '\\"')
-      .toLowerCase();
+    return replace(JSON.stringify(array), /"([^"]+)":/g, '$1:').replace(
+      /\uFFFF/g,
+      '\\"'
+    );
   }
 
   getData(
@@ -112,25 +113,14 @@ export class ApiService {
       id: ${id}
       }`;
 
-    console.log(`
-      mutation ${startCase(collection).split(' ').join('')} {
-        update${startCase(entry).split(' ').join('')}(input: {
-         ${whereClause}
-        data: ${payload}
-      }){
-        ${entry}{
-          id
-        }
-      }
-      }
-      `);
-
     return this.apollo.mutate({
       mutation: gql`
       mutation ${startCase(collection).split(' ').join('')} {
         update${startCase(entry).split(' ').join('')}(input: {
          ${whereClause}
-        data: ${payload}
+        data: ${
+          collection === 'emergencyMessage' ? payload.toLowerCase() : payload
+        }
       }){
         ${entry}{
           id

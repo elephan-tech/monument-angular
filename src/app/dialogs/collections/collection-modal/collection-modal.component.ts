@@ -36,15 +36,15 @@ export class CollectionModalComponent implements OnInit {
     this.clearInput = false;
     this.fields = this.fields[0];
     this.entry = startCase(pluralize.singular(this.collection));
-    console.log(this.api.getFields(this.collection));
-    this.fieldsFoo = this.api
-      .getFields(this.collection)
-      .then((res) => console.log({ res }))
-      .catch((err) => console.warn({ err }));
+    // this.fieldsFoo = this.api
+    //   .getFields(this.collection)
+    //   .then((res) => console.log({ res }))
+    //   .catch((err) => console.warn({ err }));
   }
 
   createEntry() {
-    const data = this.form.value;
+    const { value } = this.form;
+    const data = { ...value, date: new Date(value?.date || '') };
     const edit = this.editMode;
     console.log({ edit });
     edit
