@@ -54,6 +54,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { DatatableComponent } from './components/datatable/datatable.component';
 import { EnvTagComponent } from './components/env-tag/env-tag.component';
 import { CollectionModalComponent } from './dialogs/collections/collection-modal/collection-modal.component';
+import { AddcareermodalComponent } from './dialogs/careers/addcareermodal/addcareermodal.component';
+import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 
 @NgModule({
   declarations: [
@@ -91,6 +93,7 @@ import { CollectionModalComponent } from './dialogs/collections/collection-modal
     MeetOurCeoComponent,
     NotFoundComponent,
     AdminComponent,
+    AdminLoginComponent,
     CollectionCrudComponent,
     DatatableComponent,
     EnvTagComponent,

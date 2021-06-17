@@ -2,6 +2,7 @@ import { Apollo } from 'apollo-angular';
 import { Subscription } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { AuthService } from '../../services/auth/auth.service';
 
 interface collectionType {}
 @Component({
@@ -52,7 +53,12 @@ export class AdminComponent implements OnInit {
     },
   ];
 
-  constructor(private menu: MenuController, private apollo: Apollo) {}
+  constructor(private menu: MenuController, private apollo: Apollo,
+  private authService: AuthService) {}
 
   ngOnInit(): void {}
+
+  logout() {
+    this.authService.logout();
+  }
 }
