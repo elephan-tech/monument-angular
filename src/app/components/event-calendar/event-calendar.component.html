@@ -1,6 +1,6 @@
-  <ion-fab
+<ion-fab
   class="fab"
-  style="position: fixed;"
+  style="position: fixed"
   vertical="bottom"
   horizontal="end"
   slot="fixed"
@@ -11,33 +11,119 @@
   (cdkDragStarted)="handleDragStart($event)"
   (click)="handleClick($event)"
   [activated]="dragging === false"
-  >
-
-  <ion-fab-button class="main-button" color="secondary"
 >
+  <ion-fab-button class="main-button" color="secondary">
     <ion-fab vertical="top" horizontal="start" slot="fixed"></ion-fab>
     <ion-icon class="main-icon" color="light" name="calendar"></ion-icon>
   </ion-fab-button>
 
-  <ion-fab-list class="fab-list" side="start"
-  >
-        <div class="fab-content" >
-             <h2 class="text-center">Upcoming Events</h2>
-      <img loading="lazy" src="assets/underline-stroke-blue.svg" class="underline-stroke-centered" />
-
+  <ion-fab-list class="fab-list" side="start">
+    <div class="fab-content">
+      <h2 class="text-center">Upcoming Events</h2>
+      <img
+        loading="lazy"
+        src="assets/underline-stroke-blue.svg"
+        class="underline-stroke-centered"
+      />
 
       <ion-grid class="event-content">
-      <div [innerHtml]="content" class="innerHtml"></div>
-        <!-- <ion-row *ngFor="let cont of content"class="ion-justify-content-center " >
-          <div [innerHTML]="cont.content"> </div>
-        </ion-row> -->
+        <ion-row
+          ><ion-text
+            ><h5>
+              For more information and a detailed calendar click
+              <a href="/updates-calendar" target="_blank"> Here </a>!
+            </h5></ion-text
+          ></ion-row
+        >
+        <ion-row>
+          <ion-col size="12">
+            <ion-list-header lines="full">
+              <ion-text color="medium"><p>Coming up</p></ion-text>
+            </ion-list-header>
+
+            <ion-card
+              class="event-card"
+              *ngFor="let event of eventData"
+              [hidden]="!event?.display || eventDate(event?.date) <= today"
+            >
+              <ion-card-header>
+                <ion-toolbar mode="md">
+                  <ion-card-title color="primary" style="text-align: start">{{
+                    event?.name
+                  }}</ion-card-title>
+                  <ion-card-subtitle style="text-align: start">
+                    <div style="display: flex; align-items: center">
+                      <ion-icon
+                        slot="start"
+                        name="calendar-outline"
+                        style="margin-right: 4px"
+                      ></ion-icon>
+                      <ion-text>{{
+                        eventDate(event?.date) | date: "fullDate"
+                      }}</ion-text>
+                    </div>
+                    <div style="display: flex; align-items: center">
+                      <ion-icon
+                        slot="start"
+                        name="time-outline"
+                        style="margin-right: 4px"
+                      ></ion-icon>
+                      <ion-text>
+                        {{
+                          eventDate(event?.date) | date: "shortTime"
+                        }}</ion-text
+                      >
+                    </div>
+                  </ion-card-subtitle>
+                  <ion-buttons slot="end" fill="solid">
+                    <div
+                      class="event-link"
+                      *ngIf="event?.localAsset || event?.file.url"
+                    >
+                      <a
+                        [href]="
+                          '../../../assets/documents/' + event?.localAsset
+                        "
+                        target="_blank"
+                      >
+                        Download
+                      </a>
+                    </div>
+                    <div class="event-link" *ngIf="event?.eventLink">
+                      <a [href]="event?.eventLink" target="_blank">
+                        Register
+                      </a>
+                    </div>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-card-header>
+            </ion-card>
+
+            <ion-list-header lines="full">
+              <ion-text color="medium"><p>Announcements</p></ion-text>
+            </ion-list-header>
+
+            <ion-card
+              class="event-card"
+              *ngFor="let announcement of announcementData"
+              [hidden]="!announcement.display"
+            >
+              <ion-card-header>
+                <ion-toolbar mode="md">
+                  <ion-card-title color="primary" style="text-align: start">{{
+                    announcement.displayText
+                  }}</ion-card-title>
+                  <ion-buttons slot="end" fill="solid">
+                    <div class="event-link" *ngIf="announcement.link">
+                      <a [href]="announcement.link" target="_blank"> Go </a>
+                    </div>
+                  </ion-buttons>
+                </ion-toolbar>
+              </ion-card-header>
+            </ion-card>
+          </ion-col>
+        </ion-row>
       </ion-grid>
-        </div>
-
-      </ion-fab-list>
-  </ion-fab>
-
-
-
-
-
+    </div>
+  </ion-fab-list>
+</ion-fab>

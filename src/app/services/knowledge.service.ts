@@ -11,9 +11,7 @@ export class KnowledgeService {
   private baseUrl = 'http://localhost:8000/knowledge-center';
   private knowledgeArray = knowledge;
 
-  constructor(private http: HttpClient) {
-    console.log({ knowledge });
-  }
+  constructor(private http: HttpClient) {}
 
   getAll(): Observable<any[]> {
     return this.http.get<any>(this.baseUrl);

@@ -2,10 +2,10 @@
   <ion-row class="ion-justify-content-between">
     <ion-col size="8">
       <ion-title>
-        <h3>{{ collectionType.replace('-', ' ') | uppercase }}</h3>
+        <h3>{{ title }}</h3>
       </ion-title>
     </ion-col>
-    <ion-col size="3" class="ion-align-items-center">
+    <ion-col size="1" class="ion-align-items-center">
       <ion-button
         color="primary"
         type="outlined"
@@ -17,22 +17,63 @@
       </ion-button>
     </ion-col>
   </ion-row>
-  <ion-row class="ion-justify-content-center">
-    {{collectionData === undefined ? 'undefined' : collectionData |json}}
-    <ion-col size="11">
-      <ngx-datatable
-        class="material"
-        [limit]="8"
-        [rows]="rows"
-        [rowHeight]="50"
-        [columns]="columns"
-        [columnMode]="'force'"
-        [sortType]="'multi'"
-        [headerHeight]="50"
-        [footerHeight]="50"
-      >
-
-      </ngx-datatable>
+  <ion-row>
+    <ion-text *ngIf="!collectionData?.length" style="text-align: center">
+      <h6>No {{ collectionType }} data to display</h6></ion-text
+    >
+  </ion-row>
+  <ion-row *ngFor="let item of fields">
+    <ion-col>
+      <ion-card class="data-row">
+        <ion-row>
+          <ion-col
+            *ngFor="let field of item"
+            [hidden]="field.key === 'Id'"
+            size="1"
+          >
+            <div>
+              <div>
+                <ion-text color="primary"
+                  ><b>{{ field.key | uppercase }}</b></ion-text
+                >
+              </div>
+              <div class="field-value">
+                <a *ngIf="field.key === 'Link'" [href]="field.value"
+                  ><ion-icon slot="icon-only" name="open-outline"></ion-icon
+                ></a>
+                <div *ngIf="field.key === 'Display'">
+                  {{ field.value ? "✅" : "❌" }}
+                </div>
+                <div *ngIf="!specialFields.includes(field.key)">
+                  {{ field.value === "undefined" ? "" : field.value }}
+                </div>
+              </div>
+            </div>
+          </ion-col>
+          <ion-col>
+            <div>
+              <ion-text color="primary"><b>ACTIONS</b></ion-text>
+            </div>
+            <div>
+              <ion-button
+                (click)="editEntry($event)"
+                color="primary"
+                fill="clear"
+                slot="icon-only"
+                ><ion-icon size="small" name="create-outline"></ion-icon
+              ></ion-button>
+              <ion-button
+                (click)="delete($event)"
+                [id]="item[0].value"
+                color="danger"
+                fill="clear"
+                slot="icon-only"
+                ><ion-icon size="small" name="trash-outline"></ion-icon
+              ></ion-button>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-card>
     </ion-col>
   </ion-row>
 </ion-grid>

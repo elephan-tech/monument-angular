@@ -23,7 +23,6 @@ export class ToolbarComponent implements OnInit {
   currentRoute: string;
 
   ngOnInit() {
-    console.log(this.headerSections);
     this.styleObject = {
       'background-color': this.background,
       height: this.height,

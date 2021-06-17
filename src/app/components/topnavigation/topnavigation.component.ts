@@ -252,8 +252,6 @@ export class TopnavigationComponent implements OnInit {
         this.loading = result.loading;
       });
 
-    console.log({ socials: this.socials });
-
     this.apollo
       .watchQuery<any>({
         query: EMERGENCY_QUERY,

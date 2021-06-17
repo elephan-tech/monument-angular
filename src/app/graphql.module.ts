@@ -6,13 +6,10 @@ import { HttpLink } from 'apollo-angular/http';
 
 // <-- add the URL of the GraphQL server here
 export function createApollo(httpLink: HttpLink): ApolloClientOptions<any> {
-  console.log({environment})
-  const uri = environment.apiUrl;
-  console.log({uri})
+  const uri = `${environment.apiUrl}/graphql`;
   return {
     link: httpLink.create({ uri, method: 'POST' }),
     cache: new InMemoryCache(),
-
   };
 }
 

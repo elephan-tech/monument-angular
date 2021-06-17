@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { AddcareermodalComponent } from './addcareermodal.component';
+import { CollectionModalComponent } from './collection-modal.component';
 
-describe('AddcareermodalComponent', () => {
-  let component: AddcareermodalComponent;
-  let fixture: ComponentFixture<AddcareermodalComponent>;
+describe('CollectionModalComponent', () => {
+  let component: CollectionModalComponent;
+  let fixture: ComponentFixture<CollectionModalComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ AddcareermodalComponent ]
+      declarations: [ CollectionModalComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(AddcareermodalComponent);
+    fixture = TestBed.createComponent(CollectionModalComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

@@ -52,7 +52,8 @@ import { AdminComponent } from './pages/admin/admin.component';
 import { CollectionCrudComponent } from './pages/collection-crud/collection-crud.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { DatatableComponent } from './components/datatable/datatable.component';
-import { AddcareermodalComponent } from './dialogs/careers/addcareermodal/addcareermodal.component';
+import { EnvTagComponent } from './components/env-tag/env-tag.component';
+import { CollectionModalComponent } from './dialogs/collections/collection-modal/collection-modal.component';
 
 @NgModule({
   declarations: [
@@ -92,7 +93,8 @@ import { AddcareermodalComponent } from './dialogs/careers/addcareermodal/addcar
     AdminComponent,
     CollectionCrudComponent,
     DatatableComponent,
-    AddcareermodalComponent,
+    EnvTagComponent,
+    CollectionModalComponent,
   ],
   imports: [
     BrowserModule,

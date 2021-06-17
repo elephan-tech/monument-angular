@@ -26,7 +26,6 @@ export class CareersComponent implements OnInit {
         query: CAREER_QUERY,
       })
       .valueChanges.subscribe((result) => {
-        console.log({ result });
         this.careers = result.data?.jobPostings;
       });
   }
@@ -36,7 +35,7 @@ export class CareersComponent implements OnInit {
       jobTitle: 'Administrative Assistant (Operations)',
       category: '',
       url: '/assets/documents/careers/Administrative-Assistant-Description.pdf',
-      shortDescription: ''
+      shortDescription: '',
     },
     {
       jobTitle: 'Student Life Advisor',

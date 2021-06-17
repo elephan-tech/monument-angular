@@ -36,9 +36,14 @@ export class AdminComponent implements OnInit {
       url: '/knowledge-center',
     },
     {
+      name: 'Alerts',
+      icon: 'warning-outline',
+      url: '/emergencyMessage',
+    },
+    {
       name: 'Announcements',
       icon: 'megaphone-outline',
-      url: '/emergencyMessage',
+      url: '/announcements',
     },
     {
       name: 'Monument Moments',

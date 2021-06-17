@@ -1,16 +1,16 @@
 import gql from "graphql-tag";
 
 export const CAREER_QUERY = gql`
-  query JobPosting {
-    jobPostings {
+  query Career {
+    careers {
       id
-      title
-      description
+      jobTitle
+      shortDescription
       category {
         name
       }
-      link
-      date_posted
+      url
+      datePosted
       attachment {
         name
         url
@@ -69,33 +69,67 @@ export const CATEGORIES_QUERY = gql`
   }
 `;
 
-export const ANNOUNCEMENT_QUERY = gql`
- query EmergencyMessage{
-  emergencyMessage{
-    link
-    headline
-    details
-    display
+export const MOMENTS_QUERY = gql`
+  query MonumentalMoments {
+    monumentalMoments {
+      id
+      title
+      content
+      display
+      image {
+        url
+        width
+        height
+        caption
+        alternativeText
+      }
+    }
   }
-}
 `;
 
-export const MOMENTS_QUERY = gql`
- query EmergencyMessage{
-  emergencyMessage{
-    link
-    headline
-    details
-    display
+export const EVENTS_QUERY = gql`
+  query Events {
+    events {
+      id
+      name
+      date
+      localAsset
+      display
+      eventLink
+      file {
+        name
+        url
+      }
+    }
   }
-}
+`;
+export const ANNOUNCEMENTS_QUERY = gql`
+  query Announcements {
+    announcements {
+      id
+      displayText
+      display
+      date
+      image {
+        name
+        url
+      }
+      link
+      file {
+        name
+        url
+      }
+    }
+  }
 `;
 
 export default {
-careers: CAREER_QUERY,
-socials: SOCIAL_QUERY,
-articles: ARTICLES_QUERY,
-categories: CATEGORIES_QUERY,
-emergencyMessage: ANNOUNCEMENT_QUERY,
-'monumental-moments': MOMENTS_QUERY
-}
+  careers: CAREER_QUERY,
+  socials: SOCIAL_QUERY,
+  articles: ARTICLES_QUERY,
+  categories: CATEGORIES_QUERY,
+  emergencyMessage: EMERGENCY_QUERY,
+  "monumental-moments": MOMENTS_QUERY,
+  events: EVENTS_QUERY,
+  announcements: ANNOUNCEMENTS_QUERY,
+};
