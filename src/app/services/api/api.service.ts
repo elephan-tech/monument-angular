@@ -1,7 +1,7 @@
 import { environment } from './../../../environments/environment';
 import { startCase, replace, omit, camelCase } from 'lodash';
 import { gql } from 'graphql-tag';
-import { Subscription } from 'rxjs';
+import { Subscription, BehaviorSubject } from 'rxjs';
 import { Apollo } from 'apollo-angular';
 import { Injectable } from '@angular/core';
 import { DocumentNode } from 'graphql';
@@ -11,6 +11,8 @@ import pluralize from 'pluralize';
   providedIn: 'root',
 })
 export class ApiService {
+  public CollectionData: BehaviorSubject<any> = new BehaviorSubject([]);
+  public Fields: BehaviorSubject<any> = new BehaviorSubject([]);
   uploadUrl = `${environment.apiUrl}/upload`;
   constructor(private apollo: Apollo) {}
 
@@ -21,20 +23,15 @@ export class ApiService {
     );
   }
 
-  getData(
-    query: DocumentNode,
-    setData: any,
-    collection?: string
-  ): Subscription {
-    return this.apollo
-      .watchQuery<any>({ query })
-      .valueChanges.subscribe((result) => {
-        console.log({ result, collection });
-        return setData(result.data[camelCase(collection)]);
-      });
+  getData(query: DocumentNode, collection?: string) {
+    this.apollo.watchQuery<any>({ query }).valueChanges.subscribe((result) => {
+      const data = result?.data[camelCase(collection)];
+      console.log({ data });
+      this.CollectionData.next(data);
+    });
   }
 
-  getFields(collectionType) {
+  getFields(collectionType: string): Promise<any> | Subscription {
     const collection = startCase(collectionType).split(' ').join('');
 
     return this.apollo
@@ -53,7 +50,16 @@ export class ApiService {
         }
       `,
       })
-      .valueChanges.toPromise();
+      .valueChanges.pipe()
+      .toPromise()
+      .then((obs) => this.setFields(obs))
+      .catch((err) => console.log(err));
+  }
+
+  private setFields(data) {
+    console.log({ data });
+    this.Fields.next(data?.data['__type']?.fields);
+    return this.Fields.getValue();
   }
 
   delete(collection: string, id: string) {

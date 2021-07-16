@@ -65,10 +65,21 @@ export class CollectionCrudComponent implements OnInit {
   ngOnInit(): void {
     this.title = startCase(this.collectionType);
     this.query = queries[this.collectionType];
+    this.generateFields();
+
+    console.log(this.query, this.collectionType,  queries)
+    this.collectionData = this.api.getData(this.query, this.collectionType)
+    console.log({cd: this.collectionData, apiD: this.api.CollectionData})
+
     this.getData(this.query);
   }
 
-  public getData(query) {
+  public async generateFields(){
+    const f = await this.api.getFields(this.collectionType)
+    console.log({f})
+  }
+
+  public  getData(query) {
     const setData = (data) => {
       console.log({ data });
       this.collectionData = data;
@@ -77,7 +88,7 @@ export class CollectionCrudComponent implements OnInit {
         this.collectionType !== 'emergencyMessage' &&
         this.generateForm(this.fields);
     };
-    this.dataObs = this.api.getData(query, setData, this.collectionType);
+
   }
 
   public generateForm(data): FormGroup {
