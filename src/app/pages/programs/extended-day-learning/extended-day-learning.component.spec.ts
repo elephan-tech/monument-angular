@@ -1,4 +1,4 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed, waitForAsync } from '@angular/core/testing';
 
 import { ExtendedDayLearningComponent } from './extended-day-learning.component';
 
@@ -6,7 +6,7 @@ describe('ExtendedDayLearningComponent', () => {
   let component: ExtendedDayLearningComponent;
   let fixture: ComponentFixture<ExtendedDayLearningComponent>;
 
-  beforeEach(async(() => {
+  beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
       declarations: [ ExtendedDayLearningComponent ]
     })
