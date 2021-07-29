@@ -54,6 +54,7 @@ export class EventCalendarComponent implements OnInit {
     public apollo: Apollo
   ) {}
 
+
   ngOnInit(): void {
     this.getEventData();
     // this.EventSub.unsubscribe();
