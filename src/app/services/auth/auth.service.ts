@@ -41,15 +41,14 @@ export class AuthService {
 
   login(form: FormGroup): Promise<boolean> {
     // TODO: use environment url
-    const url = `${environment.apiUrl}/auth/local`
+    const url = `${environment.apiUrl}/auth/local`;
     return axios.post(url, {
       identifier: form.value.email,
       password: form.value.password,
     }).then((res: any) => {
       localStorage.setItem('access_token', res.data.jwt);
-      this.loggedInUser = res?.data?.user
-      console.log({data: res.data, user: this.loggedInUser})
-        return res.data;
+      this.loggedInUser = res?.data?.user;
+      return res.data;
     }).catch((err: any) => {
       // do we want to return the whole obj or just false?
       const errObject = {

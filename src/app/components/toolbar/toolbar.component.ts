@@ -22,7 +22,7 @@ export class ToolbarComponent implements OnInit {
 
   currentRoute: string;
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.styleObject = {
       'background-color': this.background,
       height: this.height,

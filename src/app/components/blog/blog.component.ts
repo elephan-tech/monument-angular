@@ -19,13 +19,13 @@ export class BlogComponent implements OnInit {
   sub;
 
   constructor(
-    private _Activatedroute: ActivatedRoute,
-    private _router: Router,
+    private Activatedroute: ActivatedRoute,
+    private router: Router,
     private eventService: EventsCalendarService
   ) {}
 
   ngOnInit(): void {
-    this.id = this._Activatedroute.snapshot.params.blogID;
+    this.id = this.Activatedroute.snapshot.params.blogID;
     this.blog = this.eventService.getBlogPostByID(this.id);
   }
 }

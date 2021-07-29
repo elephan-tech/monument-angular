@@ -48,15 +48,15 @@ type CollectionTypeData = {
 };
 
 interface CollectionData {
-  data: CollectionTypeData,
-  fields: Fields
+  data: CollectionTypeData;
+  fields: Fields;
 }
 
 type FieldData = {
   name: string,
   type: string,
   value: string | Media | object | number
-}
+};
 @Component({
   selector: 'app-collection-crud',
   templateUrl: './collection-crud.component.html',
@@ -72,18 +72,10 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
   dataObs: Subscription;
   deleteSubscription: Subscription;
   editMode = false;
-  disableAlert = true;
-  editIcon: string = 'create-outline';
+  editIcon = 'create-outline';
 
   query: DocumentNode;
-  alertForm = new FormGroup({
-    id: new FormControl(''),
-    headline: new FormControl(''),
-    details: new FormControl(''),
-    link: new FormControl(''),
-    name: new FormControl('')
-  });
-  alertData: CollectionData;
+
   fieldTypes = {
     boolean: 'toggle',
     string: 'text',
@@ -91,8 +83,9 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
     object: 'file',
     undefined: 'text',
   };
+
   specialFields = ['url', 'image', 'attachment', 'display'];
-  data: any
+  data: any;
   omitFields = ['published_at', 'created_at', 'updated_at', 'slug'];
   collectionSub = new BehaviorSubject<any>([]);
 
@@ -114,27 +107,27 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.api.getData(this.collectionType).unsubscribe()
+    this.api.getData(this.collectionType).unsubscribe();
   }
 
   inputTypes(type) {
     return {
-      'DateTime': 'date',
-      'Boolean': 'checkbox',
-      'String': 'text',
-      'ID': 'text',
-      'UploadFile': 'file'
-    }[type]
+      DateTime: 'date',
+      Boolean: 'checkbox',
+      String: 'text',
+      ID: 'text',
+      UploadFile: 'file'
+    }[type];
   }
 
   public formatValue(value: any, type: StrapiTypes) {
     return {
-      'DateTime': value ? new Date(value).toLocaleDateString('en-us') : new Date().toLocaleDateString(),
-      'Boolean': value ? '🟢' : '🔴',
-      'String': value || 'N/A',
-      'ID': value,
-      'UploadFile': value?.length ? value?.name : 'N/A'
-    }[type]
+      DateTime: value ? new Date(value).toLocaleDateString('en-us') : new Date().toLocaleDateString(),
+      Boolean: value ? '🟢' : '🔴',
+      String: value || 'N/A',
+      ID: value,
+      UploadFile: value?.length ? value?.name : 'N/A'
+    }[type];
   }
 
   public async getData() {
@@ -143,19 +136,19 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
         this.collectionData = result.data;
         this.fields = result.fields.filter(field => !this.omitFields.includes(field.name));
       }
-    })
+    });
 
   }
 
   refresh() {
-    this.api.refresh(this.collectionType)
+    this.api.refresh(this.collectionType);
   }
 
   generateForm(fields: Fields): FormGroup {
     const formGroup = this.fb.group({});
     fields.forEach((item) => {
-      formGroup.addControl(item.name, new FormControl())
-    })
+      formGroup.addControl(item.name, new FormControl());
+    });
 
     return formGroup;
   }
@@ -165,9 +158,9 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
     e.preventDefault();
 
     const { id } = e.target;
-      this.editMode = true;
-      const form = this.generateForm(this.fields);
-      const modal = await this.modal.create({
+    this.editMode = true;
+    const form = this.generateForm(this.fields);
+    const modal = await this.modal.create({
         component: CollectionModalComponent,
         cssClass: 'cms-form-modal',
         componentProps: {
@@ -179,26 +172,16 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
           id
         },
       });
-      return await modal.present();
+    return await modal.present();
 
 
   }
 
   async delete(e) {
-    e.preventDefault()
-    if (e.currentTarget.value) {
-      this.alertForm.reset()
-      this.api.update('emergencyMessage', 1, {
-        headline: '',
-        details: '',
-        link: '',
-        display: false
-      }).toPromise().then(res => {
-        console.log({res})
-      })
-    } else {
-      const { id } = e.currentTarget;
-      const alert = await this.alertController.create({
+    e.preventDefault();
+
+    const { id } = e.currentTarget;
+    const alert = await this.alertController.create({
         cssClass: 'my-custom-class',
         subHeader: 'Deleting',
         message: `Are you sure you want to delete this ${this.collectionType} entry?`,
@@ -214,17 +197,17 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
             cssClass: 'danger',
             handler: () => {
               this.api.delete(this.collectionType, id).toPromise().then(success => {
-                this.refresh()
-              })
+                this.refresh();
+              });
             },
           },
         ],
       });
 
-      await alert.present();
+    await alert.present();
 
-      await alert.onDidDismiss();
-    }
+    await alert.onDidDismiss();
+
   }
 
   async onToggle(e) {
@@ -233,7 +216,7 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
     this.api.update(this.collectionType, id, {
       display: checked
     }).toPromise().then((res: UpdateResponse) => {
-      this.api.refresh(this.collectionType)
+      this.api.refresh(this.collectionType);
     });
   }
 
@@ -253,12 +236,5 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
     return await modal.present();
   }
 
-  public alertSubmit() {
-    const data = this.alertForm.value;
-    this.api
-      .update('emergencyMessage', 1, data)
-      .toPromise()
-      .then()
-      .catch((err) => console.error({ err }));
-  }
+
 }

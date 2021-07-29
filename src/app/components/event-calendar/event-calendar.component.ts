@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
 import type { CdkDragStart } from '@angular/cdk/drag-drop';
 import { EVENTS_QUERY, ANNOUNCEMENTS_QUERY } from '../../api/queries';
 import { EventsCalendarService } from '../../services/events/events-calendar.service';
-import useQuery  from '../../api/queries';
+import useQuery from '../../api/queries';
 import { DocumentNode } from 'graphql';
 import { isEmpty } from 'lodash';
 import { environment } from 'src/environments/environment';
@@ -42,7 +42,7 @@ export class EventCalendarComponent implements OnInit {
   // public eventDate: (date: string) => Date;
   public today = new Date();
   public isAdmin = false;
-  public AnnouncementSub=new BehaviorSubject([]);
+  public AnnouncementSub = new BehaviorSubject([]);
   public EventSub: Subscription;
 
   dragPosition = { x: 0, y: -100 };
@@ -61,15 +61,15 @@ export class EventCalendarComponent implements OnInit {
     this.getAnnouncements();
   }
 
-  getEventData() {
+  getEventData(): void{
     this.EventSub = this.api.getData('events').subscribe(result => {
-      this.eventData = result.data
-    })
+      this.eventData = result.data;
+    });
   }
 
 
 
-  getAnnouncements() {
+  getAnnouncements(): void {
     const query: DocumentNode = useQuery('announcements');
 
     const watchQuery = this.apollo.watchQuery<any>({
@@ -85,11 +85,11 @@ export class EventCalendarComponent implements OnInit {
     watchQuery.valueChanges.subscribe(({ data }) => {
       const collectionData = this.api.formatData('announcements', data);
       !isEmpty(data) ? this.AnnouncementSub.next(collectionData) : this.AnnouncementSub.next([]);
-    })
+    });
 
     this.AnnouncementSub.subscribe((obs: any) => {
-      this.announcementData = obs?.data
-    })
+      this.announcementData = obs?.data;
+    });
   }
 
 
@@ -97,7 +97,7 @@ export class EventCalendarComponent implements OnInit {
     this.dragging = true;
   }
 
-  public formatDate = (date) => {
+  public formatDate = (date: Date): string => {
     return date.toLocaleDateString('en', {
       weekday: 'long',
       year: 'numeric',
@@ -114,7 +114,7 @@ export class EventCalendarComponent implements OnInit {
     this.dragPosition = { x: this.dragPosition.x, y: this.dragPosition.y };
   }
 
-  eventDate(date) {
-    return <Date>date
+  eventDate(date): Date {
+    return date as Date;
   }
 }

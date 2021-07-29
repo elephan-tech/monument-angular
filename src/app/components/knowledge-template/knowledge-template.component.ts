@@ -21,7 +21,7 @@ export class KnowledgeTemplateComponent implements OnInit {
     this.isCurrentSegment = true;
   }
 
-  segmentChanged(event) {
+  segmentChanged(event): void {
     this.currentSegment = event.detail.value.split('-')[2];
   }
 }

@@ -25,11 +25,11 @@ export class CollectionModalComponent implements OnInit {
   clearInput = false;
   fieldsFoo: Promise<any>;
   fieldTypes = {
-    'UploadFile': 'file',
-    'String': 'text',
-    'Boolean': 'radio',
-    'DateTime': 'date'
-  }
+    UploadFile: 'file',
+    String: 'text',
+    Boolean: 'radio',
+    DateTime: 'date'
+  };
   currentData: any;
 
 
@@ -41,44 +41,44 @@ export class CollectionModalComponent implements OnInit {
 
   getValue({ value, type = 'default' }): string | number | Date {
     const valueMap = {
-      'DateTime': new Date(value),
-      'String': value,
-      'Boolean': value,
-      'ID': value,
-      'default': value,
-      'UploadFile': value
-    }
+      DateTime: new Date(value),
+      String: value,
+      Boolean: value,
+      ID: value,
+      default: value,
+      UploadFile: value
+    };
 
-    return valueMap[type]
+    return valueMap[type];
   }
 
   getEntries(item) {
     return Object.entries(item).reduce((acc, [name, value]) => {
-      return [...acc, {name, value}]
-    }, [])
+      return [...acc, {name, value}];
+    }, []);
   }
 
   generateValues(item) {
-    const formFields = this.fields.reduce((acc, field) => [...acc, field.name], [])
+    const formFields = this.fields.reduce((acc, field) => [...acc, field.name], []);
     return this.getEntries(item).reduce((acc, entry) => {
-      const returnValue = formFields.includes(entry.name) ? { [entry.name]: this.getValue(entry.value) } : {}
-      return {...acc, ...returnValue}
+      const returnValue = formFields.includes(entry.name) ? { [entry.name]: this.getValue(entry.value) } : {};
+      return {...acc, ...returnValue};
     }, {});
   }
 
   ngOnInit(): void {
-    this.collection = startCase(this.collection)
+    this.collection = startCase(this.collection);
     this.clearInput = false;
     this.entry = startCase(pluralize.singular(this.collection));
 
     const [currentDataValues] = this.data.reduce((acc, item) => {
       const values = this.generateValues(item);
-      return [...acc, values]
-    }, [])
+      return [...acc, values];
+    }, []);
 
     this.currentData = currentDataValues;
 
-    this.editMode ? this.form.setValue(currentDataValues): this.form.reset()
+    this.editMode ? this.form.setValue(currentDataValues) : this.form.reset();
   }
 
   createEntry() {
@@ -119,8 +119,8 @@ export class CollectionModalComponent implements OnInit {
     await toast.present();
     this.clearInput = true;
     this.mc.dismiss().then(() => {
-      this.clearInput = false
-      toast.dismiss()
+      this.clearInput = false;
+      toast.dismiss();
     });
   }
 

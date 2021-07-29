@@ -22,7 +22,7 @@ export interface EmergencyMessage {
   headline: string;
   details?: string;
   link?: string;
-  display: boolean
+  display: boolean;
 }
 
 export interface Social {
@@ -237,7 +237,6 @@ export class TopnavigationComponent implements OnInit {
     private api: ApiService
   ) {
     this.screensizeService.isDesktopView().subscribe((isDesktop) => {
-      console.log('is desktop view:', isDesktop);
       this.isDesktop = isDesktop;
     });
     router.events.subscribe((event) => {
@@ -254,7 +253,7 @@ export class TopnavigationComponent implements OnInit {
   }
 
   getData() {
-    const query = useQuery('emergencyMessage')
+    const query = useQuery('emergencyMessage');
     const watchQuery = this.apollo.watchQuery<any>({
       query,
       pollInterval: environment.production
@@ -268,12 +267,12 @@ export class TopnavigationComponent implements OnInit {
     watchQuery.valueChanges.subscribe(({ data }) => {
       const collectionData = this.api.formatData('emergencyMessage', data);
       !isEmpty(data) ? this.EmergencyMessage.next(collectionData) : this.EmergencyMessage.next([]);
-    })
+    });
 
     this.EmergencyMessage.subscribe((obs: any) => {
-      this.emergencyMessage = obs?.data?.[0]
-      this.showEmergency = obs?.data?.[0].display.value
-    })
+      this.emergencyMessage = obs?.data?.[0];
+      this.showEmergency = obs?.data?.[0].display.value;
+    });
 
   }
 

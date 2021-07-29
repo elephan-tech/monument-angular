@@ -25,7 +25,9 @@ import {
   LifeSkillsComponent
 } from './pages/programs/life-skills/life-skills.component';
 import { WellBeingComponent } from './pages/programs/well-being/well-being.component';
-import { NationalSchoolLunchProgramComponent } from './pages/programs/national-school-lunch-program/national-school-lunch-program.component';
+import {
+  NationalSchoolLunchProgramComponent
+} from './pages/programs/national-school-lunch-program/national-school-lunch-program.component';
 import { CareersComponent } from './pages/careers/careers.component';
 import { EnrollmentComponent } from './pages/enrollment/enrollment.component';
 import { FamilyResourcesComponent } from './pages/family-resources/family-resources.component';
@@ -61,6 +63,7 @@ import { EnvTagComponent } from './components/env-tag/env-tag.component';
 import { CollectionModalComponent } from './dialogs/collections/collection-modal/collection-modal.component';
 import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 import { StartCasePipe } from './pipes/start-case.pipe';
+import { AlertCrudComponent } from './pages/alert-crud/alert-crud.component';
 
 @NgModule({
   declarations: [
@@ -104,6 +107,7 @@ import { StartCasePipe } from './pipes/start-case.pipe';
     EnvTagComponent,
     CollectionModalComponent,
     StartCasePipe,
+    AlertCrudComponent,
   ],
   imports: [
     BrowserModule,

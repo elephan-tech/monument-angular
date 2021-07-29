@@ -32,7 +32,7 @@ export class ApiService {
   }
 
   private mergeDataType(data, fields) {
-    const DATA = data.length ? data : [data]
+    const DATA = data.length ? data : [data];
     return DATA.reduce((dataAcc, item) => {
 
 
@@ -42,26 +42,27 @@ export class ApiService {
             value: item?.[field.name],
             type: field.type
           }
-        }
+        };
       }, {});
 
-
       return [...dataAcc, collectionData];
-    }, [])
+    }, []);
 
   }
-  public formatData(type: string, data: CollectionData): Collection {
+  public formatData(type: string, data: any): Collection {
     if (!isEmpty(data)) {
 
       const fields = data?.__type.fields.reduce((acc, field) => [...acc, {
           name: field.name,
           type: field.type.name || field.type.ofType.name
-      }], [])
+      }], []);
 
-      return {data: uniqWith(this.mergeDataType(data[type], fields), isEqual), fields};
+      const withType = this.mergeDataType(data[camelCase(type)], fields);
+
+      return {data: uniqWith(withType, isEqual), fields};
 
     }
-    return {}
+    return {};
   }
 
 
@@ -82,9 +83,8 @@ export class ApiService {
     watchQuery.valueChanges.subscribe(({ data }) => {
       const collectionData = this.formatData(collectionType, data);
       !isEmpty(data) ? this.CollectionData.next(collectionData) : this.CollectionData.next([]);
-    })
+    });
 
-    this.refresh(collectionType);
     return this.CollectionData;
   }
 
@@ -95,7 +95,7 @@ export class ApiService {
       query
     }).refetch();
 
-    return refresh
+    return refresh;
   }
   delete(collection: string, id: string) {
     const entry = pluralize.singular(collection);
@@ -119,7 +119,7 @@ export class ApiService {
       .mutate({
         mutation: generateMutation(),
         optimisticResponse: {},
-      })
+      });
   }
 
   create(collectionType: string, data: object) {
@@ -163,7 +163,7 @@ export class ApiService {
           collection === 'emergencyMessage' ? payload.toLowerCase() : payload
         }
       }){
-        ${entry.toLowerCase()}{
+        ${collection === 'emergencyMessage' ? entry : entry.toLowerCase()}{
           id
         name
         updated_at

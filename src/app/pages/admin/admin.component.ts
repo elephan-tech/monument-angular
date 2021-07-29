@@ -25,22 +25,22 @@ export class AdminComponent implements OnInit {
     {
       name: 'Events',
       icon: 'calendar-number-outline',
-      url: '/events',
+      url: 'admin/events',
     },
     {
       name: 'News & Media',
       icon: 'newspaper-outline',
-      url: '/articles',
+      url: 'admin/articles',
     },
     {
       name: 'Careers',
       icon: 'briefcase-outline',
-      url: '/careers',
+      url: 'admin/careers',
     },
     {
       name: 'Knowledge Center',
       icon: 'bulb-outline',
-      url: '/knowledge-center',
+      url: 'admin/knowledge-center',
     },
     {
       name: 'Alerts',
@@ -50,17 +50,22 @@ export class AdminComponent implements OnInit {
     {
       name: 'Announcements',
       icon: 'megaphone-outline',
-      url: '/announcements',
+      url: 'admin/announcements',
     },
     {
       name: 'Monument Moments',
       icon: 'sparkles-outline',
-      url: '/monumental-moments',
+      url: 'admin/monumental-moments',
     },
     {
       name: 'Family Resources',
       icon: 'school-outline',
       url: '/family-resources',
+    },
+    {
+      name: 'Board Meetings',
+      icon: 'people-outline',
+      url: '/board-meetings',
     },
   ];
 

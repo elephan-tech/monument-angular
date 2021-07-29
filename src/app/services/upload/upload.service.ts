@@ -13,8 +13,8 @@ import { Observable } from 'rxjs';
 })
 export class UploadService {
 
-  FILES = `/files`
-  BY_ID = `${this.FILES}/:id`
+  FILES = `/files`;
+  BY_ID = `${this.FILES}/:id`;
   uploadUrl = `${environment.apiUrl}/upload`;
   $files: any[];
 
@@ -23,12 +23,11 @@ export class UploadService {
 
   fileObserver = {
     next: (files: Media[]) => {
-      console.log('next file', files)
-      return this.$files = files
+      return this.$files = files;
     },
     error: (err: Error) => console.error('error', err),
-    complete: ()=> console.log('done')
-  }
+    complete: () => console.log('done')
+  };
 
   getFiles() {
     return this.http.get<Media[]>(`${this.uploadUrl}${this.FILES}`);

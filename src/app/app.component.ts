@@ -14,14 +14,14 @@ export class AppComponent {
 		this.initializeApp();
 	}
 
-	initializeApp() {
+	initializeApp(): void {
 		this.platform.ready().then(() => {
 			this.screenSizeService.onResize(this.platform.width());
 		});
 	}
 
 	@HostListener('window:resize', [ '$event' ])
-	private onResize(event) {
+	private onResize(event): void {
 		this.screenSizeService.onResize(event.target.innerWidth);
 	}
 }

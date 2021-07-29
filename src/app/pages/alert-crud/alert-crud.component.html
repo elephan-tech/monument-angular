@@ -1,0 +1,63 @@
+<ion-content>
+  <ion-grid class="admin-grid">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="/admin"></ion-back-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="8">
+        <ion-title>
+          <h3>Emergency Message</h3>
+        </ion-title>
+      </ion-col>
+    </ion-row>
+
+    <div>
+      <ion-row>
+        <ion-col *ngFor="let item of alertData" size-xs="12">
+          <ion-card class="data-card">
+            <ion-card-header>
+              <ion-toolbar>
+                <ion-buttons slot="start">
+                  <ion-toggle
+                    [checked]="item.display.value"
+                    [id]="item?.id?.value"
+                    (ionChange)="onToggle($event)"
+                  ></ion-toggle>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-card-header>
+            <ion-card-content>
+              <form [formGroup]="alertForm" (submit)="alertSubmit()">
+                <ion-list>
+                  <ion-item *ngFor="let field of alertFields">
+                    <div *ngIf="field.name !== 'id' || field.name !== display">
+                      <ion-label position="stacked">
+                        <strong>{{ field?.name | startCase }}</strong>
+                      </ion-label>
+                      <ion-input
+                        [type]="inputTypes(field.type)"
+                        [formControlName]="field?.name"
+                        [value]="item?.[field.name].value"
+                        [placeholder]="formatValue(item?.[field.name].value, item?.[field.name].type)"
+                      ></ion-input>
+                    </div>
+                  </ion-item>
+                  <ion-button
+                    color="primary"
+                    (click)="alertSubmit()"
+                    fill="outline"
+                    >save</ion-button
+                  >
+                </ion-list>
+              </form>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>

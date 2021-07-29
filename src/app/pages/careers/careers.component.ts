@@ -22,7 +22,7 @@ export class CareersComponent implements OnInit {
   careers: any;
   state: any;
 
-  filesBS = new BehaviorSubject<Media[]>([])
+  filesBS = new BehaviorSubject<Media[]>([]);
 
   jobOpenings = [
     {
@@ -84,9 +84,9 @@ export class CareersComponent implements OnInit {
   ngOnInit() {
     this.pageTitle = 'Careers';
     this.heroImg = 'assets/images/monument-7.png';
-    const g = this.api.getData('careers')
-    console.log({g})
+    const g = this.api.getData('careers');
   }
+
 
 
 }

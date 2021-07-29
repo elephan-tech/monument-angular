@@ -1,9 +1,8 @@
-import { EmergencyMessage } from './../../components/topnavigation/topnavigation.component';
-import gql from "graphql-tag";
+import gql from 'graphql-tag';
 
 
 const meta = (collection: string) => gql`
-fragment FieldMeta on Query {
+fragment ${collection}Meta on Query {
   __type(name: "${collection}") {
     fields {
       name
@@ -16,11 +15,11 @@ fragment FieldMeta on Query {
       }
     }
   }
-  }`
+  }`;
 
 
 export const CAREER_QUERY = gql`
-${meta("Career")}
+${meta('Career')}
   query Career {
     careers {
       display
@@ -37,12 +36,12 @@ ${meta("Career")}
         url
       }
     }
-  ...FieldMeta
+  ...${'Career'}Meta
   }
 `;
 
 export const SOCIAL_QUERY = gql`
-${meta("SocialMedia")}
+${meta('SocialMedia')}
   query SocialMedia {
     socialMedias {
       id
@@ -53,12 +52,12 @@ ${meta("SocialMedia")}
       target
       fill
     }
-    ...FieldMeta
+    ...${'SocialMedia'}Meta
   }
 `;
 
 export const ARTICLES_QUERY = gql`
-${meta("Article")}
+${meta('Article')}
   query Articles {
     articles {
       title
@@ -75,7 +74,7 @@ ${meta("Article")}
         url
       }
     }
-    ...FieldMeta
+    ...${'Article'}Meta
   }
 `;
 
@@ -88,12 +87,12 @@ ${meta('EmergencyMessage')}
       link
       display
     }
-    ...FieldMeta
+    ...${'EmergencyMessage'}Meta
   }
 `;
 
 export const CATEGORIES_QUERY = gql`
-${meta("Categories")}
+${meta('Categories')}
   query Categories {
     categories {
       id
@@ -103,7 +102,7 @@ ${meta("Categories")}
 `;
 
 export const MOMENTS_QUERY = gql`
-${meta("MonumentalMoments")}
+${meta('MonumentalMoments')}
   query MonumentalMoments {
     monumentalMoments {
       id
@@ -118,11 +117,12 @@ ${meta("MonumentalMoments")}
         alternativeText
       }
     }
+    ...${'MonumentalMoments'}Meta
   }
 `;
 
 export const EVENTS_QUERY = gql`
-${meta("Events")}
+${meta('Events')}
   query Events {
     events {
       id
@@ -135,11 +135,11 @@ ${meta("Events")}
         url
       }
     }
-    ...FieldMeta
+    ...${'Events'}Meta
   }
 `;
 export const ANNOUNCEMENTS_QUERY =  gql`
-${meta("Announcements")}
+${meta('Announcements')}
   query Announcements {
     announcements {
       id
@@ -156,12 +156,12 @@ ${meta("Announcements")}
         url
       }
     }
-    ...FieldMeta
+    ...${'Announcements'}Meta
   }
 `;
 
 export const FAMILY_RESOURCES_QUERY =  gql`
-${meta("FamilyResources")}
+${meta('FamilyResources')}
   query FamilyResources {
     familyResources {
       id
@@ -174,12 +174,12 @@ ${meta("FamilyResources")}
       }
       url
     }
-    ...FieldMeta
+    ...${'FamilyResources'}Meta
   }
 `;
 
 export const NEWS_MEDIA_QUERY =  gql`
-${meta("FamilyResources")}
+${meta('FamilyResources')}
   query FamilyResources {
     familyResources {
       id
@@ -192,21 +192,55 @@ ${meta("FamilyResources")}
       }
       url
     }
-    ...FieldMeta
+    ...${'FamilyResources'}Meta
   }
 `;
+
+export const BOARD_QUERY =  gql`
+${meta('Boar')}
+query BoardMeeting{
+  boardMeetings{
+    name
+    id
+    start
+    end
+    date
+    agenda{
+      name
+      url
+    }
+    minutes{
+      name
+      url
+    }
+    meeting_recording{
+      name
+      url
+    }
+  }
+  ...${'BoardMeeting'}Meta
+}
+`;
+
+
+
+
 
 const fieldMap = {
   careers: CAREER_QUERY,
   socials: SOCIAL_QUERY,
   categories: CATEGORIES_QUERY,
   emergencyMessage: EMERGENCY_QUERY,
-  "monumental-moments": MOMENTS_QUERY,
+  'monumental-moments': MOMENTS_QUERY,
   events: EVENTS_QUERY,
   announcements: ANNOUNCEMENTS_QUERY,
   'family-resources': FAMILY_RESOURCES_QUERY,
-  articles: ARTICLES_QUERY
-}
+  articles: ARTICLES_QUERY,
+  'board-meetings': BOARD_QUERY
+};
 
-export default (collection: string) =>  fieldMap[collection]
+export default (collection: string) => {
+
+  return fieldMap[collection];
+};
 

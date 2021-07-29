@@ -1,3 +1,4 @@
+import { AlertCrudComponent } from './pages/alert-crud/alert-crud.component';
 import { CollectionCrudComponent } from './pages/collection-crud/collection-crud.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { KnowledgeTemplateComponent } from './components/knowledge-template/knowledge-template.component';
@@ -22,7 +23,9 @@ import {
   LifeSkillsComponent
 } from './pages/programs/life-skills/life-skills.component';
 import { WellBeingComponent } from './pages/programs/well-being/well-being.component';
-import { NationalSchoolLunchProgramComponent } from './pages/programs/national-school-lunch-program/national-school-lunch-program.component';
+import {
+  NationalSchoolLunchProgramComponent
+} from './pages/programs/national-school-lunch-program/national-school-lunch-program.component';
 import { CareersComponent } from './pages/careers/careers.component';
 import { EnrollmentComponent } from './pages/enrollment/enrollment.component';
 import { FamilyResourcesComponent } from './pages/family-resources/family-resources.component';
@@ -99,6 +102,11 @@ const routes: Routes = [
   {
     path: 'admin/:collectionType',
     component: CollectionCrudComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'emergencyMessage',
+    component: AlertCrudComponent,
     canActivate: [AuthGuard],
   },
 

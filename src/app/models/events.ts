@@ -8,4 +8,4 @@ export type Events = {
   localAsset: string,
   name: string,
   __typename: string,
-}
+};
