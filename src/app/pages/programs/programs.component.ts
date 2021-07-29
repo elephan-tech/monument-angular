@@ -7,7 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProgramsComponent implements OnInit {
 
-//TODO: could make global structure
+// TODO: could make global structure
 
       programs = [
         {

@@ -1,11 +1,16 @@
-import { environment } from './../../../environments/environment';
-import { startCase, replace, omit, camelCase } from 'lodash';
-import { gql } from 'graphql-tag';
-import { Subscription, BehaviorSubject } from 'rxjs';
-import { Apollo } from 'apollo-angular';
+import { CollectionData, Collection, CollectionType } from './../../models/strapi';
 import { Injectable } from '@angular/core';
+import { Apollo } from 'apollo-angular';
 import { DocumentNode } from 'graphql';
+import { gql } from 'graphql-tag';
+import { camelCase, omit, replace, startCase, reduce, uniqWith, isEqual } from 'lodash';
 import pluralize from 'pluralize';
+import { BehaviorSubject } from 'rxjs';
+import { isEmpty } from 'lodash';
+import useQuery from '../../api/queries';
+import { environment } from './../../../environments/environment';
+import { GenericObject } from './../../models/generic';
+
 
 @Injectable({
   providedIn: 'root',
@@ -13,7 +18,10 @@ import pluralize from 'pluralize';
 export class ApiService {
   public CollectionData: BehaviorSubject<any> = new BehaviorSubject([]);
   public Fields: BehaviorSubject<any> = new BehaviorSubject([]);
+  public $data: GenericObject[];
+  public $query: DocumentNode;
   uploadUrl = `${environment.apiUrl}/upload`;
+  public loading = new BehaviorSubject<boolean>(false);
   constructor(private apollo: Apollo) {}
 
   private graphqlJSON(array) {
@@ -23,47 +31,75 @@ export class ApiService {
     );
   }
 
-  getData(query: DocumentNode, collection?: string) {
-    this.apollo.watchQuery<any>({ query }).valueChanges.subscribe((result) => {
-      const data = result?.data[camelCase(collection)];
-      console.log({ data });
-      this.CollectionData.next(data);
-    });
-  }
+  private mergeDataType(data, fields) {
+    const DATA = data.length ? data : [data]
+    return DATA.reduce((dataAcc, item) => {
 
-  getFields(collectionType: string): Promise<any> | Subscription {
-    const collection = startCase(collectionType).split(' ').join('');
 
-    return this.apollo
-      .watchQuery<any>({
-        query: gql`
-        {
-          __type(name: "${collection}") {
-            fields {
-              name
-              description
-              type {
-                name
-              }
-            }
+      const collectionData = fields.reduce((acc, field) => {
+        return {
+          ...acc, [field.name]: {
+            value: item?.[field.name],
+            type: field.type
           }
         }
-      `,
-      })
-      .valueChanges.pipe()
-      .toPromise()
-      .then((obs) => this.setFields(obs))
-      .catch((err) => console.log(err));
+      }, {});
+
+
+      return [...dataAcc, collectionData];
+    }, [])
+
+  }
+  public formatData(type: string, data: CollectionData): Collection {
+    if (!isEmpty(data)) {
+
+      const fields = data?.__type.fields.reduce((acc, field) => [...acc, {
+          name: field.name,
+          type: field.type.name || field.type.ofType.name
+      }], [])
+
+      return {data: uniqWith(this.mergeDataType(data[type], fields), isEqual), fields};
+
+    }
+    return {}
   }
 
-  private setFields(data) {
-    console.log({ data });
-    this.Fields.next(data?.data['__type']?.fields);
-    return this.Fields.getValue();
+
+  getData(collectionType?: CollectionType) {
+
+    const query: DocumentNode = useQuery(collectionType);
+
+    const watchQuery = this.apollo.watchQuery<any>({
+      query,
+      pollInterval: environment.production
+        // production polls every 24 hrs
+        ? 1000 * 60 * 60 * 24
+        // development polls every 2 seconds
+        : 2000,
+    });
+
+
+    watchQuery.valueChanges.subscribe(({ data }) => {
+      const collectionData = this.formatData(collectionType, data);
+      !isEmpty(data) ? this.CollectionData.next(collectionData) : this.CollectionData.next([]);
+    })
+
+    this.refresh(collectionType);
+    return this.CollectionData;
   }
 
+  refresh(collectionType: CollectionType) {
+    const query: DocumentNode = useQuery(collectionType);
+
+    const refresh = this.apollo.watchQuery<any>({
+      query
+    }).refetch();
+
+    return refresh
+  }
   delete(collection: string, id: string) {
     const entry = pluralize.singular(collection);
+
     const generateMutation = () => {
       return gql`
           mutation ${startCase(collection)} {
@@ -84,13 +120,11 @@ export class ApiService {
         mutation: generateMutation(),
         optimisticResponse: {},
       })
-      .subscribe();
   }
 
   create(collectionType: string, data: object) {
     const entry = pluralize.singular(collectionType);
     const collection = startCase(entry).split(' ').join('');
-    console.log({ data });
     const payload = this.graphqlJSON(omit(data, ['id']));
 
     return this.apollo.mutate({
@@ -113,11 +147,12 @@ export class ApiService {
     const entry = pluralize.singular(collection);
     const payload = this.graphqlJSON(omit(data, ['id']));
     const whereClause =
-      collection === 'emergencyMessage'
-        ? ''
-        : `where: {
+    collection === 'emergencyMessage'
+    ? ''
+    : `where: {
       id: ${id}
-      }`;
+    }`;
+
 
     return this.apollo.mutate({
       mutation: gql`
@@ -128,8 +163,11 @@ export class ApiService {
           collection === 'emergencyMessage' ? payload.toLowerCase() : payload
         }
       }){
-        ${entry}{
+        ${entry.toLowerCase()}{
           id
+        name
+        updated_at
+        display
         }
       }
       }
@@ -137,4 +175,6 @@ export class ApiService {
       optimisticResponse: {},
     });
   }
+
+
 }

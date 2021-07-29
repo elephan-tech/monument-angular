@@ -1,11 +1,12 @@
-import { ScreensizeService } from './../../services/screen-size/screensize.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
+import { Apollo } from 'apollo-angular';
 
 @Component({
   selector: 'app-family-resources',
   templateUrl: './family-resources.component.html',
   styleUrls: ['./family-resources.component.scss'],
 })
+@Injectable({ providedIn: 'root' })
 export class FamilyResourcesComponent implements OnInit {
   images = '../../../assets/images/';
   items = [
@@ -97,7 +98,7 @@ export class FamilyResourcesComponent implements OnInit {
     },
   ];
 
-  constructor() {}
+  constructor(private apollo: Apollo) {}
 
   ngOnInit(): void {}
 }

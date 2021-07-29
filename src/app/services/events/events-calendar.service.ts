@@ -30,7 +30,7 @@ export class EventsCalendarService {
 
   getAllBlogPosts(): BlogPost[] {
     return this.blogPostsArray.sort((a, b) => {
-      return <any>new Date(b.date) - <any>new Date(a.date);
+      return (new Date(b.date) as any) - (new Date(a.date) as any);
     });
     // return this.blogPostsArray;
   }

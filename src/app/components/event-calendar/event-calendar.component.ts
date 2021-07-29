@@ -1,8 +1,15 @@
+import { Apollo } from 'apollo-angular';
+import { Subscription, BehaviorSubject } from 'rxjs';
+import { AuthService } from './../../services/auth/auth.service';
 import { ApiService } from './../../services/api/api.service';
 import { Component, OnInit } from '@angular/core';
-import { CdkDragStart } from '@angular/cdk/drag-drop';
+import type { CdkDragStart } from '@angular/cdk/drag-drop';
 import { EVENTS_QUERY, ANNOUNCEMENTS_QUERY } from '../../api/queries';
 import { EventsCalendarService } from '../../services/events/events-calendar.service';
+import useQuery  from '../../api/queries';
+import { DocumentNode } from 'graphql';
+import { isEmpty } from 'lodash';
+import { environment } from 'src/environments/environment';
 
 type EventData = {
   zoomUrl: string;
@@ -32,33 +39,58 @@ export class EventCalendarComponent implements OnInit {
   public eventData: EventData;
   public announcementData: AnnouncementData;
   public content: any;
-  public eventDate: (date: string) => Date;
+  // public eventDate: (date: string) => Date;
   public today = new Date();
+  public isAdmin = false;
+  public AnnouncementSub=new BehaviorSubject([]);
+  public EventSub: Subscription;
 
   dragPosition = { x: 0, y: -100 };
 
   constructor(
     private eventService: EventsCalendarService,
-    public api: ApiService
+    public api: ApiService,
+    public auth: AuthService,
+    public apollo: Apollo
   ) {}
 
   ngOnInit(): void {
-    this.eventService.getAll().subscribe(
-      (res) => (this.content = res),
-      (err) => console.log('not running mock api. run npm run server'),
-      () => console.log('HTTP request completed.')
-    );
-    const setEvents = (data: EventData) => {
-      this.eventData = data;
-      this.eventDate = (date) => new Date(date);
-    };
-    const setAnnouncements = (data: AnnouncementData) => {
-      this.announcementData = data;
-    };
-
-    this.api.getData(EVENTS_QUERY, setEvents, 'events');
-    this.api.getData(ANNOUNCEMENTS_QUERY, setAnnouncements, 'announcements');
+    this.getEventData();
+    // this.EventSub.unsubscribe();
+    this.getAnnouncements();
   }
+
+  getEventData() {
+    this.EventSub = this.api.getData('events').subscribe(result => {
+      this.eventData = result.data
+    })
+  }
+
+
+
+  getAnnouncements() {
+    const query: DocumentNode = useQuery('announcements');
+
+    const watchQuery = this.apollo.watchQuery<any>({
+      query,
+      pollInterval: environment.production
+        // production polls every 24 hrs
+        ? 1000 * 60 * 60 * 24
+        // development polls every 2 seconds
+        : 2000,
+    });
+
+
+    watchQuery.valueChanges.subscribe(({ data }) => {
+      const collectionData = this.api.formatData('announcements', data);
+      !isEmpty(data) ? this.AnnouncementSub.next(collectionData) : this.AnnouncementSub.next([]);
+    })
+
+    this.AnnouncementSub.subscribe((obs: any) => {
+      this.announcementData = obs?.data
+    })
+  }
+
 
   public handleDragStart(event: CdkDragStart): void {
     this.dragging = true;
@@ -71,7 +103,7 @@ export class EventCalendarComponent implements OnInit {
       month: 'long',
       day: 'numeric',
     });
-  };
+  }
 
   public handleClick(event: MouseEvent): void {
     if (this.dragging || this.clickedInside) {
@@ -79,5 +111,9 @@ export class EventCalendarComponent implements OnInit {
       return;
     }
     this.dragPosition = { x: this.dragPosition.x, y: this.dragPosition.y };
+  }
+
+  eventDate(date) {
+    return <Date>date
   }
 }

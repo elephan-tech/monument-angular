@@ -9,26 +9,11 @@ import {ActivatedRoute} from '@angular/router';
   template: `<div [innerHTML]="data | safeHtml"></div>`,
 })
 export class BoardComponent implements OnInit {
+
+  constructor(private route: ActivatedRoute) {}
   pageTitle: string;
   heroImg: string;
   fragment: string;
-
-  constructor(private route: ActivatedRoute) {}
-
-  ngOnInit() {
-    this.pageTitle = 'Board of Directors';
-    this.heroImg = '';
-    this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
-  }
-
-    ngAfterViewInit(): void {
-    try {
-      const topOffset = document.getElementById(this.fragment).getBoundingClientRect().top;
-      window.scrollTo({top: topOffset - 1500, behavior: 'smooth'});
-
-      // document.querySelector('#' + this.fragment).scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-    } catch (e) { }
-  }
 
   board = [
     {
@@ -110,4 +95,19 @@ export class BoardComponent implements OnInit {
       bio: '',
     },
   ];
+
+  ngOnInit() {
+    this.pageTitle = 'Board of Directors';
+    this.heroImg = '';
+    this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
+  }
+
+    ngAfterViewInit(): void {
+    try {
+      const topOffset = document.getElementById(this.fragment).getBoundingClientRect().top;
+      window.scrollTo({top: topOffset - 1500, behavior: 'smooth'});
+
+      // document.querySelector('#' + this.fragment).scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    } catch (e) { }
+  }
 }

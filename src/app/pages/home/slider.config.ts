@@ -4,9 +4,9 @@ export const slideOpts = {
     loop: true,
   },
   coverflow: {
-    height: 650, //Your slide height is mandatory to take effect vertically
-    loop: true, //Whether to loop
-    effect: 'coverflow', //in and out animation
+    height: 650, // Your slide height is mandatory to take effect vertically
+    loop: true, // Whether to loop
+    effect: 'coverflow', // in and out animation
     grabCursor: true,
     centeredSlides: true,
     slidesPerView: 'auto',
@@ -65,11 +65,11 @@ export const slideOpts = {
           let translateX = isHorizontal ? params.stretch * offsetMultiplier : 0;
 
           // Fix for ultra small values
-          if (Math.abs(translateX) < 0.001) translateX = 0;
-          if (Math.abs(translateY) < 0.001) translateY = 0;
-          if (Math.abs(translateZ) < 0.001) translateZ = 0;
-          if (Math.abs(rotateY) < 0.001) rotateY = 0;
-          if (Math.abs(rotateX) < 0.001) rotateX = 0;
+          if (Math.abs(translateX) < 0.001) { translateX = 0; }
+          if (Math.abs(translateY) < 0.001) { translateY = 0; }
+          if (Math.abs(translateZ) < 0.001) { translateZ = 0; }
+          if (Math.abs(rotateY) < 0.001) { rotateY = 0; }
+          if (Math.abs(rotateX) < 0.001) { rotateX = 0; }
 
           const slideTransform = `translate3d(${translateX}px,${translateY}px,${translateZ}px)  rotateX(${rotateX}deg) rotateY(${rotateY}deg)`;
 
@@ -100,12 +100,14 @@ export const slideOpts = {
               );
               $slideEl.append($shadowAfterEl);
             }
-            if ($shadowBeforeEl.length)
+            if ($shadowBeforeEl.length) {
               $shadowBeforeEl[0].style.opacity =
                 offsetMultiplier > 0 ? offsetMultiplier : 0;
-            if ($shadowAfterEl.length)
+            }
+            if ($shadowAfterEl.length) {
               $shadowAfterEl[0].style.opacity =
                 -offsetMultiplier > 0 ? -offsetMultiplier : 0;
+            }
           }
         }
 

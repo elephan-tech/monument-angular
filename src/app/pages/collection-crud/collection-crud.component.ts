@@ -1,46 +1,87 @@
-import { DocumentNode } from 'graphql';
-import { Subscription } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { isEmpty } from 'lodash';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
   FormBuilder,
   FormControl,
-  FormGroup,
-  Validators,
+  FormGroup
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { AlertController, ModalController } from '@ionic/angular';
-import { dropWhile, isArray, startCase, camelCase, map } from 'lodash';
+import { DocumentNode } from 'graphql';
+import { startCase } from 'lodash';
+import { Subscription, BehaviorSubject } from 'rxjs';
 import { CollectionModalComponent } from 'src/app/dialogs/collections/collection-modal/collection-modal.component';
 import queries from '../../api/queries';
+import { Careers } from './../../models/careers';
+import { Events } from './../../models/events';
+import { Fields } from './../../models/Fields';
+import { Media } from './../../models/media';
 import { ApiService } from './../../services/api/api.service';
 
-type TypeType = boolean | string | object | Date | undefined;
+type CollectionType =
+  'events' |
+  'careers' |
+  'knowledge-center' |
+  'announcements' |
+  'emergencyMessage'|
+  undefined;
 
-type CollectionData = {
-  [key: string]: TypeType | TypeType[];
+type UpdateResponse = {
+  data: {
+    updateEvent: {
+      event: {
+        id: string,
+        name: string,
+        updated_at: string,
+        display: boolean
+     }
+   }
+ }
+};
+type Data = Careers | Events | any;
+
+type StrapiTypes = 'DateTime' | 'Boolean' | 'String' | 'UploadFile' | 'ID';
+
+type CollectionTypeData = {
+  value: string | boolean | object | any;
+  type: StrapiTypes
 };
 
+interface CollectionData {
+  data: CollectionTypeData,
+  fields: Fields
+}
+
+type FieldData = {
+  name: string,
+  type: string,
+  value: string | Media | object | number
+}
 @Component({
   selector: 'app-collection-crud',
   templateUrl: './collection-crud.component.html',
   styleUrls: ['./collection-crud.component.scss'],
 })
-export class CollectionCrudComponent implements OnInit {
-  collectionType: string;
+export class CollectionCrudComponent implements OnInit, OnDestroy {
+  collectionType: CollectionType;
   collectionData: any;
-  loading: boolean = true;
+  loading = true;
   title: string;
-  fields: CollectionData;
+  fields: any;
   collectionForm: FormGroup;
   dataObs: Subscription;
   deleteSubscription: Subscription;
   editMode = false;
+  disableAlert = true;
+  editIcon: string = 'create-outline';
+
   query: DocumentNode;
   alertForm = new FormGroup({
-    Headline: new FormControl(''),
-    Details: new FormControl(''),
-    Link: new FormControl(''),
-    Display: new FormControl(''),
+    id: new FormControl(''),
+    headline: new FormControl(''),
+    details: new FormControl(''),
+    link: new FormControl(''),
+    name: new FormControl('')
   });
   alertData: CollectionData;
   fieldTypes = {
@@ -50,7 +91,11 @@ export class CollectionCrudComponent implements OnInit {
     object: 'file',
     undefined: 'text',
   };
-  specialFields = ['Link', 'Image', 'Display'];
+  specialFields = ['url', 'image', 'attachment', 'display'];
+  data: any
+  omitFields = ['published_at', 'created_at', 'updated_at', 'slug'];
+  collectionSub = new BehaviorSubject<any>([]);
+
 
   constructor(
     private modal: ModalController,
@@ -65,98 +110,136 @@ export class CollectionCrudComponent implements OnInit {
   ngOnInit(): void {
     this.title = startCase(this.collectionType);
     this.query = queries[this.collectionType];
-    this.generateFields();
-
-    console.log(this.query, this.collectionType,  queries)
-    this.collectionData = this.api.getData(this.query, this.collectionType)
-    console.log({cd: this.collectionData, apiD: this.api.CollectionData})
-
-    this.getData(this.query);
+    this.getData();
   }
 
-  public async generateFields(){
-    const f = await this.api.getFields(this.collectionType)
-    console.log({f})
+  ngOnDestroy(): void {
+    this.api.getData(this.collectionType).unsubscribe()
   }
 
-  public  getData(query) {
-    const setData = (data) => {
-      console.log({ data });
-      this.collectionData = data;
-      this.fields = this.generateKvp(data);
-      this.collectionForm =
-        this.collectionType !== 'emergencyMessage' &&
-        this.generateForm(this.fields);
-    };
+  inputTypes(type) {
+    return {
+      'DateTime': 'date',
+      'Boolean': 'checkbox',
+      'String': 'text',
+      'ID': 'text',
+      'UploadFile': 'file'
+    }[type]
+  }
+
+  public formatValue(value: any, type: StrapiTypes) {
+    return {
+      'DateTime': value ? new Date(value).toLocaleDateString('en-us') : new Date().toLocaleDateString(),
+      'Boolean': value ? '🟢' : '🔴',
+      'String': value || 'N/A',
+      'ID': value,
+      'UploadFile': value?.length ? value?.name : 'N/A'
+    }[type]
+  }
+
+  public async getData() {
+    this.api.getData(this.collectionType).subscribe((result: CollectionData) => {
+      if (!isEmpty(result)) {
+        this.collectionData = result.data;
+        this.fields = result.fields.filter(field => !this.omitFields.includes(field.name));
+      }
+    })
 
   }
 
-  public generateForm(data): FormGroup {
-    const fields = data.reduce((acc, field) => {
-      return { ...acc, group: this.generateFormGroup(field) };
-    }, {});
-
-    return fields.group;
+  refresh() {
+    this.api.refresh(this.collectionType)
   }
 
-  generateFormGroup(field): FormGroup | FormControl {
+  generateForm(fields: Fields): FormGroup {
     const formGroup = this.fb.group({});
-    field.forEach(({ key, value }) => {
-      const dv = ['Date', 'Display'];
-      const defaultValues = {
-        Display: false,
-        Date: new Date(),
-        default: '',
-      };
-      formGroup.addControl(
-        camelCase(key),
-        new FormControl(
-          this.editMode
-            ? value
-            : defaultValues[dv.includes(key) ? key : 'default']
-        )
-      );
-    });
+    fields.forEach((item) => {
+      formGroup.addControl(item.name, new FormControl())
+    })
+
     return formGroup;
   }
 
-  public generateKvp(data) {
-    return !isArray(data)
-      ? this.mapCols(data)
-      : data.map((item) => this.mapCols(item));
+
+  public async editEntry(e) {
+    e.preventDefault();
+
+    const { id } = e.target;
+      this.editMode = true;
+      const form = this.generateForm(this.fields);
+      const modal = await this.modal.create({
+        component: CollectionModalComponent,
+        cssClass: 'cms-form-modal',
+        componentProps: {
+          data: this.collectionData,
+          fields: this.fields,
+          form,
+          collection: this.collectionType,
+          editMode: this.editMode,
+          id
+        },
+      });
+      return await modal.present();
+
+
   }
 
-  mapCols(item) {
-    console.log({ item });
-    const kvp = Object.entries(item).map((entry) => {
-      const [key, val] = entry;
-      const value = () => {
-        if (key === 'date')
-          return (
-            val &&
-            new Date(<Date>val).toLocaleDateString('en-US', {
-              weekday: 'long',
-              day: '2-digit',
-              month: 'long',
-              year: 'numeric',
-            })
-          );
-        if (val === null) return 'undefined';
-        return val;
-      };
-      return {
-        key: startCase(key),
-        value: value(),
-        type: this.fieldTypes[typeof value()],
-      };
+  async delete(e) {
+    e.preventDefault()
+    if (e.currentTarget.value) {
+      this.alertForm.reset()
+      this.api.update('emergencyMessage', 1, {
+        headline: '',
+        details: '',
+        link: '',
+        display: false
+      }).toPromise().then(res => {
+        console.log({res})
+      })
+    } else {
+      const { id } = e.currentTarget;
+      const alert = await this.alertController.create({
+        cssClass: 'my-custom-class',
+        subHeader: 'Deleting',
+        message: `Are you sure you want to delete this ${this.collectionType} entry?`,
+        buttons: [
+          {
+            text: 'Cancel',
+            role: 'cancel',
+            handler: () => { },
+          },
+          {
+            text: 'Delete',
+            role: 'delete',
+            cssClass: 'danger',
+            handler: () => {
+              this.api.delete(this.collectionType, id).toPromise().then(success => {
+                this.refresh()
+              })
+            },
+          },
+        ],
+      });
+
+      await alert.present();
+
+      await alert.onDidDismiss();
+    }
+  }
+
+  async onToggle(e) {
+    const { id, checked } = e.currentTarget;
+
+    this.api.update(this.collectionType, id, {
+      display: checked
+    }).toPromise().then((res: UpdateResponse) => {
+      this.api.refresh(this.collectionType)
     });
-    const droppedKeys = ['Typename'];
-    return dropWhile(kvp, ({ key }) => droppedKeys.includes(key));
   }
 
-  public async editEntry() {
-    this.editMode = true;
+  public async addNew() {
     const form = this.generateForm(this.fields);
+
     const modal = await this.modal.create({
       component: CollectionModalComponent,
       cssClass: 'cms-form-modal',
@@ -164,50 +247,6 @@ export class CollectionCrudComponent implements OnInit {
         data: this.collectionData,
         fields: this.fields,
         form,
-        collection: this.collectionType,
-        editMode: this.editMode,
-      },
-    });
-    return await modal.present();
-  }
-
-  async delete(e) {
-    console.log(e.currentTarget.id);
-    const id = e.currentTarget.id;
-    const alert = await this.alertController.create({
-      cssClass: 'my-custom-class',
-      subHeader: 'Deleting',
-      message: `Are you sure you want to delete this ${this.collectionType} entry?`,
-      buttons: [
-        {
-          text: 'Cancel',
-          role: 'cancel',
-          handler: () => console.log('cancel'),
-        },
-        {
-          text: 'Delete',
-          role: 'delete',
-          cssClass: 'danger',
-          handler: () => {
-            this.api.delete(this.collectionType, id);
-          },
-        },
-      ],
-    });
-
-    await alert.present();
-
-    await alert.onDidDismiss();
-  }
-
-  public async addNew() {
-    const modal = await this.modal.create({
-      component: CollectionModalComponent,
-      cssClass: 'cms-form-modal',
-      componentProps: {
-        data: this.collectionData,
-        fields: this.fields,
-        form: this.collectionForm,
         collection: this.collectionType,
       },
     });
@@ -219,7 +258,7 @@ export class CollectionCrudComponent implements OnInit {
     this.api
       .update('emergencyMessage', 1, data)
       .toPromise()
-      .then((r) => console.log({ r }))
+      .then()
       .catch((err) => console.error({ err }));
   }
 }

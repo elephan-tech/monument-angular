@@ -1,3 +1,4 @@
+import { FamilyResource } from './models/family-resources';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -17,8 +18,12 @@ import { ContactUsComponent } from './pages/about-us/contact-us/contact-us.compo
 import { ProgramsComponent } from './pages/programs/programs.component';
 import { ADayAtMonumentComponent } from './pages/programs/a-day-at-monument/a-day-at-monument.component';
 import { AcademicsComponent } from './pages/programs/academics/academics.component';
-import { BoardingStudentLifeProgramComponent } from './pages/programs/boarding-student-life-program/boarding-student-life-program.component';
-import { LifeSkillsComponent } from './pages/programs/life-skills/life-skills.component';
+import {
+  BoardingStudentLifeProgramComponent
+} from './pages/programs/boarding-student-life-program/boarding-student-life-program.component';
+import {
+  LifeSkillsComponent
+} from './pages/programs/life-skills/life-skills.component';
 import { WellBeingComponent } from './pages/programs/well-being/well-being.component';
 import { NationalSchoolLunchProgramComponent } from './pages/programs/national-school-lunch-program/national-school-lunch-program.component';
 import { CareersComponent } from './pages/careers/careers.component';
@@ -54,8 +59,8 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 import { DatatableComponent } from './components/datatable/datatable.component';
 import { EnvTagComponent } from './components/env-tag/env-tag.component';
 import { CollectionModalComponent } from './dialogs/collections/collection-modal/collection-modal.component';
-import { AddcareermodalComponent } from './dialogs/careers/addcareermodal/addcareermodal.component';
 import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
+import { StartCasePipe } from './pipes/start-case.pipe';
 
 @NgModule({
   declarations: [
@@ -98,6 +103,7 @@ import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
     DatatableComponent,
     EnvTagComponent,
     CollectionModalComponent,
+    StartCasePipe,
   ],
   imports: [
     BrowserModule,

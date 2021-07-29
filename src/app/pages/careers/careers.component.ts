@@ -1,5 +1,8 @@
+import { ApiService } from './../../services/api/api.service';
+import { Media } from './../../models/media';
+import { UploadService } from './../../services/upload/upload.service';
 import { Apollo } from 'apollo-angular';
-import { Subscription } from 'rxjs';
+import { Subscription, BehaviorSubject } from 'rxjs';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { CAREER_QUERY } from '../../api/queries';
 
@@ -11,24 +14,15 @@ import { CAREER_QUERY } from '../../api/queries';
   template: `<div [innerHTML]="data | safeHtml"></div>`,
 })
 export class CareersComponent implements OnInit {
+
+  constructor(private apollo: Apollo, private upload: UploadService, private api: ApiService) {}
   pageTitle: string;
   heroImg: string;
   careerSub: Subscription;
   careers: any;
+  state: any;
 
-  constructor(private apollo: Apollo) {}
-
-  ngOnInit() {
-    this.pageTitle = 'Careers';
-    this.heroImg = 'assets/images/monument-7.png';
-    this.careerSub = this.apollo
-      .watchQuery<any>({
-        query: CAREER_QUERY,
-      })
-      .valueChanges.subscribe((result) => {
-        this.careers = result.data?.jobPostings;
-      });
-  }
+  filesBS = new BehaviorSubject<Media[]>([])
 
   jobOpenings = [
     {
@@ -86,4 +80,13 @@ export class CareersComponent implements OnInit {
       shortDescription: '',
     },
   ];
+
+  ngOnInit() {
+    this.pageTitle = 'Careers';
+    this.heroImg = 'assets/images/monument-7.png';
+    const g = this.api.getData('careers')
+    console.log({g})
+  }
+
+
 }

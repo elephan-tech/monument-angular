@@ -8,7 +8,7 @@ export interface Error {
   statusCode: number;
   error: string;
   message: Array<ErrorObject>;
-  data: Array<ErrorObject>
+  data: Array<ErrorObject>;
 }
 
 export interface ErrorObject {
@@ -40,7 +40,7 @@ export class AdminLoginComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required]]
     });
-    if(this.authService.loggedIn) {
+    if (this.authService.loggedIn) {
         this.router.navigate(['/admin']);
     }
   }
@@ -50,17 +50,17 @@ export class AdminLoginComponent implements OnInit {
 
   login() {
     this.authService.login(this.loginForm).then((res: any) => {
-      if(res.user) {
+      if (res.user) {
         this.router.navigate(['/admin']);
       } else {
         this.error = res.msg;
         this.loginForm.setErrors({
         invalid: true
-      })
+      });
       }
     }).catch((err) => {
       console.log(err);
-    })
+    });
   }
 
 }

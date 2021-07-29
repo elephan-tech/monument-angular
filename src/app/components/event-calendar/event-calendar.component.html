@@ -36,7 +36,7 @@
           ></ion-row
         >
         <ion-row>
-          <ion-col size="12">
+          <ion-col size="12" class="scrollable">
             <ion-list-header lines="full">
               <ion-text color="medium"><p>Coming up</p></ion-text>
             </ion-list-header>
@@ -44,12 +44,14 @@
             <ion-card
               class="event-card"
               *ngFor="let event of eventData"
-              [hidden]="!event?.display || eventDate(event?.date) <= today"
+              [hidden]="
+                !event?.display?.value || eventDate(event?.date?.value) <= today
+              "
             >
               <ion-card-header>
                 <ion-toolbar mode="md">
                   <ion-card-title color="primary" style="text-align: start">{{
-                    event?.name
+                    event?.name?.value
                   }}</ion-card-title>
                   <ion-card-subtitle style="text-align: start">
                     <div style="display: flex; align-items: center">
@@ -59,7 +61,7 @@
                         style="margin-right: 4px"
                       ></ion-icon>
                       <ion-text>{{
-                        eventDate(event?.date) | date: "fullDate"
+                        eventDate(event?.date?.value) | date: "fullDate"
                       }}</ion-text>
                     </div>
                     <div style="display: flex; align-items: center">
@@ -70,16 +72,13 @@
                       ></ion-icon>
                       <ion-text>
                         {{
-                          eventDate(event?.date) | date: "shortTime"
+                          eventDate(event?.date?.value) | date: "shortTime"
                         }}</ion-text
                       >
                     </div>
                   </ion-card-subtitle>
                   <ion-buttons slot="end" fill="solid">
-                    <div
-                      class="event-link"
-                      *ngIf="event?.localAsset || event?.file.url"
-                    >
+                    <div class="event-link" *ngIf="event?.file?.value">
                       <a
                         [href]="
                           '../../../assets/documents/' + event?.localAsset
@@ -90,7 +89,7 @@
                       </a>
                     </div>
                     <div class="event-link" *ngIf="event?.eventLink">
-                      <a [href]="event?.eventLink" target="_blank">
+                      <a [href]="event?.eventLink?.value" target="_blank">
                         Register
                       </a>
                     </div>
@@ -106,12 +105,14 @@
             <ion-card
               class="event-card"
               *ngFor="let event of eventData"
-              [hidden]="!event?.display || eventDate(event?.date) >= today"
+              [hidden]="
+                !event?.display?.value || eventDate(event?.date?.value) >= today
+              "
             >
               <ion-card-header>
                 <ion-toolbar mode="md">
                   <ion-card-title color="primary" style="text-align: start">{{
-                    event?.name
+                    event?.name?.value
                   }}</ion-card-title>
                   <ion-card-subtitle style="text-align: start">
                     <div style="display: flex; align-items: center">
@@ -121,7 +122,8 @@
                         style="margin-right: 4px"
                       ></ion-icon>
                       <ion-text>{{
-                        eventDate(event?.date) | date: "fullDate"
+                        eventDate(event?.date?.value)
+                          | date: "fullDate" || "No Date Set"
                       }}</ion-text>
                     </div>
                     <div style="display: flex; align-items: center">
@@ -132,16 +134,14 @@
                       ></ion-icon>
                       <ion-text>
                         {{
-                          eventDate(event?.date) | date: "shortTime"
+                          eventDate(event?.date?.value)
+                            | date: "shortTime" || "No Time Set"
                         }}</ion-text
                       >
                     </div>
                   </ion-card-subtitle>
                   <ion-buttons slot="end" fill="solid">
-                    <div
-                      class="event-link"
-                      *ngIf="event?.localAsset || event?.file.url"
-                    >
+                    <div class="event-link" *ngIf="event?.file?.value">
                       <a
                         [href]="
                           '../../../assets/documents/' + event?.localAsset
@@ -161,18 +161,20 @@
             </ion-list-header>
 
             <ion-card
-              class="event-card"
+              class="event-card announcement"
               *ngFor="let announcement of announcementData"
-              [hidden]="!announcement.display"
+              [hidden]="!announcement?.display?.value"
             >
               <ion-card-header>
                 <ion-toolbar mode="md">
                   <ion-card-title color="primary" style="text-align: start">{{
-                    announcement.displayText
+                    announcement?.name?.value
                   }}</ion-card-title>
                   <ion-buttons slot="end" fill="solid">
-                    <div class="event-link" *ngIf="announcement.link">
-                      <a [href]="announcement.link" target="_blank"> Go </a>
+                    <div class="event-link" *ngIf="announcement?.link?.value">
+                      <a [href]="announcement?.link?.value" target="_blank">
+                        Go
+                      </a>
                     </div>
                   </ion-buttons>
                 </ion-toolbar>

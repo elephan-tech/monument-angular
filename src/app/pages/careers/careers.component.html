@@ -1,7 +1,11 @@
 <app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
 <section>
   <h2>Career Opportunities for the 2021-22 School Year</h2>
-  <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
+  <img
+    loading="lazy"
+    src="assets/underline-stroke.svg"
+    class="underline-stroke"
+  />
 
   <!-- <ion-item-divider></ion-item-divider>
   <h4>For demo purposes</h4> -->
@@ -10,14 +14,22 @@
       <ion-col size="6" size-md="6" size-sm="12" *ngFor="let c of careers">
         <ion-card>
           <ion-card-header>
-            <ion-card-subtitle>{{ c.category?.name }}</ion-card-subtitle>
-            <ion-card-title>{{ c.title }}</ion-card-title>
-            <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
+            <ion-card-subtitle>{{ c | json }}</ion-card-subtitle>
+            <ion-card-title>{{ c.jobTitle }}</ion-card-title>
+            <img
+              loading="lazy"
+              src="assets/underline-stroke.svg"
+              class="underline-stroke"
+            />
           </ion-card-header>
           <ion-card-content>
-            {{ c.description }}
+            {{ c.shortDescription }}
             <br />
-            <a [href]="c.link" [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'" target="_blank">
+            <a
+              [href]="c.url"
+              [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'"
+              target="_blank"
+            >
               Learn more about this position
             </a>
           </ion-card-content>
@@ -27,7 +39,9 @@
   </ion-grid>
   <ion-item-divider></ion-item-divider>
 
-
+  <div *ngFor="let file of filesBS">
+    <pre>{{ file | async }}</pre>
+  </div>
   <ion-grid>
     <ion-row>
       <ion-col size="6" size-md="6" size-sm="12" *ngFor="let j of jobOpenings">
@@ -35,12 +49,20 @@
           <ion-card-header>
             <ion-card-subtitle>{{ j.category }}</ion-card-subtitle>
             <ion-card-title>{{ j.jobTitle }}</ion-card-title>
-            <img loading="lazy" src="assets/underline-stroke.svg" class="underline-stroke" />
+            <img
+              loading="lazy"
+              src="assets/underline-stroke.svg"
+              class="underline-stroke"
+            />
           </ion-card-header>
           <ion-card-content>
             <!-- {{ j.shortDescription }} -->
             <br />
-            <a [href]="j.url" [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'" target="_blank">
+            <a
+              [href]="j.url"
+              [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'"
+              target="_blank"
+            >
               Learn more about this position
             </a>
           </ion-card-content>
@@ -60,8 +82,11 @@
     <p>Tuesday, March 16th, 4 PM – 6 PM</p>
 
     <p>
-      <a href="https://monumentacademy.tedk12.com/hire/index.aspx" target="_blank">APPLY HERE</a>. You will be asked to
-      create a profile, then fill out an application,
+      <a
+        href="https://monumentacademy.tedk12.com/hire/index.aspx"
+        target="_blank"
+        >APPLY HERE</a
+      >. You will be asked to create a profile, then fill out an application,
       including uploading your resume and cover letter. Salary and benefits are
       competitive, and commensurate with education, and level of work
       experience. Monument Academy is an equal opportunity employer, committed

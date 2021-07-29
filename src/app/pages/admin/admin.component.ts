@@ -1,6 +1,7 @@
+import { ApiService } from './../../services/api/api.service';
 import { environment } from './../../../environments/environment';
-import { Apollo } from 'apollo-angular';
-import { Subscription } from 'rxjs';
+import { Apollo, gql } from 'apollo-angular';
+import { Subscription, BehaviorSubject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from '../../services/auth/auth.service';
@@ -18,6 +19,7 @@ export class AdminComponent implements OnInit {
   // TODO National School Lunch Program
   // TODO Family Resources
   // TODO Board Of Directors (meeting minutes)
+  loggedInUser: any;
 
   items = [
     {
@@ -28,7 +30,7 @@ export class AdminComponent implements OnInit {
     {
       name: 'News & Media',
       icon: 'newspaper-outline',
-      url: '/news-media',
+      url: '/articles',
     },
     {
       name: 'Careers',
@@ -55,15 +57,21 @@ export class AdminComponent implements OnInit {
       icon: 'sparkles-outline',
       url: '/monumental-moments',
     },
+    {
+      name: 'Family Resources',
+      icon: 'school-outline',
+      url: '/family-resources',
+    },
   ];
 
   constructor(
-    private menu: MenuController,
-    private apollo: Apollo,
-    private authService: AuthService
+    private authService: AuthService,
+    private apollo: Apollo
   ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
 
   logout() {
     this.authService.logout();

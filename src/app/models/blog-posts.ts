@@ -1,6 +1,6 @@
 export interface ArticleInfo {
   articleLocation: string;
-  articleLink: string
+  articleLink: string;
 }
 
 

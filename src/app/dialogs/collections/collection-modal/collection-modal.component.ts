@@ -1,11 +1,10 @@
-import { ApiService } from './../../../services/api/api.service';
-import { startCase, camelCase } from 'lodash';
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, Validators, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { ModalController, ToastController } from '@ionic/angular';
-import { Apollo, gql } from 'apollo-angular';
-import { Subscription, Observable } from 'rxjs';
+import { camelCase, startCase, filter } from 'lodash';
 import pluralize from 'pluralize';
+import { Observable } from 'rxjs';
+import { ApiService } from './../../../services/api/api.service';
 
 @Component({
   selector: 'app-collection-modal',
@@ -16,40 +15,84 @@ export class CollectionModalComponent implements OnInit {
   @Input() data: any;
   @Input() fields: any;
   @Input() form: FormGroup;
-  @Input() collection: string;
+  @Input() collection: string ;
   @Input() editMode: boolean;
+  @Input() id: string;
   collectionObs: Observable<any>;
   specialFields = ['Id', 'Date', 'Display'];
   entry: any;
   promise: Promise<any>;
   clearInput = false;
   fieldsFoo: Promise<any>;
+  fieldTypes = {
+    'UploadFile': 'file',
+    'String': 'text',
+    'Boolean': 'radio',
+    'DateTime': 'date'
+  }
+  currentData: any;
+
 
   constructor(
     private api: ApiService,
     private mc: ModalController,
     private toast: ToastController
-  ) {}
+  ) { }
+
+  getValue({ value, type = 'default' }): string | number | Date {
+    const valueMap = {
+      'DateTime': new Date(value),
+      'String': value,
+      'Boolean': value,
+      'ID': value,
+      'default': value,
+      'UploadFile': value
+    }
+
+    return valueMap[type]
+  }
+
+  getEntries(item) {
+    return Object.entries(item).reduce((acc, [name, value]) => {
+      return [...acc, {name, value}]
+    }, [])
+  }
+
+  generateValues(item) {
+    const formFields = this.fields.reduce((acc, field) => [...acc, field.name], [])
+    return this.getEntries(item).reduce((acc, entry) => {
+      const returnValue = formFields.includes(entry.name) ? { [entry.name]: this.getValue(entry.value) } : {}
+      return {...acc, ...returnValue}
+    }, {});
+  }
 
   ngOnInit(): void {
-    console.log({ editMode: this.editMode });
+    this.collection = startCase(this.collection)
     this.clearInput = false;
-    this.fields = this.fields[0];
     this.entry = startCase(pluralize.singular(this.collection));
-    // this.fieldsFoo = this.api
-    //   .getFields(this.collection)
-    //   .then((res) => console.log({ res }))
-    //   .catch((err) => console.warn({ err }));
+
+    const [currentDataValues] = this.data.reduce((acc, item) => {
+      const values = this.generateValues(item);
+      return [...acc, values]
+    }, [])
+
+    this.currentData = currentDataValues;
+
+    this.editMode ? this.form.setValue(currentDataValues): this.form.reset()
   }
 
   createEntry() {
+
     const { value } = this.form;
-    const data = { ...value, date: new Date(value?.date || '') };
+
+    const date = new Date(value?.date || '').toISOString();
+
+    const data = { ...value, date , id: this.id};
     const edit = this.editMode;
-    console.log({ edit });
+
     edit
       ? this.api
-          .update(this.collection, this.fields[0].value, data)
+          .update(this.collection, this.id, data)
           .toPromise()
           .then((success) => this.onSuccess(success))
           .catch((err) => this.onError(err))
@@ -61,23 +104,24 @@ export class CollectionModalComponent implements OnInit {
   }
 
   async onError(err) {
-    console.log({ err });
     const toast = await this.toast.create({
-      message: err,
+      message: err.message,
       color: 'danger',
     });
     await toast.present();
   }
 
-  async onSuccess(success) {
-    console.log({ success });
+  async onSuccess(_success) {
     const toast = await this.toast.create({
-      message: 'Entry created',
+      message: `Entry Successfully ${this.editMode ? 'Updated' : 'Created'}`,
       color: 'success',
     });
     await toast.present();
     this.clearInput = true;
-    this.mc.dismiss().then(() => (this.clearInput = false));
+    this.mc.dismiss().then(() => {
+      this.clearInput = false
+      toast.dismiss()
+    });
   }
 
   closeDialog() {

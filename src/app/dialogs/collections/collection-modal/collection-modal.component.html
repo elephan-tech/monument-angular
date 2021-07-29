@@ -1,4 +1,4 @@
-<div>
+<ion-content>
   <ion-toolbar color="primary">
     <ion-buttons slot="end">
       <ion-button (click)="closeDialog()">
@@ -12,30 +12,25 @@
       <ion-row color="primary">
         <ion-col class="ion-align-self-center">
           <ion-text class="ion-align-center">
-            <h3>Create {{ collection }}</h3>
+            <h3>{{ editMode ? "Edit" : "Create" }} {{ collection }}</h3>
           </ion-text>
           <ion-item
             *ngFor="let field of fields"
             class="box"
-            [hidden]="field?.key === 'Id'"
+            [hidden]="
+              field?.type === 'ID' ||
+              field?.name.includes('_at') ||
+              field.name === 'display'
+            "
           >
-            <ion-label position="stacked">{{ field?.key }}</ion-label>
-            <ion-toggle
-              *ngIf="field?.key === 'Display'"
-              checked="true"
-              formControlName="display"
-            ></ion-toggle>
-            <ion-datetime
-              *ngIf="field?.key === 'Date'"
-              placeholder="Select Date"
-              formControlName="date"
-              [value]="date"
-            ></ion-datetime>
+            <ion-label position="stacked">{{
+              field?.name | startCase
+            }}</ion-label>
             <ion-input
               [clearInput]="clearInput"
-              [formControlName]="camelCase(field?.key)"
-              *ngIf="!specialFields?.includes(field?.key)"
-              [type]="field?.type"
+              [formControlName]="camelCase(field?.name)"
+              [hidden]="field?.type === 'Boolean' || field.name === 'display'"
+              [type]="fieldTypes[field?.type]"
             ></ion-input>
           </ion-item>
           <div class="ion-padding">
@@ -52,4 +47,4 @@
       </ion-row>
     </ion-grid>
   </form>
-</div>
+</ion-content>

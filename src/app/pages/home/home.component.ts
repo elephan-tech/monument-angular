@@ -48,7 +48,7 @@ export class HomeComponent implements OnInit {
       stat: `100%`,
       description: `Of Students Participate in Junior Achievement`
     }
-  ]
+  ];
 
   constructor(private screenSizeService: ScreensizeService) {
         this.screenSizeService.isDesktopView().subscribe((isDesktop) => {

@@ -1,10 +1,31 @@
+import { EmergencyMessage } from './../../components/topnavigation/topnavigation.component';
 import gql from "graphql-tag";
 
+
+const meta = (collection: string) => gql`
+fragment FieldMeta on Query {
+  __type(name: "${collection}") {
+    fields {
+      name
+      description
+      type {
+        name
+        ofType {
+          name
+        }
+      }
+    }
+  }
+  }`
+
+
 export const CAREER_QUERY = gql`
+${meta("Career")}
   query Career {
     careers {
+      display
       id
-      jobTitle
+      name
       shortDescription
       category {
         name
@@ -16,10 +37,12 @@ export const CAREER_QUERY = gql`
         url
       }
     }
+  ...FieldMeta
   }
 `;
 
 export const SOCIAL_QUERY = gql`
+${meta("SocialMedia")}
   query SocialMedia {
     socialMedias {
       id
@@ -30,14 +53,20 @@ export const SOCIAL_QUERY = gql`
       target
       fill
     }
+    ...FieldMeta
   }
 `;
 
 export const ARTICLES_QUERY = gql`
+${meta("Article")}
   query Articles {
-    article {
+    articles {
+      title
+      content
+      date_created
+      display
+      name
       id
-      Title
       category {
         id
         name
@@ -46,10 +75,12 @@ export const ARTICLES_QUERY = gql`
         url
       }
     }
+    ...FieldMeta
   }
 `;
 
 export const EMERGENCY_QUERY = gql`
+${meta('EmergencyMessage')}
   query EmergencyMessage {
     emergencyMessage {
       headline
@@ -57,10 +88,12 @@ export const EMERGENCY_QUERY = gql`
       link
       display
     }
+    ...FieldMeta
   }
 `;
 
 export const CATEGORIES_QUERY = gql`
+${meta("Categories")}
   query Categories {
     categories {
       id
@@ -70,6 +103,7 @@ export const CATEGORIES_QUERY = gql`
 `;
 
 export const MOMENTS_QUERY = gql`
+${meta("MonumentalMoments")}
   query MonumentalMoments {
     monumentalMoments {
       id
@@ -88,12 +122,12 @@ export const MOMENTS_QUERY = gql`
 `;
 
 export const EVENTS_QUERY = gql`
+${meta("Events")}
   query Events {
     events {
       id
       name
       date
-      localAsset
       display
       eventLink
       file {
@@ -101,13 +135,15 @@ export const EVENTS_QUERY = gql`
         url
       }
     }
+    ...FieldMeta
   }
 `;
-export const ANNOUNCEMENTS_QUERY = gql`
+export const ANNOUNCEMENTS_QUERY =  gql`
+${meta("Announcements")}
   query Announcements {
     announcements {
       id
-      displayText
+      name
       display
       date
       image {
@@ -120,16 +156,57 @@ export const ANNOUNCEMENTS_QUERY = gql`
         url
       }
     }
+    ...FieldMeta
   }
 `;
 
-export default {
+export const FAMILY_RESOURCES_QUERY =  gql`
+${meta("FamilyResources")}
+  query FamilyResources {
+    familyResources {
+      id
+      title
+      subtitle
+      description
+      image {
+        url
+        updated_at
+      }
+      url
+    }
+    ...FieldMeta
+  }
+`;
+
+export const NEWS_MEDIA_QUERY =  gql`
+${meta("FamilyResources")}
+  query FamilyResources {
+    familyResources {
+      id
+      title
+      subtitle
+      description
+      image {
+        url
+        updated_at
+      }
+      url
+    }
+    ...FieldMeta
+  }
+`;
+
+const fieldMap = {
   careers: CAREER_QUERY,
   socials: SOCIAL_QUERY,
-  articles: ARTICLES_QUERY,
   categories: CATEGORIES_QUERY,
   emergencyMessage: EMERGENCY_QUERY,
   "monumental-moments": MOMENTS_QUERY,
   events: EVENTS_QUERY,
   announcements: ANNOUNCEMENTS_QUERY,
-};
+  'family-resources': FAMILY_RESOURCES_QUERY,
+  articles: ARTICLES_QUERY
+}
+
+export default (collection: string) =>  fieldMap[collection]
+

@@ -14,9 +14,9 @@ export class ToolbarComponent implements OnInit {
 
   @Input() src: string;
   @Input() alt: string;
-  @Input() headerSections: Object;
+  @Input() headerSections: object;
 
-  public styleObject: Object;
+  public styleObject: object;
 
   constructor(private router: Router) {}
 

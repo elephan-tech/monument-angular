@@ -25,7 +25,7 @@ export class BlogComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.id = this._Activatedroute.snapshot.params['blogID'];
+    this.id = this._Activatedroute.snapshot.params.blogID;
     this.blog = this.eventService.getBlogPostByID(this.id);
   }
 }

@@ -4,6 +4,7 @@ import axios from 'axios';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 
 
@@ -22,7 +23,7 @@ export class AuthService {
    }
 
   checkIfLoggedIn() {
-    if(this.loggedIn) {
+    if (this.loggedIn) {
       return true;
     } else {
       return false;
@@ -35,16 +36,19 @@ export class AuthService {
   }
 
   private get token(): string {
-    return localStorage.getItem("access");
+    return localStorage.getItem('access');
   }
 
   login(form: FormGroup): Promise<boolean> {
     // TODO: use environment url
-    return axios.post('http://localhost:1338/auth/local', {
+    const url = `${environment.apiUrl}/auth/local`
+    return axios.post(url, {
       identifier: form.value.email,
       password: form.value.password,
     }).then((res: any) => {
-        localStorage.setItem('access_token', res.data.jwt);
+      localStorage.setItem('access_token', res.data.jwt);
+      this.loggedInUser = res?.data?.user
+      console.log({data: res.data, user: this.loggedInUser})
         return res.data;
     }).catch((err: any) => {
       // do we want to return the whole obj or just false?
@@ -53,13 +57,13 @@ export class AuthService {
         msg: err.response.data.message[0].messages[0].message,
         msgId: err.response.data.message[0].messages[0].id,
         statusCode: err.response.data.statusCode
-      }
+      };
       return errObject;
-    })
+    });
   }
 
   logout() {
     localStorage.removeItem('access_token');
-    this.router.navigate(["/admin-login"]);
+    this.router.navigate(['/admin-login']);
   }
 }
