@@ -26,11 +26,12 @@ ${meta('Career')}
       id
       name
       shortDescription
-      category {
-        name
-      }
       url
-      datePosted
+      date
+      image{
+        name
+        url
+      }
       attachment {
         name
         url
@@ -61,18 +62,18 @@ ${meta('Article')}
   query Articles {
     articles {
       title
-      content
-      date_created
-      display
-      name
-      id
-      category {
-        id
-        name
-      }
       image {
         url
       }
+      content
+      date
+      name
+      display
+      subtitle
+      link
+      location
+      id
+
     }
     ...${'Article'}Meta
   }
@@ -166,6 +167,7 @@ ${meta('FamilyResources')}
     familyResources {
       id
       title
+      display
       subtitle
       description
       image {
@@ -185,7 +187,7 @@ ${meta('FamilyResources')}
       id
       title
       subtitle
-      description
+
       image {
         url
         updated_at
@@ -197,7 +199,7 @@ ${meta('FamilyResources')}
 `;
 
 export const BOARD_QUERY =  gql`
-${meta('Boar')}
+${meta('BoardMeetings')}
 query BoardMeeting{
   boardMeetings{
     name
@@ -218,7 +220,7 @@ query BoardMeeting{
       url
     }
   }
-  ...${'BoardMeeting'}Meta
+  ...${'BoardMeetings'}Meta
 }
 `;
 
@@ -231,12 +233,12 @@ const fieldMap = {
   socials: SOCIAL_QUERY,
   categories: CATEGORIES_QUERY,
   emergencyMessage: EMERGENCY_QUERY,
-  'monumental-moments': MOMENTS_QUERY,
+  'monumentalMoments': MOMENTS_QUERY,
   events: EVENTS_QUERY,
   announcements: ANNOUNCEMENTS_QUERY,
-  'family-resources': FAMILY_RESOURCES_QUERY,
+  'familyResources': FAMILY_RESOURCES_QUERY,
   articles: ARTICLES_QUERY,
-  'board-meetings': BOARD_QUERY
+  'boardMeetings': BOARD_QUERY
 };
 
 export default (collection: string) => {

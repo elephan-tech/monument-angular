@@ -6,6 +6,8 @@ import pluralize from 'pluralize';
 import { Observable } from 'rxjs';
 import { ApiService } from './../../../services/api/api.service';
 
+import Classic from '@ckeditor/ckeditor5-build-classic';
+
 @Component({
   selector: 'app-collection-modal',
   templateUrl: './collection-modal.component.html',
@@ -33,15 +35,17 @@ export class CollectionModalComponent implements OnInit {
   currentData: any;
 
 
+  public Editor = Classic
   constructor(
     private api: ApiService,
     private mc: ModalController,
     private toast: ToastController
-  ) { }
+  ) {
+   }
 
   getValue({ value, type = 'default' }): string | number | Date {
     const valueMap = {
-      DateTime: new Date(value),
+      DateTime: new Date(value).toLocaleDateString(),
       String: value,
       Boolean: value,
       ID: value,
@@ -71,23 +75,36 @@ export class CollectionModalComponent implements OnInit {
     this.clearInput = false;
     this.entry = startCase(pluralize.singular(this.collection));
 
-    const [currentDataValues] = this.data.reduce((acc, item) => {
+    const currentDataValues = this.data.reduce((acc, item) => {
       const values = this.generateValues(item);
       return [...acc, values];
     }, []);
 
-    this.currentData = currentDataValues;
+    const [currentData] = currentDataValues.filter(data=> data.id === this.id);
 
-    this.editMode ? this.form.setValue(currentDataValues) : this.form.reset();
+    this.currentData = currentData;
+
+    this.editMode ? this.form.setValue(currentData) : this.form.reset();
   }
+
 
   createEntry() {
 
     const { value } = this.form;
+    console.log({value})
 
-    const date = new Date(value?.date || '').toISOString();
+    const date = value.date ? new Date(value?.date || '').toISOString() : '_drop'
 
-    const data = { ...value, date , id: this.id};
+      let data = { ...value, date, id: this.id };
+
+    if (data.date === '_drop') {
+      const { date, ...rest } = data;
+      data = rest;
+    } else {
+      data = data
+    }
+
+    console.log({data})
     const edit = this.editMode;
 
     edit

@@ -51,7 +51,6 @@ export class ApiService {
   }
   public formatData(type: string, data: any): Collection {
     if (!isEmpty(data)) {
-
       const fields = data?.__type.fields.reduce((acc, field) => [...acc, {
           name: field.name,
           type: field.type.name || field.type.ofType.name
@@ -66,7 +65,7 @@ export class ApiService {
   }
 
 
-  getData(collectionType?: CollectionType) {
+  getData(collectionType?: any) {
 
     const query: DocumentNode = useQuery(collectionType);
 
@@ -88,7 +87,7 @@ export class ApiService {
     return this.CollectionData;
   }
 
-  refresh(collectionType: CollectionType) {
+  refresh(collectionType: string) {
     const query: DocumentNode = useQuery(collectionType);
 
     const refresh = this.apollo.watchQuery<any>({
@@ -99,11 +98,10 @@ export class ApiService {
   }
   delete(collection: string, id: string) {
     const entry = pluralize.singular(collection);
-
     const generateMutation = () => {
       return gql`
-          mutation ${startCase(collection)} {
-            delete${startCase(entry)}(input: {
+          mutation ${startCase(collection).split(' ').join('')} {
+            delete${startCase(entry).split(' ').join('')}(input: {
               where: {
                 id: ${id}
               }
@@ -144,7 +142,7 @@ export class ApiService {
   }
 
   update(collection: string, id: any, data: object) {
-    const entry = pluralize.singular(collection);
+    const entry = pluralize.singular(startCase(collection));
     const payload = this.graphqlJSON(omit(data, ['id']));
     const whereClause =
     collection === 'emergencyMessage'
@@ -163,9 +161,8 @@ export class ApiService {
           collection === 'emergencyMessage' ? payload.toLowerCase() : payload
         }
       }){
-        ${collection === 'emergencyMessage' ? entry : entry.toLowerCase()}{
+        ${collection === 'emergencyMessage' ? entry : camelCase(entry).split(' ').join('')}{
           id
-        name
         updated_at
         display
         }
@@ -174,6 +171,10 @@ export class ApiService {
       `,
       optimisticResponse: {},
     });
+  }
+
+  getById(collection, id) {
+// TODO factor out from blog.component.ts
   }
 
 

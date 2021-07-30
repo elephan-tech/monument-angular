@@ -1,5 +1,7 @@
+import { isEmpty } from 'lodash';
+import { ApiService } from 'src/app/services/api/api.service';
+import { BehaviorSubject } from 'rxjs';
 import { Component, Injectable, OnInit } from '@angular/core';
-import { Apollo } from 'apollo-angular';
 
 @Component({
   selector: 'app-family-resources',
@@ -18,7 +20,7 @@ export class FamilyResourcesComponent implements OnInit {
     'Volunteering',
   ];
 
-  resources = [
+  resourcesHC = [
     {
       title: 'Monument Academy Parent Portal',
       subtitle: '',
@@ -98,7 +100,14 @@ export class FamilyResourcesComponent implements OnInit {
     },
   ];
 
-  constructor(private apollo: Apollo) {}
+  resources: any;
+  resourcesSub = new BehaviorSubject([]);
 
-  ngOnInit(): void {}
+  constructor(private api: ApiService) {}
+
+  ngOnInit(): void {
+    this.resources = this.api.getData('familyResources').subscribe(result => {
+      if(!isEmpty(result)){ this.resources = result?.data }
+    })
+  }
 }

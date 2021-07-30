@@ -153,6 +153,28 @@
     <li><p>Wednesday, June 16th, 6:00 PM – 8:00 PM</p></li>
   </ul>
 
+  From strapi
+  <ul>
+    <li *ngFor="let meeting of boardMeetings">
+      <p>
+        {{ meeting?.date.value | date: "fullDate" }},
+        {{
+          meeting?.date.value + " " + meeting?.start.value | date: "shortTime"
+        }}
+        -
+        {{ meeting?.date.value + " " + meeting?.end.value | date: "shortTime" }}
+        <a
+          *ngIf="meeting?.agenda.value"
+          [href]="meeting?.agenda.value"
+          target="_blank"
+          rel="nofollow"
+        >
+          Agenda, Meeting Recording, Minutes
+        </a>
+      </p>
+    </li>
+  </ul>
+
   Monument Academy’s DC PCSB Profile can be found
   <a
     href="https://www.dcpcsb.org/school/monument-academy-pcs"

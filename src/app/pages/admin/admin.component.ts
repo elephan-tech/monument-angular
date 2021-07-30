@@ -37,11 +37,11 @@ export class AdminComponent implements OnInit {
       icon: 'briefcase-outline',
       url: 'admin/careers',
     },
-    {
-      name: 'Knowledge Center',
-      icon: 'bulb-outline',
-      url: 'admin/knowledge-center',
-    },
+    // {
+    //   name: 'Knowledge Center',
+    //   icon: 'bulb-outline',
+    //   url: 'admin/knowledge-center',
+    // },
     {
       name: 'Alerts',
       icon: 'warning-outline',
@@ -52,20 +52,20 @@ export class AdminComponent implements OnInit {
       icon: 'megaphone-outline',
       url: 'admin/announcements',
     },
-    {
-      name: 'Monument Moments',
-      icon: 'sparkles-outline',
-      url: 'admin/monumental-moments',
-    },
+    // {
+    //   name: 'Monument Moments',
+    //   icon: 'sparkles-outline',
+    //   url: 'admin/monumentalMoments',
+    // },
     {
       name: 'Family Resources',
       icon: 'school-outline',
-      url: '/family-resources',
+      url: 'admin/familyResources',
     },
     {
       name: 'Board Meetings',
       icon: 'people-outline',
-      url: '/board-meetings',
+      url: 'admin/boardMeetings',
     },
   ];
 

@@ -43,7 +43,7 @@ export class EventCalendarComponent implements OnInit {
   public today = new Date();
   public isAdmin = false;
   public AnnouncementSub = new BehaviorSubject([]);
-  public EventSub: Subscription;
+  public EventSub= new BehaviorSubject([]);
 
   dragPosition = { x: 0, y: -100 };
 
@@ -62,9 +62,24 @@ export class EventCalendarComponent implements OnInit {
   }
 
   getEventData(): void{
-    this.EventSub = this.api.getData('events').subscribe(result => {
-      this.eventData = result.data;
+    const query: DocumentNode = useQuery('events');
+    const watchQuery = this.apollo.watchQuery<any>({
+      query,
+      pollInterval: environment.production
+        // production polls every 24 hrs
+        ? 1000 * 60 * 60 * 24
+        // development polls every 2 seconds
+        : 2000,
     });
+    watchQuery.valueChanges.subscribe(({ data }) => {
+      const collectionData = this.api.formatData('events', data);
+      !isEmpty(data) ? this.EventSub.next(collectionData) : this.EventSub.next([]);
+    });
+
+    this.EventSub.subscribe((obs: any) => {
+      this.eventData = obs?.data;
+    });
+
   }
 
 

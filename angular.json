@@ -17,10 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": [
-              "lorem-ipsum",
-              "axios"
-            ],
+            "allowedCommonJsDependencies": ["lorem-ipsum", "axios"],
             "outputPath": "dist/monument-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -37,6 +34,7 @@
             ],
             "styles": [
               "src/styles.scss",
+              "node_modules/prismjs/themes/prism-okaidia.css",
               {
                 "input": "node_modules/@ionic/angular/css/core.css",
                 "inject": true
@@ -82,7 +80,12 @@
                 "inject": true
               }
             ],
-            "scripts": [],
+            "scripts": [
+              "node_modules/marked/lib/marked.js",
+              "node_modules/prismjs/prism.js",
+              "node_modules/prismjs/components/prism-css.min.js",
+              "node_modules/emoji-toolkit/lib/js/joypixels.min.js"
+            ],
             "vendorChunk": true,
             "extractLicenses": false,
             "buildOptimizer": false,
@@ -154,7 +157,10 @@
                 "output": "./svg"
               }
             ],
-            "styles": ["src/styles.scss"],
+            "styles": [
+              "src/styles.scss",
+              "node_modules/prismjs/themes/prism-okaidia.css"
+            ],
             "scripts": []
           }
         },

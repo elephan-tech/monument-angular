@@ -7,9 +7,11 @@ export type CollectionType =
   'events' |
   'Events' |
   'careers' |
-  'knowledge-center' |
+  'knowledgeCenter' |
   'announcements' |
-  'emergencyMessage'|
+  'emergencyMessage' |
+  'familyResources' |
+  'articles'|
   undefined;
 
 export type Data = Careers | Events | EmergencyMessage | any;

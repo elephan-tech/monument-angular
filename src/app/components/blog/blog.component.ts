@@ -2,6 +2,7 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventsCalendarService } from '../../services/events/events-calendar.service';
 import { BlogPost } from '../../models/blog-posts';
+import { Apollo, gql } from 'apollo-angular';
 
 @Component({
   selector: 'app-blog',
@@ -15,17 +16,38 @@ export class BlogComponent implements OnInit {
   heroImg: string;
 
   blog: BlogPost;
-  id;
-  sub;
+  id:any;
 
   constructor(
     private Activatedroute: ActivatedRoute,
     private router: Router,
-    private eventService: EventsCalendarService
+    private eventService: EventsCalendarService,
+    private apollo: Apollo
   ) {}
 
   ngOnInit(): void {
-    this.id = this.Activatedroute.snapshot.params.blogID;
-    this.blog = this.eventService.getBlogPostByID(this.id);
+    this.id = this.Activatedroute?.snapshot?.params?.blogID;
+    this.apollo.watchQuery({
+      query: gql`
+      query Articles{
+        article(id: ${this.id}){
+          title
+          image {
+            url
+          }
+          content
+          date
+          name
+          display
+          subtitle
+          link
+          location
+          id
+        }
+      }
+      `
+    }).valueChanges.subscribe((result) => {
+      this.blog = (result.data as any).article as BlogPost;
+    });
   }
 }

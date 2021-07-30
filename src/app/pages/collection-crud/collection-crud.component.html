@@ -85,57 +85,13 @@
                       </div>
                       <div style="max-width: 80%; overflow-x: scroll">
                         <ion-text color="medium">
-                          {{formatValue(item?.[field.name].value, item?.[field.name].type)}}
+                          {{field?.name === 'content' ? 'Edit to View': formatValue(item?.[field.name].value, item?.[field.name].type)}}
                         </ion-text>
                       </div>
                     </div>
                   </ion-label>
-                  <!-- <ion-note slot="end" color="tertiary"></ion-note> -->
                 </ion-item>
               </ion-list>
-
-              <!-- EMERGENCY MESSAGE FORM -->
-
-              <form
-                *ngIf="collectionType === 'emergencyMessage'"
-                [formGroup]="alertForm"
-                (submit)="alertSubmit()"
-              >
-                <ion-list>
-                  <ion-item
-                    *ngFor="let field of fields"
-                    [hidden]="
-                      field?.name === 'id' ||
-                      field?.name === 'name' ||
-                      field?.name === 'display'
-                    "
-                  >
-                    <ion-label position="stacked">
-                      <strong>{{ field?.name | startCase }}</strong>
-                    </ion-label>
-                    <div
-                      *ngIf="
-                        field?.name !== 'id' ||
-                        field?.name !== 'name' ||
-                        field?.name !== 'display'
-                      "
-                    >
-                      <ion-input
-                        [type]="inputTypes(field.type)"
-                        [formControlName]="field?.name"
-                        [value]="item?.[field.name].value"
-                        [placeholder]="formatValue(item?.[field.name].value, item?.[field.name].type)"
-                      ></ion-input>
-                    </div>
-                  </ion-item>
-                  <ion-button
-                    color="primary"
-                    (click)="alertSubmit()"
-                    fill="outline"
-                    >save</ion-button
-                  >
-                </ion-list>
-              </form>
             </ion-card-content>
           </ion-card>
         </ion-col>

@@ -12,10 +12,9 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6" size-md="6" size-sm="12" *ngFor="let c of careers">
-        <ion-card>
+        <ion-card *ngIf="c?.display.value">
           <ion-card-header>
-            <ion-card-subtitle>{{ c | json }}</ion-card-subtitle>
-            <ion-card-title>{{ c.jobTitle }}</ion-card-title>
+            <ion-card-title>{{ c?.name?.value }}</ion-card-title>
             <img
               loading="lazy"
               src="assets/underline-stroke.svg"
@@ -23,10 +22,10 @@
             />
           </ion-card-header>
           <ion-card-content>
-            {{ c.shortDescription }}
+            {{ c?.shortDescription.value }}
             <br />
             <a
-              [href]="c.url"
+              [href]="c?.url?.value"
               [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'"
               target="_blank"
             >
@@ -39,12 +38,12 @@
   </ion-grid>
   <ion-item-divider></ion-item-divider>
 
-  <div *ngFor="let file of filesBS">
+  <!-- <div *ngFor="let file of filesBS">
     <pre>{{ file | async }}</pre>
-  </div>
+  </div> -->
   <ion-grid>
     <ion-row>
-      <ion-col size="6" size-md="6" size-sm="12" *ngFor="let j of jobOpenings">
+      <!-- <ion-col size="6" size-md="6" size-sm="12" *ngFor="let j of jobOpenings">
         <ion-card>
           <ion-card-header>
             <ion-card-subtitle>{{ j.category }}</ion-card-subtitle>
@@ -57,17 +56,17 @@
           </ion-card-header>
           <ion-card-content>
             <!-- {{ j.shortDescription }} -->
-            <br />
-            <a
-              [href]="j.url"
-              [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'"
-              target="_blank"
-            >
-              Learn more about this position
-            </a>
-          </ion-card-content>
-        </ion-card>
-      </ion-col>
+      <!-- <br /> -->
+      <!-- <a -->
+      <!-- [href]="j.url" -->
+      <!-- [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'" -->
+      <!-- target="_blank" -->
+      <!-- > -->
+      <!-- Learn more about this position -->
+      <!-- </a> -->
+      <!-- </ion-card-content> -->
+      <!-- </ion-card> -->
+      <!-- </ion-col> -->
     </ion-row>
   </ion-grid>
 </section>

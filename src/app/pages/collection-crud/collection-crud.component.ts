@@ -11,7 +11,7 @@ import { DocumentNode } from 'graphql';
 import { startCase } from 'lodash';
 import { Subscription, BehaviorSubject } from 'rxjs';
 import { CollectionModalComponent } from 'src/app/dialogs/collections/collection-modal/collection-modal.component';
-import queries from '../../api/queries';
+import useQuery from '../../api/queries';
 import { Careers } from './../../models/careers';
 import { Events } from './../../models/events';
 import { Fields } from './../../models/Fields';
@@ -38,7 +38,6 @@ type UpdateResponse = {
    }
  }
 };
-type Data = Careers | Events | any;
 
 type StrapiTypes = 'DateTime' | 'Boolean' | 'String' | 'UploadFile' | 'ID';
 
@@ -52,11 +51,6 @@ interface CollectionData {
   fields: Fields;
 }
 
-type FieldData = {
-  name: string,
-  type: string,
-  value: string | Media | object | number
-};
 @Component({
   selector: 'app-collection-crud',
   templateUrl: './collection-crud.component.html',
@@ -90,6 +84,7 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
   collectionSub = new BehaviorSubject<any>([]);
 
 
+
   constructor(
     private modal: ModalController,
     private route: ActivatedRoute,
@@ -97,12 +92,12 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
     private fb: FormBuilder,
     public alertController: AlertController
   ) {
-    this.collectionType = (this.route.url as any).value.pop().path;
+    this.collectionType = (this.route.url as any).value.pop().path as CollectionType;
   }
 
   ngOnInit(): void {
     this.title = startCase(this.collectionType);
-    this.query = queries[this.collectionType];
+    this.query = useQuery(this.collectionType);
     this.getData();
   }
 
@@ -126,13 +121,15 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
       Boolean: value ? '🟢' : '🔴',
       String: value || 'N/A',
       ID: value,
-      UploadFile: value?.length ? value?.name : 'N/A'
+      UploadFile: value?.length ? value?.name : 'N/A',
+
     }[type];
   }
 
   public async getData() {
     this.api.getData(this.collectionType).subscribe((result: CollectionData) => {
       if (!isEmpty(result)) {
+        console.log({result})
         this.collectionData = result.data;
         this.fields = result.fields.filter(field => !this.omitFields.includes(field.name));
       }
@@ -147,8 +144,10 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
   generateForm(fields: Fields): FormGroup {
     const formGroup = this.fb.group({});
     fields.forEach((item) => {
-      formGroup.addControl(item.name, new FormControl());
+      formGroup.addControl(item.name, new FormControl(''));
     });
+
+    console.log(formGroup)
 
     return formGroup;
   }

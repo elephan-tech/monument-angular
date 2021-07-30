@@ -1,3 +1,6 @@
+import { isEmpty } from 'lodash';
+import { ApiService } from 'src/app/services/api/api.service';
+import { BehaviorSubject } from 'rxjs';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
@@ -10,7 +13,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class BoardComponent implements OnInit {
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute, private api: ApiService) {}
   pageTitle: string;
   heroImg: string;
   fragment: string;
@@ -96,10 +99,19 @@ export class BoardComponent implements OnInit {
     },
   ];
 
+  boardMeetings:any;
+  boardMeetingsSub = new BehaviorSubject([])
+
   ngOnInit() {
     this.pageTitle = 'Board of Directors';
     this.heroImg = '';
     this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
+    this.api.getData('boardMeetings').subscribe(result => {
+      console.log('🔥',{result})
+      if (!isEmpty(result)) {
+        this.boardMeetings = result.data
+      }
+    })
   }
 
     ngAfterViewInit(): void {
