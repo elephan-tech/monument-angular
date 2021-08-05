@@ -1,16 +1,15 @@
-import { UploadService } from './../upload/upload.service';
-import { CollectionData, Collection, CollectionType } from './../../models/strapi';
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
 import { DocumentNode } from 'graphql';
 import { gql } from 'graphql-tag';
-import { camelCase, omit, replace, startCase, reduce, uniqWith, isEqual } from 'lodash';
+import { camelCase, isEmpty, isEqual, omit, replace, startCase, uniqWith } from 'lodash';
 import pluralize from 'pluralize';
 import { BehaviorSubject } from 'rxjs';
-import { isEmpty } from 'lodash';
 import useQuery from '../../api/queries';
 import { environment } from './../../../environments/environment';
 import { GenericObject } from './../../models/generic';
+import { Collection } from './../../models/strapi';
+import { UploadService } from './../upload/upload.service';
 
 
 @Injectable({
