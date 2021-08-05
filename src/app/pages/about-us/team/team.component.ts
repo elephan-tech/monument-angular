@@ -11,9 +11,6 @@ import { filter } from 'rxjs/operators';
   template: `<div [innerHTML]="data | safeHtml"></div>`,
 })
 export class TeamComponent implements OnInit {
-  pageTitle: string;
-  heroImg: string;
-  headerOffset = 200;
 
   constructor(router: Router, viewportScroller: ViewportScroller) {
     router.events
@@ -33,11 +30,9 @@ export class TeamComponent implements OnInit {
         }
       });
   }
-
-  ngOnInit() {
-    this.pageTitle = 'The Monument Team';
-    //this.heroImg = 'assets/images/hero-main.png';
-  }
+  pageTitle: string;
+  heroImg: string;
+  headerOffset = 200;
 
   team = [
     {
@@ -99,9 +94,14 @@ export class TeamComponent implements OnInit {
     {
       name: 'Danielle Nelson',
       title: 'Director of Well-Being',
-      bio:'',
+      bio: '',
       pic: '',
       scrollId: 'danielleNelson',
     },
   ];
+
+  ngOnInit() {
+    this.pageTitle = 'The Monument Team';
+    // this.heroImg = 'assets/images/hero-main.png';
+  }
 }

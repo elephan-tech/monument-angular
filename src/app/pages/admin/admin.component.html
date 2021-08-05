@@ -1,10 +1,34 @@
-<div style="padding-top: 100px; margin: auto; width: 90%">
+<ion-toolbar style="padding-top: 100px; margin: auto; width: 90%">
   <ion-title>
     <h1>Admin Portal</h1>
   </ion-title>
-</div>
+  <ion-title size="small">
+    {{ loggedInUser | json }}
+  </ion-title>
+  <ion-buttons slot="end">
+    <ion-button
+      color="tertiary"
+      target="_blank"
+      expand="block"
+      style="width: 100%; margin-top: 2em"
+      fill="outline"
+      [href]="apiUrl + '/dashboard'"
+    >
+      Advanced
+    </ion-button>
+    <ion-button
+      color="danger"
+      expand="block"
+      style="width: 100%; margin-top: 2em"
+      fill="outline"
+      (click)="logout()"
+    >
+      Logout
+    </ion-button>
+  </ion-buttons>
+</ion-toolbar>
 
-<ion-grid style="margin: auto; width: 90%">
+<ion-grid style="margin: auto; width: 90%; height: 100%">
   <ion-row>
     <ion-col
       *ngFor="let item of items"
@@ -15,7 +39,7 @@
     >
       <ion-card
         class="hover-card"
-        [href]="'admin' + item.url"
+        [href]="item.url"
         style="width: 80%; padding: 8px; margin: 8px; min-height: 120px"
       >
         <div

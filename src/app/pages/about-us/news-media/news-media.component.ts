@@ -1,7 +1,10 @@
+import { environment } from './../../../../environments/environment';
+import { ApiService } from 'src/app/services/api/api.service';
+import { BlogPost } from './../../../models/blog-posts';
+import { BehaviorSubject } from 'rxjs';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { EventsCalendarService } from '../../../services/events/events-calendar.service';
-import { BlogPost } from '../../../models/blog-posts';
-
+import isEmpty from 'lodash/isEmpty';
 @Component({
   selector: 'app-news-media',
   templateUrl: './news-media.component.html',
@@ -15,22 +18,27 @@ export class NewsMediaComponent implements OnInit {
   blogPosts: BlogPost[];
   content: any;
 
-  // content = [
-  //   {type: "title",content: "Interested in joining our team?"},
-  //   {type:'info', content: "<b> Attend </b> our upcoming virtual job fair! Register below or email careers@monumentacademydc.org with any questions." },
-  //   {type:"paragraph",content: "Tuesday, March 16th, 4 PM – 6 PM Our next open board meeting is Wednesday, March 17th at 6 PM. Register here." },
-  //   {type:"closing",content: "Check out our recent feature on CBS This Morning HERE!" }
-  // ]
-  constructor(private eventService: EventsCalendarService) { }
+  articles: BlogPost[];
+  articleSubject = new BehaviorSubject<BlogPost[]>([]);
+  fields: any;
+  uploadUrl = 'http://localhost:1337';
+
+  constructor(
+    private api: ApiService,
+  ) { }
 
   ngOnInit(): void {
     this.pageTitle = 'News & Media';
-    this.blogPosts = this.eventService.getAllBlogPosts();
+    this.uploadUrl = environment.apiUrl;
 
-    this.eventService.getAll().subscribe(
-      (res) => (this.content = res),
-      (err) => console.log('not running mock api. run npm run server'),
-      () => console.log('HTTP request completed.')
-    );
+
+    this.api.getData('articles').subscribe(result => {
+      if (!isEmpty(result)){
+      this.articles = result?.data;
+      this.fields = result?.fields;
+      }
+    });
+
+
   }
 }

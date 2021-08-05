@@ -1,53 +1,83 @@
-import { Apollo } from 'apollo-angular';
-import { Subscription } from 'rxjs';
+import { ApiService } from './../../services/api/api.service';
+import { environment } from './../../../environments/environment';
+import { Apollo, gql } from 'apollo-angular';
+import { Subscription, BehaviorSubject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
+import { AuthService } from '../../services/auth/auth.service';
 
-interface collectionType {}
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
   styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent implements OnInit {
-  // Emergency Bar
-  // Calendar Widget
-  // News & Media
-  // Careers
+  apiUrl = environment.apiUrl;
+  // Emergency Bar @done
+  // TODO News & Media
+  // TODO National School Lunch Program
+  // TODO Family Resources
+  // TODO Board Of Directors (meeting minutes)
+  loggedInUser: any;
+
   items = [
     {
       name: 'Events',
       icon: 'calendar-number-outline',
-      url: '/events',
+      url: 'admin/events',
     },
     {
       name: 'News & Media',
       icon: 'newspaper-outline',
-      url: 'news-media',
+      url: 'admin/articles',
     },
     {
       name: 'Careers',
       icon: 'briefcase-outline',
-      url: '/careers',
+      url: 'admin/careers',
     },
+    // {
+    //   name: 'Knowledge Center',
+    //   icon: 'bulb-outline',
+    //   url: 'admin/knowledge-center',
+    // },
     {
-      name: 'Knowledge Center',
-      icon: 'bulb-outline',
-      url: '/knowledge-center',
+      name: 'Alerts',
+      icon: 'warning-outline',
+      url: '/emergencyMessage',
     },
     {
       name: 'Announcements',
       icon: 'megaphone-outline',
-      url: '/announcements',
+      url: 'admin/announcements',
     },
     {
       name: 'Monument Moments',
       icon: 'sparkles-outline',
-      url: '/monumental-moments',
+      url: 'admin/monumentalMoments',
+    },
+    {
+      name: 'Family Resources',
+      icon: 'school-outline',
+      url: 'admin/familyResources',
+    },
+    {
+      name: 'Board Meetings',
+      icon: 'people-outline',
+      url: 'admin/boardMeetings',
     },
   ];
 
-  constructor(private menu: MenuController, private apollo: Apollo) {}
+  constructor(
+    private authService: AuthService,
+    private apollo: Apollo
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+
+  }
+
+  logout(): void {
+    this.authService.logout();
+  }
 }

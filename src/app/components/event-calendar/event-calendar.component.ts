@@ -1,75 +1,134 @@
+import { Apollo } from 'apollo-angular';
+import { Subscription, BehaviorSubject } from 'rxjs';
+import { AuthService } from './../../services/auth/auth.service';
+import { ApiService } from './../../services/api/api.service';
 import { Component, OnInit } from '@angular/core';
-import { CdkDragStart } from '@angular/cdk/drag-drop';
+import type { CdkDragStart } from '@angular/cdk/drag-drop';
+import { EVENTS_QUERY, ANNOUNCEMENTS_QUERY } from '../../api/queries';
 import { EventsCalendarService } from '../../services/events/events-calendar.service';
+import useQuery from '../../api/queries';
+import { DocumentNode } from 'graphql';
+import { isEmpty } from 'lodash';
+import { environment } from 'src/environments/environment';
 
+type EventData = {
+  zoomUrl: string;
+  assetUrl: string;
+  date: string;
+  file: [];
+  id: string;
+  __typename?: string;
+};
 
-
+type AnnouncementData = {
+  displayText: string;
+  image: [];
+  file: [];
+  id: string;
+  date: string;
+  __typename?: string;
+};
 @Component({
   selector: 'app-event-calendar',
   templateUrl: './event-calendar.component.html',
-  styleUrls: ['./event-calendar.component.scss']
+  styleUrls: ['./event-calendar.component.scss'],
 })
 export class EventCalendarComponent implements OnInit {
-
   public dragging: boolean;
   public clickedInside: boolean;
-  // content = [
-  //   {type: 'title', content: 'NO EVENTS'},
-  //   {type: 'info', content: 'No calendar'}
-  // ]
+  public eventData: EventData;
+  public announcementData: AnnouncementData;
+  public content: any;
+  // public eventDate: (date: string) => Date;
+  public today = new Date();
+  public isAdmin = false;
+  public AnnouncementSub = new BehaviorSubject([]);
+  public EventSub = new BehaviorSubject([]);
 
-  // content = [
-  //   {type: "title",content: "Interested in joining our team?"},
-  //   {type:'info', content: "<b> Attend </b> our upcoming virtual job fair! Register below or email careers@monumentacademydc.org with any questions." },
-  //   {type:"paragraph",content: "Tuesday, March 16th, 4 PM – 6 PM Our next open board meeting is Wednesday, March 17th at 6 PM. <a href='/' >Register here. </a>" },
-  //   {type:"closing",content: "Check out our recent feature on CBS This Morning HERE!" }
-  // ]
+  dragPosition = { x: 0, y: -100 };
 
+  constructor(
+    public api: ApiService,
+    public auth: AuthService,
+    public apollo: Apollo
+  ) {}
 
-  // Esto es lo que va a ser dinamico en el futuro. @TODO Strapi Single-Type de event-calendar
-  public dynamic = {
-    date: 'Wednesday, June 16th', // <--- date type con formato
-    url:'https://zoom.us/meeting/register/tJ0rcuypqT4vHNGQqQZiCcCLdKq4-iw0JH8l',
-    doc: 'MAPCS_June_16_2021_Board_Meeting_Agenda.pdf'
-  }
-
-
-  content: any = `
-  <div>
-  The next <b>MAPCS Board of Directors meeting </b> is ${this.dynamic.date}.
-  <br/>
-<a href="${this.dynamic.url}" target="_blank"> Register </a> to attend.
-  </br>
-  <a href="assets/documents/${this.dynamic.doc}" target="_blank">Download</a> the agenda.
-  </div>
-  </br>
-  <div> <b>More Information</b> and <b>Detailed Calendar</b> <a href="/updates-calendar"> HERE </a> </div>
-  </br>
-  <div> Check out our recent feature on CBS This Morning <a href="https://www.cbs.com/shows/cbs_this_morning/video/0BkYuV4u6P3B_DE4bL0xwnaS8CGFHdwB/monument-academy-in-washington-d-c-is-providing-a-safe-space-for-its-students-amid-pandemic/" target="_blank"> HERE!</a>  </div>
-  `;
-
-dragPosition = {x: 0, y: -100};
-
-  constructor(private eventService: EventsCalendarService) {
-  }
 
   ngOnInit(): void {
-    this.eventService.getAll().subscribe(
-        res => this.content = res,
-        err => console.log('not running mock api. run npm run server'),
-        () => console.log('HTTP request completed.')
-);
+    this.getEventData();
+    // this.EventSub.unsubscribe();
+    this.getAnnouncements();
   }
+
+  getEventData(): void{
+    const query: DocumentNode = useQuery('events');
+    const watchQuery = this.apollo.watchQuery<any>({
+      query,
+      pollInterval: environment.production
+        // production polls every 24 hrs
+        ? 1000 * 60 * 60 * 24
+        // development polls every 2 seconds
+        : 2000,
+    });
+    watchQuery.valueChanges.subscribe(({ data }) => {
+      const collectionData = this.api.formatData('events', data);
+      !isEmpty(data) ? this.EventSub.next(collectionData) : this.EventSub.next([]);
+    });
+
+    this.EventSub.subscribe((obs: any) => {
+      this.eventData = obs?.data;
+    });
+
+  }
+
+
+
+  getAnnouncements(): void {
+    const query: DocumentNode = useQuery('announcements');
+
+    const watchQuery = this.apollo.watchQuery<any>({
+      query,
+      pollInterval: environment.production
+        // production polls every 24 hrs
+        ? 1000 * 60 * 60 * 24
+        // development polls every 2 seconds
+        : 2000,
+    });
+
+
+    watchQuery.valueChanges.subscribe(({ data }) => {
+      const collectionData = this.api.formatData('announcements', data);
+      !isEmpty(data) ? this.AnnouncementSub.next(collectionData) : this.AnnouncementSub.next([]);
+    });
+
+    this.AnnouncementSub.subscribe((obs: any) => {
+      this.announcementData = obs?.data;
+    });
+  }
+
 
   public handleDragStart(event: CdkDragStart): void {
     this.dragging = true;
   }
 
+  public formatDate = (date: Date): string => {
+    return date.toLocaleDateString('en', {
+      weekday: 'long',
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+    });
+  }
+
   public handleClick(event: MouseEvent): void {
     if (this.dragging || this.clickedInside) {
       this.dragging = false;
-      return
+      return;
     }
-    this.dragPosition = {x: this.dragPosition.x, y: this.dragPosition.y};
+    this.dragPosition = { x: this.dragPosition.x, y: this.dragPosition.y };
+  }
+
+  eventDate(date): Date {
+    return date as Date;
   }
 }

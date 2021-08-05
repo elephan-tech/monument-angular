@@ -1,11 +1,13 @@
-import { Component, OnInit, HostListener } from '@angular/core';
-import { ScreensizeService } from '../../services/screen-size/screensize.service';
-import { MenuController } from '@ionic/angular';
-import { NavigationEnd, Router } from '@angular/router';
-import { Subscription } from 'rxjs';
 import { Apollo } from 'apollo-angular';
-import gql from 'graphql-tag';
-import { SOCIAL_QUERY, EMERGENCY_QUERY } from '../../api/queries';
+import { Component, HostListener, OnInit } from '@angular/core';
+import { NavigationEnd, Router } from '@angular/router';
+import { isEmpty } from 'lodash';
+import { Subscription, BehaviorSubject } from 'rxjs';
+import { ScreensizeService } from '../../services/screen-size/screensize.service';
+import { ApiService } from './../../services/api/api.service';
+import useQuery from '../../api/queries';
+import { environment } from 'src/environments/environment';
+import { Observable } from '@apollo/client/utilities';
 
 export interface NavItem {
   name: string;
@@ -20,6 +22,7 @@ export interface EmergencyMessage {
   headline: string;
   details?: string;
   link?: string;
+  display: boolean;
 }
 
 export interface Social {
@@ -225,14 +228,15 @@ export class TopnavigationComponent implements OnInit {
   aboutUsSubMenu = false;
   currentRoute: string;
   showAdmin = true;
+  EmergencyMessage = new BehaviorSubject([]);
 
   constructor(
     private screensizeService: ScreensizeService,
     public router: Router,
-    private apollo: Apollo
+    private apollo: Apollo,
+    private api: ApiService
   ) {
     this.screensizeService.isDesktopView().subscribe((isDesktop) => {
-      console.log('is desktop view:', isDesktop);
       this.isDesktop = isDesktop;
     });
     router.events.subscribe((event) => {
@@ -242,48 +246,54 @@ export class TopnavigationComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
-    this.apollo
-      .watchQuery<any>({
-        query: SOCIAL_QUERY,
-      })
-      .valueChanges.subscribe((result) => {
-        this.socialData = result.data?.socialMedias;
-        this.loading = result.loading;
-      });
-
-    console.log({ socials: this.socials });
-
-    this.apollo
-      .watchQuery<any>({
-        query: EMERGENCY_QUERY,
-      })
-      .valueChanges.subscribe((result) => {
-        this.emergencyMessage = result.data.emergencyMessage;
-        this.showEmergency = result?.data?.emergencyMessage?.display;
-      });
+  ngOnInit(): void {
+    this.getData();
   }
 
-  toggleMenu() {
+  getData(): void {
+    const query = useQuery('emergencyMessage');
+    const watchQuery = this.apollo.watchQuery<any>({
+      query,
+      pollInterval: environment.production
+        // production polls every 24 hrs
+        ? 1000 * 60 * 60 * 24
+        // development polls every 2 seconds
+        : 2000,
+    });
+
+
+    watchQuery.valueChanges.subscribe(({ data }) => {
+      const collectionData = this.api.formatData('emergencyMessage', data);
+      !isEmpty(data) ? this.EmergencyMessage.next(collectionData) : this.EmergencyMessage.next([]);
+    });
+
+    this.EmergencyMessage.subscribe((obs: any) => {
+      this.emergencyMessage = obs?.data?.[0];
+      this.showEmergency = obs?.data?.[0].display.value;
+    });
+
+  }
+
+  toggleMenu(): void {
     this.menuIsOpen = !this.menuIsOpen;
   }
 
-  subMenuToggle(menuItem) {
+  subMenuToggle(menuItem): void {
     menuItem.subMenuOpen = !menuItem.subMenuOpen;
   }
 
-  dismissEmergency() {
+  dismissEmergency(): void {
     this.showEmergency = false;
   }
 
-  showSubMenus(nav: NavItem) {
+  showSubMenus(nav: NavItem): void {
     this.closeAllMenus();
     if (nav.subMenus) {
       nav.subMenuOpen = true;
     }
   }
 
-  hideSubMenus(nav: NavItem) {
+  hideSubMenus(nav: NavItem): void {
     if (nav.subMenus) {
       nav.subMenuOpen = false;
     }
@@ -308,24 +318,24 @@ export class TopnavigationComponent implements OnInit {
     }
   }
 
-  closeAllMenus() {
+  closeAllMenus(): void {
     this.navItems.forEach((element) => {
       element.subMenuOpen ? (element.subMenuOpen = false) : '';
     });
   }
 
-  navClick(nav: NavItem) {
+  navClick(nav: NavItem): void | null {
     if (nav.subMenus) {
       this.subMenuToggle(nav);
     }
     return null;
   }
 
-  login() {}
+  login(): void {}
 
   //
   @HostListener('window:scroll', [])
-  onWindowScroll() {
+  onWindowScroll(): void {
     if (document.documentElement.scrollTop > 20) {
       document
         .getElementById('top-logo-switch')

@@ -12,5 +12,5 @@ export class HeroComponent implements OnInit {
   @Input() bgImage?: string;
   @Input() noDecoration?: boolean;
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 }

@@ -1,36 +1,114 @@
-<ion-grid class="admin-grid">
-  <ion-row class="ion-justify-content-between">
-    <ion-col size="8">
-      <ion-title>
-        <h3>{{ collectionType.replace('-', ' ') | uppercase }}</h3>
-      </ion-title>
-    </ion-col>
-    <ion-col size="3" class="ion-align-items-center">
-      <ion-button
-        color="primary"
-        type="outlined"
-        expand="block"
-        (click)="addNew()"
+<ion-content>
+  <ion-grid class="admin-grid">
+    <ion-header>
+      <ion-toolbar>
+        <ion-buttons slot="start">
+          <ion-back-button defaultHref="/admin"></ion-back-button>
+        </ion-buttons>
+      </ion-toolbar>
+    </ion-header>
+    <ion-row class="ion-justify-content-between">
+      <ion-col size="8">
+        <ion-title>
+          <h3>{{ title }}</h3>
+        </ion-title>
+      </ion-col>
+      <ion-col size="1" class="ion-align-items-center">
+        <ion-button
+          color="primary"
+          fill="outline"
+          expand="block"
+          (click)="addNew()"
+          *ngIf="collectionType !== 'emergencyMessage'"
+        >
+          <ion-icon slot="start" name="add-outline"></ion-icon>
+          Add new
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <div>
+      <ion-row>
+        <ion-col>
+          <ion-text *ngIf="!collectionData?.length" style="text-align: center">
+            <h6>No {{ collectionType }} data to display</h6>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+      <ion-row
+        *ngIf="collectionData?.length"
+        class="ion-justify-content-center"
       >
-        <ion-icon slot="start" name="add-outline"></ion-icon>
-        Add new
-      </ion-button>
-    </ion-col>
-  </ion-row>
-  <ion-row class="ion-justify-content-center">
-    <ion-col size="11">
-      <ngx-datatable
-        class="material"
-        [limit]="8"
-        [rows]="rows"
-        [rowHeight]="50"
-        [columns]="columns"
-        [columnMode]="'force'"
-        [sortType]="'multi'"
-        [headerHeight]="50"
-        [footerHeight]="50"
-      >
-      </ngx-datatable>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+        <ion-col *ngFor="let item of collectionData" size-xs="10">
+          <ion-card class="data-card">
+            <ion-card-header>
+              <ion-toolbar>
+                <ion-buttons slot="start">
+                  <ion-toggle
+                    [checked]="item.display.value"
+                    [id]="item?.id?.value"
+                    (ionChange)="onToggle($event)"
+                  ></ion-toggle>
+                </ion-buttons>
+                <ion-buttons
+                  slot="end"
+                  *ngIf="collectionType !== 'emergencyMessage'"
+                >
+                  <ion-button
+                    color="primary"
+                    (click)="editEntry($event)"
+                    [id]="item?.id?.value"
+                  >
+                    <ion-icon slot="icon-only" [name]="editIcon"></ion-icon>
+                  </ion-button>
+                  <ion-button
+                    color="danger"
+                    [value]="collectionType === 'emergencyMessage'"
+                    [id]="item?.id?.value"
+                    (click)="delete($event)"
+                  >
+                    <ion-icon slot="icon-only" name="trash-outline"></ion-icon>
+                  </ion-button>
+                </ion-buttons>
+              </ion-toolbar>
+            </ion-card-header>
+            <ion-card-content>
+              <ion-list *ngIf="collectionType !== 'emergencyMessage'">
+                <ion-item *ngFor="let field of fields">
+                  <ion-label color="dark">
+                    <div
+                      style="
+                        display: flex;
+                        justify-content: space-between;
+                        flex-wrap: wrap;
+                      "
+                    >
+                      <div>
+                        <p class="field-label">{{ field?.name | uppercase }}</p>
+                      </div>
+                      <div style="max-width: 80%; overflow-x: scroll">
+                        <ion-text color="medium">
+                          {{field?.name === 'content' ? 'Edit to View': formatValue(item?.[field.name].value, item?.[field.name].type)}}
+                        </ion-text>
+
+                        <ion-avatar
+                          *ngIf="field?.type === 'UploadFile' && item?.[field.name]?.value?.url"
+                        >
+                          <img
+                            [src]="item?.[field.name]?.value?.name?.includes('.pdf')
+                            ? '../../../assets/images/pngtree-pdf-file-document-icon-png-image_4164950.jpeg'
+                          : item?.[field.name]?.value?.url"
+                          />
+                        </ion-avatar>
+                      </div>
+                    </div>
+                  </ion-label>
+                </ion-item>
+              </ion-list>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>

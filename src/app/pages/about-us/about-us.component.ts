@@ -39,32 +39,32 @@ export class AboutUsComponent implements OnInit {
       title: 'Kindness',
       spelling: '/ˈkīn(d)nəs/',
       icon: '',
-      description:'The quality of being friendly, generous, and considerate.'
+      description: 'The quality of being friendly, generous, and considerate.'
 
     },
     {
       title: 'Integrity',
       spelling: '/inˈteɡrədē/',
       icon: '',
-      description:'The quality of being honest and having strong moral principles; moral uprightness.'
+      description: 'The quality of being honest and having strong moral principles; moral uprightness.'
     },
     {
       title: 'Excellence',
       spelling: '/ˈeks(ə)ləns/',
       icon: '',
-      description:'The quality of being outstanding or extremely good.'
+      description: 'The quality of being outstanding or extremely good.'
     },
     {
       title: 'Positivity',
       spelling: '/ˌpäzəˈtivədē/',
       icon: '',
-      description:'The practice of being or tendency to be positive or optimistic in attitude.'
+      description: 'The practice of being or tendency to be positive or optimistic in attitude.'
     },
     {
       title: 'Mindfulness',
       spelling: '/ˈmīn(d)f(ə)lnəs/',
       icon: '',
-      description:'The quality or state of being conscious or aware of something.'
+      description: 'The quality or state of being conscious or aware of something.'
     },
   ];
 

@@ -3,21 +3,22 @@
     <ion-toolbar
       color="danger"
       id="emergency-toolbar"
-      *ngIf="showEmergency"
+      *ngIf="emergencyMessage?.display.value"
       id="scroll-display"
       class="scroll-display"
     >
       <ion-note color="light">
-        {{ emergencyMessage?.headline }}
-
-        {{ emergencyMessage?.details }}
+        <b> {{ emergencyMessage?.headline?.value?.toUpperCase() }}</b>
+      </ion-note>
+      <ion-note color="light">
+        {{ emergencyMessage?.details?.value }}
       </ion-note>
       <ion-buttons slot="end">
         <ion-button
           color="light"
           target="_blank"
-          [href]="emergencyMessage?.link"
-          *ngIf="emergencyMessage?.link"
+          [href]="emergencyMessage?.link.value"
+          *ngIf="emergencyMessage?.link.value"
         >
           More details
         </ion-button>

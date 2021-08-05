@@ -15,7 +15,7 @@ export interface Social {
 })
 export class FooterComponent implements OnInit {
   currentYear: number = new Date().getFullYear();
-
+  isAdminRoute = false;
   socials: Social[] = [
     {
       icon: 'mail',
@@ -59,13 +59,14 @@ export class FooterComponent implements OnInit {
     router.events.subscribe((event) => {
       if (event instanceof NavigationEnd) {
         this.currentRoute = event.url;
+        this.isAdminRoute = event.url.startsWith('/admin');
       }
     });
   }
 
-  ngOnInit() {}
+  ngOnInit(): void {}
 
-  scrollToTop() {
+  scrollToTop(): void {
     window.scrollTo(0, 0);
   }
 }

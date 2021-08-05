@@ -6,15 +6,10 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./a-day-at-monument.component.scss'],
 })
 export class ADayAtMonumentComponent implements OnInit {
-  pageTitle: string;
-  heroImg: string;
 
   constructor() {}
-
-  ngOnInit() {
-    this.pageTitle = 'A Day At Monument Academy';
-    this.heroImg = 'assets/images/monument-15.png';
-  }
+  pageTitle: string;
+  heroImg: string;
   activity = [
     {
       title: 'Rise and Shine',
@@ -53,4 +48,9 @@ export class ADayAtMonumentComponent implements OnInit {
       src: 'assets/monument_logo-short.png',
     },
   ];
+
+  ngOnInit() {
+    this.pageTitle = 'A Day At Monument Academy';
+    this.heroImg = 'assets/images/monument-15.png';
+  }
 }

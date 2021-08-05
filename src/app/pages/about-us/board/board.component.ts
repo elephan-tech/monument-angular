@@ -1,3 +1,7 @@
+import { environment } from 'src/environments/environment';
+import { isEmpty } from 'lodash';
+import { ApiService } from 'src/app/services/api/api.service';
+import { BehaviorSubject } from 'rxjs';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
@@ -9,27 +13,12 @@ import {ActivatedRoute} from '@angular/router';
   template: `<div [innerHTML]="data | safeHtml"></div>`,
 })
 export class BoardComponent implements OnInit {
+
+  constructor(private route: ActivatedRoute, private api: ApiService) {}
   pageTitle: string;
   heroImg: string;
   fragment: string;
-
-  constructor(private route: ActivatedRoute) {}
-
-  ngOnInit() {
-    this.pageTitle = 'Board of Directors';
-    this.heroImg = '';
-    this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
-  }
-
-    ngAfterViewInit(): void {
-    try {
-      const topOffset = document.getElementById(this.fragment).getBoundingClientRect().top;
-      window.scrollTo({top: topOffset - 1500, behavior: 'smooth'});
-
-      // document.querySelector('#' + this.fragment).scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
-    } catch (e) { }
-  }
-
+  fileUrl = environment.apiUrl;
   board = [
     {
       bioPic:
@@ -110,4 +99,27 @@ export class BoardComponent implements OnInit {
       bio: '',
     },
   ];
+
+  boardMeetings: any;
+  boardMeetingsSub = new BehaviorSubject([]);
+
+  ngOnInit(): void {
+    this.pageTitle = 'Board of Directors';
+    this.heroImg = '';
+    this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
+    this.api.getData('boardMeetings').subscribe(result => {
+      if (!isEmpty(result)) {
+        this.boardMeetings = result.data;
+      }
+    });
+  }
+
+    ngAfterViewInit(): void {
+    try {
+      const topOffset = document.getElementById(this.fragment).getBoundingClientRect().top;
+      window.scrollTo({top: topOffset - 1500, behavior: 'smooth'});
+
+      // document.querySelector('#' + this.fragment).scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
+    } catch (e) { }
+  }
 }

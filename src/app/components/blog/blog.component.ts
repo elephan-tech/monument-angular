@@ -1,7 +1,9 @@
+import { environment } from './../../../environments/environment';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventsCalendarService } from '../../services/events/events-calendar.service';
 import { BlogPost } from '../../models/blog-posts';
+import { Apollo, gql } from 'apollo-angular';
 
 @Component({
   selector: 'app-blog',
@@ -15,17 +17,41 @@ export class BlogComponent implements OnInit {
   heroImg: string;
 
   blog: BlogPost;
-  id;
-  sub;
+  id: any;
+  uploadUrl = 'http://localhost:1337';
 
   constructor(
-    private _Activatedroute: ActivatedRoute,
-    private _router: Router,
-    private eventService: EventsCalendarService
+    private Activatedroute: ActivatedRoute,
+    private router: Router,
+    private apollo: Apollo
   ) {}
 
   ngOnInit(): void {
-    this.id = this._Activatedroute.snapshot.params['blogID'];
-    this.blog = this.eventService.getBlogPostByID(this.id);
+    this.id = this.Activatedroute?.snapshot?.params?.blogID;
+    this.uploadUrl = environment.apiUrl;
+    this.apollo.watchQuery({
+      query: gql`
+      query Articles{
+        article(id: ${this.id}){
+          title
+          image {
+            id
+            url
+            name
+          }
+          content
+          date
+          name
+          display
+          subtitle
+          link
+          location
+          id
+        }
+      }
+      `
+    }).valueChanges.subscribe((result) => {
+      this.blog = (result.data as any).article as BlogPost;
+    });
   }
 }

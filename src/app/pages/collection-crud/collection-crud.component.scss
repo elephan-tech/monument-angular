@@ -1,3 +1,53 @@
 .admin-grid {
   padding-top: 200px;
+  padding-bottom: 200px;
+  height: 100vh;
+}
+
+.field-label {
+  font: "Montserrat", sans-serif;
+  font-weight: bold;
+  size: 14px;
+  letter-spacing: 1.5px;
+  color: var(--ion-color-primary);
+}
+
+.field-value {
+  width: 100%;
+  max-height: 50px;
+  margin: 8px 0px;
+  text-overflow: ellipsis;
+}
+
+.data-row {
+  min-height: 100px;
+  padding: 16px;
+}
+
+.data-card {
+  border-radius: 20px;
+  border: 3px solid var(--ion-color-secondary);
+  overflow-y: scroll;
+}
+
+ion-card {
+  min-height: 80%;
+  max-height: 400px;
+  // overflow: scroll;
+  margin: auto;
+  padding: 16px;
+  box-shadow: 0px 10px 13px -7px var(--ion-color-medium);
+}
+
+ion-card > ion-card-content {
+  max-height: 300px;
+  overflow: scroll;
+}
+ion-card > ion-card-header {
+  padding: 0;
+}
+
+ion-toggle {
+  --handle-background: var(--ion-color-medium);
+  --handle-background-checked: var(--ion-color-success);
 }

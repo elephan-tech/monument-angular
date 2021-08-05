@@ -8,15 +8,10 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
   template: `<div [innerHTML]="data | safeHtml"></div>`,
 })
 export class AwardsComponent implements OnInit {
-  pageTitle: string;
-  heroImg: string;
 
   constructor() {}
-
-  ngOnInit() {
-    this.pageTitle = 'Awards';
-    this.heroImg = 'assets/images/monument-9.png';
-  }
+  pageTitle: string;
+  heroImg: string;
   awards = [
     {
       name: 'Bainum Foundation',
@@ -74,4 +69,9 @@ export class AwardsComponent implements OnInit {
       url: 'https://clarkfoundationdc.org/',
     },
   ];
+
+  ngOnInit(): void {
+    this.pageTitle = 'Awards';
+    this.heroImg = 'assets/images/monument-9.png';
+  }
 }

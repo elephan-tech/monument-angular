@@ -77,12 +77,13 @@
               class="underline-stroke"
             />
             <p>
-             Our mission is to empower students, particularly those who have experienced significant adversity,
-             including involvement or risk of involvement in child welfare
-             and/or other social service systems with the requisite academic,
-             social, emotional, and life skills to be successful in college, career, and
-             community. In addition, we aim to create an outstanding school that attracts, supports, and
-             retains exceptional and caring people.
+              Our mission is to empower students, particularly those who have
+              experienced significant adversity, including involvement or risk
+              of involvement in child welfare and/or other social service
+              systems with the requisite academic, social, emotional, and life
+              skills to be successful in college, career, and community. In
+              addition, we aim to create an outstanding school that attracts,
+              supports, and retains exceptional and caring people.
             </p>
             <h2>We Change Lives</h2>
             <img
@@ -117,28 +118,29 @@
           class="underline-stroke"
         />
         <h3>
-          Monument Academy's academic programs are centered on thematic planning,
-          supported by exposure through relevant field experiences, project-based
-          learning enriched in principles of Webb's Depth of Knowledge, higher-order
-          questioning as rooted in Bloom's Taxonomy, and robust writing
-          across curriculum with the use of the Collins Writing Program to target
-          individual student needs.
+          Monument Academy's academic programs are centered on thematic
+          planning, supported by exposure through relevant field experiences,
+          project-based learning enriched in principles of Webb's Depth of
+          Knowledge, higher-order questioning as rooted in Bloom's Taxonomy, and
+          robust writing across curriculum with the use of the Collins Writing
+          Program to target individual student needs.
         </h3>
       </ion-col>
     </ion-row>
     <ion-row class="wrap-reverse">
       <ion-col class="top-col">
         <p>
-
           Each Monument Academy student engages in a targeted learning journey
-          that is rooted in data driven instruction as evidenced by triangulation
-          of NWEA Measures of Academic (MAP) data (implemented 3x a year),
-          quarterly assessments, and teacher-made assessments. In addition, qualitative
-          data is captured through monthly learning walks, weekly collaborative planning sessions,
-          and teacher feedback We seek to develop self-directed learners by engaging students in
-          academic goal-setting during student led conferences, and structuring an environment
-          that provides options for how students access content, practice new skills,
-          and demonstrate mastery of the standards using technology and research.
+          that is rooted in data driven instruction as evidenced by
+          triangulation of NWEA Measures of Academic (MAP) data (implemented 3x
+          a year), quarterly assessments, and teacher-made assessments. In
+          addition, qualitative data is captured through monthly learning walks,
+          weekly collaborative planning sessions, and teacher feedback We seek
+          to develop self-directed learners by engaging students in academic
+          goal-setting during student led conferences, and structuring an
+          environment that provides options for how students access content,
+          practice new skills, and demonstrate mastery of the standards using
+          technology and research.
         </p>
         <a [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'">
           <ion-button
@@ -219,13 +221,14 @@
     <ion-row class="wrap-reverse">
       <ion-col class="top-col">
         <p>
- Monument Academy is staffed with 3 school counselors, a lead counselor, and a director.
- Related services (psychological, speech therapy, and occupational therapy) are
- provided by Premier Psychological Services, LLC; and Psychological Assessment Solutions.
- Additionally, we partner with SMILE, Family Solutions, and Outreach Solutions,
- Incorporated to provide mental health services to our students and families.
- Our Well-Being staff provide evidenced-based behavioral, emotional, and therapeutic support for the students.
-
+          Monument Academy is staffed with 3 school counselors, a lead
+          counselor, and a director. Related services (psychological, speech
+          therapy, and occupational therapy) are provided by Premier
+          Psychological Services, LLC; and Psychological Assessment Solutions.
+          Additionally, we partner with SMILE, Family Solutions, and Outreach
+          Solutions, Incorporated to provide mental health services to our
+          students and families. Our Well-Being staff provide evidenced-based
+          behavioral, emotional, and therapeutic support for the students.
         </p>
         <a [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'">
           <ion-button
@@ -263,11 +266,11 @@
       </ion-col>
       <ion-col class="top-col">
         <p>
-          After the academic day, students continue to learn and grow
-          through a variety of academic, enrichment, and athletic programs.
-          Through extended day learning, students have the opportunity to participate
-          in clubs that teach valuable life skills, provide real-life experience and
-          encourage academic and social-emotional growth.
+          After the academic day, students continue to learn and grow through a
+          variety of academic, enrichment, and athletic programs. Through
+          extended day learning, students have the opportunity to participate in
+          clubs that teach valuable life skills, provide real-life experience
+          and encourage academic and social-emotional growth.
         </p>
         <a [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'">
           <ion-button
@@ -275,7 +278,7 @@
             [fill]="isDesktop ? 'none' : 'solid'"
             [expand]="isDesktop ? '' : 'block'"
             routerLink="/extended-day-learning"
-            >
+          >
             Learn more about Extended Day Learning Opportunities
           </ion-button>
         </a>
@@ -293,10 +296,15 @@
       class="underline-stroke-centered"
     />
     <ion-grid class="monumental-markers">
-      <ion-row style="align-items: center;">
-        <ion-col *ngFor="let marker of monumentalMarkers" size="4" class="emphasize white" style="padding: 5em;">
+      <ion-row style="align-items: center">
+        <ion-col
+          *ngFor="let marker of monumentalMarkers"
+          size="4"
+          class="emphasize white"
+          style="padding: 5em"
+        >
           <h2 class="marker">
-            <span > {{marker.stat}} </span>
+            <span> {{ marker.stat }} </span>
           </h2>
           <p class="marker">
             {{ marker.description }}
@@ -347,7 +355,8 @@
     </ion-row>
   </ion-grid>
 </section>
-<div class="yellow-section">
+
+<div class="yellow-section" *ngIf="slides?.length">
   <section>
     <h2 class="text-center">Monumental Moments</h2>
     <img
@@ -362,22 +371,25 @@
         [hidden]="!isDesktop"
         [options]="slideOpts.coverflow"
       >
-        <ion-slide *ngFor="let slide of slides; let i = index">
+        <ion-slide
+          *ngFor="let slide of slides; let i = index"
+          [hidden]="!slide.display.value"
+        >
           <ion-grid class="slide-container">
             <ion-row style="width: 100%">
               <ion-col
-              size="8"
+                size="8"
                 size-xs="12"
                 size-md="6"
                 class="ion-align-items-flex-start"
               >
-                <h3 class="align-start">{{ slide.title }}</h3>
-                <p class="align-start">{{ slide.description }}</p>
+                <h3 class="align-start">{{ slide?.title?.value }}</h3>
+                <p class="align-start">{{ slide?.description?.value }}</p>
               </ion-col>
-              <ion-col size="4" size-xs="12" size-md="6" >
+              <ion-col size="4" size-xs="12" size-md="6">
                 <img
                   loading="lazy"
-                  [src]="slide.image"
+                  [src]="imageUrl + slide?.image?.value.url"
                   class="rounded slider-image"
                 />
               </ion-col>
@@ -392,19 +404,29 @@
       [hidden]="isDesktop"
       [options]="slideOpts.normal"
     >
-      <ion-slide *ngFor="let slide of slides; let i = index">
+      <ion-slide
+        *ngFor="let slide of slides; let i = index"
+        [hidden]="!slide?.display?.value"
+      >
         <div class="slides-responsive">
-          <img loading="lazy" [src]="slide.image" class="rounded small" />
+          <img
+            loading="lazy"
+            [src]="imageUrl + slide?.image?.value.url"
+            class="rounded small"
+          />
 
           <ion-card class="slide-card">
-            <h3>{{ slide.title }}</h3>
-            <p>{{ slide.description }}</p>
+            <h3>{{ slide?.title?.value }}</h3>
+            <p>{{ slide?.description?.value }}</p>
           </ion-card>
         </div>
       </ion-slide>
     </ion-slides>
 
-    <div [class]="isDesktop ? 'swiper-nav' : 'swiper-nav responsive'">
+    <div
+      [class]="isDesktop ? 'swiper-nav' : 'swiper-nav responsive'"
+      *ngIf="slides?.length > 1"
+    >
       <ion-fab
         class="right"
         vertical="center"
@@ -425,9 +447,10 @@
         horizontal="start"
         edge="true"
         slot="fixed"
-        [hidden]="isDesktop"
       >
-        <ion-fab-button (click)="slidePrev(responsiveSlider)">
+        <ion-fab-button
+          (click)="slidePrev(isDesktop ? momentsSlider : responsiveSlider)"
+        >
           <ion-icon name="chevron-back-outline"></ion-icon>
         </ion-fab-button>
       </ion-fab>

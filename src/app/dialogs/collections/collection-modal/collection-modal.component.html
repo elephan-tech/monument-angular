@@ -1,0 +1,101 @@
+<ion-content>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="end">
+      <ion-button (click)="closeDialog()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+
+  <form [formGroup]="form" (ngSubmit)="createEntry()">
+    <ion-grid>
+      <ion-row color="primary">
+        <ion-col class="ion-align-self-center">
+          <ion-text class="ion-align-center">
+            <h3>{{ editMode ? "Edit" : "Create" }} {{ collection }}</h3>
+          </ion-text>
+          <ion-item
+            *ngFor="let field of fields"
+            class="box"
+            [hidden]="
+              field?.type === 'ID' ||
+              field?.name.includes('_at') ||
+              field.name === 'display'
+            "
+          >
+            <ion-label position="stacked">
+              <ion-text>
+                <h4>{{ field?.name | startCase }}</h4>
+              </ion-text>
+            </ion-label>
+            <ion-datetime
+              *ngIf="field?.type === 'DateTime' || field?.type === 'Date'"
+              [formControlName]="camelCase(field?.name)"
+              value="2020-01-02"
+            >
+            </ion-datetime>
+
+            <ion-datetime
+              *ngIf="field?.type === 'Time'"
+              [formControlName]="camelCase(field?.name)"
+              displayFormat="h:mm A"
+            >
+            </ion-datetime>
+            <div style="margin: 16px" *ngIf="field?.name === 'content'">
+              <ckeditor
+                [editor]="Editor"
+                [formControlName]="'content'"
+              ></ckeditor>
+            </div>
+            <div></div>
+
+            <div *ngIf="field.type === 'UploadFile'">
+              <input
+                class="uploadFile"
+                *ngIf="field.type === 'UploadFile'"
+                type="file"
+                style="display: none"
+                (change)="onFileChange($event)"
+                [id]="field?.name"
+              />
+              <ion-button
+                [for]="field?.name"
+                [id]="field?.name"
+                (click)="clickUpload($event)"
+                fill="outline"
+                color="tertiary"
+                class="uploadFileButton"
+              >
+                {{ currentData[field?.name]?.name || "choose file" }}
+              </ion-button>
+            </div>
+            <ion-input
+              [clearInput]="clearInput"
+              [formControlName]="camelCase(field?.name)"
+              [hidden]="
+                field?.type === 'DateTime' ||
+                field?.type === 'Date' ||
+                field?.type === 'Time' ||
+                field?.type === 'Boolean' ||
+                field.name === 'display' ||
+                field.name === 'content' ||
+                field.type === 'UploadFile'
+              "
+              [type]="fieldTypes[field?.type]"
+            ></ion-input>
+          </ion-item>
+          <div class="ion-padding">
+            <ion-button
+              color="secondary"
+              size="large"
+              type="submit"
+              expand="block"
+            >
+              Submit
+            </ion-button>
+          </div>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </form>
+</ion-content>

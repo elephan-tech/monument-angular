@@ -1,24 +1,47 @@
 <app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
 
-
-  <div class="event-content" >
-           <h3 class="text-center">Check Out Monument Academy in the News</h3>
-    <ion-grid>
+<div class="event-content">
+  <h3 class="text-center">Check Out Monument Academy in the News</h3>
+  <ion-grid>
     <ion-row>
-      <ion-col size-xs="10" offset-xs="1" size-sm="8" offset-sm="2" size-md="6" offset-md="0" size-lg="4"
-        *ngFor="let blog of blogPosts">
+      <ion-col
+        size-xs="10"
+        offset-xs="1"
+        size-sm="8"
+        offset-sm="2"
+        size-md="6"
+        offset-md="0"
+        size-lg="4"
+        *ngFor="let article of articles"
+      >
         <app-animated class="animated" [animation]="'fade-up'">
-          <ion-card [routerLink]="[blog.blogID]">
-            <img loading="lazy" [src]="blog.image || '../../../assets/yellow-background.png'">
+          <ion-card [routerLink]="[article.id.value]">
+            <img
+              loading="lazy"
+              [src]="
+                article?.image?.value
+                  ? uploadUrl + article?.image?.value?.url
+                  : '../../../assets/yellow-background.png'
+              "
+            />
             <ion-card-header [ngStyle]="{}">
               <ion-card-title>
-                {{blog.title | uppercase}}
+                {{ article?.title?.value | uppercase }}
               </ion-card-title>
-              <ion-card-subtitle>{{blog.subtitle}} This article originally appeared in {{blog.article.articleLocation}} on  {{ blog.date | date }}.</ion-card-subtitle>
+              <ion-card-subtitle>
+                <ion-row>
+                  <ion-text color="dark">{{ article.subtitle.value }}</ion-text>
+                </ion-row>
+                <ion-row>
+                  This article originally appeared in
+                  {{ article.location.value }} on
+                  {{ article.date.value | date }}.
+                </ion-row>
+              </ion-card-subtitle>
             </ion-card-header>
           </ion-card>
         </app-animated>
       </ion-col>
     </ion-row>
-</ion-grid>
-  </div>
+  </ion-grid>
+</div>

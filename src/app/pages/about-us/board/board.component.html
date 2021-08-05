@@ -68,97 +68,133 @@
     </div>
     <hr />
   </div>
+</section>
 
-  <p><b> School Year 2020-2021 Monument Academy Board Meeting Dates:</b></p>
-  <p>
-    All regularly scheduled Monument Academy Board meetings will be held monthly
-    via Zoom from 6:00 PM to 8:00 PM unless otherwise noted. Dates are listed on
-    the school’s website. The Board may enter into Executive Session to discuss
-    confidential or sensitive matters, and these sessions will be closed to the
-    public. Board meetings may be rescheduled, postponed, canceled, or relocated
-    at the discretion of the chairperson. As necessary, the board may conduct
-    meetings by phone. Members of the public wishing to participate in any
-    meetings may do so by registering at the meeting link listed next to the
-    meeting date. If you have any questions, issues with registration, or
-    require any accommodations for the virtual meeting, please reach out to
-    <a href="mailto:boardmeetings@mapcsdc.org">boardmeetings@mapcsdc.org.</a>
-  </p>
+<section class="violet-section">
+  <ion-grid class="ion-padding">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="10">
+        <ion-text>
+          <h3>School Year 2020-2021 Monument Academy Board Meeting Dates:</h3>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-xs="10">
+      <p>
+        All regularly scheduled Monument Academy Board meetings will be held
+        monthly via Zoom from 6:00 PM to 8:00 PM unless otherwise noted. Dates
+        are listed on the school’s website. The Board may enter into Executive
+        Session to discuss confidential or sensitive matters, and these sessions
+        will be closed to the public. Board meetings may be rescheduled,
+        postponed, canceled, or relocated at the discretion of the chairperson.
+        As necessary, the board may conduct meetings by phone. Members of the
+        public wishing to participate in any meetings may do so by registering
+        at the meeting link listed next to the meeting date. If you have any
+        questions, issues with registration, or require any accommodations for
+        the virtual meeting, please reach out to
+        <a href="mailto:boardmeetings@mapcsdc.org"
+          >boardmeetings@mapcsdc.org.</a
+        >
+      </p>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-xs="10">
+      <ion-button
+        color="light"
+        href="https://www.dcpcsb.org/school/monument-academy-pcs"
+        target="_blank"
+        rel="nofollow"
+        fill="outline"
+      >
+        Monument Academy’s DC PCSB Profile can be found here.
+      </ion-button>
+    </ion-col>
+  </ion-row>
+</section>
+<section>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <ion-card *ngFor="let meeting of boardMeetings" class="event-card">
+          <ion-card-header>
+            <ion-toolbar mode="md">
+              <ion-card-title color="primary" style="text-align: start">{{
+                meeting?.name?.value | startCase
+              }}</ion-card-title>
+              <ion-card-subtitle style="text-align: start">
+                <div style="display: flex; align-items: center">
+                  <ion-icon
+                    slot="start"
+                    name="calendar-outline"
+                    style="margin-right: 4px"
+                  ></ion-icon>
+                  <ion-text>
+                    {{ meeting?.date.value | date: "fullDate" }}</ion-text
+                  >
+                </div>
+                <div style="display: flex; align-items: center">
+                  <ion-icon
+                    slot="start"
+                    name="time-outline"
+                    style="margin-right: 4px"
+                  ></ion-icon>
+                  <ion-text>
+                    {{ meeting?.start.value | time }}
+                    -
+                    {{ meeting?.end.value | time }}
+                  </ion-text>
+                </div>
+              </ion-card-subtitle>
+              <ion-buttons slot="end" fill="solid">
+                <div class="event-link">
+                  <ion-button
+                    color="primary"
+                    fill="outline"
+                    *ngIf="meeting?.agenda?.value?.url"
+                    [href]="fileUrl + meeting?.agenda?.value?.url"
+                    target="_blank"
+                    rel="nofollow"
+                  >
+                    <ion-icon slot="start" name="list-outline"></ion-icon>
 
-  <ul>
-    <li><p>Wednesday, September 16th, 6:00 PM – 8:00 PM</p></li>
-    <li>
-      <p>
-        Wednesday, October 21st, 6:00 PM – 8:00 PM:
-        <a
-          href="assets/documents/October-Board-Meeting-Minutes.docx"
-          target="_blank"
-          rel="nofollow"
-        >
-          Agenda, Meeting Recording, Minutes
-        </a>
-      </p>
-    </li>
+                    Agenda
+                  </ion-button>
+                </div>
+                <div class="event-link">
+                  <ion-button
+                    color="primary"
+                    fill="outline"
+                    *ngIf="meeting?.meetingRecording?.value?.url"
+                    [href]="fileUrl + meeting?.meeting_recording?.value?.url"
+                    target="_blank"
+                    rel="nofollow"
+                  >
+                    <ion-icon slot="start" name="recording-outline"></ion-icon>
+                    Meeting Recording
+                  </ion-button>
+                </div>
+                <div class="event-link">
+                  <ion-button
+                    color="primary"
+                    fill="outline"
+                    *ngIf="meeting?.minutes?.value?.url"
+                    [href]="fileUrl + meeting?.minutes?.value?.url"
+                    target="_blank"
+                    rel="nofollow"
+                  >
+                    <ion-icon slot="start" name="time-outline"></ion-icon>
 
-    <li>
-      <p>
-        Wednesday, November 18th, 6:00 PM – 8:00 PM:
-        <a
-          href="https://drive.google.com/file/d/1Z8JjRPBEYXXd0uWN_jTq4_OkQWouq6w1/view"
-          target="_blank"
-          rel="nofollow"
-        >
-          Agenda, Meeting Recording, Minutes
-        </a>
-      </p>
-    </li>
-    <li><p>Wednesday, December 16th, 6:00 PM – 8:00 PM – Cancelled</p></li>
-    <li>
-      <p>
-        Wednesday, January 27th, 6:00 PM – 8:00 PM:
-        <a
-          href="https://drive.google.com/file/d/1ma10Z96bT4KiXQhLO8umkceN52CCjQxO/view"
-          target="_blank"
-          rel="nofollow"
-        >
-          Agenda, Meeting Recording, Minutes
-        </a>
-      </p>
-    </li>
-    <li><p>Wednesday, February 17th, 6:00 PM – 8:00 PM – Cancelled</p></li>
-    <li>
-      <p>
-        Wednesday, March 17th, 6:00 PM – 8:00 PM:
-        <a
-          href="assets/documents/03-17-2021_Monument-Academy-Board-Meeting-Minutes-Draft.pdf"
-          target="_blank"
-          rel="nofollow"
-        >
-          Agenda, Meeting Recording, Minutes
-        </a>
-      </p>
-    </li>
-    <li>
-      <p>
-        Wednesday, April 21st, 6:00 PM – 8:00 PM:
-        <a
-          href="assets/documents/MAPCS-April-21-2021-Board-Meeting-Agenda.docx"
-          target="_blank"
-          rel="nofollow"
-        >
-          Agenda
-        </a>
-      </p>
-    </li>
-    <li><p>Wednesday, May 19th, 6:00 PM – 8:00 PM</p></li>
-    <li><p>Wednesday, June 16th, 6:00 PM – 8:00 PM</p></li>
-  </ul>
-
-  Monument Academy’s DC PCSB Profile can be found
-  <a
-    href="https://www.dcpcsb.org/school/monument-academy-pcs"
-    target="_blank"
-    rel="nofollow"
-  >
-    here.
-  </a>
+                    Minutes
+                  </ion-button>
+                </div>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </section>

@@ -1,3 +1,4 @@
+import { AlertCrudComponent } from './pages/alert-crud/alert-crud.component';
 import { CollectionCrudComponent } from './pages/collection-crud/collection-crud.component';
 import { AdminComponent } from './pages/admin/admin.component';
 import { KnowledgeTemplateComponent } from './components/knowledge-template/knowledge-template.component';
@@ -15,10 +16,16 @@ import { PartnershipsComponent } from './pages/about-us/partnerships/partnership
 import { ProgramsComponent } from './pages/programs/programs.component';
 import { ADayAtMonumentComponent } from './pages/programs/a-day-at-monument/a-day-at-monument.component';
 import { AcademicsComponent } from './pages/programs/academics/academics.component';
-import { BoardingStudentLifeProgramComponent } from './pages/programs/boarding-student-life-program/boarding-student-life-program.component';
-import { LifeSkillsComponent } from './pages/programs/life-skills/life-skills.component';
+import {
+  BoardingStudentLifeProgramComponent
+} from './pages/programs/boarding-student-life-program/boarding-student-life-program.component';
+import {
+  LifeSkillsComponent
+} from './pages/programs/life-skills/life-skills.component';
 import { WellBeingComponent } from './pages/programs/well-being/well-being.component';
-import { NationalSchoolLunchProgramComponent } from './pages/programs/national-school-lunch-program/national-school-lunch-program.component';
+import {
+  NationalSchoolLunchProgramComponent
+} from './pages/programs/national-school-lunch-program/national-school-lunch-program.component';
 import { CareersComponent } from './pages/careers/careers.component';
 import { EnrollmentComponent } from './pages/enrollment/enrollment.component';
 import { FamilyResourcesComponent } from './pages/family-resources/family-resources.component';
@@ -29,9 +36,11 @@ import { UpdatesCalendarComponent } from './pages/updates-calendar/updates-calen
 import { ExtendedDayLearningComponent } from './pages/programs/extended-day-learning/extended-day-learning.component';
 import { MeetOurCeoComponent } from './pages/about-us/meet-our-ceo/meet-our-ceo.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { AuthGuard } from './guards/auth.guard';
+import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 
 const routes: Routes = [
-  { path: '', component: HomeComponent }, //this makes the landing page
+  { path: '', component: HomeComponent }, // this makes the landing page
   { path: 'about-us', component: AboutUsComponent },
   { path: 'team', component: TeamComponent },
   { path: 'board', component: BoardComponent },
@@ -87,15 +96,22 @@ const routes: Routes = [
     component: KnowledgeTemplateComponent,
   },
   { path: 'updates-calendar', component: UpdatesCalendarComponent },
+  { path: 'admin-login', component: AdminLoginComponent },
 
+  { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
+  {
+    path: 'admin/:collectionType',
+    component: CollectionCrudComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'emergencyMessage',
+    component: AlertCrudComponent,
+    canActivate: [AuthGuard],
+  },
 
-  // { path: 'admin', component: AdminComponent },
-  // { path: 'admin/careers', component: CollectionCrudComponent },
-  // { path: 'admin/:collectionType', component: CollectionCrudComponent },
-
-  {path: '404', component: NotFoundComponent},
-  {path: '**', redirectTo: '/404'},
-
+  { path: '404', component: NotFoundComponent },
+  { path: '**', redirectTo: '/404' },
 ];
 
 @NgModule({
@@ -103,6 +119,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       scrollPositionRestoration: 'enabled',
       anchorScrolling: 'enabled',
+      relativeLinkResolution: 'legacy',
     }),
   ],
   exports: [RouterModule],

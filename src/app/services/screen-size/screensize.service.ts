@@ -3,16 +3,14 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { distinctUntilChanged } from 'rxjs/operators';
 
 @Injectable({
-	providedIn: 'root'
+  providedIn: 'root'
 })
 export class ScreensizeService {
 	private isDesktop = new BehaviorSubject(false);
 
-	constructor() {
+	constructor() { }
 
-  }
-
-	onResize(size) {
+	onResize(size): void {
 		if (size < 850) {
 			this.isDesktop.next(false);
 		} else {
