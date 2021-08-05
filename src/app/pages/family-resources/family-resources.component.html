@@ -68,7 +68,7 @@
         <app-animated
           class="animated"
           [animation]="'fade-up'"
-          *ngIf="rs.display.value"
+          *ngIf="rs?.display?.value"
         >
           <ion-card [href]="rs.url.value" target="_blank">
             <img

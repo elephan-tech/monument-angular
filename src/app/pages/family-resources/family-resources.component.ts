@@ -112,7 +112,6 @@ export class FamilyResourcesComponent implements OnInit {
     this.resources = this.api.getData('familyResources').subscribe(result => {
       console.log({result})
       if (!isEmpty(result)) {
-        console.log({result})
         this.resources = result?.data;
       }
     });

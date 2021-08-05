@@ -48,7 +48,6 @@ export class CollectionModalComponent implements OnInit {
    }
 
   getValue({ value, type = 'default' }): string | number | Date {
-    if (type === 'UploadFile') { console.log({value}); }
     const valueMap = {
       DateTime: new Date(value).toLocaleDateString(),
       String: value,
