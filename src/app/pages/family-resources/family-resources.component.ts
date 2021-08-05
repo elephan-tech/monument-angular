@@ -110,7 +110,11 @@ export class FamilyResourcesComponent implements OnInit {
 
   ngOnInit(): void {
     this.resources = this.api.getData('familyResources').subscribe(result => {
-      if (!isEmpty(result)){ this.resources = result?.data; }
+      console.log({result})
+      if (!isEmpty(result)) {
+        console.log({result})
+        this.resources = result?.data;
+      }
     });
 
     this.uploadUrl = environment.apiUrl;
