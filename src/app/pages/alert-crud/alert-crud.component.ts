@@ -1,3 +1,4 @@
+import { GenericObject } from './../../models/generic';
 import { Apollo } from 'apollo-angular';
 import { BehaviorSubject } from 'rxjs';
 import { Component, OnInit } from '@angular/core';
@@ -51,13 +52,13 @@ export class AlertCrudComponent implements OnInit {
     return valueMap[type];
   }
 
-  getEntries(item) {
+  getEntries(item): Array<{ name: string, value: any}>{
     return Object.entries(item).reduce((acc, [name, value]) => {
       return [...acc, {name, value}];
     }, []);
   }
 
-  generateValues(fields, item) {
+  generateValues(fields, item): Record<string, any> {
     const formFields = fields.reduce((acc, field) => [...acc, field.name], []);
     return this.getEntries(item).reduce((acc, entry) => {
       const returnValue = formFields.includes(entry.name) ? { [entry.name]: this.getValue(entry.value) } : {};
@@ -65,7 +66,7 @@ export class AlertCrudComponent implements OnInit {
     }, {});
   }
 
-  private getData(): void{
+  private getData(): void {
     const watchQuery = this.apollo.watchQuery({
       query: useQuery('emergencyMessage'),
       pollInterval: environment.production
@@ -87,7 +88,7 @@ export class AlertCrudComponent implements OnInit {
       this.alertFields = obs?.fields?.filter((field: { name: string, value: string | boolean | Array<any> }) => !this.omitFields.includes(field.name));
     });
   }
-  public alertSubmit() {
+  public alertSubmit(): void {
     const data = this.alertForm.value;
     this.api
       .update('emergencyMessage', 1, data)
@@ -96,7 +97,7 @@ export class AlertCrudComponent implements OnInit {
       .catch((err) => console.error({ err }));
   }
 
-  async onToggle(e) {
+  async onToggle(e): Promise<void> {
     const { checked } = e.currentTarget;
 
     this.api.update('emergencyMessage', 1, {
@@ -117,7 +118,7 @@ export class AlertCrudComponent implements OnInit {
     }[type];
   }
 
-  public formatValue(value: any, type: any) {
+  public formatValue(value: any, type: any): string | number | Date {
     return {
       DateTime: value ? new Date(value).toLocaleDateString('en-us') : new Date().toLocaleDateString(),
       Boolean: value ? '🟢' : '🔴',

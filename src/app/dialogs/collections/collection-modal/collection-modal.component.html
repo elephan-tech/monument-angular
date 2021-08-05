@@ -23,13 +23,22 @@
               field.name === 'display'
             "
           >
-            <ion-label position="stacked">{{
-              field?.name | startCase
-            }}</ion-label>
+            <ion-label position="stacked">
+              <ion-text>
+                <h4>{{ field?.name | startCase }}</h4>
+              </ion-text>
+            </ion-label>
             <ion-datetime
-              *ngIf="field?.type === 'DateTime'"
+              *ngIf="field?.type === 'DateTime' || field?.type === 'Date'"
               [formControlName]="camelCase(field?.name)"
               value="2020-01-02"
+            >
+            </ion-datetime>
+
+            <ion-datetime
+              *ngIf="field?.type === 'Time'"
+              [formControlName]="camelCase(field?.name)"
+              displayFormat="h:mm A"
             >
             </ion-datetime>
             <div style="margin: 16px" *ngIf="field?.name === 'content'">
@@ -38,14 +47,39 @@
                 [formControlName]="'content'"
               ></ckeditor>
             </div>
+            <div></div>
+
+            <div *ngIf="field.type === 'UploadFile'">
+              <input
+                class="uploadFile"
+                *ngIf="field.type === 'UploadFile'"
+                type="file"
+                style="display: none"
+                (change)="onFileChange($event)"
+                [id]="field?.name"
+              />
+              <ion-button
+                [for]="field?.name"
+                [id]="field?.name"
+                (click)="clickUpload($event)"
+                fill="outline"
+                color="tertiary"
+                class="uploadFileButton"
+              >
+                {{ currentData[field?.name]?.name || "choose file" }}
+              </ion-button>
+            </div>
             <ion-input
               [clearInput]="clearInput"
               [formControlName]="camelCase(field?.name)"
               [hidden]="
                 field?.type === 'DateTime' ||
+                field?.type === 'Date' ||
+                field?.type === 'Time' ||
                 field?.type === 'Boolean' ||
                 field.name === 'display' ||
-                field.name === 'content'
+                field.name === 'content' ||
+                field.type === 'UploadFile'
               "
               [type]="fieldTypes[field?.type]"
             ></ion-input>

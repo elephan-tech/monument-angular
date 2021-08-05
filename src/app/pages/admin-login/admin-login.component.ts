@@ -48,7 +48,7 @@ export class AdminLoginComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  login() {
+  login(): void {
     this.authService.login(this.loginForm).then((res: any) => {
       if (res.user) {
         this.router.navigate(['/admin']);

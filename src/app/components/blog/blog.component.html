@@ -4,7 +4,11 @@
   </ion-button>
   <img
     loading="lazy"
-    [src]="blog?.image?.url || '../../../assets/yellow-background.png'"
+    [src]="
+      blog?.image?.url
+        ? uploadUrl + blog?.image?.url
+        : '../../../assets/yellow-background.png'
+    "
     class="blog-img"
   />
 

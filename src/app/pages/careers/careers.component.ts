@@ -1,10 +1,11 @@
+import { environment } from './../../../environments/environment';
 import { ApiService } from './../../services/api/api.service';
 import { Media } from './../../models/media';
 import { UploadService } from './../../services/upload/upload.service';
 import { Apollo } from 'apollo-angular';
 import { Subscription, BehaviorSubject } from 'rxjs';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import isEmpty from 'lodash/isEmpty'
+import isEmpty from 'lodash/isEmpty';
 
 @Component({
   selector: 'app-careers',
@@ -22,7 +23,7 @@ export class CareersComponent implements OnInit {
   careers: any;
   fields: any;
   state: any;
-
+  uploadUrl = 'http://localhost:1337';
   filesBS = new BehaviorSubject<Media[]>([]);
 
   // jobOpenings = [
@@ -82,14 +83,17 @@ export class CareersComponent implements OnInit {
   //   },
   // ];
 
-  ngOnInit() {
-
+  ngOnInit(): void {
+    this.pageTitle = 'Careers';
+    this.heroImg = 'assets/images/monument-7.png';
+    this.uploadUrl = environment.apiUrl;
+    console.log(this.uploadUrl);
     this.api.getData('careers').subscribe(result => {
-      if(!isEmpty(result)){
-      this.careers = result?.data
-        this.fields = result?.fields;
+      if (!isEmpty(result)){
+      this.careers = result?.data;
+      this.fields = result?.fields;
       }
-    })
+    });
   }
 
 

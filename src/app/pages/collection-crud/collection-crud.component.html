@@ -35,8 +35,11 @@
           </ion-text>
         </ion-col>
       </ion-row>
-      <ion-row *ngIf="collectionData?.length">
-        <ion-col *ngFor="let item of collectionData" size-xs="12">
+      <ion-row
+        *ngIf="collectionData?.length"
+        class="ion-justify-content-center"
+      >
+        <ion-col *ngFor="let item of collectionData" size-xs="10">
           <ion-card class="data-card">
             <ion-card-header>
               <ion-toolbar>
@@ -87,6 +90,16 @@
                         <ion-text color="medium">
                           {{field?.name === 'content' ? 'Edit to View': formatValue(item?.[field.name].value, item?.[field.name].type)}}
                         </ion-text>
+
+                        <ion-avatar
+                          *ngIf="field?.type === 'UploadFile' && item?.[field.name]?.value?.url"
+                        >
+                          <img
+                            [src]="item?.[field.name]?.value?.name?.includes('.pdf')
+                            ? '../../../assets/images/pngtree-pdf-file-document-icon-png-image_4164950.jpeg'
+                          : item?.[field.name]?.value?.url"
+                          />
+                        </ion-avatar>
                       </div>
                     </div>
                   </ion-label>

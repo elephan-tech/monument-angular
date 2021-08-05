@@ -73,7 +73,11 @@
           <ion-card [href]="rs.url.value" target="_blank">
             <img
               loading="lazy"
-              [src]="rs.image.value || '../../../assets/yellow-background.png'"
+              [src]="
+                rs.image.value
+                  ? uploadUrl + rs?.image?.value?.url
+                  : '../../../assets/yellow-background.png'
+              "
             />
             <ion-card-header [ngStyle]="{}">
               <ion-card-title class="card-text">

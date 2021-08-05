@@ -70,7 +70,7 @@ export class AwardsComponent implements OnInit {
     },
   ];
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'Awards';
     this.heroImg = 'assets/images/monument-9.png';
   }

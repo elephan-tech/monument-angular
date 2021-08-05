@@ -1,3 +1,5 @@
+import { environment } from './../../../environments/environment';
+import { UploadService } from './../../services/upload/upload.service';
 import { isEmpty } from 'lodash';
 import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
@@ -67,7 +69,7 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
   deleteSubscription: Subscription;
   editMode = false;
   editIcon = 'create-outline';
-
+  files: any;
   query: DocumentNode;
 
   fieldTypes = {
@@ -82,6 +84,7 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
   data: any;
   omitFields = ['published_at', 'created_at', 'updated_at', 'slug'];
   collectionSub = new BehaviorSubject<any>([]);
+  uploadUrl = 'http://localhost:1337';
 
 
 
@@ -90,7 +93,8 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
     private route: ActivatedRoute,
     private api: ApiService,
     private fb: FormBuilder,
-    public alertController: AlertController
+    public alertController: AlertController,
+    public upload: UploadService
   ) {
     this.collectionType = (this.route.url as any).value.pop().path as CollectionType;
   }
@@ -98,6 +102,7 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
   ngOnInit(): void {
     this.title = startCase(this.collectionType);
     this.query = useQuery(this.collectionType);
+    this.uploadUrl = environment.apiUrl;
     this.getData();
   }
 
@@ -105,39 +110,46 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
     this.api.getData(this.collectionType).unsubscribe();
   }
 
-  inputTypes(type) {
+  inputTypes(type): string {
     return {
       DateTime: 'date',
       Boolean: 'checkbox',
       String: 'text',
       ID: 'text',
-      UploadFile: 'file'
+      UploadFile: 'file',
+      Date: 'date',
+      Time: 'time'
     }[type];
   }
 
-  public formatValue(value: any, type: StrapiTypes) {
+  public formatValue(value: any, type: StrapiTypes): string | number | any {
     return {
       DateTime: value ? new Date(value).toLocaleDateString('en-us') : new Date().toLocaleDateString(),
       Boolean: value ? '🟢' : '🔴',
       String: value || 'N/A',
       ID: value,
-      UploadFile: value?.length ? value?.name : 'N/A',
-
+      UploadFile: value?.url ? '' : 'N/A',
+      Date: value ? new Date(value).toLocaleDateString('en-us') : new Date().toLocaleDateString(),
+      Time:  value
     }[type];
   }
 
-  public async getData() {
+  public async getData(): Promise<void>{
     this.api.getData(this.collectionType).subscribe((result: CollectionData) => {
       if (!isEmpty(result)) {
-        console.log({result})
+        console.log({result});
         this.collectionData = result.data;
         this.fields = result.fields.filter(field => !this.omitFields.includes(field.name));
       }
     });
+    this.upload.getFiles().subscribe(res => {
+      console.log({res});
+      this.files = res;
+    });
 
   }
 
-  refresh() {
+  refresh(): void {
     this.api.refresh(this.collectionType);
   }
 
@@ -147,13 +159,11 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
       formGroup.addControl(item.name, new FormControl(''));
     });
 
-    console.log(formGroup)
-
     return formGroup;
   }
 
 
-  public async editEntry(e) {
+  public async editEntry(e): Promise<any>{
     e.preventDefault();
 
     const { id } = e.target;
@@ -176,7 +186,7 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
 
   }
 
-  async delete(e) {
+  async delete(e): Promise<any> {
     e.preventDefault();
 
     const { id } = e.currentTarget;
@@ -209,7 +219,7 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
 
   }
 
-  async onToggle(e) {
+  async onToggle(e): Promise<any> {
     const { id, checked } = e.currentTarget;
 
     this.api.update(this.collectionType, id, {
@@ -219,7 +229,7 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
     });
   }
 
-  public async addNew() {
+  public async addNew(): Promise<any> {
     const form = this.generateForm(this.fields);
 
     const modal = await this.modal.create({

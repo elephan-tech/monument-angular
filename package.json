@@ -8,7 +8,7 @@
     "build": "ng build",
     "build:prod": "ng build --configuration production",
     "test": "ng test",
-    "lint": "ng lint",
+    "lint": "ng lint --fix",
     "e2e": "ng e2e",
     "server": "json-server --watch ./src/app/mock.api.json --port 8000",
     "service": "cd src/app/services && mkdir $npm_config_service && ng g service $npm_config_service --flat=false"

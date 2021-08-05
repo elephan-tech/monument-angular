@@ -6,7 +6,6 @@ import { Component, OnInit } from '@angular/core';
 import { MenuController } from '@ionic/angular';
 import { AuthService } from '../../services/auth/auth.service';
 
-interface collectionType {}
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
@@ -52,11 +51,11 @@ export class AdminComponent implements OnInit {
       icon: 'megaphone-outline',
       url: 'admin/announcements',
     },
-    // {
-    //   name: 'Monument Moments',
-    //   icon: 'sparkles-outline',
-    //   url: 'admin/monumentalMoments',
-    // },
+    {
+      name: 'Monument Moments',
+      icon: 'sparkles-outline',
+      url: 'admin/monumentalMoments',
+    },
     {
       name: 'Family Resources',
       icon: 'school-outline',
@@ -78,7 +77,7 @@ export class AdminComponent implements OnInit {
 
   }
 
-  logout() {
+  logout(): void {
     this.authService.logout();
   }
 }

@@ -29,7 +29,25 @@ export class UploadService {
     complete: () => console.log('done')
   };
 
-  getFiles() {
+  getFiles(): Observable<Media[]> {
     return this.http.get<Media[]>(`${this.uploadUrl}${this.FILES}`);
+  }
+
+  async getFileById(id) {
+    const aw = await this.http.get(`${this.uploadUrl}${this.FILES}/${id}`).toPromise();
+    console.log({aw});
+    return;
+  }
+
+  uploadFile(data: Media): any{
+    console.log({data});
+    return this.http.post(this.uploadUrl, data );
+  }
+
+  async getFileByUrl(url) {
+    const files = this.getFiles().toPromise();
+    console.log({files});
+    // const fileByUrl = files?.find(file => file.url === url);
+  // return fileByUrl
   }
 }

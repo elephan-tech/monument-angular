@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 import { EventsCalendarService } from '../../services/events/events-calendar.service';
@@ -16,24 +17,27 @@ export class BlogComponent implements OnInit {
   heroImg: string;
 
   blog: BlogPost;
-  id:any;
+  id: any;
+  uploadUrl = 'http://localhost:1337';
 
   constructor(
     private Activatedroute: ActivatedRoute,
     private router: Router,
-    private eventService: EventsCalendarService,
     private apollo: Apollo
   ) {}
 
   ngOnInit(): void {
     this.id = this.Activatedroute?.snapshot?.params?.blogID;
+    this.uploadUrl = environment.apiUrl;
     this.apollo.watchQuery({
       query: gql`
       query Articles{
         article(id: ${this.id}){
           title
           image {
+            id
             url
+            name
           }
           content
           date

@@ -29,10 +29,7 @@ ${meta('Career')}
       url
       date
       image{
-        name
-        url
-      }
-      attachment {
+        id
         name
         url
       }
@@ -41,21 +38,22 @@ ${meta('Career')}
   }
 `;
 
-export const SOCIAL_QUERY = gql`
-${meta('SocialMedia')}
-  query SocialMedia {
-    socialMedias {
-      id
-      name
-      href
-      icon
-      display
-      target
-      fill
-    }
-    ...${'SocialMedia'}Meta
-  }
-`;
+// NOT NEEDED ATM -- keep hardcoded
+// export const SOCIAL_QUERY = gql`
+// ${meta('SocialMedia')}
+//   query SocialMedia {
+//     socialMedias {
+//       id
+//       name
+//       href
+//       icon
+//       display
+//       target
+//       fill
+//     }
+//     ...${'SocialMedia'}Meta
+//   }
+// `;
 
 export const ARTICLES_QUERY = gql`
 ${meta('Article')}
@@ -63,6 +61,7 @@ ${meta('Article')}
     articles {
       title
       image {
+        id
         url
       }
       content
@@ -92,15 +91,16 @@ ${meta('EmergencyMessage')}
   }
 `;
 
-export const CATEGORIES_QUERY = gql`
-${meta('Categories')}
-  query Categories {
-    categories {
-      id
-      name
-    }
-  }
-`;
+// NOT USED ATM
+// export const CATEGORIES_QUERY = gql`
+// ${meta('Categories')}
+//   query Categories {
+//     categories {
+//       id
+//       name
+//     }
+//   }
+// `;
 
 export const MOMENTS_QUERY = gql`
 ${meta('MonumentalMoments')}
@@ -108,9 +108,10 @@ ${meta('MonumentalMoments')}
     monumentalMoments {
       id
       title
-      content
+      description
       display
       image {
+        id
         url
         width
         height
@@ -131,7 +132,8 @@ ${meta('Events')}
       date
       display
       eventLink
-      file {
+      file{
+        id
         name
         url
       }
@@ -139,6 +141,7 @@ ${meta('Events')}
     ...${'Events'}Meta
   }
 `;
+
 export const ANNOUNCEMENTS_QUERY =  gql`
 ${meta('Announcements')}
   query Announcements {
@@ -148,11 +151,13 @@ ${meta('Announcements')}
       display
       date
       image {
+        id
         name
         url
       }
       link
       file {
+        id
         name
         url
       }
@@ -171,6 +176,7 @@ ${meta('FamilyResources')}
       subtitle
       description
       image {
+        id
         url
         updated_at
       }
@@ -180,23 +186,6 @@ ${meta('FamilyResources')}
   }
 `;
 
-export const NEWS_MEDIA_QUERY =  gql`
-${meta('FamilyResources')}
-  query FamilyResources {
-    familyResources {
-      id
-      title
-      subtitle
-
-      image {
-        url
-        updated_at
-      }
-      url
-    }
-    ...${'FamilyResources'}Meta
-  }
-`;
 
 export const BOARD_QUERY =  gql`
 ${meta('BoardMeetings')}
@@ -207,6 +196,7 @@ query BoardMeeting{
     start
     end
     date
+    display
     agenda{
       name
       url
@@ -215,7 +205,7 @@ query BoardMeeting{
       name
       url
     }
-    meeting_recording{
+    meetingRecording{
       name
       url
     }
@@ -230,15 +220,14 @@ query BoardMeeting{
 
 const fieldMap = {
   careers: CAREER_QUERY,
-  socials: SOCIAL_QUERY,
-  categories: CATEGORIES_QUERY,
+  // categories: CATEGORIES_QUERY,
   emergencyMessage: EMERGENCY_QUERY,
-  'monumentalMoments': MOMENTS_QUERY,
+  monumentalMoments: MOMENTS_QUERY,
   events: EVENTS_QUERY,
   announcements: ANNOUNCEMENTS_QUERY,
-  'familyResources': FAMILY_RESOURCES_QUERY,
+  familyResources: FAMILY_RESOURCES_QUERY,
   articles: ARTICLES_QUERY,
-  'boardMeetings': BOARD_QUERY
+  boardMeetings: BOARD_QUERY
 };
 
 export default (collection: string) => {

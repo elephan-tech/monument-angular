@@ -11,7 +11,6 @@ export type Field = {
 
 export type Type = {
   name: string,
-  ofType: OfType
+  ofType: Type
 };
 
-interface OfType extends Type {}

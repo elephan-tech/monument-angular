@@ -43,12 +43,11 @@ export class EventCalendarComponent implements OnInit {
   public today = new Date();
   public isAdmin = false;
   public AnnouncementSub = new BehaviorSubject([]);
-  public EventSub= new BehaviorSubject([]);
+  public EventSub = new BehaviorSubject([]);
 
   dragPosition = { x: 0, y: -100 };
 
   constructor(
-    private eventService: EventsCalendarService,
     public api: ApiService,
     public auth: AuthService,
     public apollo: Apollo

@@ -1,14 +1,17 @@
+import { environment } from 'src/environments/environment';
+import { ApiService } from 'src/app/services/api/api.service';
 import { slideOpts } from './slider.config';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { loremIpsum } from 'lorem-ipsum';
 import { ScreensizeService } from '../../services/screen-size/screensize.service';
 
 type Slide = {
-  isBeginningSlide: boolean;
-  isEndSlide: boolean;
+  isBeginningSlide?: boolean;
+  isEndSlide?: boolean;
   title: string;
   description: string;
   image: string;
+  display: boolean;
 };
 @Component({
   selector: 'app-home',
@@ -18,12 +21,12 @@ type Slide = {
 })
 export class HomeComponent implements OnInit {
   currentSlide: Slide;
-  slides: Slide[];
-
   slideOpts = slideOpts;
   lorem = loremIpsum({
     units: 'paragraph',
   });
+
+  dataService: any;
 
   isDesktop: boolean;
 
@@ -50,7 +53,10 @@ export class HomeComponent implements OnInit {
     }
   ];
 
-  constructor(private screenSizeService: ScreensizeService) {
+  slides: Slide[];
+  imageUrl = environment.apiUrl;
+
+  constructor(private screenSizeService: ScreensizeService, private api: ApiService) {
         this.screenSizeService.isDesktopView().subscribe((isDesktop) => {
       this.isDesktop = isDesktop;
     });
@@ -58,24 +64,17 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.slides = [
-      {
-        isBeginningSlide: true,
-        isEndSlide: false,
-        title: 'Teacher of the Year',
-        description: ' COMING SOON ',
-        image: '../../../assets/monument-main-logo.png',
-      },
-      {
-        isBeginningSlide: true,
-        isEndSlide: false,
-        title: 'Student of the Year',
-        description: ' COMING SOON ',
-        image: '../../../assets/images/hero-main.png',
-      },
-    ];
+   this.dataService = this.api.getData('monumentalMoments').subscribe(value => {
+      console.log({ value });
+      this.slides = value?.data?.filter(({display}) => display.value);
+    });
 
-    this.currentSlide = this.slides[0];
+
+   this.currentSlide = this.slides?.[0];
+  }
+
+  ngOnDestroy(): void{
+this.dataService.unsubscribe();
   }
 
   slideNext(slideView) {

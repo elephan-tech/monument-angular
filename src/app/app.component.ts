@@ -4,9 +4,9 @@ import { Platform } from '@ionic/angular';
 import { ScreensizeService } from './services/screen-size/screensize.service';
 
 @Component({
-	selector: 'app-root',
-	templateUrl: './app.component.html',
-	styleUrls: [ './app.component.scss' ]
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
 	title = 'monument-angular';
@@ -20,7 +20,7 @@ export class AppComponent {
 		});
 	}
 
-	@HostListener('window:resize', [ '$event' ])
+  @HostListener('window:resize', ['$event'])
 	private onResize(event): void {
 		this.screenSizeService.onResize(event.target.innerWidth);
 	}

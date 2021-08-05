@@ -5,7 +5,7 @@ import { isEmpty } from 'lodash';
 import { Subscription, BehaviorSubject } from 'rxjs';
 import { ScreensizeService } from '../../services/screen-size/screensize.service';
 import { ApiService } from './../../services/api/api.service';
-import  useQuery  from '../../api/queries';
+import useQuery from '../../api/queries';
 import { environment } from 'src/environments/environment';
 import { Observable } from '@apollo/client/utilities';
 
@@ -246,13 +246,11 @@ export class TopnavigationComponent implements OnInit {
     });
   }
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.getData();
-
-
   }
 
-  getData() {
+  getData(): void {
     const query = useQuery('emergencyMessage');
     const watchQuery = this.apollo.watchQuery<any>({
       query,
@@ -276,26 +274,26 @@ export class TopnavigationComponent implements OnInit {
 
   }
 
-  toggleMenu() {
+  toggleMenu(): void {
     this.menuIsOpen = !this.menuIsOpen;
   }
 
-  subMenuToggle(menuItem) {
+  subMenuToggle(menuItem): void {
     menuItem.subMenuOpen = !menuItem.subMenuOpen;
   }
 
-  dismissEmergency() {
+  dismissEmergency(): void {
     this.showEmergency = false;
   }
 
-  showSubMenus(nav: NavItem) {
+  showSubMenus(nav: NavItem): void {
     this.closeAllMenus();
     if (nav.subMenus) {
       nav.subMenuOpen = true;
     }
   }
 
-  hideSubMenus(nav: NavItem) {
+  hideSubMenus(nav: NavItem): void {
     if (nav.subMenus) {
       nav.subMenuOpen = false;
     }
@@ -320,24 +318,24 @@ export class TopnavigationComponent implements OnInit {
     }
   }
 
-  closeAllMenus() {
+  closeAllMenus(): void {
     this.navItems.forEach((element) => {
       element.subMenuOpen ? (element.subMenuOpen = false) : '';
     });
   }
 
-  navClick(nav: NavItem) {
+  navClick(nav: NavItem): void | null {
     if (nav.subMenus) {
       this.subMenuToggle(nav);
     }
     return null;
   }
 
-  login() {}
+  login(): void {}
 
   //
   @HostListener('window:scroll', [])
-  onWindowScroll() {
+  onWindowScroll(): void {
     if (document.documentElement.scrollTop > 20) {
       document
         .getElementById('top-logo-switch')

@@ -1,3 +1,4 @@
+import { UploadService } from './../upload/upload.service';
 import { CollectionData, Collection, CollectionType } from './../../models/strapi';
 import { Injectable } from '@angular/core';
 import { Apollo } from 'apollo-angular';
@@ -22,7 +23,8 @@ export class ApiService {
   public $query: DocumentNode;
   uploadUrl = `${environment.apiUrl}/upload`;
   public loading = new BehaviorSubject<boolean>(false);
-  constructor(private apollo: Apollo) {}
+
+  constructor(private apollo: Apollo, private upload: UploadService) {}
 
   private graphqlJSON(array) {
     return replace(JSON.stringify(array), /"([^"]+)":/g, '$1:').replace(
@@ -141,16 +143,29 @@ export class ApiService {
     });
   }
 
-  update(collection: string, id: any, data: object) {
+  update(collection: string, id: any, data: any) {
     const entry = pluralize.singular(startCase(collection));
     const payload = this.graphqlJSON(omit(data, ['id']));
-    const whereClause =
-    collection === 'emergencyMessage'
-    ? ''
-    : `where: {
+    const whereClause = collection === 'emergencyMessage' ? '' : `where: {
       id: ${id}
     }`;
 
+    console.log(`
+    mutation ${startCase(collection).split(' ').join('')} {
+      update${startCase(entry).split(' ').join('')}(input: {
+       ${whereClause}
+      data: ${
+        collection === 'emergencyMessage' ? payload.toLowerCase() : payload
+      }
+    }){
+      ${camelCase(entry).split(' ').join('')}{
+        id
+      updated_at
+      display
+      }
+    }
+    }
+    `);
 
     return this.apollo.mutate({
       mutation: gql`
@@ -161,7 +176,7 @@ export class ApiService {
           collection === 'emergencyMessage' ? payload.toLowerCase() : payload
         }
       }){
-        ${collection === 'emergencyMessage' ? entry : camelCase(entry).split(' ').join('')}{
+        ${collection === 'emergencyMessage' ? collection : camelCase(entry).split(' ').join('')}{
           id
         updated_at
         display

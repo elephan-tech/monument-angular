@@ -62,6 +62,7 @@ import { ProgramsComponent } from './pages/programs/programs.component';
 import { WellBeingComponent } from './pages/programs/well-being/well-being.component';
 import { UpdatesCalendarComponent } from './pages/updates-calendar/updates-calendar.component';
 import { StartCasePipe } from './pipes/start-case.pipe';
+import {TimePipe} from './pipes/time.pipe';
 
 
 
@@ -107,6 +108,7 @@ import { StartCasePipe } from './pipes/start-case.pipe';
     EnvTagComponent,
     CollectionModalComponent,
     StartCasePipe,
+    TimePipe,
     AlertCrudComponent,
   ],
   imports: [

@@ -1,3 +1,4 @@
+import { environment } from 'src/environments/environment';
 import { isEmpty } from 'lodash';
 import { ApiService } from 'src/app/services/api/api.service';
 import { BehaviorSubject } from 'rxjs';
@@ -17,7 +18,7 @@ export class BoardComponent implements OnInit {
   pageTitle: string;
   heroImg: string;
   fragment: string;
-
+  fileUrl = environment.apiUrl;
   board = [
     {
       bioPic:
@@ -99,19 +100,18 @@ export class BoardComponent implements OnInit {
     },
   ];
 
-  boardMeetings:any;
-  boardMeetingsSub = new BehaviorSubject([])
+  boardMeetings: any;
+  boardMeetingsSub = new BehaviorSubject([]);
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'Board of Directors';
     this.heroImg = '';
     this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
     this.api.getData('boardMeetings').subscribe(result => {
-      console.log('🔥',{result})
       if (!isEmpty(result)) {
-        this.boardMeetings = result.data
+        this.boardMeetings = result.data;
       }
-    })
+    });
   }
 
     ngAfterViewInit(): void {

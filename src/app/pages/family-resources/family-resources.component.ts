@@ -1,3 +1,4 @@
+import { environment } from './../../../environments/environment';
 import { isEmpty } from 'lodash';
 import { ApiService } from 'src/app/services/api/api.service';
 import { BehaviorSubject } from 'rxjs';
@@ -19,6 +20,8 @@ export class FamilyResourcesComponent implements OnInit {
     'Video-conferencing',
     'Volunteering',
   ];
+
+  uploadUrl = 'http://localhost:1337';
 
   resourcesHC = [
     {
@@ -107,7 +110,9 @@ export class FamilyResourcesComponent implements OnInit {
 
   ngOnInit(): void {
     this.resources = this.api.getData('familyResources').subscribe(result => {
-      if(!isEmpty(result)){ this.resources = result?.data }
-    })
+      if (!isEmpty(result)){ this.resources = result?.data; }
+    });
+
+    this.uploadUrl = environment.apiUrl;
   }
 }

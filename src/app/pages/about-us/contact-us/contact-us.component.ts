@@ -27,12 +27,12 @@ export class ContactUsComponent implements OnInit {
     private toast: ToastController
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'Contact Us';
     this.heroImg = '';
   }
 
-  onSubmit() {
+  onSubmit(): void {
     const data = this.contactForm.value;
     this.mailService
       .sendContactMail(data)
@@ -57,7 +57,7 @@ export class ContactUsComponent implements OnInit {
       .finally(() => this.resetForm());
   }
 
-  resetForm() {
+  resetForm(): void {
     this.contactForm.reset();
   }
 }

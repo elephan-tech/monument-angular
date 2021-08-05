@@ -148,7 +148,7 @@ export class PartnershipsComponent implements OnInit {
     },
   ];
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'Partnerships';
     this.heroImg = '';
   }

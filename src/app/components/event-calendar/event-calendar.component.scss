@@ -68,7 +68,7 @@ ion-fab {
   margin: 8px;
   justify-content: start;
   align-items: baseline;
-  height: auto !important;
+  max-height: 150px !important;
   border: 3px solid var(--ion-color-dark);
   .event-link {
     margin: 8px;
@@ -86,12 +86,6 @@ ion-fab {
   box-shadow: 0 5px 5px -3px rgba(0, 0, 0, 0.2),
     0 8px 10px 1px rgba(0, 0, 0, 0.14), 0 3px 14px 2px rgba(0, 0, 0, 0.12);
 }
-
-// .boundary {
-//      height: 70vh;
-//     max-width: 100%;
-//     margin-top: 178px;
-// }
 
 ion-grid {
   margin-top: 5%;
