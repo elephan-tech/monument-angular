@@ -149,23 +149,6 @@ export class ApiService {
       id: ${id}
     }`;
 
-    console.log(`
-    mutation ${startCase(collection).split(' ').join('')} {
-      update${startCase(entry).split(' ').join('')}(input: {
-       ${whereClause}
-      data: ${
-        collection === 'emergencyMessage' ? payload.toLowerCase() : payload
-      }
-    }){
-      ${camelCase(entry).split(' ').join('')}{
-        id
-      updated_at
-      display
-      }
-    }
-    }
-    `);
-
     return this.apollo.mutate({
       mutation: gql`
       mutation ${startCase(collection).split(' ').join('')} {

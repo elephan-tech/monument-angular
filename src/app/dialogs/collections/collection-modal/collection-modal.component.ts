@@ -104,13 +104,11 @@ export class CollectionModalComponent implements OnInit {
       formData.append('files', file);
       this.upload.uploadFile(formData).subscribe(res => {
         if (res.length) {
-          console.log(res[0].id);
           this.form.patchValue({
             [e.target.id]: res?.[0].id
           });
         }
         this.currentData = { ...this.currentData, [e.target.id]: file };
-        console.log({form: this.form});
 
       });
       this.cd.markForCheck();
@@ -133,7 +131,7 @@ export class CollectionModalComponent implements OnInit {
     const time = (value.end || value.start) ? this.formatTime([value?.start, value?.end]) : { drop: '_drop' };
     let data = { ...value, date, id: this.id, ...time };
     if (data.date === '_drop' || data.time === '_drop') {
-      const { date, time, ...rest } = data;
+      const { date, time, drop, ...rest } = data;
       data = rest;
     } else {
       data = data;

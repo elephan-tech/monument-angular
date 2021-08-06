@@ -65,10 +65,10 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
 
    this.dataService = this.api.getData('monumentalMoments').subscribe(value => {
-      console.log({ value });
-      this.slides = value?.data?.filter(({display}) => display.value);
+     this.slides = value?.data?.filter(({ display, ...foo }) => {
+       return display?.value
+     });
     });
-
 
    this.currentSlide = this.slides?.[0];
   }
