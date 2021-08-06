@@ -3,7 +3,7 @@ import { UploadService } from './../../../services/upload/upload.service';
 import { ChangeDetectorRef, Component, Input, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { ModalController, ToastController } from '@ionic/angular';
-import { camelCase, startCase, filter } from 'lodash';
+import { camelCase, startCase, filter, omit } from 'lodash';
 import pluralize from 'pluralize';
 import { Observable } from 'rxjs';
 import { ApiService } from './../../../services/api/api.service';
@@ -132,9 +132,9 @@ export class CollectionModalComponent implements OnInit {
     let data = { ...value, date, id: this.id, ...time };
     if (data.date === '_drop' || data.time === '_drop') {
       const { date, time, drop, ...rest } = data;
-      data = rest;
+      data = omit(data, ['date', 'time', 'drop']);
     } else {
-      data = data;
+      data = omit(data, 'drop')
     }
 
     const edit = this.editMode;
