@@ -107,7 +107,7 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.api.getData(this.collectionType).unsubscribe();
+    // this.api.getData(this.collectionType).unsubscribe();
   }
 
   inputTypes(type): string {
