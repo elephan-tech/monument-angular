@@ -4,7 +4,7 @@ import { DocumentNode } from 'graphql';
 import { gql } from 'graphql-tag';
 import { camelCase, isEmpty, isEqual, omit, replace, startCase, uniqWith } from 'lodash';
 import pluralize from 'pluralize';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, Observable } from 'rxjs';
 import useQuery from '../../api/queries';
 import { environment } from './../../../environments/environment';
 import { GenericObject } from './../../models/generic';
@@ -12,9 +12,16 @@ import { Collection } from './../../models/strapi';
 import { UploadService } from './../upload/upload.service';
 
 
+type DataType = {
+  [k: string]: {
+    value: any;
+    type: any;
+  }
+};
 @Injectable({
   providedIn: 'root',
 })
+
 export class ApiService {
   public CollectionData: BehaviorSubject<any> = new BehaviorSubject([]);
   public Fields: BehaviorSubject<any> = new BehaviorSubject([]);
@@ -23,20 +30,18 @@ export class ApiService {
   uploadUrl = `${environment.apiUrl}/upload`;
   public loading = new BehaviorSubject<boolean>(false);
 
-  constructor(private apollo: Apollo, private upload: UploadService) {}
+  constructor(private apollo: Apollo) {}
 
-  private graphqlJSON(array) {
+  private graphqlJSON(array: any[]): string {
     return replace(JSON.stringify(array), /"([^"]+)":/g, '$1:').replace(
       /\uFFFF/g,
       '\\"'
     );
   }
 
-  private mergeDataType(data, fields) {
+  private mergeDataType(data: any, fields: any): DataType[] {
     const DATA = data.length ? data : [data];
     return DATA.reduce((dataAcc, item) => {
-
-
       const collectionData = fields.reduce((acc, field) => {
         return {
           ...acc, [field.name]: {
@@ -48,7 +53,6 @@ export class ApiService {
 
       return [...dataAcc, collectionData];
     }, []);
-
   }
   public formatData(type: string, data: any): Collection {
     if (!isEmpty(data)) {
@@ -66,7 +70,7 @@ export class ApiService {
   }
 
 
-  getData(collectionType?: any) {
+  getData(collectionType?: any): BehaviorSubject<any> {
 
     const query: DocumentNode = useQuery(collectionType);
 
@@ -88,7 +92,7 @@ export class ApiService {
     return this.CollectionData;
   }
 
-  refresh(collectionType: string) {
+  refresh(collectionType: string): Promise<any> {
     const query: DocumentNode = useQuery(collectionType);
 
     const refresh = this.apollo.watchQuery<any>({
@@ -97,7 +101,8 @@ export class ApiService {
 
     return refresh;
   }
-  delete(collection: string, id: string) {
+
+  delete(collection: string, id: string): Observable<any> {
     const entry = pluralize.singular(collection);
     const generateMutation = () => {
       return gql`
@@ -121,7 +126,7 @@ export class ApiService {
       });
   }
 
-  create(collectionType: string, data: object) {
+  create(collectionType: string, data: object): Observable<any> {
     const entry = pluralize.singular(collectionType);
     const collection = startCase(entry).split(' ').join('');
     const payload = this.graphqlJSON(omit(data, ['id']));
@@ -142,7 +147,7 @@ export class ApiService {
     });
   }
 
-  update(collection: string, id: any, data: any) {
+  update(collection: string, id: any, data: any): Observable<any> {
     const entry = pluralize.singular(startCase(collection));
     const payload = this.graphqlJSON(omit(data, ['id']));
     const whereClause = collection === 'emergencyMessage' ? '' : `where: {
@@ -170,7 +175,7 @@ export class ApiService {
     });
   }
 
-  getById(collection, id) {
+  getById(collection, id): void {
 // TODO factor out from blog.component.ts
   }
 

@@ -123,8 +123,8 @@ export class CollectionModalComponent implements OnInit {
 
   formatTime(times: Date[]): Record<string, string> {
     return times.reduce((acc, time: Date, index) => {
-      const [_date, hr] = time?.toString().split('T');
-      const [gqlTime, _idk] = hr ? hr?.split('-') : '';
+      const [date, hr] = time?.toString().split('T');
+      const [gqlTime, idk] = hr ? hr?.split('-') : '';
       return {...acc, [index === 0 ? 'start' : 'end']: gqlTime};
     }, {});
   }
@@ -135,10 +135,9 @@ export class CollectionModalComponent implements OnInit {
     const time = (value.end || value.start) ? this.formatTime([value?.start, value?.end]) : { drop: '_drop' };
     let data = { ...value, date, id: this.id, ...time };
     if (data.date === '_drop' || data.time === '_drop') {
-      const { date, time, drop, ...rest } = data;
       data = omit(data, ['date', 'time', 'drop']);
     } else {
-      data = omit(data, 'drop')
+      data = omit(data, 'drop');
     }
 
     const edit = this.editMode;

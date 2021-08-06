@@ -320,7 +320,7 @@ export class TopnavigationComponent implements OnInit {
 
   closeAllMenus(): void {
     this.navItems.forEach((element) => {
-      element.subMenuOpen ? (element.subMenuOpen = false) : '';
+      element.subMenuOpen = false;
     });
   }
 

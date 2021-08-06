@@ -13,7 +13,7 @@ export class DonateComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'Donate';
     this.heroImg = 'assets/images/monument-10.png';
   }

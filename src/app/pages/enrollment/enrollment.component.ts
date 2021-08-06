@@ -11,7 +11,7 @@ export class EnrollmentComponent implements OnInit {
   heroImg: string;
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'Enrollment';
     this.heroImg = 'assets/images/monument-6.png';
   }

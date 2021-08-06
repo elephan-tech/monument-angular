@@ -34,12 +34,6 @@ export class ProgramsComponent implements OnInit {
           name: 'BSLP',
           url: 'boarding-student-life-program',
         },
-        // {
-        //   title: 'Family Engagement',
-        //   description: 'Families always have a seat at the table, and we work to nurture strong connections and communication channels. ',
-        //   name: 'familyEngagement',
-        //   url: 'family-engagement',
-        // },
         {
           title: 'National School Lunch Program',
           description: 'Through our participation in the National School Lunch Program, our students receive free breakfast, lunch, after-school snack, and supper.',

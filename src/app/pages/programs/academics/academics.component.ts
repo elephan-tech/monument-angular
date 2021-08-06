@@ -11,7 +11,7 @@ export class AcademicsComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'Academics';
     this.heroImg = 'assets/images/monument-6.png';
   }

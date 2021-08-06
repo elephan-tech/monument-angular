@@ -137,13 +137,11 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
   public async getData(): Promise<void>{
     this.api.getData(this.collectionType).subscribe((result: CollectionData) => {
       if (!isEmpty(result)) {
-        console.log({result});
         this.collectionData = result.data;
         this.fields = result.fields.filter(field => !this.omitFields.includes(field.name));
       }
     });
     this.upload.getFiles().subscribe(res => {
-      console.log({res});
       this.files = res;
     });
 
@@ -242,7 +240,7 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
         collection: this.collectionType,
       },
     });
-    return await modal.present();
+    return await modal.present().then(() =>  this.refresh());
   }
 
 

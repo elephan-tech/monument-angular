@@ -22,7 +22,7 @@ export class UpdatesCalendarComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'Calendar Updates & Events';
   }
 }

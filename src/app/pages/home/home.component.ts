@@ -1,7 +1,7 @@
 import { environment } from 'src/environments/environment';
 import { ApiService } from 'src/app/services/api/api.service';
 import { slideOpts } from './slider.config';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
 import { loremIpsum } from 'lorem-ipsum';
 import { ScreensizeService } from '../../services/screen-size/screensize.service';
 
@@ -19,7 +19,7 @@ type Slide = {
   styleUrls: ['./home.component.scss'],
   encapsulation: ViewEncapsulation.None,
 })
-export class HomeComponent implements OnInit {
+export class HomeComponent implements OnInit, OnDestroy {
   currentSlide: Slide;
   slideOpts = slideOpts;
   lorem = loremIpsum({
@@ -66,7 +66,7 @@ export class HomeComponent implements OnInit {
 
    this.dataService = this.api.getData('monumentalMoments').subscribe(value => {
      this.slides = value?.data?.filter(({ display, ...foo }) => {
-       return display?.value
+       return display?.value;
      });
     });
 
@@ -77,11 +77,11 @@ export class HomeComponent implements OnInit {
 this.dataService.unsubscribe();
   }
 
-  slideNext(slideView) {
+  slideNext(slideView): void {
     slideView.slideNext(300);
   }
 
-  slidePrev(slideView) {
+  slidePrev(slideView): void {
     slideView.slidePrev(300);
   }
 }

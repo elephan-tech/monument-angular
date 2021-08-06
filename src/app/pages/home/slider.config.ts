@@ -18,7 +18,7 @@ export const slideOpts = {
       modifier: 0.8,
     },
     on: {
-      beforeInit() {
+      beforeInit(): void {
         const swiper = this;
 
         swiper.classNames.push(
@@ -29,7 +29,7 @@ export const slideOpts = {
         swiper.params.watchSlidesProgress = true;
         swiper.originalParams.watchSlidesProgress = true;
       },
-      setTranslate() {
+      setTranslate(): void {
         const swiper = this;
         const {
           width: swiperWidth,
@@ -120,7 +120,7 @@ export const slideOpts = {
           ws.perspectiveOrigin = `${center}px 50%`;
         }
       },
-      setTransition(duration) {
+      setTransition(duration): void {
         const swiper = this;
         swiper.slides
           .transition(duration)

@@ -8,7 +8,6 @@ export class TimePipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): string {
     const [hour, minute, second] = value.split(':');
-    const [_s, _ms] = second.split('.');
 
     const hourMap = {
       '00': {time: 12, am: true},

@@ -11,7 +11,7 @@ export class WellBeingComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'Well Being Program';
     this.heroImg = 'assets/images/monument-3.png';
   }

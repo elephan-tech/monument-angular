@@ -22,7 +22,7 @@ export class AuthService {
   ) {
    }
 
-  checkIfLoggedIn() {
+  checkIfLoggedIn(): boolean {
     if (this.loggedIn) {
       return true;
     } else {
@@ -61,7 +61,7 @@ export class AuthService {
     });
   }
 
-  logout() {
+  logout(): void {
     localStorage.removeItem('access_token');
     this.router.navigate(['/admin-login']);
   }

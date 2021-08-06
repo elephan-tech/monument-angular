@@ -100,8 +100,7 @@ export class TeamComponent implements OnInit {
     },
   ];
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'The Monument Team';
-    // this.heroImg = 'assets/images/hero-main.png';
   }
 }

@@ -49,7 +49,7 @@ export class ADayAtMonumentComponent implements OnInit {
     },
   ];
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'A Day At Monument Academy';
     this.heroImg = 'assets/images/monument-15.png';
   }

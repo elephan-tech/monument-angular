@@ -12,7 +12,7 @@ export class LifeSkillsComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'Life Skills';
     this.heroImg = 'assets/images/monument-13.png';
   }

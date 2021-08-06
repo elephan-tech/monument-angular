@@ -33,16 +33,15 @@ export class UploadService {
     return this.http.get<Media[]>(`${this.uploadUrl}${this.FILES}`);
   }
 
-  async getFileById(id) {
-    const aw = await this.http.get(`${this.uploadUrl}${this.FILES}/${id}`).toPromise();
-    return aw;
+  async getFileById(id: string): Promise<any> {
+    return await this.http.get(`${this.uploadUrl}${this.FILES}/${id}`).toPromise();
   }
 
   uploadFile(data: Media): any{
     return this.http.post(this.uploadUrl, data );
   }
 
-  async getFileByUrl(url) {
+  async getFileByUrl(url): Promise<void> {
     const files = this.getFiles().toPromise();
     // const fileByUrl = files?.find(file => file.url === url);
   // return fileByUrl

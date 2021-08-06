@@ -11,7 +11,7 @@ export class BoardingStudentLifeProgramComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'family-style boarding program';
     this.heroImg = 'assets/images/monument-17.png';
   }

@@ -85,7 +85,8 @@ export class AlertCrudComponent implements OnInit {
 
     this.alertObserver.subscribe((obs: any) => {
       this.alertData = obs.data;
-      this.alertFields = obs?.fields?.filter((field: { name: string, value: string | boolean | Array<any> }) => !this.omitFields.includes(field.name));
+      this.alertFields = obs?.fields?.filter((field: { name: string, value: string | boolean | Array<any> }) =>
+        !this.omitFields.includes(field.name));
     });
   }
   public alertSubmit(): void {

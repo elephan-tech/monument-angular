@@ -2,7 +2,7 @@ import { environment } from 'src/environments/environment';
 import { isEmpty } from 'lodash';
 import { ApiService } from 'src/app/services/api/api.service';
 import { BehaviorSubject } from 'rxjs';
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { AfterViewInit, Component, OnInit, ViewEncapsulation } from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 
 @Component({
@@ -12,7 +12,7 @@ import {ActivatedRoute} from '@angular/router';
   encapsulation: ViewEncapsulation.None,
   template: `<div [innerHTML]="data | safeHtml"></div>`,
 })
-export class BoardComponent implements OnInit {
+export class BoardComponent implements OnInit, AfterViewInit {
 
   constructor(private route: ActivatedRoute, private api: ApiService) {}
   pageTitle: string;

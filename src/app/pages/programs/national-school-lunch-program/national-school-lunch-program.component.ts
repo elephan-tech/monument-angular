@@ -11,7 +11,7 @@ export class NationalSchoolLunchProgramComponent implements OnInit {
 
   constructor() {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'National School Lunch Program';
     this.heroImg = 'assets/images/monument-8.png';
   }

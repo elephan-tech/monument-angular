@@ -15,7 +15,7 @@ export class MailService {
     lastName: string;
     email: string;
     message: string;
-  }) {
+  }): Promise<any> {
     const html = newContactTemplate(data);
     return this.sendMail({
       from: 'contact.monumentacademydc@gmail.com',
@@ -35,7 +35,7 @@ export class MailService {
     to: string | string[];
     subject: string;
     html: string;
-  }) {
+  }): Promise<any>{
     return axios
       .post(this.sendMailUrl, { ...config })
       .then((res) => {

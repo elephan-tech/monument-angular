@@ -24,7 +24,7 @@ export class KnowledgeCenterComponent implements OnInit {
     private knowledgeService: KnowledgeService
   ) {}
 
-  ngOnInit() {
+  ngOnInit(): void {
     this.pageTitle = 'Knowledge Center';
     this.heroImg = 'assets/images/monument-16.png';
     this.knowledgeService.getAll().subscribe((obs) => {
@@ -32,20 +32,8 @@ export class KnowledgeCenterComponent implements OnInit {
     });
   }
 
-  async presentModal(card) {
-    // const modal = await this.modalController.create({
-    //   component: ModalComponent,
-    //   componentProps: {
-    //     title: card.title,
-    //     description: card.mainContent,
-    //     tabs: card.tabs,
-    //   },
-    //   cssClass: 'fullscreen',
-    // });
-    // return await modal.present();
-  }
 
-  navigateTo(url) {
+  navigateTo(url: string): void {
     this.router.navigateByUrl(url);
   }
 }
