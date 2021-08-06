@@ -16,7 +16,7 @@ import isEmpty from 'lodash/isEmpty';
 })
 export class CareersComponent implements OnInit {
 
-  constructor(private apollo: Apollo, private upload: UploadService, private api: ApiService) {}
+  constructor(private api: ApiService) {}
   pageTitle: string;
   heroImg: string;
   careerSub: Subscription;
@@ -87,7 +87,6 @@ export class CareersComponent implements OnInit {
     this.pageTitle = 'Careers';
     this.heroImg = 'assets/images/monument-7.png';
     this.uploadUrl = environment.apiUrl;
-    console.log(this.uploadUrl);
     this.api.getData('careers').subscribe(result => {
       if (!isEmpty(result)){
       this.careers = result?.data;

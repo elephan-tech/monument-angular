@@ -36,7 +36,6 @@ export class CollectionModalComponent implements OnInit {
   currentData: any;
   public Editor = Classic;
 
-
   constructor(
     private api: ApiService,
     private mc: ModalController,
@@ -88,7 +87,12 @@ export class CollectionModalComponent implements OnInit {
 
     const [currentData] = currentDataValues.filter(data => data.id === this.id);
 
-    this.currentData = currentData;
+    this.currentData = currentData || {
+      name: '',
+      image: {
+        name: '',
+      },
+    };
 
     this.editMode ? this.form.setValue(currentData) : this.form.reset();
   }
@@ -160,9 +164,9 @@ export class CollectionModalComponent implements OnInit {
     await toast.present();
   }
 
-  async onSuccess(_success): Promise<any> {
+  async onSuccess(success): Promise<any> {
     const toast = await this.toast.create({
-      message: `Entry Successfully ${this.editMode ? 'Updated' : 'Created'}`,
+      message: `${success?.data?.name} Entry Successfully ${this.editMode ? 'Updated' : 'Created'}`,
       color: 'success',
     });
     await toast.present();
@@ -177,8 +181,8 @@ export class CollectionModalComponent implements OnInit {
     this.mc.dismiss();
   }
 
-  camelCase(string): string {
-    return camelCase(string);
+  camelCase(text: string): string {
+    return camelCase(text);
   }
 
   clearForm(): void{ }

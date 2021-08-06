@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "allowedCommonJsDependencies": ["lorem-ipsum", "axios"],
+            "allowedCommonJsDependencies": ["lorem-ipsum", "axios", "lodash"],
             "outputPath": "dist/monument-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
