@@ -1,0 +1,16 @@
+ol {
+  padding-left: 1.2em;
+}
+
+li {
+  padding-left: 5em;
+}
+
+ol > li::marker {
+  content: "(" counter(list-item) ")";
+}
+
+p.no-margin {
+  margin-bottom: 1px;
+  margin-top: 1px;
+}
