@@ -36,7 +36,7 @@ export class AuthService {
   }
 
   private get token(): string {
-    return localStorage.getItem('access');
+    return localStorage.getItem('access_token');
   }
 
   login(form: FormGroup): Promise<boolean> {
