@@ -51,12 +51,12 @@ export class AuthService {
       return res.data;
     }).catch((err: any) => {
       // do we want to return the whole obj or just false?
-      const errObject = {
-        error: err.response.data.error,
-        msg: err.response.data.message[0].messages[0].message,
-        msgId: err.response.data.message[0].messages[0].id,
-        statusCode: err.response.data.statusCode
-      };
+      const errObject = err.response ? {
+        error: err.response.data?.error,
+        msg: err.response.data?.message[0].messages[0].message,
+        msgId: err.response.data?.message[0].messages[0].id,
+        statusCode: err.response.data?.statusCode
+      } : err;
       return errObject;
     });
   }

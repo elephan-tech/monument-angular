@@ -40,7 +40,7 @@ export class ApiService {
   }
 
   private mergeDataType(data: any, fields: any): DataType[] {
-    const DATA = data.length ? data : [data];
+    const DATA = data?.length ? data : [data];
     return DATA.reduce((dataAcc, item) => {
       const collectionData = fields.reduce((acc, field) => {
         return {
