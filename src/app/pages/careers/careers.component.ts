@@ -89,7 +89,9 @@ export class CareersComponent implements OnInit {
     this.uploadUrl = environment.apiUrl;
     this.api.getData('careers').subscribe(result => {
       if (!isEmpty(result)){
-      this.careers = result?.data;
+      this.careers = result?.data.filter((c) => {
+        return c.display == true;
+      })
       this.fields = result?.fields;
       }
     });
