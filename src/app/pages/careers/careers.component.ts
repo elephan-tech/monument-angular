@@ -91,10 +91,8 @@ export class CareersComponent implements OnInit {
       if (!isEmpty(result)){
       this.careers = result?.data;
       this.careers = this.careers.filter((c) => {
-        console.log(c.display);
-        return c.display == true;
+        return c.display.value == true;
       });
-      console.log(this.careers);
       this.fields = result?.fields;
       }
     });
