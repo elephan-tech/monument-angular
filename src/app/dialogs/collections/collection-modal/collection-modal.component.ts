@@ -133,7 +133,7 @@ export class CollectionModalComponent implements OnInit {
     const { value } = this.form;
     const date = value.date ? new Date(value?.date || '').toISOString() : '_drop';
     const time = (value.end || value.start) ? this.formatTime([value?.start, value?.end]) : { drop: '_drop' };
-    console.log({value: value.image.id});
+    console.log({value: value?.image?.id});
     let data = {
       ...value,
       ...time,

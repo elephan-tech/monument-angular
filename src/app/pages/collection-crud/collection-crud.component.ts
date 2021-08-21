@@ -141,8 +141,10 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
         this.fields = result.fields.filter(field => !this.omitFields.includes(field.name));
       }
     });
-    this.upload.getFiles().subscribe(res => {
+    this.upload.getFiles().subscribe((res) => {
       this.files = res;
+    }, (err) => {
+      console.log(err);
     });
 
   }
@@ -153,7 +155,7 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
 
   generateForm(fields: Fields): FormGroup {
     const formGroup = this.fb.group({});
-    fields.forEach((item) => {
+    fields?.forEach((item) => {
       formGroup.addControl(item.name, new FormControl(''));
     });
 
