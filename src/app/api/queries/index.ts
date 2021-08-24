@@ -26,9 +26,8 @@ ${meta('Career')}
       id
       name
       shortDescription
-      url
       date
-      image{
+      file{
         id
         name
         url

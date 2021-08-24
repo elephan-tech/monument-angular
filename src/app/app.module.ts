@@ -1,18 +1,14 @@
 import { DragDropModule } from '@angular/cdk/drag-drop';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgModule } from '@angular/core';
-import { AngularFireModule } from '@angular/fire';
-import { AngularFireDatabaseModule } from '@angular/fire/database';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatExpansionModule } from '@angular/material/expansion';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { CKEditorModule } from '@ckeditor/ckeditor5-angular';
 import { IonicModule } from '@ionic/angular';
 import { MarkdownModule } from 'ngx-markdown';
-import { environment } from '../environments/environment';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AnimatedComponent } from './components/animated/animated.component';
@@ -26,7 +22,7 @@ import { KnowledgeTemplateComponent } from './components/knowledge-template/know
 import { SliderComponent } from './components/slider/slider.component';
 import { TopnavigationComponent } from './components/topnavigation/topnavigation.component';
 import { CollectionModalComponent } from './dialogs/collections/collection-modal/collection-modal.component';
-import { GraphQLModule } from './graphql.module';
+import { GraphQLModule } from '../app/api/graphql.module';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AwardsComponent } from './pages/about-us/awards/awards.component';
 import { BoardComponent } from './pages/about-us/board/board.component';
@@ -62,7 +58,9 @@ import { ProgramsComponent } from './pages/programs/programs.component';
 import { WellBeingComponent } from './pages/programs/well-being/well-being.component';
 import { UpdatesCalendarComponent } from './pages/updates-calendar/updates-calendar.component';
 import { StartCasePipe } from './pipes/start-case.pipe';
-import {TimePipe} from './pipes/time.pipe';
+import { TimePipe } from './pipes/time.pipe';
+import { JwtModule } from '@auth0/angular-jwt';
+import { ShowHidePasswordComponent } from './components/show-hide-password/show-hide-password.component';
 
 
 
@@ -104,15 +102,14 @@ import {TimePipe} from './pipes/time.pipe';
     AdminComponent,
     AdminLoginComponent,
     CollectionCrudComponent,
-    DatatableComponent,
     EnvTagComponent,
     CollectionModalComponent,
     StartCasePipe,
     TimePipe,
     AlertCrudComponent,
+    ShowHidePasswordComponent,
   ],
   imports: [
-    // MarkdownModule.forRoot({loader: HttpClient}),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
@@ -123,12 +120,18 @@ import {TimePipe} from './pipes/time.pipe';
     ReactiveFormsModule,
     MatExpansionModule,
     HttpClientModule,
-    AngularFireModule.initializeApp(environment.firebaseConfig),
-    AngularFireDatabaseModule,
     GraphQLModule,
     FormsModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
-    CKEditorModule
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: () => {
+          return localStorage.getItem('access_token');
+        },
+        allowedDomains: ['localhost:4200', 'monumentacademy.org', ],
+
+      },
+    })
   ],
   exports: [
     MatMenuModule,
@@ -137,7 +140,10 @@ import {TimePipe} from './pipes/time.pipe';
     MatGridListModule,
     MatExpansionModule,
   ],
-  providers: [HttpClient, HttpClientModule],
+  providers: [
+    HttpClient,
+    HttpClientModule,
+    ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

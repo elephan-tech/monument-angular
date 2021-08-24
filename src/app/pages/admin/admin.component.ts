@@ -13,11 +13,7 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class AdminComponent implements OnInit {
   apiUrl = environment.apiUrl;
-  // Emergency Bar @done
-  // TODO News & Media
   // TODO National School Lunch Program
-  // TODO Family Resources
-  // TODO Board Of Directors (meeting minutes)
   loggedInUser: any;
 
   items = [
@@ -68,10 +64,7 @@ export class AdminComponent implements OnInit {
     },
   ];
 
-  constructor(
-    private authService: AuthService,
-    private apollo: Apollo
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
 
