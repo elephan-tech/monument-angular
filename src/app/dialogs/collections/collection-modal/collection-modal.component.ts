@@ -47,7 +47,7 @@ export class CollectionModalComponent implements OnInit {
    }
 
   getValue({ value, type = 'default' }): string | number | Date {
-    const valueMap = {
+   const valueMap = {
       DateTime: new Date(value).toLocaleDateString(),
       String: value,
       Boolean: value,
@@ -55,10 +55,10 @@ export class CollectionModalComponent implements OnInit {
       default: value,
       UploadFile: value,
       Time: value,
-      Date: value
+      Date: value,
     };
 
-    return valueMap[type];
+   return valueMap[type];
   }
 
   getEntries(item): Array<{name: string, value: string | any}> {
@@ -77,6 +77,7 @@ export class CollectionModalComponent implements OnInit {
 
   ngOnInit(): void {
     this.collection = startCase(this.collection);
+    console.log({ collection: this.collection });
     this.clearInput = false;
     this.entry = startCase(pluralize.singular(this.collection));
 

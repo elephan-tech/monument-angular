@@ -11,14 +11,16 @@
         <ion-label for="email" position="floating" color="primary"
           >Email:
         </ion-label>
-        <ion-input formControlName="email"></ion-input>
+        <ion-input formControlName="email" autocomplete="email"></ion-input>
       </ion-item>
 
       <ion-item>
         <ion-label for="password" position="floating" color="primary"
           >Password:
         </ion-label>
-        <ion-input formControlName="password" type="password"></ion-input>
+        <app-show-hide-password>
+          <ion-input formControlName="password" type="password" autocomplete="password"></ion-input>
+        </app-show-hide-password>
       </ion-item>
 
       <div class="login-div">

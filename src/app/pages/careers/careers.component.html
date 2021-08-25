@@ -15,19 +15,9 @@
         <ion-card
           class="hover-card"
           *ngIf="c?.display.value"
-          [href]="c?.url?.value"
+          [href]="c?.file?.value?.url"
           target="_blank"
         >
-          <img
-            height="auto"
-            width="auto"
-            loading="lazy"
-            [src]="
-              c?.image?.value
-                ? uploadUrl + c?.image?.value?.url
-                : '../../../assets/yellow-background.png'
-            "
-          />
           <ion-card-header>
             <ion-card-title>{{ c?.name?.value }}</ion-card-title>
             <img

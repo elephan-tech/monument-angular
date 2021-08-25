@@ -13,11 +13,7 @@ import { AuthService } from '../../services/auth/auth.service';
 })
 export class AdminComponent implements OnInit {
   apiUrl = environment.apiUrl;
-  // Emergency Bar @done
-  // TODO News & Media
   // TODO National School Lunch Program
-  // TODO Family Resources
-  // TODO Board Of Directors (meeting minutes)
   loggedInUser: any;
 
   items = [
@@ -44,7 +40,7 @@ export class AdminComponent implements OnInit {
     {
       name: 'Alerts',
       icon: 'warning-outline',
-      url: '/emergencyMessage',
+      url: 'admin/emergencyMessage',
     },
     {
       name: 'Announcements',
@@ -66,12 +62,14 @@ export class AdminComponent implements OnInit {
       icon: 'people-outline',
       url: 'admin/boardMeetings',
     },
+    {
+      name: 'Menus',
+      icon: 'restaurant-outline',
+      url: 'admin/menus',
+    },
   ];
 
-  constructor(
-    private authService: AuthService,
-    private apollo: Apollo
-  ) {}
+  constructor(private authService: AuthService) {}
 
   ngOnInit(): void {
 

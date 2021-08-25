@@ -111,8 +111,7 @@ export class FamilyResourcesComponent implements OnInit {
   ngOnInit(): void {
     this.resources = this.api.getData('familyResources').subscribe(result => {
       if (!isEmpty(result)) {
-        this.resources = result?.data.sort(function(a,b) {return a.id.value - b.id.value});
-        // this.resources = result?.data;
+        this.resources = result?.data.sort((a: any, b: any)  => a.id.value - b.id.value);
         console.log(this.resources);
       }
     });

@@ -23,7 +23,7 @@ export class CareersComponent implements OnInit {
   careers: any;
   fields: any;
   state: any;
-  uploadUrl = 'http://localhost:1337';
+  uploadUrl = environment.apiUrl;
   filesBS = new BehaviorSubject<Media[]>([]);
 
   // jobOpenings = [
@@ -91,7 +91,7 @@ export class CareersComponent implements OnInit {
       if (!isEmpty(result)){
       this.careers = result?.data;
       this.careers = this.careers.filter((c) => {
-        return c.display.value == true;
+        return c.display.value === true;
       });
       this.fields = result?.fields;
       }

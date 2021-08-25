@@ -4,16 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://localhost:1338',
-  firebaseConfig: {
-    apiKey: 'AIzaSyDL8JkFw4wLCpM36DAc0uxQKjEOPa6-cqI',
-    authDomain: 'monument-academy.firebaseapp.com',
-    projectId: 'monument-academy',
-    storageBucket: 'monument-academy.appspot.com',
-    messagingSenderId: '566826948724',
-    appId: '1:566826948724:web:db2ed6c49b5c94f409d921',
-    measurementId: 'G-9ZWFQ10LJH',
-  },
+  apiUrl: 'http://localhost:1337',
 };
 /*
  * For easier debugging in development mode, you can import the following file

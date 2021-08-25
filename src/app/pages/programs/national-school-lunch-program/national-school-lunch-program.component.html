@@ -9,6 +9,50 @@
     students receive free breakfast, lunch, after-school snack, and supper.
   </p>
 </section>
+<section>
+
+  <ion-title>{{menuData?.name?.value}}</ion-title>
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let item of items" size-xs="10" offset-xs="1">
+        <ion-card>
+          <ion-card-header>
+            <ion-toolbar>
+              <ion-buttons slot="start">
+                <ion-button>
+                  <ion-icon [name]="item?.icon + '-outline'" slot="start"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+              <ion-card-title>
+              {{item?.name | startCase}}
+            </ion-card-title>
+              <ion-buttons slot="end">
+                <ion-button [href]="uploadUrl + menuData?.[item.name]?.value?.[0]?.url" target="_blank">
+                  <ion-icon name="download-outline"></ion-icon>
+                </ion-button>
+              </ion-buttons>
+            </ion-toolbar>
+          </ion-card-header>
+          <ion-card-content>
+            <div style="display: flex; flex-direction: column;">
+              <div>
+                <pdf-viewer
+                [src]="uploadUrl + menuData?.[item.name]?.value?.[0]?.url"
+                [external-link-target]="'blank'"
+                [autoresize]="true"
+                [stick-to-page]="true"
+
+                >
+
+                </pdf-viewer>
+              </div>
+            </div>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</section>
 <div class="yellow-section">
   <section>
     <h4>USDA Non-Discrimination Statement:</h4>
