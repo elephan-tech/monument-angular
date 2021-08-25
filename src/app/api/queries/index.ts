@@ -228,6 +228,10 @@ query Menus{
       name
       url
     }
+    vegetarian{
+      name
+      url
+    }
     snack{
       name
       url

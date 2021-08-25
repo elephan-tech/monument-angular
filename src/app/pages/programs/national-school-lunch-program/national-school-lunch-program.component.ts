@@ -16,6 +16,7 @@ export class NationalSchoolLunchProgramComponent implements OnInit {
   items = [
     { name: 'breakfast', icon: 'cafe' },
     { name: 'lunch', icon: 'fast-food' },
+    { name: 'vegetarian', icon: 'leaf' },
     { name: 'snack', icon: 'nutrition' },
     { name: 'supper', icon: 'pizza' },
   ];
