@@ -213,12 +213,41 @@ query BoardMeeting{
 }
 `;
 
+export const MENUS_QUERY = gql`
+${meta('Menus')}
+query Menus{
+  menu{
+    id
+    display
+    name
+    breakfast{
+      name
+      url
+    }
+    lunch{
+      name
+      url
+    }
+    snack{
+      name
+      url
+    }
+    supper{
+      name
+      url
+    }
+  }
+  ...${'Menus'}Meta
+}
+`;
+
 
 
 
 
 const fieldMap = {
   careers: CAREER_QUERY,
+  menu: MENUS_QUERY,
   // categories: CATEGORIES_QUERY,
   emergencyMessage: EMERGENCY_QUERY,
   monumentalMoments: MOMENTS_QUERY,
@@ -230,7 +259,6 @@ const fieldMap = {
 };
 
 export default (collection: string) => {
-
   return fieldMap[collection];
 };
 

@@ -25,7 +25,8 @@ type CollectionType =
   'careers' |
   'knowledge-center' |
   'announcements' |
-  'emergencyMessage'|
+  'emergencyMessage' |
+  'menu'|
   undefined;
 
 type UpdateResponse = {

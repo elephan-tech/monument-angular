@@ -38,6 +38,7 @@ import { MeetOurCeoComponent } from './pages/about-us/meet-our-ceo/meet-our-ceo.
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
+import { MenusComponent } from './pages/menus/menus.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, // this makes the landing page
@@ -100,15 +101,21 @@ const routes: Routes = [
 
   { path: 'admin', component: AdminComponent, canActivate: [AuthGuard] },
   {
+    path: 'admin/menus',
+    component: MenusComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'admin/emergencyMessage',
+    component: AlertCrudComponent,
+    canActivate: [AuthGuard],
+  },
+  {
     path: 'admin/:collectionType',
     component: CollectionCrudComponent,
     canActivate: [AuthGuard],
   },
-  {
-    path: 'emergencyMessage',
-    component: AlertCrudComponent,
-    canActivate: [AuthGuard],
-  },
+
 
   { path: '404', component: NotFoundComponent },
   { path: '**', redirectTo: '/404' },

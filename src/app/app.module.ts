@@ -61,6 +61,8 @@ import { StartCasePipe } from './pipes/start-case.pipe';
 import { TimePipe } from './pipes/time.pipe';
 import { JwtModule } from '@auth0/angular-jwt';
 import { ShowHidePasswordComponent } from './components/show-hide-password/show-hide-password.component';
+import { MenusComponent } from './pages/menus/menus.component';
+import {  PdfViewerModule  } from 'ng2-pdf-viewer';
 
 
 
@@ -108,6 +110,7 @@ import { ShowHidePasswordComponent } from './components/show-hide-password/show-
     TimePipe,
     AlertCrudComponent,
     ShowHidePasswordComponent,
+    MenusComponent,
   ],
   imports: [
     BrowserModule,
@@ -122,6 +125,7 @@ import { ShowHidePasswordComponent } from './components/show-hide-password/show-
     HttpClientModule,
     GraphQLModule,
     FormsModule,
+    PdfViewerModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
     JwtModule.forRoot({
       config: {

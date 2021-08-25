@@ -40,7 +40,7 @@ export class AdminComponent implements OnInit {
     {
       name: 'Alerts',
       icon: 'warning-outline',
-      url: '/emergencyMessage',
+      url: 'admin/emergencyMessage',
     },
     {
       name: 'Announcements',
@@ -61,6 +61,11 @@ export class AdminComponent implements OnInit {
       name: 'Board Meetings',
       icon: 'people-outline',
       url: 'admin/boardMeetings',
+    },
+    {
+      name: 'Menus',
+      icon: 'restaurant-outline',
+      url: 'admin/menus',
     },
   ];
 

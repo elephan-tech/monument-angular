@@ -102,12 +102,10 @@ export class AuthService {
 
   loggedIn(): boolean {
     const token = this.loadToken();
-    console.log({ token });
     return !this.jwtHelper.isTokenExpired(token);
   }
 
   loginSuccess(res): AuthResponse {
-    console.log(res);
     const { jwt, user } = res;
     this.storeUserData(jwt, user);
     return {jwt: this.authToken, user: this.user};
@@ -130,10 +128,8 @@ export class AuthService {
 
     try {
       const res = await this.http.post(url, data).toPromise();
-      console.log({res});
       return this.loginSuccess(res);
     } catch (result) {
-      console.log({ result });
       return this.loginFail(result);
     }
   }
