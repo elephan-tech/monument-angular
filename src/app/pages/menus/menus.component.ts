@@ -24,6 +24,7 @@ export class MenusComponent implements OnInit {
   menuForm = new FormGroup({
     name: new FormControl(''),
     breakfast: new FormControl(''),
+    vegetarian: new FormControl(''),
     lunch: new FormControl(''),
     snack: new FormControl(''),
     supper: new FormControl(''),
