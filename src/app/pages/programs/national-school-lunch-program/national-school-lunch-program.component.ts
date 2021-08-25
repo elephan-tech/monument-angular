@@ -14,11 +14,11 @@ export class NationalSchoolLunchProgramComponent implements OnInit {
   menuData: any;
   fields: any;
   items = [
-    { name: 'breakfast', icon: 'cafe' },
-    { name: 'lunch', icon: 'fast-food' },
-    { name: 'vegetarian', icon: 'leaf' },
-    { name: 'snack', icon: 'nutrition' },
-    { name: 'supper', icon: 'pizza' },
+    { name: 'breakfast', icon: 'cafe',  collapsed: true},
+    { name: 'lunch', icon: 'fast-food',  collapsed: true},
+    { name: 'vegetarian', icon: 'leaf',  collapsed: true},
+    { name: 'snack', icon: 'nutrition',  collapsed: true},
+    { name: 'supper', icon: 'pizza',  collapsed: true},
   ];
   currentItem: any;
   pdf: any;
@@ -36,5 +36,11 @@ export class NationalSchoolLunchProgramComponent implements OnInit {
         this.fields = result?.fields;
       }
     });
+  }
+
+  collapseMenu(item) {
+    console.log('clicked')
+
+    item.collapsed = !item.collapsed;
   }
 }
