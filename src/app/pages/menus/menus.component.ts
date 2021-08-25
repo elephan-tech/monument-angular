@@ -78,11 +78,9 @@ export class MenusComponent implements OnInit {
     });
 
     watchQuery.valueChanges.subscribe(({ data }) => {
-      console.log({data});
       const { id, __typename, display, ...formValues } = (data as MenuData)?.menu;
       this.menuForm.setValue(formValues);
       const menuData = this.api.formatData('menu', data);
-      console.log({menuData});
       this.menuObs.next(menuData);
     });
 
