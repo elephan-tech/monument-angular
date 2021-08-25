@@ -14,7 +14,7 @@
   <ion-title>{{menuData?.name?.value}}</ion-title>
   <ion-grid>
     <ion-row>
-      <ion-col *ngFor="let item of items" size-xs="10" offset-xs="1">
+      <ion-col *ngFor="let item of items" size-xs="12">
         <ion-card>
           <ion-card-header>
             <ion-toolbar>
@@ -41,7 +41,7 @@
                 [external-link-target]="'blank'"
                 [autoresize]="true"
                 [stick-to-page]="true"
-
+                [original-size]="false"
                 >
 
                 </pdf-viewer>
