@@ -89,9 +89,7 @@ export class ApiService {
 
 
     watchQuery.valueChanges.subscribe(({ data }) => {
-      console.log({collectionType, data});
       const collectionData = this.formatData(collectionType, data);
-      console.log({collectionData});
       !isEmpty(data) ? this.CollectionData.next(collectionData) : this.CollectionData.next([]);
     });
 
@@ -158,7 +156,6 @@ export class ApiService {
     const payload = this.graphqlJSON(omit(data, ['id']));
 
     const isSingle = this.singleCollections.includes(collection);
-    console.log({collection});
     const whereClause = isSingle ? '' : `where: {
       id: ${id}
     }`;
