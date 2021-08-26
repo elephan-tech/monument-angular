@@ -166,10 +166,10 @@ export class ApiService {
         update${startCase(entry).split(' ').join('')}(input: {
          ${whereClause}
         data: ${
-          collection === 'emergencyMessage' ? payload.toLowerCase() : payload
+          (this.singleCollections.includes('emergencyMessage') || this.singleCollections.includes('menu')) ? payload.toLowerCase() : payload
         }
       }){
-        ${collection === 'emergencyMessage' ? collection : camelCase(entry).split(' ').join('')}{
+        ${(this.singleCollections.includes('emergencyMessage') || this.singleCollections.includes('menu')) ? collection : camelCase(entry).split(' ').join('')}{
           id
         updated_at
         display
