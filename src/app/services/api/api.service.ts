@@ -166,10 +166,9 @@ export class ApiService {
         update${startCase(entry).split(' ').join('')}(input: {
          ${whereClause}
         data: ${
-          (collection === 'emergencyMessage' || collection === 'menu') ? payload.toLowerCase() : payload
+          collection === 'emergencyMessage' ? payload.toLowerCase() : payload
         }
-      }){
-        ${(collection === 'emergencyMessage' || collection === 'menu') ? collection : camelCase(entry).split(' ').join('')}{
+      }){${collection === 'emergencyMessage' ? collection : camelCase(entry).split(' ').join('')}{
           id
         updated_at
         display
