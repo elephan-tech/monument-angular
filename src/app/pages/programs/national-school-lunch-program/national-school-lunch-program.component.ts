@@ -39,8 +39,6 @@ export class NationalSchoolLunchProgramComponent implements OnInit {
   }
 
   collapseMenu(item) {
-    console.log('clicked')
-
     item.collapsed = !item.collapsed;
   }
 }
