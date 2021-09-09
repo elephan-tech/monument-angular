@@ -2,7 +2,7 @@ import { environment } from './../../../environments/environment';
 import { isEmpty } from 'lodash';
 import { ApiService } from 'src/app/services/api/api.service';
 import { BehaviorSubject } from 'rxjs';
-import { Component, Injectable, OnInit, OnDestroy } from '@angular/core';
+import { Component, Injectable, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-family-resources',
@@ -10,7 +10,7 @@ import { Component, Injectable, OnInit, OnDestroy } from '@angular/core';
   styleUrls: ['./family-resources.component.scss'],
 })
 @Injectable({ providedIn: 'root' })
-export class FamilyResourcesComponent implements OnInit, OnDestroy {
+export class FamilyResourcesComponent implements OnInit {
   images = '../../../assets/images/';
   items = [
     'Home visits',
@@ -105,23 +105,16 @@ export class FamilyResourcesComponent implements OnInit, OnDestroy {
 
   resources: any;
   resourcesSub = new BehaviorSubject([]);
-  $getFamResources;
 
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
-    this.$getFamResources = this.api.getData('familyResources');
-    this.resources = this.$getFamResources.subscribe(result => {
-      console.log(result);
+    this.resources = this.api.getData('familyResources').subscribe(result => {
       if (!isEmpty(result)) {
         this.resources = result?.data.sort((a: any, b: any)  => a.id.value - b.id.value);
       }
     });
 
     this.uploadUrl = environment.apiUrl;
-  }
-
-  ngOnDestroy(): void {
-    this.$getFamResources.unsubscribe();
   }
 }
