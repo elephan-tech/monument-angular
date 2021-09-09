@@ -88,12 +88,15 @@ export class CareersComponent implements OnInit {
     this.heroImg = 'assets/images/monument-7.png';
     this.uploadUrl = environment.apiUrl;
     this.api.getData('careers').subscribe(result => {
+      console.log(result);
       if (!isEmpty(result)){
       this.careers = result?.data;
       this.careers = this.careers.filter((c) => {
         return c.display.value === true;
       });
       this.fields = result?.fields;
+      } else {
+
       }
     });
   }
