@@ -14,12 +14,14 @@
       <ion-col size="6" size-md="6" size-sm="12" *ngFor="let c of careers">
         <ion-card
           class="hover-card"
-          *ngIf="c?.display.value"
-          [href]="uploadUrl + c?.file?.value?.url"
+          *ngIf="hardcoded ? true : c?.display?.value"
+          [href]="hardcoded ? c.url : uploadUrl + c?.file?.value?.url"
           target="_blank"
         >
           <ion-card-header>
-            <ion-card-title>{{ c?.name?.value }}</ion-card-title>
+            <ion-card-title>{{
+              hardcoded ? c.jobTitle : c?.name?.value
+            }}</ion-card-title>
             <img
               loading="lazy"
               src="assets/underline-stroke.svg"
@@ -27,7 +29,7 @@
             />
           </ion-card-header>
           <ion-card-content>
-            {{ c?.shortDescription.value }}
+            {{ hardcoded ? c.shortDescription : c?.shortDescription.value }}
             <br />
           </ion-card-content>
         </ion-card>
