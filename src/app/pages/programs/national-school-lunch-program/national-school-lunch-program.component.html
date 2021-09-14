@@ -11,7 +11,7 @@
   <p>Here are this month's menus:</p>
 </section>
 <section>
-  <ion-title>{{ menuData?.name?.value }}</ion-title>
+  <ion-title>{{ hardcoded ? menuData.name : menuData?.name?.value }}</ion-title>
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let item of items" size-xs="12">
@@ -41,7 +41,7 @@
               </ion-card-title>
               <ion-buttons slot="end">
                 <ion-button
-                  [href]="uploadUrl + menuData?.[item.name]?.value?.[0]?.url"
+                  [href]="hardcoded ? menuData[item.name].url : harduploadUrl + menuData?.[item.name]?.value?.[0]?.url"
                   target="_blank"
                 >
                   <ion-icon name="download-outline"></ion-icon>
@@ -53,7 +53,7 @@
             <div style="display: flex; flex-direction: column">
               <div>
                 <pdf-viewer
-                  [src]="uploadUrl + menuData?.[item.name]?.value?.[0]?.url"
+                  [src]="hardcoded ? menuData[item.name].url : harduploadUrl + menuData?.[item.name]?.value?.[0]?.url"
                   [external-link-target]="'blank'"
                   [autoresize]="false"
                   [stick-to-page]="true"

@@ -2,6 +2,7 @@ import { environment } from 'src/environments/environment';
 import { isEmpty } from 'lodash';
 import { ApiService } from 'src/app/services/api/api.service';
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs/operators';
 
 @Component({
   selector: 'app-national-school-lunch-program',
@@ -24,18 +25,43 @@ export class NationalSchoolLunchProgramComponent implements OnInit {
   pdf: any;
   uploadUrl = 'http://localhost:1337/';
 
+  hardcoded = true;
+
+ menuDataHC = {
+  name: 'September 2021',
+  breakfast: {
+    url: 'assets/documents/menus/SeptemberBreakfast.pdf'
+  },
+  lunch : {
+    url: 'assets/documents/menus/SeptemberLunch.pdf'
+  },
+  vegetarian : {
+    url: 'assets/documents/menus/SeptemberVegLunch.pdf'
+  },
+  snack : {
+    url: 'assets/documents/menus/SeptemberSnack.pdf'
+  },
+  supper : {
+    url: 'assets/documents/menus/SeptemberSupper.pdf'
+  }
+ }
+
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
     this.uploadUrl = environment.apiUrl;
     this.pageTitle = 'National School Lunch Program';
     this.heroImg = 'assets/images/monument-8.png';
-    this.api.getData('menu').subscribe(result => {
+    if (this.hardcoded) {
+      this.menuData = this.menuDataHC;
+    }  else {
+      this.api.getData('menu').subscribe(result => {
       if (!isEmpty(result)) {
         this.menuData = result?.data[0];
         this.fields = result?.fields;
       }
     });
+    }
   }
 
   collapseMenu(item) {
