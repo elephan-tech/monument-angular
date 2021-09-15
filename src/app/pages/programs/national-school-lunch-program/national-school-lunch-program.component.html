@@ -16,8 +16,6 @@
     <ion-row>
       <ion-col *ngFor="let item of items" size-xs="12">
         <ion-card>
-          {{menuData?.[item.name]?.value?.[0]?.url}}
-
           <ion-card-header (click)="collapseMenu(item)">
             <ion-toolbar>
               <ion-buttons slot="start">
