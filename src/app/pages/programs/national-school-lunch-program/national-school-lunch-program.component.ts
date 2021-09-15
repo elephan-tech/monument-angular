@@ -15,6 +15,7 @@ export class NationalSchoolLunchProgramComponent implements OnInit, OnDestroy {
   heroImg: string;
   menuData: any;
   fields: any;
+  loadingPdf = false;
   items = [
     { name: 'breakfast', icon: 'cafe',  collapsed: true},
     { name: 'lunch', icon: 'fast-food',  collapsed: true},
@@ -71,10 +72,13 @@ export class NationalSchoolLunchProgramComponent implements OnInit, OnDestroy {
   }
 
   collapseMenu(item) {
+    if(!item.collapsed) this.loadingPdf = true;
+
     item.collapsed = !item.collapsed;
   }
 
-  onProgress(progressData: PDFProgressData) {
-    console.log({ progressData })
+  onProgress({loaded}: PDFProgressData) {
+    if (loaded) { this.loadingPdf = false }
   }
+
 }
