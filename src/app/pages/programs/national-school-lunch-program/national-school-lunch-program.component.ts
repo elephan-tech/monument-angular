@@ -1,12 +1,8 @@
 import { environment } from 'src/environments/environment';
 import { isEmpty } from 'lodash';
 import { ApiService } from 'src/app/services/api/api.service';
-<<<<<<< HEAD
-import { Component, OnDestroy, OnInit } from '@angular/core';
-=======
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy,OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
->>>>>>> a18a5cdda50c48c8cf1d0bc11cefed0d44c83ef5
 
 @Component({
   selector: 'app-national-school-lunch-program',
@@ -30,7 +26,7 @@ export class NationalSchoolLunchProgramComponent implements OnInit, OnDestroy {
   uploadUrl = 'http://localhost:1337/';
   menuSub: any;
 
-  hardcoded = true;
+  hardcoded = false;
 
  menuDataHC = {
   name: 'September 2021',
@@ -57,15 +53,10 @@ export class NationalSchoolLunchProgramComponent implements OnInit, OnDestroy {
     this.uploadUrl = environment.apiUrl;
     this.pageTitle = 'National School Lunch Program';
     this.heroImg = 'assets/images/monument-8.png';
-<<<<<<< HEAD
-    this.menuSub = this.api.getData('menu');
-    this.menuSub.subscribe(result => {
-=======
     if (this.hardcoded) {
       this.menuData = this.menuDataHC;
     }  else {
       this.api.getData('menu').subscribe(result => {
->>>>>>> a18a5cdda50c48c8cf1d0bc11cefed0d44c83ef5
       if (!isEmpty(result)) {
         this.menuData = result?.data[0];
         this.fields = result?.fields;
@@ -79,11 +70,6 @@ export class NationalSchoolLunchProgramComponent implements OnInit, OnDestroy {
   }
 
   collapseMenu(item) {
-<<<<<<< HEAD
-    console.log('clicked');
-
-=======
->>>>>>> a18a5cdda50c48c8cf1d0bc11cefed0d44c83ef5
     item.collapsed = !item.collapsed;
   }
 }

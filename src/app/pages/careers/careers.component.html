@@ -15,13 +15,8 @@
         <pre>{{c|json}}</pre>
         <ion-card
           class="hover-card"
-<<<<<<< HEAD
-          *ngIf="c?.display?.value"
-          [href]="c?.file?.value?.url"
-=======
           *ngIf="hardcoded ? true : c?.display?.value"
           [href]="hardcoded ? c.url : uploadUrl + c?.file?.value?.url"
->>>>>>> a18a5cdda50c48c8cf1d0bc11cefed0d44c83ef5
           target="_blank"
         >
           <ion-card-header>
