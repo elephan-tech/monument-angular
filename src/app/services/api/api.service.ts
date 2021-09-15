@@ -152,13 +152,33 @@ export class ApiService {
   }
 
   update(collection: string, id: any, data: any): Observable<any> {
+    console.log({ collection, id, data });
     const entry = pluralize.singular(startCase(collection));
     const payload = this.graphqlJSON(omit(data, ['id']));
 
     const isSingle = this.singleCollections.includes(collection);
+    console.log({ isSingle });
     const whereClause = isSingle ? '' : `where: {
       id: ${id}
     }`;
+
+    console.log({ whereClause });
+    console.log(`
+    mutation ${startCase(collection).split(' ').join('')} {
+      update${startCase(entry).split(' ').join('')}(input: {
+       ${whereClause}
+      data: ${
+        collection === 'emergencyMessage' ? payload.toLowerCase() : payload
+      }
+    }){
+      ${collection === 'emergencyMessage' ? collection : camelCase(entry).split(' ').join('')}{
+        id
+      updated_at
+      display
+      }
+    }
+    }
+    `)
 
     return this.apollo.mutate({
       mutation: gql`

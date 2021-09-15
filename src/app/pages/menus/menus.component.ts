@@ -1,4 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { ToastController } from '@ionic/angular';
+import { UploadService } from './../../services/upload/upload.service';
+import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Apollo } from 'apollo-angular';
 import { BehaviorSubject } from 'rxjs';
@@ -33,7 +35,11 @@ export class MenusComponent implements OnInit {
 
   constructor(
     private api: ApiService,
-    private apollo: Apollo
+    private apollo: Apollo,
+    private upload: UploadService,
+    private cd: ChangeDetectorRef,
+    private toast: ToastController,
+
   ) { }
 
   ngOnInit(): void {
@@ -86,17 +92,70 @@ export class MenusComponent implements OnInit {
 
     this.menuObs.subscribe((obs: any) => {
       this.menuData = obs.data;
+      console.log('🔥', this.menuData);
       this.menuFields = obs?.fields?.filter((field: { name: string, value: string | boolean | Array<any> }) =>
         !this.omitFields.includes(field.name));
     });
   }
-  public alertSubmit(): void {
+
+  onFileChange(e): void {
+    e.preventDefault();
+    const reader = new FileReader();
+    if (e.target.files && e.target.files.length) {
+      const [file] = e.target.files;
+      console.log({ file });
+      reader.readAsDataURL(file);
+
+      const formData = new FormData();
+      formData.append('files', file);
+      console.log({ formData });
+      this.upload.uploadFile(formData).subscribe(res => {
+        if (res.length) {
+          console.log({res});
+          this.menuForm.patchValue({
+            [e.target.id]: res?.[0].id
+          });
+          console.log('menu form', this.menuForm);
+        }
+        console.log('menu data', e.target.id);
+        this.menuData = [{
+          ...this.menuData[0], [e.target.name]: {
+            type: 'UploadFile',
+            value: [{name: res?.[0].name,
+              id: res?.[0].id,
+            url: res?.[0].url}]
+        } }];
+        console.log('menu data', this.menuData);
+
+      });
+      this.cd.markForCheck();
+    }
+  }
+
+  public menuSubmit(): void {
     const data = this.menuForm.value;
+    console.log({ data });
     this.api
       .update('menu', 1, data)
       .toPromise()
-      .then()
-      .catch((err) => console.error({ err }));
+      .then((success) => this.onSuccess(success))
+      .catch((err) => this.onError(err));
+  }
+
+  async onError(err): Promise<any> {
+    const toast = await this.toast.create({
+      message: 'Something Went Wrong',
+      color: 'danger',
+    });
+    await toast.present();
+  }
+
+  async onSuccess(success): Promise<any> {
+    const toast = await this.toast.create({
+      message: `Menus Updated Successfully`,
+      color: 'success',
+    });
+    await toast.present();
   }
 
   async onToggle(e): Promise<void> {
@@ -137,5 +196,9 @@ export class MenusComponent implements OnInit {
       snack: 'nutrition-outline',
       supper: 'pizza-outline'
     }[name];
+  }
+
+  clickUpload(e): void {
+    document.getElementById(e.target.name).click();
   }
 }

@@ -31,24 +31,60 @@
               </ion-toolbar>
             </ion-card-header>
             <ion-card-content>
-              <form [formGroup]="menuForm" (submit)="alertSubmit()">
+              <form [formGroup]="menuForm" (submit)="menuSubmit()">
                 <ion-list>
-                  <ion-item *ngFor="let field of menuFields">
-                    <div *ngIf="field.name !== 'id' || field.name !== display">
+                  <ion-item
+                  *ngFor="let field of menuFields"
+                  class="box"
+                  [hidden]="
+                      field?.type === 'ID' ||
+                      field?.name.includes('_at') ||
+                      field.name === 'display'
+                    "
+                  >
                       <ion-label position="stacked">
-                        <strong>{{ field?.name | startCase }}</strong>
+                        <h4>{{ field?.name | startCase }}</h4>
                       </ion-label>
                       <ion-input
                         [type]="inputTypes(field.type)"
                         [formControlName]="field?.name"
                         [value]="item?.[field.name].value"
                         [placeholder]="formatValue(item?.[field.name].value, item?.[field.name].type)"
+                        [hidden]="
+                          field?.type === 'DateTime' ||
+                          field?.type === 'Date' ||
+                          field?.type === 'Time' ||
+                          field?.type === 'Boolean' ||
+                          field.name === 'display' ||
+                          field.name === 'content' ||
+                          field.type === 'UploadFile'
+                        "
                       ></ion-input>
-                    </div>
+                      <div *ngIf="field.type === 'UploadFile'">
+                        <input
+                          class="uploadFile"
+                          *ngIf="field.type === 'UploadFile'"
+                          type="file"
+                          style="display: none"
+                          (change)="onFileChange($event)"
+                          [name]="field?.name"
+                          [id]="field?.id"
+                        />
+                        <ion-button
+                          [for]="field?.name"
+                          [id]="field?.name"
+                          (click)="clickUpload($event)"
+                          fill="outline"
+                          color="tertiary"
+                          class="uploadFileButton"
+                        >
+                        {{item?.[field?.name]?.value?.[0]?.name  || menuData?.[0]?.[field?.name].name}}
+                        </ion-button>
+                      </div>
                   </ion-item>
                   <ion-button
                     color="primary"
-                    (click)="alertSubmit()"
+                    (click)="menuSubmit()"
                     fill="outline"
                     >save</ion-button
                   >

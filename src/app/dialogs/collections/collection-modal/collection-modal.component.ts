@@ -42,9 +42,7 @@ export class CollectionModalComponent implements OnInit {
     private toast: ToastController,
     private cd: ChangeDetectorRef,
     private upload: UploadService
-  ) {
-
-   }
+  ) { }
 
   getValue({ value, type = 'default' }): string | number | Date {
    const valueMap = {

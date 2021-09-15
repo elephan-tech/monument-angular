@@ -1,14 +1,14 @@
 import { environment } from 'src/environments/environment';
 import { isEmpty } from 'lodash';
 import { ApiService } from 'src/app/services/api/api.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-national-school-lunch-program',
   templateUrl: './national-school-lunch-program.component.html',
   styleUrls: ['./national-school-lunch-program.component.scss'],
 })
-export class NationalSchoolLunchProgramComponent implements OnInit {
+export class NationalSchoolLunchProgramComponent implements OnInit, OnDestroy {
   pageTitle: string;
   heroImg: string;
   menuData: any;
@@ -23,6 +23,7 @@ export class NationalSchoolLunchProgramComponent implements OnInit {
   currentItem: any;
   pdf: any;
   uploadUrl = 'http://localhost:1337/';
+  menuSub: any;
 
   constructor(private api: ApiService) {}
 
@@ -30,7 +31,8 @@ export class NationalSchoolLunchProgramComponent implements OnInit {
     this.uploadUrl = environment.apiUrl;
     this.pageTitle = 'National School Lunch Program';
     this.heroImg = 'assets/images/monument-8.png';
-    this.api.getData('menu').subscribe(result => {
+    this.menuSub = this.api.getData('menu');
+    this.menuSub.subscribe(result => {
       if (!isEmpty(result)) {
         this.menuData = result?.data[0];
         this.fields = result?.fields;
@@ -38,8 +40,12 @@ export class NationalSchoolLunchProgramComponent implements OnInit {
     });
   }
 
+  ngOnDestroy(): void {
+    this.menuSub.unsubscribe();
+  }
+
   collapseMenu(item) {
-    console.log('clicked')
+    console.log('clicked');
 
     item.collapsed = !item.collapsed;
   }

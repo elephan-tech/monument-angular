@@ -12,9 +12,10 @@
   <ion-grid>
     <ion-row>
       <ion-col size="6" size-md="6" size-sm="12" *ngFor="let c of careers">
+        <pre>{{c|json}}</pre>
         <ion-card
           class="hover-card"
-          *ngIf="c?.display.value"
+          *ngIf="c?.display?.value"
           [href]="c?.file?.value?.url"
           target="_blank"
         >

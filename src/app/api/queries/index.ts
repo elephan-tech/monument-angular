@@ -223,22 +223,27 @@ query Menus{
     breakfast{
       name
       url
+      id
     }
     lunch{
       name
       url
+      id
     }
     vegetarian{
       name
       url
+      id
     }
     snack{
       name
       url
+      id
     }
     supper{
       name
       url
+      id
     }
   }
   ...${'Menus'}Meta

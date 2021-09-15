@@ -38,6 +38,7 @@
               <ion-card-title>
                 {{ item?.name | startCase }}
               </ion-card-title>
+              {{menuData?.[item.name]?.value?.[0]?.url}}
               <ion-buttons slot="end">
                 <ion-button
                   [href]="uploadUrl + menuData?.[item.name]?.value?.[0]?.url"
