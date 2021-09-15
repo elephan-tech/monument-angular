@@ -16,6 +16,8 @@
     <ion-row>
       <ion-col *ngFor="let item of items" size-xs="12">
         <ion-card>
+          {{menuData?.[item.name]?.value?.[0]?.url}}
+
           <ion-card-header (click)="collapseMenu(item)">
             <ion-toolbar>
               <ion-buttons slot="start">
@@ -39,7 +41,6 @@
               <ion-card-title>
                 {{ item?.name | startCase }}
               </ion-card-title>
-              {{menuData?.[item.name]?.value?.[0]?.url}}
               <ion-buttons slot="end">
                 <ion-button
                   [href]="hardcoded ? menuData[item.name].url : harduploadUrl + menuData?.[item.name]?.value?.[0]?.url"
