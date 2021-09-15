@@ -15,12 +15,19 @@
         <pre>{{c|json}}</pre>
         <ion-card
           class="hover-card"
+<<<<<<< HEAD
           *ngIf="c?.display?.value"
           [href]="c?.file?.value?.url"
+=======
+          *ngIf="hardcoded ? true : c?.display?.value"
+          [href]="hardcoded ? c.url : uploadUrl + c?.file?.value?.url"
+>>>>>>> a18a5cdda50c48c8cf1d0bc11cefed0d44c83ef5
           target="_blank"
         >
           <ion-card-header>
-            <ion-card-title>{{ c?.name?.value }}</ion-card-title>
+            <ion-card-title>{{
+              hardcoded ? c.jobTitle : c?.name?.value
+            }}</ion-card-title>
             <img
               loading="lazy"
               src="assets/underline-stroke.svg"
@@ -28,7 +35,7 @@
             />
           </ion-card-header>
           <ion-card-content>
-            {{ c?.shortDescription.value }}
+            {{ hardcoded ? c.shortDescription : c?.shortDescription.value }}
             <br />
           </ion-card-content>
         </ion-card>

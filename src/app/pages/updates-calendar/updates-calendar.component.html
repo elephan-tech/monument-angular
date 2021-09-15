@@ -1,20 +1,21 @@
 <app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
 <section>
   <div *ngFor="let calendar of calendars" style="margin-bottom: 25px">
-
-    <a  *ngIf="calendar.pdf" [href]="calendar.pdf" target="_blank">
-      {{calendar.year}} School Year Calendar
+    <a *ngIf="calendar.pdf" [href]="calendar.pdf" target="_blank">
+      {{ calendar.year }} School Year Calendar
     </a>
     <a *ngIf="!calendar.pdf">
-      {{calendar.year}} School Year Calendar (Coming Soon)
+      {{ calendar.year }} School Year Calendar (Coming Soon)
     </a>
   </div>
   <div>
-  <iframe src="https://calendar.google.com/calendar/embed?src=monumentacademydc.org_tra98rcbqs0cbnpvtre9osp7ck%40group.calendar.google.com&ctz=America%2FChicago"
-  style="border: 0"
-  width="100%"
-  height="600px"
-  frameborder="0"
-  scrolling="no"></iframe>
-</div>
+    <iframe
+      src="https://calendar.google.com/calendar/embed?src=monumentacademydc.org_tra98rcbqs0cbnpvtre9osp7ck%40group.calendar.google.com&ctz=America%2FNew_York"
+      style="border: 0"
+      width="100%"
+      height="600px"
+      frameborder="0"
+      scrolling="no"
+    ></iframe>
+  </div>
 </section>

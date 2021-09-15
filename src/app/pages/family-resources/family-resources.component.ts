@@ -21,7 +21,7 @@ export class FamilyResourcesComponent implements OnInit {
     'Volunteering',
   ];
 
-  uploadUrl = 'http://localhost:1337';
+  uploadUrl = environment.apiUrl;
 
   resourcesHC = [
     {

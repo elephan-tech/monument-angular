@@ -188,8 +188,7 @@ export class ApiService {
         data: ${
           collection === 'emergencyMessage' ? payload.toLowerCase() : payload
         }
-      }){
-        ${collection === 'emergencyMessage' ? collection : camelCase(entry).split(' ').join('')}{
+      }){${collection === 'emergencyMessage' ? collection : camelCase(entry).split(' ').join('')}{
           id
         updated_at
         display

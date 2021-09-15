@@ -8,9 +8,10 @@
     Monument Academy PCS participates in the National School Lunch Program. Our
     students receive free breakfast, lunch, after-school snack, and supper.
   </p>
+  <p>Here are this month's menus:</p>
 </section>
 <section>
-  <ion-title>{{ menuData?.name?.value }}</ion-title>
+  <ion-title>{{ hardcoded ? menuData.name : menuData?.name?.value }}</ion-title>
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let item of items" size-xs="12">
@@ -41,7 +42,7 @@
               {{menuData?.[item.name]?.value?.[0]?.url}}
               <ion-buttons slot="end">
                 <ion-button
-                  [href]="uploadUrl + menuData?.[item.name]?.value?.[0]?.url"
+                  [href]="hardcoded ? menuData[item.name].url : harduploadUrl + menuData?.[item.name]?.value?.[0]?.url"
                   target="_blank"
                 >
                   <ion-icon name="download-outline"></ion-icon>
@@ -53,7 +54,7 @@
             <div style="display: flex; flex-direction: column">
               <div>
                 <pdf-viewer
-                  [src]="uploadUrl + menuData?.[item.name]?.value?.[0]?.url"
+                  [src]="hardcoded ? menuData[item.name].url : harduploadUrl + menuData?.[item.name]?.value?.[0]?.url"
                   [external-link-target]="'blank'"
                   [autoresize]="false"
                   [stick-to-page]="true"
@@ -70,7 +71,7 @@
 </section>
 <div class="yellow-section">
   <section>
-    <h4>USDA Non-Discrimination Statement:</h4>
+    <h4>USDA Nondiscrimination Statement:</h4>
     <p>
       In accordance with Federal civil rights law and U.S. Department of
       Agriculture (USDA) civil rights regulations and policies, the USDA, its
