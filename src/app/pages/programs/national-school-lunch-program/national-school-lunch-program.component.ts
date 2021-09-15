@@ -3,6 +3,7 @@ import { isEmpty } from 'lodash';
 import { ApiService } from 'src/app/services/api/api.service';
 import { Component, OnDestroy,OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
+import { PDFProgressData } from 'ng2-pdf-viewer';
 
 @Component({
   selector: 'app-national-school-lunch-program',
@@ -66,10 +67,14 @@ export class NationalSchoolLunchProgramComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    this.menuSub.unsubscribe();
+    this.menuSub?.unsubscribe();
   }
 
   collapseMenu(item) {
     item.collapsed = !item.collapsed;
+  }
+
+  onProgress(progressData: PDFProgressData) {
+    console.log({ progressData })
   }
 }
