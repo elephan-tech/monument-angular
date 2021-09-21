@@ -10,3 +10,12 @@ ion-card {
     cursor: pointer;
   }
 }
+
+.grid{
+  --ion-grid-padding: 8px;
+
+}
+
+.column{
+  --ion-grid-column-padding: 8px;
+}
