@@ -7,12 +7,9 @@
     class="underline-stroke"
   />
 
-  <!-- <ion-item-divider></ion-item-divider>
-  <h4>For demo purposes</h4> -->
   <ion-grid>
     <ion-row>
       <ion-col size="6" size-md="6" size-sm="12" *ngFor="let c of careers">
-        <!-- <pre>{{c|json}}</pre> -->
         <ion-card
           class="hover-card"
           *ngIf="hardcoded ? true : c?.display?.value"
