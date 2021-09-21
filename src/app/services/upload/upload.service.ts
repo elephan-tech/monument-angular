@@ -1,3 +1,4 @@
+import { ToastService } from './../toast/toast.service';
 import { Media } from './../../models/media';
 import { map } from 'rxjs/operators';
 import { HttpClient } from '@angular/common/http';
@@ -19,30 +20,50 @@ export class UploadService {
   $files: any[];
 
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient, private toast: ToastService) { }
 
   fileObserver = {
     next: (files: Media[]) => {
       return this.$files = files;
     },
-    error: (err: Error) => console.error('error', err),
+    error: (err: Error) => this.toast.toasty({
+      header: 'Error',
+      code: err.statusCode,
+      message: err.message[0].messages[0].message,
+
+    }),
     complete: () => console.log('done')
   };
 
-  getFiles(): Observable<Media[]> {
+  getFiles(): Observable<any[]> {
     return this.http.get<Media[]>(`${this.uploadUrl}${this.FILES}`);
   }
 
-  async getFileById(id: string): Promise<any> {
+  async getFileById(id: number): Promise<any> {
     return await this.http.get(`${this.uploadUrl}${this.FILES}/${id}`).toPromise();
   }
 
-  uploadFile(data: Media): any{
-    return this.http.post(this.uploadUrl, data );
+
+
+  async uploadFile(data: any): Promise<any>{
+    const filesByName = await this.getFileByName(data.getAll('files')[0].name);
+    console.log({filesByName})
+    if (filesByName.length) {
+      const fileId = filesByName?.[0]?.id;
+      console.log({fileId})
+      const fileInS3 = await this.getFileById(fileId);
+      console.log({fileInS3})
+      return fileInS3;
+    } else {
+      console.log('NO FILE. ADDING NEW')
+      return await this.http.post(this.uploadUrl, data).toPromise();
+    }
   }
 
-  async getFileByUrl(url): Promise<void> {
-    const files = this.getFiles().toPromise();
+  async getFileByName(name: string): Promise<any> {
+    console.log({name});
+    const files = await this.getFiles().toPromise();
+    return files.filter(file => file.name === name);
     // const fileByUrl = files?.find(file => file.url === url);
   // return fileByUrl
   }

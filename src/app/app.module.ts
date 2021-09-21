@@ -63,6 +63,7 @@ import { JwtModule } from '@auth0/angular-jwt';
 import { ShowHidePasswordComponent } from './components/show-hide-password/show-hide-password.component';
 import { MenusComponent } from './pages/menus/menus.component';
 import {  PdfViewerModule  } from 'ng2-pdf-viewer';
+import { UserPopoverComponent } from './dialogs/popovers/user-popover/user-popover.component';
 
 
 
@@ -111,6 +112,7 @@ import {  PdfViewerModule  } from 'ng2-pdf-viewer';
     AlertCrudComponent,
     ShowHidePasswordComponent,
     MenusComponent,
+    UserPopoverComponent,
   ],
   imports: [
     BrowserModule,

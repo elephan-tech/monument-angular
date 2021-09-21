@@ -6,5 +6,6 @@ export type FamilyResource = {
   subtitle: string;
   description: string;
   image: Media;
+  file: Media;
   url: string;
 };

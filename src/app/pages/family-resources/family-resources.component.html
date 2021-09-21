@@ -70,7 +70,7 @@
           [animation]="'fade-up'"
           *ngIf="rs?.display?.value"
         >
-          <ion-card [href]="rs.url.value" target="_blank">
+          <ion-card [href]="rs?.file?.value?.url || rs.url.value" target="_blank">
             <img
               loading="lazy"
               [src]="
@@ -87,6 +87,11 @@
                 rs.subtitle.value || rs.description.value
               }}</ion-card-subtitle>
             </ion-card-header>
+            <ion-card-content>
+              <ion-button style="float:inline-end;" *ngIf="rs?.file?.value?.url && rs.url.value" [href]="rs?.url?.value" target="_blank">
+                Learn More
+              </ion-button>
+            </ion-card-content>
           </ion-card>
         </app-animated>
       </ion-col>

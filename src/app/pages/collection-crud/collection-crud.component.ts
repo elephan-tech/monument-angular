@@ -145,7 +145,7 @@ export class CollectionCrudComponent implements OnInit, OnDestroy {
     this.upload.getFiles().subscribe((res) => {
       this.files = res;
     }, (err) => {
-      console.log(err);
+      console.error(err);
     });
 
   }

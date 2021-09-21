@@ -26,7 +26,7 @@ export class CareersComponent implements OnInit {
   uploadUrl = environment.apiUrl;
   filesBS = new BehaviorSubject<Media[]>([]);
 
-  hardcoded = true;
+  hardcoded = false;
 
   jobOpenings = [
     // {
@@ -93,7 +93,6 @@ export class CareersComponent implements OnInit {
       this.careers = this.jobOpenings;
     } else {
     this.api.getData('careers').subscribe(result => {
-      console.log(result);
       if (!isEmpty(result)){
       this.careers = result?.data;
       this.careers = this.careers.filter((c) => {

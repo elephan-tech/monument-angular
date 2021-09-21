@@ -1,3 +1,4 @@
+import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -27,43 +28,11 @@ updated_at?: string
 
 
 type AuthResponse = {
-  user: User,
+  user?: User,
   jwt: string,
   error?: Error,
+  isAuth?: boolean
 };
-
-// authToken: any;
-//   user: any;
-
-//   constructor(private http: HttpClient, private jwtHelper: JwtHelperService) { }
-
-
-//   isAuthenticated(): boolean {
-//     const token = localStorage.getItem('id_token');
-//     return !this.jwtHelper.isTokenExpired(token);
-//   }
-
-//   storeUserData(token, user) {
-//     localStorage.setItem('id_token', token);
-//     localStorage.setItem('user', JSON.stringify(user));
-//     this.authToken = token;
-//     this.user = user;
-//   }
-
-//   loadToken() {
-//     const token = localStorage.getItem('id_token');
-//     this.authToken = token;
-//   }
-
-//   loggedIn() {
-//     return this.jwtHelper.isTokenExpired('id_token');
-//   }
-
-//   logout() {
-//     this.authToken = null;
-//     this.user = null;
-//     localStorage.clear();
-//   // }
 
 
 @Injectable({
@@ -111,10 +80,11 @@ export class AuthService {
     return {jwt: this.authToken, user: this.user};
   }
 
-  loginFail({error}): Error {
+  loginFail({ error }): any {
+    console.log({error})
     const errObject = {
         code: error.statusCode,
-        message: error.data[0].messages[0].message
+        message: error?.data?.[0]?.messages?.[0]?.message || 'undefined'
       };
     return errObject;
   }
@@ -129,8 +99,9 @@ export class AuthService {
     try {
       const res = await this.http.post(url, data).toPromise();
       return this.loginSuccess(res);
-    } catch (result) {
-      return this.loginFail(result);
+    } catch (err) {
+      console.log(err)
+      return this.loginFail(err);
     }
   }
 

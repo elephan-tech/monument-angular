@@ -88,6 +88,7 @@
           justify-content: flex-end;
         "
       >
+
         <ion-button
           *ngFor="let nav of navItems"
           id="nav-item"
@@ -108,6 +109,15 @@
         >
           {{ nav.name }}
         </ion-button>
+
+        <!-- <div
+        style="border-left: 2px solid var(--ion-color-medium);"
+        *ngIf="isLoggedIn">
+
+        <ion-button (click)="openMenu($event)">
+          <ion-icon slot="icon-only" name="person-circle-outline" ></ion-icon>
+        </ion-button>
+        </div> -->
       </ion-buttons>
 
       <ion-buttons

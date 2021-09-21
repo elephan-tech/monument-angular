@@ -1,0 +1,24 @@
+
+
+  <!-- Item as an Anchor -->
+  <ion-item id="/admin" button (click)="handleClick($event)">
+    <ion-label>
+      Dashboard
+    </ion-label>
+    <ion-icon slot="start" name="grid-outline"></ion-icon>
+
+  </ion-item>
+
+  <ion-item [href]="apiUrl + '/dashboard'" target="_blank">
+    <ion-label>
+      Advanced Settings
+    </ion-label>
+    <ion-icon slot="start" name="settings-outline"></ion-icon>
+
+  </ion-item>
+
+  <ion-item button (click)="logout()" color="danger">
+    <ion-label>
+      Log Out
+    </ion-label>
+  </ion-item>

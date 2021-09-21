@@ -378,7 +378,7 @@
       >
         <ion-slide
           *ngFor="let slide of slides; let i = index"
-          [hidden]="!slide.display.value"
+          [hidden]="!slide?.display?.value || true"
         >
           <ion-grid class="slide-container">
             <ion-row style="width: 100%">
@@ -394,7 +394,7 @@
               <ion-col size="4" size-xs="12" size-md="6">
                 <img
                   loading="lazy"
-                  [src]="imageUrl + slide?.image?.value.url"
+                  [src]="imageUrl + slide?.image?.value?.url"
                   class="rounded slider-image"
                 />
               </ion-col>
@@ -416,7 +416,7 @@
         <div class="slides-responsive">
           <img
             loading="lazy"
-            [src]="imageUrl + slide?.image?.value.url"
+            [src]="imageUrl + slide?.image?.value?.url"
             class="rounded small"
           />
 
