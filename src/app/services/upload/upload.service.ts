@@ -32,7 +32,8 @@ export class UploadService {
       message: err.message[0].messages[0].message,
 
     }),
-    complete: () => console.log('done')
+    // tslint:disable-next-line: no-console
+    complete: () => console.info('done')
   };
 
   getFiles(): Observable<any[]> {
@@ -47,21 +48,17 @@ export class UploadService {
 
   async uploadFile(data: any): Promise<any>{
     const filesByName = await this.getFileByName(data.getAll('files')[0].name);
-    console.log({filesByName})
     if (filesByName.length) {
       const fileId = filesByName?.[0]?.id;
-      console.log({fileId})
       const fileInS3 = await this.getFileById(fileId);
-      console.log({fileInS3})
       return fileInS3;
     } else {
-      console.log('NO FILE. ADDING NEW')
+      console.log('NO FILE. ADDING NEW');
       return await this.http.post(this.uploadUrl, data).toPromise();
     }
   }
 
   async getFileByName(name: string): Promise<any> {
-    console.log({name});
     const files = await this.getFiles().toPromise();
     return files.filter(file => file.name === name);
     // const fileByUrl = files?.find(file => file.url === url);
