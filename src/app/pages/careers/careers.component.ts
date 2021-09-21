@@ -26,7 +26,7 @@ export class CareersComponent implements OnInit {
   uploadUrl = environment.apiUrl;
   filesBS = new BehaviorSubject<Media[]>([]);
 
-  hardcoded = false;
+  hardcoded = true;
 
   jobOpenings = [
     // {
