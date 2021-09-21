@@ -41,7 +41,7 @@
               </ion-card-title>
               <ion-buttons slot="end">
                 <ion-button
-                  [href]="hardcoded ? menuData[item.name].url : uploadUrl + menuData?.[item.name]?.value?.[0]?.url"
+                  [href]="hardcoded ? menuData[item.name].url : menuData?.[item.name]?.value?.[0]?.url"
                   target="_blank"
                 >
                   <ion-icon name="download-outline"></ion-icon>
@@ -52,7 +52,6 @@
           <ion-card-content *ngIf="!item.collapsed">
             <div style="display: flex; flex-direction: column">
               <div>
-                {{menuData?.[item.name]?.value | json}}
                 <pdf-viewer
                   [src]="hardcoded ? menuData[item.name].url : menuData?.[item.name]?.value?.[0]?.url"
                   [external-link-target]="'blank'"

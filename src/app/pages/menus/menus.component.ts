@@ -110,7 +110,6 @@ export class MenusComponent implements OnInit {
       formData.append('files', file);
 
       this.upload.uploadFile(formData).then(res => {
-        console.log({res, target: e.target.id})
         this.menuForm.patchValue({
           [e.target.id]: res?.id
         });
@@ -129,7 +128,6 @@ export class MenusComponent implements OnInit {
 
   public menuSubmit(): void {
     const data = this.menuForm.value;
-    console.log({ data });
     this.api
       .update('menu', 1, data)
       .toPromise()
