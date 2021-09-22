@@ -61,6 +61,7 @@
                         "
                       ></ion-input>
                       <div *ngIf="field.type === 'UploadFile'">
+                        {{'FIELD ID ' + field?.id + field?.name}}
                         <input
                           class="uploadFile"
                           *ngIf="field.type === 'UploadFile'"
@@ -68,17 +69,19 @@
                           style="display: none"
                           (change)="onFileChange($event)"
                           [name]="field?.name"
-                          [id]="field?.id"
+                          [id]="field?.name"
                         />
                         <ion-button
                           [for]="field?.name"
                           [id]="field?.name"
+                          [name]="field?.name"
                           (click)="clickUpload($event)"
                           fill="outline"
                           color="tertiary"
                           class="uploadFileButton"
                         >
-                        {{item?.[field?.name]?.value?.[0]?.name  || menuData?.[0]?.[field?.name].name}}
+                        {{field?.name}}
+                        {{item?.[field?.name]?.value?.[0]?.name  || menuData?.[0]?.[field?.name].name || 'Upload File'}}
                         </ion-button>
                       </div>
                   </ion-item>

@@ -1,8 +1,9 @@
+import { ToastService } from './../../services/toast/toast.service';
 import { Component, ContentChild, OnInit } from '@angular/core';
 import { FormBuilder, Validators, FormGroup } from '@angular/forms';
 import { AuthService } from '../../services/auth/auth.service';
 import { Router } from '@angular/router';
-import { IonInput } from '@ionic/angular';
+import { IonInput, ToastController } from '@ionic/angular';
 
 
 export interface Error {
@@ -34,7 +35,8 @@ export class AdminLoginComponent implements OnInit {
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private toast: ToastService,
   ) {
     this.loginForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -55,14 +57,20 @@ export class AdminLoginComponent implements OnInit {
     });
   }
 
-  loginSuccess(): void {
+  async loginSuccess(value): Promise<void> {
     this.router.navigate(['/admin']);
+    const toast = await this.toast.toasty({
+      header: 'Success!',
+      message: `Welcome ${value?.user?.username}!`,
+      code: 200,
+    });
+    await toast.present();
   }
 
   login(): void {
     this.authService.login(this.loginForm).then(value => {
-     value.jwt
-      ? this.loginSuccess()
+      return value.jwt
+      ? this.loginSuccess(value)
       : this.handleAuthError(value);
     });
 

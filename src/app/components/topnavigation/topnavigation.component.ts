@@ -1,5 +1,7 @@
+import { UserPopoverComponent } from './../../dialogs/popovers/user-popover/user-popover.component';
+import { AuthService } from './../../services/auth/auth.service';
 import { Apollo } from 'apollo-angular';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnChanges, OnInit } from '@angular/core';
 import { NavigationEnd, Router } from '@angular/router';
 import { isEmpty } from 'lodash';
 import { Subscription, BehaviorSubject } from 'rxjs';
@@ -8,6 +10,7 @@ import { ApiService } from './../../services/api/api.service';
 import useQuery from '../../api/queries';
 import { environment } from 'src/environments/environment';
 import { Observable } from '@apollo/client/utilities';
+import { PopoverController } from '@ionic/angular';
 
 export interface NavItem {
   name: string;
@@ -229,12 +232,15 @@ export class TopnavigationComponent implements OnInit {
   currentRoute: string;
   showAdmin = true;
   EmergencyMessage = new BehaviorSubject([]);
+  isLoggedIn = false;
 
   constructor(
     private screensizeService: ScreensizeService,
     public router: Router,
     private apollo: Apollo,
-    private api: ApiService
+    private api: ApiService,
+    private authService: AuthService,
+    private popoverController: PopoverController,
   ) {
     this.screensizeService.isDesktopView().subscribe((isDesktop) => {
       this.isDesktop = isDesktop;
@@ -247,6 +253,7 @@ export class TopnavigationComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
     this.getData();
   }
 
@@ -331,8 +338,22 @@ export class TopnavigationComponent implements OnInit {
     return null;
   }
 
-  login(): void {}
 
+  async openMenu(e: any): Promise<void> {
+    const popover = await this.popoverController.create({
+      component: UserPopoverComponent,
+      event: e,
+      translucent: true,
+      animated: true,
+      backdropDismiss: true,
+      componentProps: {
+        setLogIn: (login: boolean) => this.isLoggedIn = login
+      },
+      showBackdrop: false,
+      id: 'user-menu-popover'
+    });
+    await popover.present();
+  }
   //
   @HostListener('window:scroll', [])
   onWindowScroll(): void {

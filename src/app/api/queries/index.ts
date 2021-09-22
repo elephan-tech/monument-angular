@@ -1,3 +1,4 @@
+import { UrlTree } from '@angular/router';
 import gql from 'graphql-tag';
 
 
@@ -174,9 +175,15 @@ ${meta('FamilyResources')}
       display
       subtitle
       description
+      file{
+        id
+        url
+        name
+      }
       image {
         id
         url
+        name
         updated_at
       }
       url

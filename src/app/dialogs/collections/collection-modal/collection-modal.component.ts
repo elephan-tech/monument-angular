@@ -7,7 +7,7 @@ import { camelCase, startCase, filter, omit } from 'lodash';
 import pluralize from 'pluralize';
 import { Observable } from 'rxjs';
 import { ApiService } from './../../../services/api/api.service';
-
+import isArray from 'lodash/isArray';
 import Classic from '@ckeditor/ckeditor5-build-classic';
 
 @Component({
@@ -90,6 +90,10 @@ export class CollectionModalComponent implements OnInit {
       image: {
         name: '',
       },
+      file: {
+        name: ''
+      },
+      display: this.data?.display
     };
 
     this.editMode ? this.form.setValue(currentData) : this.form.reset();
@@ -97,22 +101,26 @@ export class CollectionModalComponent implements OnInit {
 
   onFileChange(e): void {
     e.preventDefault();
+
     const reader = new FileReader();
+
     if (e.target.files && e.target.files.length) {
       const [file] = e.target.files;
       reader.readAsDataURL(file);
 
       const formData = new FormData();
       formData.append('files', file);
-      this.upload.uploadFile(formData).subscribe(res => {
-        if (res.length) {
-          this.form.patchValue({
-            [e.target.id]: res?.[0].id
-          });
-        }
-        this.currentData = { ...this.currentData, [e.target.id]: file };
 
+      this.upload.uploadFile(formData).then(res => {
+        const fileData = isArray(res) ? res[0] : res;
+        this.form.patchValue({
+          [e.target.id]: fileData
+        });
+        console.log({form: this.form})
+        this.currentData = { ...this.currentData, [e.target.id]: fileData };
       });
+
+      console.log({cur: this.currentData})
       this.cd.markForCheck();
 
     }
@@ -129,14 +137,18 @@ export class CollectionModalComponent implements OnInit {
 
   createEntry(): void{
     const { value } = this.form;
+    console.log({value})
     const date = value.date ? new Date(value?.date || '').toISOString() : '_drop';
     const time = (value.end || value.start) ? this.formatTime([value?.start, value?.end]) : { drop: '_drop' };
     let data = {
+      ...this.currentData,
       ...value,
       ...time,
       date,
       id: this.id,
-      image: value?.image?.id
+      image: value?.image?.id,
+      display: this.currentData.display,
+      file: value?.file?.id,
     };
     if (data.date === '_drop' || data.time === '_drop') {
       data = omit(data, ['date', 'time', 'drop']);
@@ -146,6 +158,7 @@ export class CollectionModalComponent implements OnInit {
 
     const edit = this.editMode;
 
+    console.log({data})
     edit
       ? this.api
           .update(this.collection, this.id, data)

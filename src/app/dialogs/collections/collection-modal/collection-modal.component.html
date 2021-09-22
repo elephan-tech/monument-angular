@@ -66,10 +66,12 @@
                 color="tertiary"
                 class="uploadFileButton"
               >
-                {{ currentData[field?.name]?.name || "choose file" }}
+                {{ currentData?.[field?.name]?.name || "choose file" }}
               </ion-button>
             </div>
             <ion-input
+              [placeholder]="currentData?.[field?.name]"
+              [value]="currentData?.[field?.name]"
               [clearInput]="clearInput"
               [formControlName]="camelCase(field?.name)"
               [hidden]="

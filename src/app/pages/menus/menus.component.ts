@@ -92,7 +92,6 @@ export class MenusComponent implements OnInit {
 
     this.menuObs.subscribe((obs: any) => {
       this.menuData = obs.data;
-      console.log('🔥', this.menuData);
       this.menuFields = obs?.fields?.filter((field: { name: string, value: string | boolean | Array<any> }) =>
         !this.omitFields.includes(field.name));
     });
@@ -100,32 +99,27 @@ export class MenusComponent implements OnInit {
 
   onFileChange(e): void {
     e.preventDefault();
+
     const reader = new FileReader();
+
     if (e.target.files && e.target.files.length) {
       const [file] = e.target.files;
-      console.log({ file });
       reader.readAsDataURL(file);
 
       const formData = new FormData();
       formData.append('files', file);
-      console.log({ formData });
-      this.upload.uploadFile(formData).subscribe(res => {
-        if (res.length) {
-          console.log({res});
-          this.menuForm.patchValue({
-            [e.target.id]: res?.[0].id
-          });
-          console.log('menu form', this.menuForm);
-        }
-        console.log('menu data', e.target.id);
+
+      this.upload.uploadFile(formData).then(res => {
+        this.menuForm.patchValue({
+          [e.target.id]: res?.id
+        });
         this.menuData = [{
           ...this.menuData[0], [e.target.name]: {
             type: 'UploadFile',
-            value: [{name: res?.[0].name,
-              id: res?.[0].id,
-            url: res?.[0].url}]
+            value: [{name: res?.name,
+              id: res?.id,
+            url: res?.url}]
         } }];
-        console.log('menu data', this.menuData);
 
       });
       this.cd.markForCheck();
@@ -134,7 +128,6 @@ export class MenusComponent implements OnInit {
 
   public menuSubmit(): void {
     const data = this.menuForm.value;
-    console.log({ data });
     this.api
       .update('menu', 1, data)
       .toPromise()
