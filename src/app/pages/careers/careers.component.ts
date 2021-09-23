@@ -94,6 +94,8 @@ export class CareersComponent implements OnInit {
     } else {
     this.api.getData('careers').subscribe(result => {
       if (!isEmpty(result)){
+        console.log(result);
+        console.log(this.uploadUrl);
       this.careers = result?.data;
       this.careers = this.careers.filter((c) => {
         return c.display.value === true;
