@@ -13,7 +13,7 @@
         <ion-card
           class="hover-card"
           *ngIf="hardcoded || c?.display?.value"
-          [href]="hardcoded ? c.url : uploadUrl + c?.file?.value?.url"
+          [href]="hardcoded ? c.url : c?.file?.value?.url"
           target="_blank"
         >
           <ion-card-header>
