@@ -33,6 +33,7 @@ ${meta('Career')}
         name
         url
       }
+      url
     }
   ...${'Career'}Meta
   }
