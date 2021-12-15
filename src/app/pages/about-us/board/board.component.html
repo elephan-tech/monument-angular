@@ -115,6 +115,15 @@
   </ion-row>
 </section>
 <section>
+  <ion-grid class="ion-padding">
+    <ion-row class="ion-justify-content-start">
+      <ion-col size-xs="10">
+        <ion-text>
+          <h3>Meeting Details:</h3>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
   <ion-grid>
     <ion-row>
       <ion-col>
@@ -154,12 +163,11 @@
                     color="primary"
                     fill="outline"
                     *ngIf="meeting?.agenda?.value?.url"
-                    [href]="fileUrl + meeting?.agenda?.value?.url"
+                    [href]="meeting?.agenda?.value?.url"
                     target="_blank"
                     rel="nofollow"
                   >
                     <ion-icon slot="start" name="list-outline"></ion-icon>
-
                     Agenda
                   </ion-button>
                 </div>
@@ -168,7 +176,7 @@
                     color="primary"
                     fill="outline"
                     *ngIf="meeting?.meetingRecording?.value?.url"
-                    [href]="fileUrl + meeting?.meeting_recording?.value?.url"
+                    [href]="meeting?.meetingRecording?.value?.url"
                     target="_blank"
                     rel="nofollow"
                   >
@@ -181,12 +189,11 @@
                     color="primary"
                     fill="outline"
                     *ngIf="meeting?.minutes?.value?.url"
-                    [href]="fileUrl + meeting?.minutes?.value?.url"
+                    [href]="meeting?.minutes?.value?.url"
                     target="_blank"
                     rel="nofollow"
                   >
                     <ion-icon slot="start" name="time-outline"></ion-icon>
-
                     Minutes
                   </ion-button>
                 </div>
