@@ -30,12 +30,14 @@
               </ion-card-title>
               <ion-card-subtitle>
                 <ion-row>
-                  <ion-text color="dark">{{ article.subtitle.value }}</ion-text>
+                  <ion-text color="dark">{{
+                    article?.subtitle?.value
+                  }}</ion-text>
                 </ion-row>
                 <ion-row>
                   This article originally appeared in
-                  {{ article.location.value }} on
-                  {{ article.date.value | date }}.
+                  {{ article?.location?.value }} on
+                  {{ article?.date?.value | date }}.
                 </ion-row>
               </ion-card-subtitle>
             </ion-card-header>

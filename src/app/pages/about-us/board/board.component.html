@@ -36,9 +36,9 @@
           </ion-col>
           <ion-col size="9">
             <h4>
-              <b>{{ b.name }}</b>
+              <b>{{ b?.name }}</b>
             </h4>
-            <h5>{{ b.title }}</h5>
+            <h5>{{ b?.title }}</h5>
             <p [innerHTML]="b.bio"></p>
 
             <mat-expansion-panel *ngIf="b.excites">
@@ -48,7 +48,7 @@
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <p>
-                {{ b.excites }}
+                {{ b?.excites }}
               </p>
             </mat-expansion-panel>
 
@@ -59,7 +59,7 @@
                 </mat-panel-title>
               </mat-expansion-panel-header>
               <p>
-                {{ b.favTeacher }}
+                {{ b?.favTeacher }}
               </p>
             </mat-expansion-panel>
           </ion-col>
@@ -141,7 +141,7 @@
                     style="margin-right: 4px"
                   ></ion-icon>
                   <ion-text>
-                    {{ meeting?.date.value | date: "fullDate" }}</ion-text
+                    {{ meeting?.date?.value | date: "fullDate" }}</ion-text
                   >
                 </div>
                 <div style="display: flex; align-items: center">
@@ -151,9 +151,9 @@
                     style="margin-right: 4px"
                   ></ion-icon>
                   <ion-text>
-                    {{ meeting?.start.value | time }}
+                    {{ meeting?.start?.value | time }}
                     -
-                    {{ meeting?.end.value | time }}
+                    {{ meeting?.end?.value | time }}
                   </ion-text>
                 </div>
               </ion-card-subtitle>

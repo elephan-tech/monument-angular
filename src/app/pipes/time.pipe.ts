@@ -7,6 +7,7 @@ import { Pipe, PipeTransform } from '@angular/core';
 export class TimePipe implements PipeTransform {
 
   transform(value: string, ...args: unknown[]): string {
+    if (!value) { return '' };
     const [hour, minute, second] = value.split(':');
 
     const hourMap = {
