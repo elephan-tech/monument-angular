@@ -40,7 +40,7 @@ export class EventCalendarComponent implements OnInit {
   public announcementData: AnnouncementData;
   public content: any;
   // public eventDate: (date: string) => Date;
-  public today = new Date();
+  public today: Date = new Date();
   public isAdmin = false;
   public AnnouncementSub = new BehaviorSubject([]);
   public EventSub = new BehaviorSubject([]);
@@ -129,6 +129,6 @@ export class EventCalendarComponent implements OnInit {
   }
 
   eventDate(date): Date {
-    return date as Date;
+    return new Date(date);
   }
 }
