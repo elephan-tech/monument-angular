@@ -53,6 +53,14 @@ export class HomeComponent implements OnInit, OnDestroy {
     }
   ];
 
+  monumentalSports = [
+    "Basketball",
+    "Football",
+    "Soccer",
+    "Volleyball",
+    "Track",
+  ]
+
   slides: Slide[];
   imageUrl = environment.apiUrl;
 

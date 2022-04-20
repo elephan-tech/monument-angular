@@ -289,14 +289,31 @@
 
 <div class="yellow-section">
   <section>
-    <h2 class="text-center">Monumental Markers</h2>
-    <img
-      loading="lazy"
-      src="assets/underline-stroke-blue.svg"
-      class="underline-stroke-centered"
-    />
-    <ion-grid class="monumental-markers">
+    <div>
+      <h2 class="text-center">Monumental Markers</h2>
+      <img
+        loading="lazy"
+        src="assets/underline-stroke-blue.svg"
+        class="underline-stroke-centered"
+      />
+    </div>
+    <ion-grid class="monumental-markers" style="display: flex">
       <ion-row style="align-items: center">
+        <ion-col
+          size="4"
+          size-xl="4"
+          size-lg="4"
+          size-md="12"
+          size-sm="12"
+          size-xs="12"
+          style="padding: 5em"
+        >
+          <img
+            loading="lazy"
+            src="assets/images/dr-grant-podium.jpeg"
+            style="max-height: 400px; border-radius: 20%"
+          />
+        </ion-col>
         <ion-col
           *ngFor="let marker of monumentalMarkers"
           size="4"
@@ -334,17 +351,10 @@
           Monument Academy offers a variety of sports for students such as:
         </h3>
         <ul>
-          <li>
-            <p><b>Basketball</b></p>
-          </li>
-          <li>
-            <p><b>Football</b></p>
-          </li>
-          <li>
-            <p><b>Soccer</b></p>
-          </li>
-          <li>
-            <p><b>Kickball</b></p>
+          <li *ngFor="let sport of monumentalSports">
+            <p>
+              <b>{{ sport }}</b>
+            </p>
           </li>
         </ul>
       </ion-col>
