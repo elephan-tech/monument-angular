@@ -19,6 +19,8 @@ export class BoardComponent implements OnInit, AfterViewInit {
   heroImg: string;
   fragment: string;
   fileUrl = environment.apiUrl;
+  mainLogo = 'assets/monument-main-logo.png';
+
   board = [
     {
       bioPic:
@@ -50,21 +52,6 @@ export class BoardComponent implements OnInit, AfterViewInit {
         'Donna Anthony serves as the Executive Vice President of Clinical Strategy for The HSC Health Care System. She is charged with leading The HSC Pediatric Center, HSC Home Care and HSC Health and Residential Services. She currently serves as an appointed member of the DC Maternal Mortality Review Committee, the DC Maternal and Child Health Advisory Committee, and continues to work with DC Public Schools on early childhood health initiatives. <br><br> Prior to joining The HSC Health Care System, Ms. Anthony served as the Assistant Superintendent of Health & Wellness at the D.C. Office of the State Superintendent of Education. In this role, she oversaw all of the federal nutrition programs for schools and child care centers, state athletics, and implementation of federal and local grant programs and services that support the health and wellbeing of children in schools and child care centers in the District. In that capacity, she served as an appointed member of the D.C. Food Policy Council, the Healthy Youth and Schools Commission, the Medical Care Advisory Committee and the Behavioral Health Council. <br><br> Ms. Anthony has a long-standing history of working with children with disabilities in various programs at D.C. Public Schools. She was instrumental in the opening of Early Stages, the early childhood special education evaluation center, and transformed Medicaid billing for DCPS, which increased revenue ten-fold. She has also served as a gymnastics coach for the Special Olympics in Pennsylvania.',
     },
     {
-      bioPic: 'assets/monument-main-logo.png',
-      name: 'Sharisse Baltimore',
-      scrollId: 'SharisseBaltimore',
-      title: 'Parent Board Member',
-      bio: '',
-    },
-    {
-      bioPic: 'assets/images/board/Biel-Matt.png',
-      name: 'Dr. Matt Biel',
-      scrollId: 'DrMattBiel',
-      title: 'Board Member',
-      bio:
-        'Matthew Biel, MD, MSc is Chief of the Division of Child and Adolescent Psychiatry at Georgetown University Hospital and Associate Professor of Clinical Psychiatry and Pediatrics at Georgetown University School of Medicine. He co-directs the Early Childhood Innovation Network, a citywide effort to improve developmental outcomes for children and families living in underserved communities in Washington, DC. Dr. Biel’s work addresses the impact of adversity and stress upon children and families. His clinical efforts focus on children and adolescents with anxiety and stress disorders, trauma-related conditions, autism spectrum disorders, and complex medical illnesses. His research has centered on reducing health disparities, improving access to mental health care for underserved children and families through projects based in primary care and school settings, and clinical interventions focusing on trauma and resilience, anxiety, and autism. He has published numerous articles and book chapters and is involved nationally in psychiatric education and advocacy for children’s mental health. Dr. Biel received his medical degree and a master’s degree in Community Medicine at Mount Sinai School of Medicine. He trained in general psychiatry and in child and adolescent psychiatry at New York University School of Medicine.',
-    },
-    {
       bioPic: 'assets/images/board/Emily-Bloomfield.png',
       name: 'Emily Bloomfield',
       scrollId: 'EmilyBloomfield',
@@ -85,16 +72,37 @@ export class BoardComponent implements OnInit, AfterViewInit {
         'I’ve been blessed to have many important teachers in my life, my parents being the most important of all. My high school history teacher, Ms. Wood, is the person I credit with challenging my world view and daring me to dream. She taught me the importance and power of a single person believing in you, which is what I hope that each student at Monument Academy feels in their time at the school.',
     },
     {
-      bioPic: 'assets/monument-main-logo.png',
+      bioPic: '',
+      name: 'Sharisse Baltimore',
+      scrollId: 'SharisseBaltimore',
+      title: 'Parent Board Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
       name: 'James Waller',
       scrollId: 'JamesWaller',
       title: 'Board Member',
       bio: '',
     },
     {
-      bioPic: 'assets/monument-main-logo.png',
+      bioPic: '',
       name: 'Carla Watson',
       scrollId: 'CarlaWatson',
+      title: 'Board Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
+      name: 'Dr. Denisha Carter',
+      scrollId: 'drDenishaCarter',
+      title: 'Board Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
+      name: 'Patricia Brantley',
+      scrollId: 'patriciaBrantley',
       title: 'Board Member',
       bio: '',
     },
