@@ -131,4 +131,6 @@ export class EventCalendarComponent implements OnInit {
   eventDate(date): Date {
     return new Date(date);
   }
+
+
 }

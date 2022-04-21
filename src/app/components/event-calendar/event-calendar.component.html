@@ -40,7 +40,6 @@
             <ion-list-header lines="full">
               <ion-text color="medium"><p>Coming up</p></ion-text>
             </ion-list-header>
-
             <ion-card
               class="event-card"
               *ngFor="let event of eventData"
@@ -78,16 +77,19 @@
                     </div>
                   </ion-card-subtitle>
                   <ion-buttons slot="end" fill="solid">
-                    <div class="event-link" *ngIf="event?.file?.value">
+                    <div class="event-link" *ngIf="event?.file?.value[0]?.url">
                       <a
                         [href]="
-                          '../../../assets/documents/' + event?.localAsset
+                          (event.localAsset
+                            ? '../../../assets/documents/'
+                            : '') + event.file.value[0].url
                         "
                         target="_blank"
                       >
                         Download
                       </a>
                     </div>
+
                     <div class="event-link" *ngIf="event?.eventLink">
                       <a [href]="event?.eventLink?.value" target="_blank">
                         Register
@@ -101,7 +103,6 @@
             <ion-list-header lines="full">
               <ion-text color="medium"><p>Past Events</p></ion-text>
             </ion-list-header>
-
             <ion-card
               class="event-card"
               *ngFor="let event of eventData"
@@ -141,10 +142,12 @@
                     </div>
                   </ion-card-subtitle>
                   <ion-buttons slot="end" fill="solid">
-                    <div class="event-link" *ngIf="event?.file?.value">
+                    <div class="event-link" *ngIf="event?.file?.value[0]?.url">
                       <a
                         [href]="
-                          '../../../assets/documents/' + event?.localAsset
+                          (event.localAsset
+                            ? '../../../assets/documents/'
+                            : '') + event.file.value[0].url
                         "
                         target="_blank"
                       >
@@ -159,7 +162,6 @@
             <ion-list-header lines="full">
               <ion-text color="medium"><p>Announcements</p></ion-text>
             </ion-list-header>
-
             <ion-card
               class="event-card announcement"
               *ngFor="let announcement of announcementData"
@@ -171,6 +173,17 @@
                     announcement?.name?.value
                   }}</ion-card-title>
                   <ion-buttons slot="end" fill="solid">
+                    <div
+                      class="event-link"
+                      *ngIf="announcement?.file?.value[0]?.url"
+                    >
+                      <a
+                        [href]="announcement?.file?.value[0]?.url"
+                        target="_blank"
+                      >
+                        Download
+                      </a>
+                    </div>
                     <div class="event-link" *ngIf="announcement?.link?.value">
                       <a [href]="announcement?.link?.value" target="_blank">
                         Go
