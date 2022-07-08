@@ -1,0 +1,81 @@
+<mat-expansion-panel hideToggle>
+    <mat-expansion-panel-header>
+        <mat-panel-title>
+            Meeting Details
+        </mat-panel-title>
+    </mat-expansion-panel-header>
+    <ion-card *ngFor="let meeting of boardMeetings" class="event-card">
+        <ion-card-header>
+            <ion-toolbar mode="md">
+                <ion-card-title color="primary" style="text-align: start">{{
+                    meeting?.name?.value | startCase
+                    }}</ion-card-title>
+                <ion-card-subtitle style="text-align: start">
+                    <div style="display: flex; align-items: center">
+                        <ion-icon
+                                slot="start"
+                                name="calendar-outline"
+                                style="margin-right: 4px"
+                        ></ion-icon>
+                        <ion-text>
+                            {{ meeting?.date?.value | date: "fullDate" }}</ion-text
+                        >
+                    </div>
+                    <div style="display: flex; align-items: center">
+                        <ion-icon
+                                slot="start"
+                                name="time-outline"
+                                style="margin-right: 4px"
+                        ></ion-icon>
+                        <ion-text>
+                            {{ meeting?.start?.value | time }}
+                            -
+                            {{ meeting?.end?.value | time }}
+                        </ion-text>
+                    </div>
+                </ion-card-subtitle>
+                <ion-buttons slot="end" fill="solid">
+                    <div class="event-link">
+                        <ion-button
+                                color="primary"
+                                fill="outline"
+                                *ngIf="meeting?.agenda?.value?.url"
+                                [href]="meeting?.agenda?.value?.url"
+                                target="_blank"
+                                rel="nofollow"
+                        >
+                            <ion-icon slot="start" name="list-outline"></ion-icon>
+                            Agenda
+                        </ion-button>
+                    </div>
+                    <div class="event-link">
+                        <ion-button
+                                color="primary"
+                                fill="outline"
+                                *ngIf="meeting?.meetingRecording?.value?.url"
+                                [href]="meeting?.meetingRecording?.value?.url"
+                                target="_blank"
+                                rel="nofollow"
+                        >
+                            <ion-icon slot="start" name="recording-outline"></ion-icon>
+                            Meeting Recording
+                        </ion-button>
+                    </div>
+                    <div class="event-link">
+                        <ion-button
+                                color="primary"
+                                fill="outline"
+                                *ngIf="meeting?.minutes?.value?.url"
+                                [href]="meeting?.minutes?.value?.url"
+                                target="_blank"
+                                rel="nofollow"
+                        >
+                            <ion-icon slot="start" name="time-outline"></ion-icon>
+                            Minutes
+                        </ion-button>
+                    </div>
+                </ion-buttons>
+            </ion-toolbar>
+        </ion-card-header>
+    </ion-card>
+</mat-expansion-panel>

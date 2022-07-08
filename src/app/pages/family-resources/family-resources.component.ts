@@ -14,7 +14,7 @@ export class FamilyResourcesComponent implements OnInit {
   images = '../../../assets/images/';
   items = [
     'Home visits',
-    'Sunday evening drop-offs and exchanges with Houseparents',
+    'Sunday evening drop-offs and exchanges with Student Life Advisors',
     'Friday afternoon pickups and exchanges with teachers',
     'Family days and family dinners',
     'Video-conferencing',

@@ -12,6 +12,7 @@ import { MarkdownModule } from 'ngx-markdown';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { AnimatedComponent } from './components/animated/animated.component';
+import { BoardMeetingsComponent } from './components/board-meetings/board-meetings.component';
 import { BlogComponent } from './components/blog/blog.component';
 import { DatatableComponent } from './components/datatable/datatable.component';
 import { EnvTagComponent } from './components/env-tag/env-tag.component';
@@ -95,6 +96,7 @@ import { UserPopoverComponent } from './dialogs/popovers/user-popover/user-popov
     SliderComponent,
     EventCalendarComponent,
     AnimatedComponent,
+    BoardMeetingsComponent,
     NewsMediaComponent,
     BlogComponent,
     KnowledgeTemplateComponent,
