@@ -14,7 +14,7 @@ export class ADayAtMonumentComponent implements OnInit {
     {
       title: 'Rise and Shine',
       content:
-        'Students receive a personal wake-up and eat a family-style breakfast with their Houseparent and Student Life Family. Students share a personal daily goal with their family and head to advisory for community building and DBT skills practice. After advisory, the students move to through their daily class schedule.',
+        'Students receive a personal wake-up and eat a family-style breakfast with their Student Life Advisors and Student Life Family. Students share a personal daily goal with their family and head to advisory for community building and DBT skills practice. After advisory, the students move to through their daily class schedule.',
       src: 'assets/monument_logo-short.png',
     },
     {
@@ -38,7 +38,7 @@ export class ADayAtMonumentComponent implements OnInit {
     {
       title: 'Closing the Day',
       content:
-        'Before students prepare for bed, they reflect on the daily goal they  set in the morning. The Houseparent and the other students in the  family celebrate and support one another in this process. Students  then read or journal in their rooms until lights out.',
+        'Before students prepare for bed, they reflect on the daily goal they  set in the morning. The Sudent Life Advisors and the other students in the  family celebrate and support one another in this process. Students  then read or journal in their rooms until lights out.',
       src: 'assets/monument_logo-short.png',
     },
     {
