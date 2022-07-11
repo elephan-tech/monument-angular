@@ -38,7 +38,7 @@ export class ADayAtMonumentComponent implements OnInit {
     {
       title: 'Closing the Day',
       content:
-        'Before students prepare for bed, they reflect on the daily goal they  set in the morning. The Sudent Life Advisors and the other students in the  family celebrate and support one another in this process. Students  then read or journal in their rooms until lights out.',
+        'Before students prepare for bed, they reflect on the daily goal they  set in the morning. The Student Life Advisors and the other students in the  family celebrate and support one another in this process. Students  then read or journal in their rooms until lights out.',
       src: 'assets/monument_logo-short.png',
     },
     {
