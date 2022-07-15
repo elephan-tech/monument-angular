@@ -11,12 +11,8 @@ export class UpdatesCalendarComponent implements OnInit {
 
   calendars = [
     {
-      year: '2020-2021',
-      pdf: '../../../assets/documents/2020-2021 Calendar  - 2020-21 Calendar.pdf',
-    },
-    {
-      year: '2021-2022',
-      pdf: '../../../assets/documents/2021-2022 Monument Academy Calendar_External-Facing - 2021-22 Calendar.pdf',
+      year: '2022-2023',
+      pdf: '../../../assets/documents/2022-2023 Monument Academy - 2022-23 Calendar.pdf',
     },
   ];
 
