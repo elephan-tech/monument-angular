@@ -37,7 +37,7 @@ export class TeamComponent implements OnInit {
   team = [
     {
       name: 'Dr. Jeffrey Grant',
-      title: 'Head of School and CEO',
+      title: 'CEO',
       bio:
        `
          Dr. Jeffrey Grant is a native Washingtonian who has led schools for over 15 years. In addition, he has more than a decade of experience teaching in district schools. In 2005, he was honored as Teacher of the Year by Junior Achievement of the National Capital Area. He holds a doctorate of education in leadership and policy studies and a master’s in education technology leadership from George Washington University. He earned degrees in political science and philosphy from the University of the District of Columbia. Most recently, he served as National Head of Schools at Friendship Education Foundation. Dr. Grant and his wife Sharnika reside in Maryland with their children. He is a proud member of Kappa Alpha Psi Fraternity, inc.
@@ -79,8 +79,18 @@ export class TeamComponent implements OnInit {
       scrollId: 'katriceWhitaker',
     },
     {
+      name: 'Danielle Nelson',
+      title: 'Chief of Well-Being',
+      bio:
+        `
+          Danielle Nelson, MSW, LICSW, LCSW-C is proud of her roots in Washington, DC as a native Washingtonian. She is excited to lead the Well-Being Department at Monument Academy Public Charter School, and she is enthusiastic about delivering quality services to staff, students, and families. Mrs. Nelson obtained her undergraduate degree in Psychology from Trinity University and graduate degree in Social Work from Howard University where she maintains strong partnerships. Mrs. Nelson currently mentors and provides clinical supervision to graduate students who are inspired and humbled by the helping profession. She is a member of the Phi Beta Kappa Society, Psi Chi National Honor Society in Psychology, and Phi Alpha Honor Society in Social Work. Mrs. Nelson has over 15 years of social work experience working with youth and families where she helped transform obstacles into opportunities. Over the course of Mrs. Nelson’s career, she has served and held leadership positions in schools, substance abuse treatment facilities, transitional and supportive housing programs, foster care agencies, and community-based organizations in Washington, DC. Mrs. Nelson also is a certified clinical trauma professional, and she strives to help heal her community by providing awareness about trauma and its impact on mental health, stabilizing families via mental health services, and investing in our youth. Her passion is fueled by her personal story of overcoming adversity, an undying belief in mentorship, unwavering faith, and a natural love for education. Mrs. Nelson can be found assisting others with a smile, creating safe spaces for coaching and counseling, and promoting wellness and recovery.
+        `,
+      pic: 'assets/images/team/Danielle-Nelson.jpeg',
+      scrollId: 'danielleNelson',
+    },
+    {
       name: 'Jeff McHugh',
-      title: 'Director of Systems, Data & IT',
+      title: 'Data Systems & IT Chief',
       bio:
         `
         Jeff has worked at Monument Academy since 2016. He has worked to build data-driven routines and practices across the school community by making accurate, timely, and actionable data available to staff, students, and families. He has also worked to provide students and staff with technology that enhances learning and fosters creativity. He earned his MBA at the Yale School of Management and spent six years teaching high school math at the Bronx Academy of Letters in the South Bronx. He has an MA in Secondary Education from the City College of New York and a BA in English and Economics from Northwestern University. When he's not being a total "data nerd" at Monument Academy, he's typically spending time with his wife and two children or training for his next race by running through the Capitol Hill neighborhood.
@@ -90,7 +100,7 @@ export class TeamComponent implements OnInit {
     },
     {
       name: 'Anna Scudiero',
-      title: 'Development Manager',
+      title: 'Development Director',
       bio:
         `
           Anna Scudiero grew up in the Chicago area and studied Political Science and Professional Writing at Valparaiso University. While in college, she interned in Washington, D.C. at the Children’s Defense Fund, conducting research on policies that impacted children and families in poverty, and at Horton’s Kids, working with middle and high school students as a youth development intern. For her senior research project, she studied the effectiveness of full-service, community schools. After graduating in 2016, she moved to Washington, D.C, and has been working at Monument Academy ever since. In addition to leading Monument’s fundraising and development work, Anna also manages our Extended Day Program and Engagement Camp Weeks. When not working, she enjoys baking fresh bread, going on walks, and relaxing with her dog!
@@ -100,7 +110,7 @@ export class TeamComponent implements OnInit {
     },
     {
       name: 'Brittany David',
-      title: 'Manager of Student Services',
+      title: 'Director of Student Services',
       bio:
         `
           Brittany David is a first-generation college graduate. Ms. David received her Bachelor's degree in English from the University of Maryland Eastern Shore (UMES). Upon graduation, she began her educational career as a Special Education teacher in Baltimore, MD. During her time at Baltimore City School district, she obtained her Master’s degree in Special Education to solidify her passion for the work. Ms. David began working at Monument Academy Public Charter school in 2016 as a self contained teacher. She is currently pursuing her doctoral degree in Organizational Leadership, with an emphasis in special education, at Grand Canyon University. Ms. David brings over ten years of experience in the field of Special Education. In her new role as Director of Student Supports at Monument Academy PCS, Ms. David can ensure compliance with state and federal guidelines regarding student services through the following key strengths: assisting with the coordination and monitoring of evaluation timelines, case conference committee meetings, and implementation of IEPs. Ms. David is the proud mother of her daughter, Winter and a proud member of Sigma Gamma Rho Sorority, Incorporated.
@@ -115,16 +125,6 @@ export class TeamComponent implements OnInit {
         'Mr. James Long was born and raised in Washington DC and attended DC Public Schools. He graduated from Theodore Roosevelt SHS in 1999. He then attended Virginia State University on a full football scholarship.  He graduated in 2003 with a major in Criminal Justice and minor in Sociology. Mr. Long had over 8 years of experience in security prior to becoming the Head of Security at Friendship Public Charter School Blow Pierce in 2016. In his spare time, he loves to read and is passionate about track and field and football. Since he graduated college he has been giving back to youth in the form of coaching and has been a coach at Friendship Collegiate Academy since 2012 where he has helped guide over 120 student-athletes to college on either an academic or football scholarship. His favorite quote is “Never get caught up in criticism or praise all distractions come at a cost” – Dean Smith.',
       pic: 'assets/images/team/James-Long.jpeg',
       scrollId: 'jamesLong',
-    },
-    {
-      name: 'Danielle Nelson',
-      title: 'Director of Well-Being',
-      bio:
-        `
-          Danielle Nelson, MSW, LICSW, LCSW-C is proud of her roots in Washington, DC as a native Washingtonian. She is excited to lead the Well-Being Department at Monument Academy Public Charter School, and she is enthusiastic about delivering quality services to staff, students, and families. Mrs. Nelson obtained her undergraduate degree in Psychology from Trinity University and graduate degree in Social Work from Howard University where she maintains strong partnerships. Mrs. Nelson currently mentors and provides clinical supervision to graduate students who are inspired and humbled by the helping profession. She is a member of the Phi Beta Kappa Society, Psi Chi National Honor Society in Psychology, and Phi Alpha Honor Society in Social Work. Mrs. Nelson has over 15 years of social work experience working with youth and families where she helped transform obstacles into opportunities. Over the course of Mrs. Nelson’s career, she has served and held leadership positions in schools, substance abuse treatment facilities, transitional and supportive housing programs, foster care agencies, and community-based organizations in Washington, DC. Mrs. Nelson also is a certified clinical trauma professional, and she strives to help heal her community by providing awareness about trauma and its impact on mental health, stabilizing families via mental health services, and investing in our youth. Her passion is fueled by her personal story of overcoming adversity, an undying belief in mentorship, unwavering faith, and a natural love for education. Mrs. Nelson can be found assisting others with a smile, creating safe spaces for coaching and counseling, and promoting wellness and recovery.
-        `,
-      pic: 'assets/images/team/Danielle-Nelson.jpeg',
-      scrollId: 'danielleNelson',
     },
   ];
 
