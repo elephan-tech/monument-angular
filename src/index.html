@@ -1,101 +1,106 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <style type="text/css">
-      body, html {
-        height: 100%;
-      }
-      .app-loading {
-        position: relative;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        height: 100%;
-        background-color: #042f54;
-      }
+<head>
+  <style type="text/css">
+    body, html {
+      height: 100%;
+    }
+    .app-loading {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100%;
+      background-color: #042f54;
+    }
 
-          .logo {
-    width: 100px;
-    height: 100px;
-    background: url('./assets/monument-logo.svg') center center no-repeat;
-  }
+    .logo {
+      width: 100px;
+      height: 100px;
+      background: url('./assets/monument-logo.svg') center center no-repeat;
+    }
 
-      .app-loading .spinner {
-        height: 200px;
-        width: 200px;
-        animation: rotate 2s linear infinite;
-        transform-origin: center center;
-        position: absolute;
-        top: 0;
-        bottom: 0;
-        left: 0;
-        right: 0;
-        margin: auto;
+    .app-loading .spinner {
+      height: 200px;
+      width: 200px;
+      animation: rotate 2s linear infinite;
+      transform-origin: center center;
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      margin: auto;
+    }
+
+    .app-loading .spinner .path {
+      stroke-dasharray: 1, 200;
+      stroke-dashoffset: 0;
+      animation: dash 1.5s ease-in-out infinite;
+      stroke-linecap: round;
+      stroke: #fecf31;
+    }
+
+    @keyframes rotate {
+      100% {
+        transform: rotate(360deg);
       }
+    }
 
-      .app-loading .spinner .path {
+    @keyframes dash {
+      0% {
         stroke-dasharray: 1, 200;
         stroke-dashoffset: 0;
-        animation: dash 1.5s ease-in-out infinite;
-        stroke-linecap: round;
-        stroke: #fecf31;
       }
-
-      @keyframes rotate {
-        100% {
-          transform: rotate(360deg);
-        }
+      50% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -35px;
       }
-
-      @keyframes dash {
-        0% {
-          stroke-dasharray: 1, 200;
-          stroke-dashoffset: 0;
-        }
-        50% {
-          stroke-dasharray: 89, 200;
-          stroke-dashoffset: -35px;
-        }
-        100% {
-          stroke-dasharray: 89, 200;
-          stroke-dashoffset: -124px;
-        }
+      100% {
+        stroke-dasharray: 89, 200;
+        stroke-dashoffset: -124px;
       }
-    </style>
-        <meta charset="utf-8" />
-    <title>Monument Academy</title>
-    <base href="/" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta
-      name="description"
-      content="Monument Academy is a weekday boarding school serving students in Washington, DC. "
-    />
-    <link rel="icon" type="image/x-icon" href="favicon.ico" />
-    <link rel="icon" type="image/x-icon" href="./assets/monument-logo.svg">
-    <link
-      href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
-      rel="stylesheet"
-    />
-    <link
-      href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet"
-    />
+    }
+  </style>
+  <meta charset="utf-8" />
+  <title>Monument Academy</title>
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Monument Academy is a weekday boarding school serving students in Washington, DC. "
+  />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/x-icon" href="./assets/monument-logo.svg">
+  <link
+    href="https://fonts.googleapis.com/css?family=Roboto:300,400,500&display=swap"
+    rel="stylesheet"
+  />
+  <link
+    href="https://fonts.googleapis.com/icon?family=Material+Icons"
+    rel="stylesheet"
+  />
 
-    <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
-    <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/instafeed.js/1.4.1/instafeed.min.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/instafeed.js/1.4.1/instafeed.min.js"></script>
+</head>
 
-  </head>
-
-  <body>
-    <app-root>
-            <div class="app-loading">
-        <div class="logo"></div>
-        <svg class="spinner" viewBox="25 25 50 50">
-          <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
-        </svg>
-      </div>
-    </app-root>
-  </body>
+<body>
+<app-root>
+  <div class="app-loading">
+    <div class="logo"></div>
+    <svg class="spinner" viewBox="25 25 50 50">
+      <circle class="path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/>
+    </svg>
+  </div>
+</app-root>
+</body>
+<script type="text/javascript">
+  const feed = new Instafeed({
+    accessToken: 'IGQVJVOFJOMHVLNVRqdDk5ZAkpKSVg3X2hsSXhxOXl5blZARaXlWQWQyell5bkwzNDF1bGNmSG8wRXZAsQXQzc19acHFkQXgzM2h1ZA0poQWxsVmZAvNE5mSExUSl8tblJIckE3VlF1M0xYRUQzT3V5d0ctSwZDZD'
+  });
+  feed.run();
+</script>
 </html>
