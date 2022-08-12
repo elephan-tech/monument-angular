@@ -5,7 +5,6 @@
 export const environment = {
   production: false,
   apiUrl: 'http://localhost:1337',
-  access_token: 'IGQVJWSEJWVHY5U05Ialk0WHdMS0dRX25KN2E3Wkt2VVE5OWlyZA1QyQUxzOTl4eGpZAaEFuaHFaRy1WVGhSaXB4SXJLSk9ZALW44c3REVWxNckhLQVJkT1F1dkhmVi1FM0RsSnExZAGZAPVGFZAWm9LaTJ0UwZDZD',
 };
 /*
  * For easier debugging in development mode, you can import the following file
