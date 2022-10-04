@@ -1,3 +1,17 @@
-<!-- <ion-slides>
-  <ion-slide *ngFor="let slide of slides; let i = index"></ion-slide>
-</ion-slides> -->
+<swiper
+  [cssMode]="true"
+  [navigation]="true"
+  [pagination]="false"
+  [mousewheel]="true"
+  [keyboard]="true"
+  [autoplay]="true"
+  [loop]="true"
+  [speed]="1800"
+  class="mySwiper">
+  <ng-template swiperSlide *ngFor="let slide of slides;">
+    <img
+      [src]="slide"
+      loading="lazy"
+    />
+  </ng-template>
+</swiper>

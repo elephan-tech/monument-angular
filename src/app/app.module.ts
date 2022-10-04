@@ -7,14 +7,20 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { IonicModule } from '@ionic/angular';
 import { MarkdownModule } from 'ngx-markdown';
+import { SwiperModule } from 'swiper/angular';
+import { JwtModule } from '@auth0/angular-jwt';
+import {  PdfViewerModule  } from 'ng2-pdf-viewer';
+
 import { AppRoutingModule } from './app-routing.module';
+import { GraphQLModule } from '../app/api/graphql.module';
+
 import { AppComponent } from './app.component';
 import { AnimatedComponent } from './components/animated/animated.component';
 import { BoardMeetingsComponent } from './components/board-meetings/board-meetings.component';
 import { BlogComponent } from './components/blog/blog.component';
-import { DatatableComponent } from './components/datatable/datatable.component';
 import { EnvTagComponent } from './components/env-tag/env-tag.component';
 import { EventCalendarComponent } from './components/event-calendar/event-calendar.component';
 import { FooterComponent } from './components/footer/footer.component';
@@ -22,8 +28,10 @@ import { HeroComponent } from './components/hero/hero.component';
 import { KnowledgeTemplateComponent } from './components/knowledge-template/knowledge-template.component';
 import { SliderComponent } from './components/slider/slider.component';
 import { TopnavigationComponent } from './components/topnavigation/topnavigation.component';
+import { ShowHidePasswordComponent } from './components/show-hide-password/show-hide-password.component';
 import { CollectionModalComponent } from './dialogs/collections/collection-modal/collection-modal.component';
-import { GraphQLModule } from '../app/api/graphql.module';
+import { UserPopoverComponent } from './dialogs/popovers/user-popover/user-popover.component';
+
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AwardsComponent } from './pages/about-us/awards/awards.component';
 import { BoardComponent } from './pages/about-us/board/board.component';
@@ -58,15 +66,10 @@ import {
 import { ProgramsComponent } from './pages/programs/programs.component';
 import { WellBeingComponent } from './pages/programs/well-being/well-being.component';
 import { UpdatesCalendarComponent } from './pages/updates-calendar/updates-calendar.component';
+import { MenusComponent } from './pages/menus/menus.component';
+
 import { StartCasePipe } from './pipes/start-case.pipe';
 import { TimePipe } from './pipes/time.pipe';
-import { JwtModule } from '@auth0/angular-jwt';
-import { ShowHidePasswordComponent } from './components/show-hide-password/show-hide-password.component';
-import { MenusComponent } from './pages/menus/menus.component';
-import {  PdfViewerModule  } from 'ng2-pdf-viewer';
-import { UserPopoverComponent } from './dialogs/popovers/user-popover/user-popover.component';
-
-
 
 @NgModule({
   declarations: [
@@ -130,6 +133,7 @@ import { UserPopoverComponent } from './dialogs/popovers/user-popover/user-popov
     GraphQLModule,
     FormsModule,
     PdfViewerModule,
+    SwiperModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
     JwtModule.forRoot({
       config: {

@@ -38,6 +38,7 @@
     "ngx-markdown": "^12.0.1",
     "pluralize": "^8.0.0",
     "rxjs": "~6.5.5",
+    "swiper": "^8.4.2",
     "url-polyfill": "^1.1.12",
     "zone.js": "~0.11.4"
   },
