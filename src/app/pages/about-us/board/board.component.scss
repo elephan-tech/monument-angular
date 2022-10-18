@@ -33,3 +33,13 @@ mat-panel-title {
     }
   }
 }
+
+.dates-expansion {
+  height: 130px;
+  max-width: -webkit-fill-available;
+}
+
+.dates-text {
+  display: contents;
+  white-space: break-spaces;
+}
