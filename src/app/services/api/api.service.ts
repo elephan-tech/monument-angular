@@ -34,7 +34,7 @@ export class ApiService {
     'menu',
   ];
 
-  constructor(private apollo: Apollo) {}
+  constructor(private apollo: Apollo) { }
 
   private graphqlJSON(array: any[]): string {
     return replace(JSON.stringify(array), /"([^"]+)":/g, '$1:').replace(
@@ -61,13 +61,13 @@ export class ApiService {
   public formatData(type: string, data: any): Collection {
     if (!isEmpty(data)) {
       const fields = data?.__type.fields.reduce((acc, field) => [...acc, {
-          name: field.name,
-          type: field.type.name || field.type.ofType.name
+        name: field.name,
+        type: field.type.name || field.type.ofType.name
       }], []);
 
       const withType = this.mergeDataType(data[camelCase(type)], fields);
 
-      return {data: uniqWith(withType, isEqual), fields};
+      return { data: uniqWith(withType, isEqual), fields };
 
     }
     return {};
@@ -90,7 +90,16 @@ export class ApiService {
 
     watchQuery.valueChanges.subscribe(({ data }) => {
       const collectionData = this.formatData(collectionType, data);
-      !isEmpty(data) ? this.CollectionData.next(collectionData) : this.CollectionData.next([]);
+
+      if (!isEmpty(data)) {
+        collectionData
+          ?.data
+          ?.sort((a, b) => (new Date(a.date.value) as any) - (new Date(b.date.value) as any));
+
+        this.CollectionData.next(collectionData);
+      } else {
+        this.CollectionData.next([]);
+      }
     });
 
     return this.CollectionData;
@@ -165,8 +174,7 @@ export class ApiService {
       mutation ${startCase(collection).split(' ').join('')} {
         update${startCase(entry).split(' ').join('')}(input: {
          ${whereClause}
-        data: ${
-          collection === 'emergencyMessage' ? payload.toLowerCase() : payload
+        data: ${collection === 'emergencyMessage' ? payload.toLowerCase() : payload
         }
       }){${collection === 'emergencyMessage' ? collection : camelCase(entry).split(' ').join('')}{
           id
@@ -181,7 +189,7 @@ export class ApiService {
   }
 
   getById(collection, id): void {
-// TODO factor out from blog.component.ts
+    // TODO factor out from blog.component.ts
   }
 
 

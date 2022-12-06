@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash';
 import { ApiService } from 'src/app/services/api/api.service';
 import { BehaviorSubject } from 'rxjs';
 import { AfterViewInit, Component, OnInit, ViewEncapsulation } from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-board',
@@ -14,7 +14,7 @@ import {ActivatedRoute} from '@angular/router';
 })
 export class BoardComponent implements OnInit, AfterViewInit {
 
-  constructor(private route: ActivatedRoute, private api: ApiService) {}
+  constructor(private route: ActivatedRoute, private api: ApiService) { }
   pageTitle: string;
   heroImg: string;
   fragment: string;
@@ -109,7 +109,9 @@ export class BoardComponent implements OnInit, AfterViewInit {
   ];
 
   boardMeetings: any;
+  archivedMeetings: any;
   boardMeetingsSub = new BehaviorSubject([]);
+  fromDate: Date = new Date(Date.now());
 
   ngOnInit(): void {
     this.pageTitle = 'Board of Directors';
@@ -117,15 +119,21 @@ export class BoardComponent implements OnInit, AfterViewInit {
     this.route.fragment.subscribe(fragment => { this.fragment = fragment; });
     this.api.getData('boardMeetings').subscribe(result => {
       if (!isEmpty(result)) {
-        this.boardMeetings = result.data;
+        this.boardMeetings = result.data.filter((item: any) =>
+          new Date(item.date.value).getTime() >= this.fromDate.getTime()
+        );
+        this.archivedMeetings = result.data.filter((item: any) =>
+          new Date(item.date.value).getTime() < this.fromDate.getTime()
+        )
+          .reverse();
       }
     });
   }
 
-    ngAfterViewInit(): void {
+  ngAfterViewInit(): void {
     try {
       const topOffset = document.getElementById(this.fragment).getBoundingClientRect().top;
-      window.scrollTo({top: topOffset - 1500, behavior: 'smooth'});
+      window.scrollTo({ top: topOffset - 1500, behavior: 'smooth' });
 
       // document.querySelector('#' + this.fragment).scrollIntoView({behavior: "smooth", block: "end", inline: "nearest"});
     } catch (e) { }
