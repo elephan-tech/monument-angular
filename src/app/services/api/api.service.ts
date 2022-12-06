@@ -94,7 +94,7 @@ export class ApiService {
       if (!isEmpty(data)) {
         collectionData
           ?.data
-          ?.sort((a, b) => (new Date(a.date.value) as any) - (new Date(b.date.value) as any));
+          ?.sort((a, b) => (new Date(a?.date?.value) as any) - (new Date(b?.date?.value) as any));
 
         this.CollectionData.next(collectionData);
       } else {

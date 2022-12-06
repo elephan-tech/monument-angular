@@ -120,10 +120,10 @@ export class BoardComponent implements OnInit, AfterViewInit {
     this.api.getData('boardMeetings').subscribe(result => {
       if (!isEmpty(result)) {
         this.boardMeetings = result.data.filter((item: any) =>
-          new Date(item.date.value).getTime() >= this.fromDate.getTime()
+          new Date(item?.date?.value).getTime() >= this.fromDate.getTime()
         );
         this.archivedMeetings = result.data.filter((item: any) =>
-          new Date(item.date.value).getTime() < this.fromDate.getTime()
+          new Date(item?.date?.value).getTime() < this.fromDate.getTime()
         )
           .reverse();
       }
