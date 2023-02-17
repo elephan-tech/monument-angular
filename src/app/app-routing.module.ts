@@ -39,6 +39,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { AuthGuard } from './guards/auth.guard';
 import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 import { MenusComponent } from './pages/menus/menus.component';
+import {AcademyCelebrateComponent} from './pages/programs/academy-celebrate/academy-celebrate.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, // this makes the landing page
@@ -74,6 +75,10 @@ const routes: Routes = [
   {
     path: 'boarding-student-life-program',
     component: BoardingStudentLifeProgramComponent,
+  },
+  {
+    path: 'academy-celebrate',
+    component: AcademyCelebrateComponent,
   },
   { path: 'life-skills-program', component: LifeSkillsComponent },
   { path: 'well-being-program', component: WellBeingComponent },

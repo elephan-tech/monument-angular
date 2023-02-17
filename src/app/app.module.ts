@@ -7,6 +7,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 import { MatMenuModule } from '@angular/material/menu';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgImageFullscreenViewModule } from 'ng-image-fullscreen-view'; // ng-image-fullscreen-view
 
 import { IonicModule } from '@ionic/angular';
 import { MarkdownModule } from 'ngx-markdown';
@@ -70,6 +71,7 @@ import { MenusComponent } from './pages/menus/menus.component';
 
 import { StartCasePipe } from './pipes/start-case.pipe';
 import { TimePipe } from './pipes/time.pipe';
+import { AcademyCelebrateComponent } from './pages/programs/academy-celebrate/academy-celebrate.component';
 
 @NgModule({
   declarations: [
@@ -118,6 +120,7 @@ import { TimePipe } from './pipes/time.pipe';
     ShowHidePasswordComponent,
     MenusComponent,
     UserPopoverComponent,
+    AcademyCelebrateComponent,
   ],
   imports: [
     BrowserModule,
@@ -134,6 +137,7 @@ import { TimePipe } from './pipes/time.pipe';
     FormsModule,
     PdfViewerModule,
     SwiperModule,
+    NgImageFullscreenViewModule,
     MarkdownModule.forRoot({ loader: HttpClient }),
     JwtModule.forRoot({
       config: {

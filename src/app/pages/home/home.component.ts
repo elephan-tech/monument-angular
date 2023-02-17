@@ -1,9 +1,13 @@
-import { environment } from 'src/environments/environment';
-import { ApiService } from 'src/app/services/api/api.service';
-import { slideOpts } from './slider.config';
-import { Component, OnInit, ViewEncapsulation, OnDestroy } from '@angular/core';
-import { loremIpsum } from 'lorem-ipsum';
-import { ScreensizeService } from '../../services/screen-size/screensize.service';
+import {Component, OnInit, ViewEncapsulation, OnDestroy} from '@angular/core';
+
+import {loremIpsum} from 'lorem-ipsum';
+
+import {slideOpts} from './slider.config';
+
+import {environment} from 'src/environments/environment';
+
+import {ApiService} from 'src/app/services/api/api.service';
+import {ScreensizeService} from '../../services/screen-size/screensize.service';
 
 type Slide = {
   isBeginningSlide?: boolean;
@@ -13,6 +17,7 @@ type Slide = {
   image: string;
   display: boolean;
 };
+
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -59,30 +64,31 @@ export class HomeComponent implements OnInit, OnDestroy {
     'Soccer',
     'Volleyball',
     'Track',
+    'Baseball'
   ];
 
   slides: Slide[];
   imageUrl = environment.apiUrl;
 
   constructor(private screenSizeService: ScreensizeService, private api: ApiService) {
-        this.screenSizeService.isDesktopView().subscribe((isDesktop) => {
+    this.screenSizeService.isDesktopView().subscribe((isDesktop) => {
       this.isDesktop = isDesktop;
     });
   }
 
   ngOnInit(): void {
 
-   this.dataService = this.api.getData('monumentalMoments').subscribe(value => {
-     this.slides = value?.data?.filter(({ display, ...foo }) => {
-       return display?.value;
-     });
+    this.dataService = this.api.getData('monumentalMoments').subscribe(value => {
+      this.slides = value?.data?.filter(({display, ...foo}) => {
+        return display?.value;
+      });
     });
 
-   this.currentSlide = this.slides?.[0];
+    this.currentSlide = this.slides?.[0];
   }
 
-  ngOnDestroy(): void{
-this.dataService.unsubscribe();
+  ngOnDestroy(): void {
+    this.dataService.unsubscribe();
   }
 
   slideNext(slideView): void {

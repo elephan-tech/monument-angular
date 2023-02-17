@@ -107,14 +107,16 @@
     </ion-grid>
   </section>
 </div>
+
 <section style="display: flex">
-  <section><h2>Twitter Feed</h2>
+  <section>
+    <h2>Twitter Feed</h2>
     <img
       loading="lazy"
       src="assets/underline-stroke.svg"
       class="underline-stroke"
     />
-    <section class="" style="width: 100%; height: 500px; overflow-y: scroll; scrollbar-width: thin; writing-mode: horizontal-tb; padding-left: 5px;">
+    <section class="" style="width: 100%; height: 600px; overflow-y: scroll; scrollbar-width: thin; writing-mode: horizontal-tb; padding-left: 5px;">
       <ion-grid>
         <ion-row>
           <ion-col>
@@ -124,24 +126,41 @@
       </ion-grid>
     </section>
   </section>
-  <!--<section>
-    <h3>&nbsp;&nbsp; Instagram Feed</h3>
+  <section style="width: 80%; height: 750px; writing-mode: horizontal-tb; padding-left: 5px;">
+    <h3>Monument Academy Celebrates Excellence!</h3>
     <img
       loading="lazy"
       src="assets/underline-stroke.svg"
       class="underline-stroke"
     />
-    <section style="width: 100%;height: 500px; overflow-y: scroll; scrollbar-width: thin;writing-mode: horizontal-tb; padding-left: 5px;">
+    <section style="width: 100%;writing-mode: horizontal-tb; padding-left: 5px;">
       <ion-grid>
         <ion-row>
           <ion-col>
-            <div id="instafeed"></div>
+            <div data-aos="fade-up" data-aos-duration="700">
+              <img loading="lazy" src="assets/images/celebration/Homepage.jpeg" alt="" />
+            </div>
+            <p>
+              Congratulations to 2022 Teacher of the Year, Paul Tarrance, and Staff Member of the Year,
+              Daevon Johhnson!
+            </p>
+            <a [ngClass]="isDesktop ? 'desktop-anchor' : 'mobile-anchor'">
+              <ion-button
+                color="tertiary"
+                [fill]="isDesktop ? 'none' : 'solid'"
+                [expand]="isDesktop ? '' : 'block'"
+                routerLink="/academy-celebrate"
+              >
+                See more.
+              </ion-button>
+            </a>
           </ion-col>
         </ion-row>
       </ion-grid>
     </section>
-  </section>-->
+  </section>
 </section>
+
 <section>
   <ion-grid>
     <ion-row>
