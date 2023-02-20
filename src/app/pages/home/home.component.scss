@@ -6,6 +6,16 @@
   background-size: cover;
 }
 
+.tweet-feed {
+  display: flex;
+}
+
+@media screen and (max-width: 850px) {
+  .tweet-feed {
+    display: block;
+  }
+}
+
 .hero-main {
   margin-left: auto;
   max-width: 500px;
