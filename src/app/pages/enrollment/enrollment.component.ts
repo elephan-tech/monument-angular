@@ -15,7 +15,7 @@ export class EnrollmentComponent implements OnInit {
 
   ngOnInit(): void {
     this.MSDCSeatAcceptanceForm = '../../../assets/documents/MSDC-Seat-Acceptance-Form-22-23.pdf';
-    this.DCResidencyForm = '../../../assets/documents/DC-Residency-Verification-Form-22-23.pdf';
+    this.DCResidencyForm = 'https://osse.dc.gov/sites/default/files/dc/sites/osse/publication/attachments/SY23_24_DCRV_Form_01242023.pdf';
     this.pageTitle = 'Enrollment';
     this.heroImg = 'assets/images/monument-6.png';
   }
