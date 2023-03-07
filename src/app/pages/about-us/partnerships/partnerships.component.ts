@@ -15,6 +15,11 @@ export class PartnershipsComponent implements OnInit {
 
   partners = [
     {
+      name: 'Learn24',
+      src: 'Learn24Logo.png',
+      url: 'https://learn24.dc.gov/',
+    },
+    {
       name: 'City Bridge Foundation',
       src: 'cbf_logo.svg',
       url: 'https://citybridge.org/',
@@ -83,11 +88,6 @@ export class PartnershipsComponent implements OnInit {
   ];
 
   leraningCommunities = [
-    {
-      name: 'Learn24',
-      src: 'assets/images/awards/Learn24Logo.png',
-      url: 'https://learn24.dc.gov/',
-    },
     {
       name: 'Bainum Foundation',
       src: 'assets/images/awards/Bainum.png',
