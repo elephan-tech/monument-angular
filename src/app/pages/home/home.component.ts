@@ -37,6 +37,30 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   monumentalMarkers = [
     {
+      stat: 'Top Performer',
+      description: `In ELA Growth in the 2021-22 School Year Among DC Schools`
+    },
+    {
+      stat: 'Math Growth',
+      description: `One of the Top Performing DC Schools in the 2021-22 School Year`
+    },
+    {
+      stat: 'Above Sector Average',
+      description: `In-Seat Attendance Rate for 5th - 8th Grade for the 2021-22 school year`
+    },
+    {
+      stat: 'High Performer',
+      description: `Instructional Culture, per the Spring 2022 Teacher Insight Survey`
+    },
+    {
+      stat: '100%',
+      description: `Of Students Participate in Extended Day Programs and Make 3 College Visits Per Year`
+    },
+    {
+      stat: '100%',
+      description: `Of students Participate in Junior Achievement Project-Based Financial Literacy Programming`
+    },
+    {
       stat: 'Top 5%',
       description: `In Instructional Culture, per the Fall 2020 Teacher Insight Survey`
     },
