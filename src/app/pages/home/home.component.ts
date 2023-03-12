@@ -61,24 +61,12 @@ export class HomeComponent implements OnInit, OnDestroy {
       description: `Of students Participate in Junior Achievement Project-Based Financial Literacy Programming`
     },
     {
-      stat: 'Top 5%',
-      description: `In Instructional Culture, per the Fall 2020 Teacher Insight Survey`
+      stat: 'Top Performer ELA',
+      description: `In Terms of Growth, in the 2021-22 School Year`
     },
     {
-      stat: '91.2%',
-      description: `In-Seat Attendance Rate for the 2019-20 School Year`
-    },
-    {
-      stat: `3`,
-      description: `College Visits Per Year`
-    },
-    {
-      stat: `100%`,
-      description: `Of Students Participate in Extended Day Programs`
-    },
-    {
-      stat: `100%`,
-      description: `Of Students Participate in Junior Achievement`
+      stat: 'Top Performer Math',
+      description: `In Terms of Growth, in the 2021-22 School Year`
     }
   ];
 
