@@ -37,12 +37,12 @@ export class HomeComponent implements OnInit, OnDestroy {
 
   monumentalMarkers = [
     {
-      stat: 'Top Performer',
-      description: `In ELA Growth in the 2021-22 School Year Among DC Schools`
+      stat: 'Top Performer ELA',
+      description: `In Terms of Growth, in the 2021-22 School Year`
     },
     {
-      stat: 'Math Growth',
-      description: `One of the Top Performing DC Schools in the 2021-22 School Year`
+      stat: 'Top Performer Math',
+      description: `In Terms of Growth, in the 2021-22 School Yearr`
     },
     {
       stat: 'Above Sector Average',
@@ -59,14 +59,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     {
       stat: '100%',
       description: `Of students Participate in Junior Achievement Project-Based Financial Literacy Programming`
-    },
-    {
-      stat: 'Top Performer ELA',
-      description: `In Terms of Growth, in the 2021-22 School Year`
-    },
-    {
-      stat: 'Top Performer Math',
-      description: `In Terms of Growth, in the 2021-22 School Year`
     }
   ];
 
