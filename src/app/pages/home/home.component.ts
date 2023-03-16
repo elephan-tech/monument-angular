@@ -42,7 +42,7 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
     {
       stat: 'Top Performer Math',
-      description: `In Terms of Growth, in the 2021-22 School Yearr`
+      description: `In Terms of Growth, in the 2021-22 School Year`
     },
     {
       stat: 'Above Sector Average',
