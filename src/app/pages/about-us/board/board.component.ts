@@ -59,25 +59,25 @@ export class BoardComponent implements OnInit, AfterViewInit {
       bio:
         'Emily Bloomfield is the founder of Monument Academy Public Charter School. Ms. Bloomfield brings deep knowledge of the public school sector — both traditional and charter — resulting from her years of serving on the DC Public Charter School Board and as an elected member and President of the Santa Monica-Malibu Unified School District Board of Education. She has experience in strategic planning, marketing, business, recruiting, staffing and working in startups through her work at CitySearch, Carparts.com, the LA Times and other organizations. Ms. Bloomfield has a BA from the University of Chicago, an MPA from The Maxwell School of Citizenship and Public Affairs at Syracuse University and an M.Phil in Economics for Oxford University.',
     },
-    {
-      bioPic: 'assets/images/board/NeelaRathinasamy.png',
-      name: 'Neela Rathinasamy',
-      scrollId: 'NeelaRathinasamy',
-      title: 'Board Member',
-      bio:
-        'Neela has worked in public education in the District of Columbia for over a decade, including eight years at the District of Columbia Public Schools (DCPS) in a variety of roles. As Deputy Chief of Special Education Compliance, she managed DCPS’ response to four major federal lawsuits and monitoring by state and federal government. DCPS has since exited three out of four lawsuits, including two that were nearly two decades old. She was also the Chief of Staff in the Office of General Counsel, Deputy Chief of Central Office Effectiveness in the Office of Human Capital and a member of the Chancellor’s critical response team. Additionally, she served as the Assistant Superintendent of Operations in the Office of the State Superintendent of Education (OSSE), the state education agency of D.C., overseeing grants management, dispute resolution, enrollment and residency support, building operations and procurement planning. Neela is currently an independent consultant. She has a J.D. from the University of Virginia School of Law and a B.A. in government from the College of William and Mary. She lives in Washington, D.C. with her husband and two daughters.',
-      excites:
-        'Monument Academy serves children in a fundamentally different way than a traditional school. I’m excited about the school’s focus on meeting students where they are, operating a weekday boarding program, filling their lives with supportive adults who believe in their potential, and focusing on the needs of the entire family so that each student can achieve greatness.',
-      favTeacher:
-        'I’ve been blessed to have many important teachers in my life, my parents being the most important of all. My high school history teacher, Ms. Wood, is the person I credit with challenging my world view and daring me to dream. She taught me the importance and power of a single person believing in you, which is what I hope that each student at Monument Academy feels in their time at the school.',
-    },
-    {
-      bioPic: '',
-      name: 'Sharisse Baltimore',
-      scrollId: 'SharisseBaltimore',
-      title: 'Parent Board Member',
-      bio: '',
-    },
+    // {
+    //   bioPic: 'assets/images/board/NeelaRathinasamy.png',
+    //   name: 'Neela Rathinasamy',
+    //   scrollId: 'NeelaRathinasamy',
+    //   title: 'Board Member',
+    //   bio:
+    //     'Neela has worked in public education in the District of Columbia for over a decade, including eight years at the District of Columbia Public Schools (DCPS) in a variety of roles. As Deputy Chief of Special Education Compliance, she managed DCPS’ response to four major federal lawsuits and monitoring by state and federal government. DCPS has since exited three out of four lawsuits, including two that were nearly two decades old. She was also the Chief of Staff in the Office of General Counsel, Deputy Chief of Central Office Effectiveness in the Office of Human Capital and a member of the Chancellor’s critical response team. Additionally, she served as the Assistant Superintendent of Operations in the Office of the State Superintendent of Education (OSSE), the state education agency of D.C., overseeing grants management, dispute resolution, enrollment and residency support, building operations and procurement planning. Neela is currently an independent consultant. She has a J.D. from the University of Virginia School of Law and a B.A. in government from the College of William and Mary. She lives in Washington, D.C. with her husband and two daughters.',
+    //   excites:
+    //     'Monument Academy serves children in a fundamentally different way than a traditional school. I’m excited about the school’s focus on meeting students where they are, operating a weekday boarding program, filling their lives with supportive adults who believe in their potential, and focusing on the needs of the entire family so that each student can achieve greatness.',
+    //   favTeacher:
+    //     'I’ve been blessed to have many important teachers in my life, my parents being the most important of all. My high school history teacher, Ms. Wood, is the person I credit with challenging my world view and daring me to dream. She taught me the importance and power of a single person believing in you, which is what I hope that each student at Monument Academy feels in their time at the school.',
+    // },
+    // {
+    //   bioPic: '',
+    //   name: 'Sharisse Baltimore',
+    //   scrollId: 'SharisseBaltimore',
+    //   title: 'Parent Board Member',
+    //   bio: '',
+    // },
     {
       bioPic: '',
       name: 'James Waller',
@@ -103,6 +103,27 @@ export class BoardComponent implements OnInit, AfterViewInit {
       bioPic: '',
       name: 'Patricia Brantley',
       scrollId: 'patriciaBrantley',
+      title: 'Board Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
+      name: 'Requita McNeil',
+      scrollId: 'RequitaMcNeil',
+      title: 'Parent Board Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
+      name: 'Tyrell Monroe',
+      scrollId: 'TyrellMonroe',
+      title: 'Parent Board Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
+      name: 'Chuck Jones',
+      scrollId: 'ChuckJones',
       title: 'Board Member',
       bio: '',
     },

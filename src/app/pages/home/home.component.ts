@@ -38,11 +38,11 @@ export class HomeComponent implements OnInit, OnDestroy {
   monumentalMarkers = [
     {
       stat: 'Top Performer ELA',
-      description: `In Terms of Growth, in the 2021-22 School Year`
+      description: `In Terms of Growth, in the 2020-22 School Years`
     },
     {
       stat: 'Top Performer Math',
-      description: `In Terms of Growth, in the 2021-22 School Year`
+      description: `In Terms of Growth, in the 2020-22 School Years`
     },
     {
       stat: 'Above Sector Average',
