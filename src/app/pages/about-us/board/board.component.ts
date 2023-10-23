@@ -23,18 +23,26 @@ export class BoardComponent implements OnInit, AfterViewInit {
 
   board = [
     {
-      bioPic:
-        'assets/images/board/Tycely-Williams-Monument-Academy-Board-Chair.png',
-      name: 'Tycely Williams',
-      scrollId: 'TycelyWilliams',
+      bioPic: 'assets/images/board/Emily-Bloomfield.png',
+      name: 'Emily Bloomfield',
+      scrollId: 'EmilyBloomfield',
       title: 'Board Chair',
       bio:
-        'Tycely Williams is the Vice President of Development at the YWCA.Prior to that, she served as Regional Chief Development Officer at Red Cross. She has raised and managed more than $69 million dollars for nonprofit organizations. Prior to Red Cross, she was Association Director of Major Gifts for the YMCA of Metropolitan Washington, and before that she founded and led a professional services consulting company for six years. Over the past 18 years, she has served as a Director of Development for two health and human services organizations, the Artistic Director of two community-based dance studios, and the Executive Director for a nonprofit organization founded by a Fortune 500 Company. Ms. Williams holds an Executive Masters in Leadership from The McDonough School of Business at Georgetown University. A Cum Laude graduate of Wake Forest University, Tycely possesses a Bachelor of Arts degree in Communications with distinguished departmental honors and a minor in Journalism.Ms. Williams serves on the governing boards of the Association of Fundraising Professionals Washington Metro Chapter and Calvary Healthcare.',
-      excites:
-        'I am honored to stand with the visionary Emily Bloomfield, lock hearts with the Monument Academy Board of Trustees so we may partner with compassionate parents and devoted teachers to create a safe place for children to learn, laugh and love. The strikingly beautiful smiles of our parents, teachers and children excite and inspire me.',
-      favTeacher:
-        'I loved every teacher; my mother and father were teachers. My high school debate coach Ms. Marilee Dukes tops the lists of teachers I loved. Ms. Dukes taught me to dream. She would say, “Tycely stop paying attention to me and pay attention to you….look out the window and dream child, prepare to become who you want to be and do what you’ve yet to see.”',
+        'Emily Bloomfield is the founder of Monument Academy Public Charter School. Ms. Bloomfield brings deep knowledge of the public school sector — both traditional and charter — resulting from her years of serving on the DC Public Charter School Board and as an elected member and President of the Santa Monica-Malibu Unified School District Board of Education. She has experience in strategic planning, marketing, business, recruiting, staffing and working in startups through her work at CitySearch, Carparts.com, the LA Times and other organizations. Ms. Bloomfield has a BA from the University of Chicago, an MPA from The Maxwell School of Citizenship and Public Affairs at Syracuse University and an M.Phil in Economics for Oxford University.',
     },
+    // {
+    //   bioPic:
+    //     'assets/images/board/Tycely-Williams-Monument-Academy-Board-Chair.png',
+    //   name: 'Tycely Williams',
+    //   scrollId: 'TycelyWilliams',
+    //   title: 'Board Chair',
+    //   bio:
+    //     'Tycely Williams is the Vice President of Development at the YWCA.Prior to that, she served as Regional Chief Development Officer at Red Cross. She has raised and managed more than $69 million dollars for nonprofit organizations. Prior to Red Cross, she was Association Director of Major Gifts for the YMCA of Metropolitan Washington, and before that she founded and led a professional services consulting company for six years. Over the past 18 years, she has served as a Director of Development for two health and human services organizations, the Artistic Director of two community-based dance studios, and the Executive Director for a nonprofit organization founded by a Fortune 500 Company. Ms. Williams holds an Executive Masters in Leadership from The McDonough School of Business at Georgetown University. A Cum Laude graduate of Wake Forest University, Tycely possesses a Bachelor of Arts degree in Communications with distinguished departmental honors and a minor in Journalism.Ms. Williams serves on the governing boards of the Association of Fundraising Professionals Washington Metro Chapter and Calvary Healthcare.',
+    //   excites:
+    //     'I am honored to stand with the visionary Emily Bloomfield, lock hearts with the Monument Academy Board of Trustees so we may partner with compassionate parents and devoted teachers to create a safe place for children to learn, laugh and love. The strikingly beautiful smiles of our parents, teachers and children excite and inspire me.',
+    //   favTeacher:
+    //     'I loved every teacher; my mother and father were teachers. My high school debate coach Ms. Marilee Dukes tops the lists of teachers I loved. Ms. Dukes taught me to dream. She would say, “Tycely stop paying attention to me and pay attention to you….look out the window and dream child, prepare to become who you want to be and do what you’ve yet to see.”',
+    // },
     {
       bioPic: 'assets/images/board/tameria-lewis.png',
       name: 'Tameria Lewis',
@@ -47,17 +55,9 @@ export class BoardComponent implements OnInit, AfterViewInit {
       bioPic: 'assets/images/board/Donna-A.png',
       name: 'Donna Anthony',
       scrollId: 'DonnaAnthony',
-      title: 'Board Member',
+      title: 'Member',
       bio:
         'Donna Anthony serves as the Executive Vice President of Clinical Strategy for The HSC Health Care System. She is charged with leading The HSC Pediatric Center, HSC Home Care and HSC Health and Residential Services. She currently serves as an appointed member of the DC Maternal Mortality Review Committee, the DC Maternal and Child Health Advisory Committee, and continues to work with DC Public Schools on early childhood health initiatives. <br><br> Prior to joining The HSC Health Care System, Ms. Anthony served as the Assistant Superintendent of Health & Wellness at the D.C. Office of the State Superintendent of Education. In this role, she oversaw all of the federal nutrition programs for schools and child care centers, state athletics, and implementation of federal and local grant programs and services that support the health and wellbeing of children in schools and child care centers in the District. In that capacity, she served as an appointed member of the D.C. Food Policy Council, the Healthy Youth and Schools Commission, the Medical Care Advisory Committee and the Behavioral Health Council. <br><br> Ms. Anthony has a long-standing history of working with children with disabilities in various programs at D.C. Public Schools. She was instrumental in the opening of Early Stages, the early childhood special education evaluation center, and transformed Medicaid billing for DCPS, which increased revenue ten-fold. She has also served as a gymnastics coach for the Special Olympics in Pennsylvania.',
-    },
-    {
-      bioPic: 'assets/images/board/Emily-Bloomfield.png',
-      name: 'Emily Bloomfield',
-      scrollId: 'EmilyBloomfield',
-      title: 'Board Member',
-      bio:
-        'Emily Bloomfield is the founder of Monument Academy Public Charter School. Ms. Bloomfield brings deep knowledge of the public school sector — both traditional and charter — resulting from her years of serving on the DC Public Charter School Board and as an elected member and President of the Santa Monica-Malibu Unified School District Board of Education. She has experience in strategic planning, marketing, business, recruiting, staffing and working in startups through her work at CitySearch, Carparts.com, the LA Times and other organizations. Ms. Bloomfield has a BA from the University of Chicago, an MPA from The Maxwell School of Citizenship and Public Affairs at Syracuse University and an M.Phil in Economics for Oxford University.',
     },
     // {
     //   bioPic: 'assets/images/board/NeelaRathinasamy.png',
@@ -80,51 +80,58 @@ export class BoardComponent implements OnInit, AfterViewInit {
     // },
     {
       bioPic: '',
-      name: 'James Waller',
-      scrollId: 'JamesWaller',
-      title: 'Board Member',
+      name: 'Carla Watson',
+      scrollId: 'CarlaWatson',
+      title: 'Academic Committee Chair',
       bio: '',
     },
     {
       bioPic: '',
-      name: 'Carla Watson',
-      scrollId: 'CarlaWatson',
-      title: 'Board Member',
+      name: 'James Waller',
+      scrollId: 'JamesWaller',
+      title: 'Finance Chair/Treasurer',
       bio: '',
     },
     {
       bioPic: '',
       name: 'Dr. Denisha Carter',
       scrollId: 'drDenishaCarter',
-      title: 'Board Member',
+      title: 'Member',
       bio: '',
     },
     {
       bioPic: '',
       name: 'Patricia Brantley',
       scrollId: 'patriciaBrantley',
-      title: 'Board Member',
+      title: 'Member',
       bio: '',
     },
     {
       bioPic: '',
-      name: 'Requita McNeil',
-      scrollId: 'RequitaMcNeil',
-      title: 'Parent Board Member',
-      bio: '',
-    },
-    {
-      bioPic: '',
-      name: 'Tyrell Monroe',
-      scrollId: 'TyrellMonroe',
-      title: 'Parent Board Member',
+      name: 'Michael D Alessandro',
+      scrollId: 'MichaelDAlessandro',
+      title: 'Governance Commttee Chair',
       bio: '',
     },
     {
       bioPic: '',
       name: 'Chuck Jones',
       scrollId: 'ChuckJones',
-      title: 'Board Member',
+      title: 'Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
+      name: 'Tyrell Monroe',
+      scrollId: 'TyrellMonroe',
+      title: 'Parent Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
+      name: 'Requita McNeil',
+      scrollId: 'RequitaMcNeil',
+      title: 'Secretary/Parent Member',
       bio: '',
     },
   ];
