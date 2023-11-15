@@ -30,4 +30,14 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 `npm run service --service=$service_name`
 
+## If Deployment Fails
+
+### Go to deployment and check error
+
+https://vercel.com/elephantechstl/monument-academy/deployments
+
+### Check node version in Vercel Settings
+
+[Settings](https://vercel.com/elephantechstl/monument-academy/settings) - Scroll down to `Node Version`
+
 ## Thanks
