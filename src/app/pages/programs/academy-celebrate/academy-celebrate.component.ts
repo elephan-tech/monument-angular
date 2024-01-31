@@ -9,16 +9,16 @@ export class AcademyCelebrateComponent {
   currentIndex: any = -1;
   showFlag: any = false;
   tiles = [
-    {image: 'assets/images/celebration/Band.jpeg', title: 'Band'},
-    {image: 'assets/images/celebration/Dancing.jpeg', title: 'Dancing'},
-    {image: 'assets/images/celebration/Dr-Grant-and-Dr-DeCruise.jpeg', title: 'Dr. Grant and Dr. DeCruise'},
-    {image: 'assets/images/celebration/Homepage.jpeg', title: 'Team'},
-    {image: 'assets/images/celebration/LeadershipTeam.jpeg', title: 'Leadership Team'},
-    {image: 'assets/images/celebration/MA22.jpeg', title: 'MA 22'},
-    {image: 'assets/images/celebration/Programs.jpeg', title: 'Programs'},
-    {image: 'assets/images/celebration/Staff-Member-of-the-Year.jpeg', title: 'Staff Member of the Year'},
-    {image: 'assets/images/celebration/Table.jpeg', title: 'Table'},
-    {image: 'assets/images/celebration/Teacher-of-the-Year.jpeg', title: 'Teacher of the Year'},
+    {image: 'assets/images/celebration/Band PIc.jpeg', title: 'Band'},
+    {image: 'assets/images/celebration/CM4_3269.jpeg', title: 'Dancing'},
+    {image: 'assets/images/celebration/CM4_3482.jpeg', title: 'Dr. Grant and Dr. DeCruise'},
+    {image: 'assets/images/celebration/CM5_2083.jpeg', title: 'Team'},
+    {image: 'assets/images/celebration/Dr.DeCruise.jpeg', title: 'Leadership Team'},
+    {image: 'assets/images/celebration/Dr Grant.jpeg', title: 'MA 22'},
+    {image: 'assets/images/celebration/Front Page Staff Member of the Year.jpeg', title: 'Programs'},
+    {image: 'assets/images/celebration/Front Page Teacher of the Year.jpeg', title: 'Staff Member of the Year'},
+    {image: 'assets/images/celebration/Full Band Pic.jpeg', title: 'Table'},
+    {image: 'assets/images/celebration/Room Pic.jpeg', title: 'Teacher of the Year'},
   ];
 
   showLightbox(i: any) {
