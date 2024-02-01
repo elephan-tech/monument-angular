@@ -34,7 +34,33 @@
   </mat-grid-tile>
 </mat-grid-list>
 
-<!-- ng-image-fullscreen-view  -->
+<div style="text-align: center; margin-top: 20px; margin-bottom: 20px;">
+  <button (click)="togglePreviousContent()" style="
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+  ">
+    {{ showPreviousContent ? 'Hide Previous Image' : 'Show Previous Image' }}
+  </button>
+</div>
+
+<div *ngIf="showPreviousContent">
+  <mat-grid-list cols="2" class="grid-images" rowHeight="2:1">
+    <mat-grid-tile *ngFor="let previous of previouses; let i = index">
+      <img loading="lazy" style="align-self: stretch;" src="{{ previous.image }}" (click)="showLightbox(i)" />
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
+
+
 <ng-image-fullscreen-view
   [images]="tiles"
   [imageIndex]="currentIndex"
