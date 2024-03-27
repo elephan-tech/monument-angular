@@ -40,7 +40,7 @@ export class MailService {
     return this.sendMail({
       from: 'contact.monumentacademydc@gmail.com',
       to: [
-        'boardmeetings@mapcsdc.org',
+        'mlkhamzaawan4210@gmail.com',
       ],
       subject: 'New Contact 📫',
       html,
