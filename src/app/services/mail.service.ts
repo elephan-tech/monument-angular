@@ -20,10 +20,11 @@ export class MailService {
     return this.sendMail({
       from: 'contact.monumentacademydc@gmail.com',
       to: [
-        'info@monumentacademydc.org',
-        'anna.scudiero@mapcsdc.org',
-        'jeff.mchugh@mapcsdc.org',
-        'team@elephan.tech',
+        // 'info@monumentacademydc.org',
+        // 'anna.scudiero@mapcsdc.org',
+        // 'jeff.mchugh@mapcsdc.org',
+        // 'team@elephan.tech',
+        'mlkhamzaawan4210@gmail.com',
       ],
       subject: 'New Contact 📫',
       html,
