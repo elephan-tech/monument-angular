@@ -1,0 +1,165 @@
+<app-hero [pageTitle]="pageTitle" [heroImg]="heroImg"></app-hero>
+
+<section class="violet-section">
+  <ion-grid class="ion-padding">
+    <ion-row class="ion-justify-content-center">
+      <ion-col size-xs="10">
+        <ion-text>
+          <h3>School Year 2023-2024 Monument Academy Board Meeting Dates:</h3>
+        </ion-text>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-xs="10">
+      <ion-button
+              color="light"
+              href="https://www.dcpcsb.org/school/monument-academy-pcs"
+              target="_blank"
+              rel="nofollow"
+              fill="outline"
+              class="dates-expansion"
+      >
+        Thursday, January 18TH, 2024 at 6 PM (BOARD RETREAT)
+        <br/><br/>
+        Wednesday, September 13th, 2023 at 6 PM
+        <br/><br/>
+        Wednesday, December 11th, 2023 at 6 PM
+        <br/><br/>
+        Wednesday, March 13th, 2023 at 6 PM
+        <br/><br/>
+        Wednesday, June 12th, 2023 at 6 PM
+      </ion-button>
+    </ion-col>
+  </ion-row>
+  <ion-row class="ion-justify-content-center">
+    <ion-col size-xs="10">
+      <p>
+        All regularly scheduled Monument Academy Board meetings will be held
+        monthly via Zoom from 6:00 PM to 8:00 PM unless otherwise noted. Dates
+        are listed on the school’s website. The Board may enter into Executive
+        Session to discuss confidential or sensitive matters, and these sessions
+        will be closed to the public. Board meetings may be rescheduled,
+        postponed, canceled, or relocated at the discretion of the chairperson.
+        As necessary, the board may conduct meetings by phone. Members of the
+        public wishing to participate in any meetings may do so by registering
+        at the meeting link listed next to the meeting date. If you have any
+        questions, issues with registration, or require any accommodations for
+        the virtual meeting, please reach out to
+        <a href="mailto:boardmeetings@mapcsdc.org">boardmeetings@mapcsdc.org.</a>
+      </p>
+    </ion-col>
+  </ion-row>
+</section>
+<section>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <app-board-meetings meetingName="Meeting Details" [boardMeetings]="boardMeetings"></app-board-meetings>
+        <app-board-meetings meetingName="Archived meetings" [boardMeetings]="archivedMeetings"></app-board-meetings>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</section>
+
+<div class="yellow-section">
+  <section>
+    <h2>Get In Touch</h2>
+    <img
+            loading="lazy"
+            src="assets/underline-stroke-blue.svg"
+            class="underline-stroke"
+    />
+    <ion-grid>
+      <ion-row>
+        <ion-col sizeXs="12" sizeMd="6">
+          <ion-card>
+            <ion-card-content>
+              <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+                <ion-grid>
+                  <ion-row>
+                    <ion-col>
+                      <ion-item>
+                        <ion-label position="floating" color="primary">
+                          Enter First Name
+                        </ion-label>
+                        <ion-input color="primary" formControlName="firstName">
+                        </ion-input>
+                      </ion-item>
+                    </ion-col>
+                    <ion-col>
+                      <ion-item>
+                        <ion-label position="floating" color="primary">
+                          Enter Last Name
+                        </ion-label>
+                        <ion-input color="primary" formControlName="lastName">
+                        </ion-input>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col>
+                      <ion-item>
+                        <ion-label position="floating" color="primary">
+                          Enter Email
+                        </ion-label>
+                        <ion-input
+                                color="primary"
+                                formControlName="email"
+                                inputmode="email"
+                        >
+                        </ion-input>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+
+                  <ion-row>
+                    <ion-col>
+                      <ion-item>
+                        <ion-label position="floating" color="primary"
+                        >Enter Message</ion-label
+                        >
+                        <ion-textarea
+                                auto-grow="true"
+                                color="primary"
+                                formControlName="message"
+                        >
+                        </ion-textarea>
+                      </ion-item>
+                    </ion-col>
+                  </ion-row>
+                </ion-grid>
+
+                <ion-button
+                        expand="block"
+                        size="large"
+                        type="submit"
+                        [disabled]="contactForm.invalid"
+                >
+                  submit
+                </ion-button>
+              </form>
+            </ion-card-content>
+          </ion-card>
+        </ion-col>
+        <ion-col sizeXs="12" sizeMd="6">
+          <h3>Reach us directly at:</h3>
+          <h4>
+            <ion-icon name="location-outline" color="tertiary"></ion-icon>
+            500 19th Street NE, Washington, DC 20002
+          </h4>
+          <h4>
+            <ion-icon name="phone-portrait-outline" color="tertiary"></ion-icon>
+            (202) 545-3180
+          </h4>
+          <h4>
+            <!-- <span style="color: var(--ion-color-tertiary)"> Fax: </span> -->
+            <ion-icon name="print-outline" color="tertiary"></ion-icon>
+            (202) 478-2824
+          </h4>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </section>
+</div>

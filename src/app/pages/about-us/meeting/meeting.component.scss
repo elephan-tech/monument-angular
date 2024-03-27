@@ -1,0 +1,44 @@
+@import "../../../../styles.scss";
+mat-expansion-panel {
+  margin-bottom: 1em !important;
+  box-shadow: $shadow !important;
+}
+mat-expansion-panel-header {
+  height: auto !important;
+  padding: 10px !important;
+}
+
+mat-panel-title {
+  font-family: "Montserrat", sans-serif;
+  text-transform: capitalize;
+  font-size: 18px;
+  color: color(primary) !important;
+  font-weight: bold;
+}
+
+.event-card {
+  margin: 8px;
+  justify-content: start;
+  align-items: baseline;
+  max-height: 150px !important;
+  box-shadow: var($shadow);
+  border-left: 3px solid var(--ion-color-secondary);
+  .event-link {
+    margin: 8px;
+    padding: 8px;
+    a {
+      text-transform: uppercase;
+      color: var(--ion-color-primary) !important;
+      text-decoration: none;
+    }
+  }
+}
+
+.dates-expansion {
+  height: 170px;
+  max-width: -webkit-fill-available;
+}
+
+.dates-text {
+  white-space: break-spaces;
+}

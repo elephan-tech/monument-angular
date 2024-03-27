@@ -36,6 +36,7 @@ import { UserPopoverComponent } from './dialogs/popovers/user-popover/user-popov
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { AwardsComponent } from './pages/about-us/awards/awards.component';
 import { BoardComponent } from './pages/about-us/board/board.component';
+import { MeetingComponent } from './pages/about-us/meeting/meeting.component';
 import { ContactUsComponent } from './pages/about-us/contact-us/contact-us.component';
 import { MeetOurCeoComponent } from './pages/about-us/meet-our-ceo/meet-our-ceo.component';
 import { NewsMediaComponent } from './pages/about-us/news-media/news-media.component';
@@ -82,6 +83,7 @@ import { AcademyCelebrateComponent } from './pages/programs/academy-celebrate/ac
     AboutUsComponent,
     TeamComponent,
     BoardComponent,
+    MeetingComponent,
     PartnershipsComponent,
     AwardsComponent,
     ContactUsComponent,

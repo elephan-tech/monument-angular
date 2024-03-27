@@ -12,6 +12,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { AboutUsComponent } from './pages/about-us/about-us.component';
 import { TeamComponent } from './pages/about-us/team/team.component';
 import { BoardComponent } from './pages/about-us/board/board.component';
+import { MeetingComponent } from './pages/about-us/meeting/meeting.component';
 import { PartnershipsComponent } from './pages/about-us/partnerships/partnerships.component';
 import { ProgramsComponent } from './pages/programs/programs.component';
 import { ADayAtMonumentComponent } from './pages/programs/a-day-at-monument/a-day-at-monument.component';
@@ -46,6 +47,7 @@ const routes: Routes = [
   { path: 'about-us', component: AboutUsComponent },
   { path: 'team', component: TeamComponent },
   { path: 'board', component: BoardComponent },
+  { path: 'board-meetings', component: MeetingComponent },
   { path: 'meet-our-ceo', component: MeetOurCeoComponent },
   { path: 'news-media', component: NewsMediaComponent },
   {

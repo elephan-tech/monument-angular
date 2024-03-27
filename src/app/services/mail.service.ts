@@ -30,6 +30,23 @@ export class MailService {
     });
   }
 
+  sendMeetingContactMail(data: {
+    firstName: string;
+    lastName: string;
+    email: string;
+    message: string;
+  }): Promise<any> {
+    const html = newContactTemplate(data);
+    return this.sendMail({
+      from: 'contact.monumentacademydc@gmail.com',
+      to: [
+        'boardmeetings@mapcsdc.org',
+      ],
+      subject: 'New Contact 📫',
+      html,
+    });
+  }
+
   sendMail(config: {
     from: string | any;
     to: string | string[];

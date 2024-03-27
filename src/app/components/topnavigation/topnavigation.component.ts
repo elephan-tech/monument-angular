@@ -71,6 +71,11 @@ export class TopnavigationComponent implements OnInit {
           href: '/board',
         },
         {
+          name: 'Board Meetings',
+          code: 'BM',
+          href: '/board-meetings',
+        },
+        {
           name: 'Meet Our CEO',
           code: 'CEO',
           href: '/meet-our-ceo',
