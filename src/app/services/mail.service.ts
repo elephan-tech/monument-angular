@@ -7,7 +7,7 @@ import newContactTemplate from '../../templates/newContact';
 })
 export class MailService {
   private dev = true;
-  public sendMailUrl = 'https://monument-backend.herokuapp.com/email';
+  public sendMailUrl = 'https://admin.monumentacademy.org/email';
   constructor() {}
 
   sendContactMail(data: {
@@ -41,6 +41,7 @@ export class MailService {
     return this.sendMail({
       from: 'contact.monumentacademydc@gmail.com',
       to: [
+        //boardmeetings@mapcsdc.org,
         'mlkhamzaawan4210@gmail.com',
       ],
       subject: 'New Contact 📫',
