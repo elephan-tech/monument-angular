@@ -11,11 +11,17 @@ export class EnrollmentComponent implements OnInit {
   heroImg: string;
   MSDCSeatAcceptanceForm: string;
   DCResidencyForm: string;
+  DCUniversalHealthCertificate: string;
+  DCHSchoolImmunizationRequirementsGuide: string;
+  DCHealthOralAssessmentForm: string;
   constructor() {}
 
   ngOnInit(): void {
     this.MSDCSeatAcceptanceForm = '../../../assets/documents/MSDC-Seat-Acceptance-Form-22-23.pdf';
-    this.DCResidencyForm = 'https://osse.dc.gov/sites/default/files/dc/sites/osse/publication/attachments/SY23_24_DCRV_Form_01242023.pdf';
+    this.DCUniversalHealthCertificate = '../../../assets/documents/2024-03-DCHealth-Universal-Health-Certificate-English.pdf';
+    this.DCHSchoolImmunizationRequirementsGuide = '../../../assets/documents/2023_DCH_School-Immunization-Requirements-Guide.pdf';
+    this.DCHealthOralAssessmentForm = '../../../assets/documents/2024-02-DCHealth-Oral-Assesment-Form-ENGLISH.pdf';
+    this.DCResidencyForm = 'https://osse.dc.gov/publication/dc-residency-verification-forms';
     this.pageTitle = 'Enrollment';
     this.heroImg = 'assets/images/monument-6.png';
   }

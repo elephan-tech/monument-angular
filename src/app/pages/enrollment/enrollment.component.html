@@ -14,7 +14,7 @@
 
   <h3>Who can apply?</h3>
   <p>
-    We are serving 5th, 6th, 7th, and 8th-grade students in the 2023-24 school
+    We are serving 5th, 6th, 7th, and 8th-grade students in the 2024-25 school
     year.
   </p>
   <h3>How do I apply?</h3>
@@ -43,7 +43,7 @@
   <h3>What documents do I need?</h3>
   <p>
     The following documents are required in order to hold your spot at Monument
-    Academy for the 2023-2024 school year:
+    Academy for the 2024-2025 school year:
   </p>
   <ul>
     <li>
@@ -113,7 +113,7 @@
       <p>
         DC Universal Health Certificate (form available
         <a
-          href="https://dchealth.dc.gov/sites/default/files/dc/sites/doh/service_content/attachments/DOH%20Universal%20Health%20Certificate_2019_0.pdf"
+          [href]="this.DCUniversalHealthCertificate"href="../../../assets/documents/2023-2024 Monument Academy Calendar.pdf"
           target="_blank"
           rel="no-follow"
           >here</a
@@ -124,7 +124,16 @@
       <li>
         <p>
           For any children who have health forms expiring before September 1,
-          2023, new Health Certificates must be submitted.
+          2024, new Health Certificates must be submitted.
+        </p>
+      </li>
+      <li>
+        <p>
+          Please note that all children must be fully immunized according to the
+          <a [href]="this.DCHSchoolImmunizationRequirementsGuide"
+             target="_blank"
+             rel="no-follow"
+          >DC Health School Immunization Requirements Guide</a>
         </p>
       </li>
     </ul>
@@ -132,7 +141,7 @@
       <p>
         DC Oral Health Assessment Form (form available
         <a
-          href="https://dchealth.dc.gov/sites/default/files/dc/sites/doh/service_content/attachments/DOH%20Oral%20Health%20Assessment%20Form%202019.pdf"
+          [href]="this.DCHealthOralAssessmentForm"
           target="_blank"
           rel="no-follow"
           >here</a
@@ -143,7 +152,7 @@
       <li>
         <p>
           For any children who have oral health forms expiring before September
-          1, 2023, new forms must be submitted.
+          1, 2024, new forms must be submitted.
         </p>
       </li>
     </ul>
