@@ -20,11 +20,10 @@ export class MailService {
     return this.sendMail({
       from: 'contact.monumentacademydc@gmail.com',
       to: [
-        // 'info@monumentacademydc.org',
-        // 'anna.scudiero@mapcsdc.org',
-        // 'jeff.mchugh@mapcsdc.org',
-        // 'team@elephan.tech',
-        'mlkhamzaawan4210@gmail.com',
+        'info@monumentacademydc.org',
+        'anna.scudiero@mapcsdc.org',
+        'jeff.mchugh@mapcsdc.org',
+        'team@elephan.tech',
       ],
       subject: 'New Contact 📫',
       html,
@@ -41,8 +40,7 @@ export class MailService {
     return this.sendMail({
       from: 'contact.monumentacademydc@gmail.com',
       to: [
-        //boardmeetings@mapcsdc.org,
-        'mlkhamzaawan4210@gmail.com',
+        'boardmeetings@mapcsdc.org',
       ],
       subject: 'New Contact 📫',
       html,
