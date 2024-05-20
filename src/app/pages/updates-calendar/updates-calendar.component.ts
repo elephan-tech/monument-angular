@@ -10,12 +10,12 @@ export class UpdatesCalendarComponent implements OnInit {
   heroImg: string;
 
   calendars = [
-    {
-      year: '2022-23',
-      pdf: '../../../assets/documents/2022-2023 Monument Academy - 2022-23 Calendar.pdf',
-    },
   ];
   calendar = [
+    {
+      year: '2024-25',
+      pdf: '../../../assets/documents/2024-25 Monument Academy Calendar.pdf',
+    },
     {
       year: '2023-24',
       pdf: '../../../assets/documents/2023-2024 Monument Academy Calendar.pdf',
