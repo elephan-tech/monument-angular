@@ -21,7 +21,7 @@ export class EnrollmentComponent implements OnInit {
     this.DCUniversalHealthCertificate = '../../../assets/documents/2024-03-DCHealth-Universal-Health-Certificate-English.pdf';
     this.DCHSchoolImmunizationRequirementsGuide = '../../../assets/documents/2023_DCH_School-Immunization-Requirements-Guide.pdf';
     this.DCHealthOralAssessmentForm = '../../../assets/documents/2024-02-DCHealth-Oral-Assesment-Form-ENGLISH.pdf';
-    this.DCResidencyForm = 'https://osse.dc.gov/publication/dc-residency-verification-forms';
+    this.DCResidencyForm = '../../../assets/documents/2025-26-DC-Residency-Verification-Fillable-Form-English.pdf';
     this.pageTitle = 'Enrollment';
     this.heroImg = 'assets/images/monument-6.png';
   }
