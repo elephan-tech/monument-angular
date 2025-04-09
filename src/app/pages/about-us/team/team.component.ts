@@ -46,11 +46,11 @@ export class TeamComponent implements OnInit {
       scrollId: 'drjeffreyGrant',
     },
     {
-      name: 'Dr. Ashley DeCruise',
+      name: 'Dr. Ashley Tucker',
       title: 'Principal',
       bio:
         `
-          Dr. Ashley DeCruise graduated from Mount St. Mary's University in 2011, earning a bachelor's degree in Elementary Education. Determined to further her educational experience, Dr. DeCruise completed a Master's Degree in Special Education from Seton Hill University in 2013. She then began her teaching career with the Prince George's County Public School System (PGCPS). During her six-year tenure with PGCPS, Dr. DeCruise taught self-contained classes for students in grades 3 and 4 that were categorized with an Emotional Disability (ED). Additionally, Dr. DeCruise completed her dissertation on the successful reintegration of ED students in the mainstream environment and, in 2017, completed her Doctorate in Educational Leadership from Nova Southeastern University.
+          Dr. Ashley Tucker graduated from Mount St. Mary's University in 2011, earning a bachelor's degree in Elementary Education. Determined to further her educational experience, Dr. DeCruise completed a Master's Degree in Special Education from Seton Hill University in 2013. She then began her teaching career with the Prince George's County Public School System (PGCPS). During her six-year tenure with PGCPS, Dr. DeCruise taught self-contained classes for students in grades 3 and 4 that were categorized with an Emotional Disability (ED). Additionally, Dr. DeCruise completed her dissertation on the successful reintegration of ED students in the mainstream environment and, in 2017, completed her Doctorate in Educational Leadership from Nova Southeastern University.
           <p>
             Prior to her transition from PGCPS, Dr. DeCruise assumed several leadership roles including, Positive Behavioral Interventions and Supports (PBIS) Chair, Transition Administrative Designee, and School Management Team Chair. In 2019, Dr. DeCruise transferred to Monument Academy as a Special Education coach. Later that year she was promoted to Director of Academics, which allowed Dr. DeCruise to infuse research-based practices with fidelity in all classrooms. Currently, Dr. DeCruise serves as the Principal of Monument Academy. During her tenure, the Academy scored in the top quartile of DC Charter schools in 14 out of 15 domains and ranked in the 95% Percentile among DC Charters for Instructional Culture Index for the Insight Survey in 2019. She is the proud parent of a little girl, Harlie. She enjoys reading.
           </p>
@@ -60,7 +60,7 @@ export class TeamComponent implements OnInit {
     },
     {
       name: 'Greg Gaskins',
-      title: 'Chief of Operations',
+      title: 'Chief Operating Officer',
       bio:
         `
           Greg Gaskins has been immersed in education and school finances since his graduation from the University of Pittsburgh in 2012. He attended the University of Pittsburgh on a football scholarship and  obtained his degree in Economics. He has always had a passion for helping youth succeed and uses this passion in his work at Monument as well as through coaching. Greg coaches high school football and has also coached elementary basketball. Greg brings 6 years of school financial and operational experience, as he was the Business Manager at Friendship Public Charter School Blow Pierce Academy before joining the staff at Monument. He leads Monument’s chess club and enjoys running and staying active in his spare time.
@@ -69,11 +69,11 @@ export class TeamComponent implements OnInit {
       scrollId: 'gregGaskins',
     },
     {
-      name: 'Katrice Whitaker',
-      title: 'Chief of Student and Family Engagement',
+      name: 'Katrice Fuller',
+      title: 'Chief of Family and Community Engagement',
       bio:
         `
-          Katrice Whitaker has a 13-year tenure in special education and serving at-risk youth with the goal of reunifying families, creating equitable learning experiences, and being the voice for youth that are often left behind or silenced. After having experienced many Adverse Childhood Experiences (ACES) herself, Katrice has long ago found her purpose in protecting black and brown youth, starting her career by spreading mental health awareness through performing arts-based curricula in autism programs, juvenile detention centers and alternative schools in the DMV region. Katrice initially attended Virginia State University after high school, but ultimately received her BA in Forensic Psychology at the now University of MD Global Campus and is currently working on her Masters in Social Sciences with a concentration in Differentiation in Education. In addition to her work at Monument Academy Public Charter School, Katrice is an Advocacy Captain and Ward 6 PLE Board Member with Parents Amplifying Voices in Education (PAVE), a Community Advisor with the D.C. Policy Center, a Board Member with the Under 3 DC Coalition.
+          Katrice Fuller has a 13-year tenure in special education and serving at-risk youth with the goal of reunifying families, creating equitable learning experiences, and being the voice for youth that are often left behind or silenced. After having experienced many Adverse Childhood Experiences (ACES) herself, Katrice has long ago found her purpose in protecting black and brown youth, starting her career by spreading mental health awareness through performing arts-based curricula in autism programs, juvenile detention centers and alternative schools in the DMV region. Katrice initially attended Virginia State University after high school, but ultimately received her BA in Forensic Psychology at the now University of MD Global Campus and is currently working on her Masters in Social Sciences with a concentration in Differentiation in Education. In addition to her work at Monument Academy Public Charter School, Katrice is an Advocacy Captain and Ward 6 PLE Board Member with Parents Amplifying Voices in Education (PAVE), a Community Advisor with the D.C. Policy Center, a Board Member with the Under 3 DC Coalition.
         `,
       pic: 'assets/images/team/Katrice-Whitaker.jpeg',
       scrollId: 'katriceWhitaker',
