@@ -53,7 +53,7 @@ export class BoardComponent implements OnInit, AfterViewInit {
     },*/
     {
       bioPic: '',
-      name: 'Charles Jones,',
+      name: 'Charles Jones',
       scrollId: 'CharlesJones,',
       title: 'Vice Chair',
       bio: '',
