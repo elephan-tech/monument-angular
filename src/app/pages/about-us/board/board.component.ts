@@ -43,21 +43,27 @@ export class BoardComponent implements OnInit, AfterViewInit {
     //   favTeacher:
     //     'I loved every teacher; my mother and father were teachers. My high school debate coach Ms. Marilee Dukes tops the lists of teachers I loved. Ms. Dukes taught me to dream. She would say, “Tycely stop paying attention to me and pay attention to you….look out the window and dream child, prepare to become who you want to be and do what you’ve yet to see.”',
     // },
-    {
+    /*{
       bioPic: 'assets/images/board/tameria-lewis.png',
       name: 'Tameria Lewis',
       scrollId: 'TameriaLewis',
       title: 'Vice Chair',
       bio:
         'Tameria (Tami) Lewis is an educational consultant and is the former Deputy Director of Kingsman Academy Public Charter School. Tami grew up in foster care in Alabama before attending George Washington University and settling in Washington DC in the late 1980s. She has held numerous leadership positions in DC government and the charter school sector focused on improving educational opportunities and services for at-risk children and students with disabilities. Prior to joining Kingsman Academy, she was the Chief Compliance Officer for Cesar Chavez Public Charter Schools and previously served as Director of Student Support Services at E.L. Haynes Public Charter School. As the Senior Policy Advisor for special education at the DC Public Charter School Board, she developed policies and procedures to monitor special education services at charter schools and collaborated with stakeholders to develop and secure funding for innovative programming for students with significant service needs.<br><br>Prior to her work in the DC charter sector, Ms. Lewis served on the Mayor’s executive team that transitioned state education agency responsibilities from DC Public Schools to the then newly established Office of the State Superintendent of Education (OSSE) and was OSSE’s first Assistant Superintendent for Special Education. In this role, she led OSSE’s successful efforts to resolve multiple federal special education class actions by developing and implementing policies and systems to improve student outcomes and ensure compliance with local and federal special education laws. Before moving to OSSE she was the Senior Policy Advisor for Education and Service Integration in the Mayor’s Office of Policy and Legislative Affairs after holding several senior D.C. Council staff positions, including Judiciary and Education Committee Clerk, where she focused on the intersection of child welfare, juvenile justice and education policy.',
+    },*/
+    {
+      bioPic: '',
+      name: 'Charles Jones,',
+      scrollId: 'CharlesJones,',
+      title: 'Vice Chair',
+      bio: '',
     },
     {
-      bioPic: 'assets/images/board/Donna-A.png',
-      name: 'Donna Anthony',
-      scrollId: 'DonnaAnthony',
-      title: 'Member',
-      bio:
-        'Donna Anthony serves as the Executive Vice President of Clinical Strategy for The HSC Health Care System. She is charged with leading The HSC Pediatric Center, HSC Home Care and HSC Health and Residential Services. She currently serves as an appointed member of the DC Maternal Mortality Review Committee, the DC Maternal and Child Health Advisory Committee, and continues to work with DC Public Schools on early childhood health initiatives. <br><br> Prior to joining The HSC Health Care System, Ms. Anthony served as the Assistant Superintendent of Health & Wellness at the D.C. Office of the State Superintendent of Education. In this role, she oversaw all of the federal nutrition programs for schools and child care centers, state athletics, and implementation of federal and local grant programs and services that support the health and wellbeing of children in schools and child care centers in the District. In that capacity, she served as an appointed member of the D.C. Food Policy Council, the Healthy Youth and Schools Commission, the Medical Care Advisory Committee and the Behavioral Health Council. <br><br> Ms. Anthony has a long-standing history of working with children with disabilities in various programs at D.C. Public Schools. She was instrumental in the opening of Early Stages, the early childhood special education evaluation center, and transformed Medicaid billing for DCPS, which increased revenue ten-fold. She has also served as a gymnastics coach for the Special Olympics in Pennsylvania.',
+      bioPic: '',
+      name: 'James Waller',
+      scrollId: 'JamesWaller',
+      title: 'Board Treasurer',
+      bio: '',
     },
     // {
     //   bioPic: 'assets/images/board/NeelaRathinasamy.png',
@@ -78,11 +84,11 @@ export class BoardComponent implements OnInit, AfterViewInit {
     //   title: 'Parent Board Member',
     //   bio: '',
     // },
-    {
+    /*{
       bioPic: '',
       name: 'Carla Watson',
       scrollId: 'CarlaWatson',
-      title: 'Academic Committee Chair',
+      title: 'Board Secretary and Parent Member',
       bio: '',
     },
     {
@@ -133,7 +139,63 @@ export class BoardComponent implements OnInit, AfterViewInit {
       scrollId: 'RequitaMcNeil',
       title: 'Secretary/Parent Member',
       bio: '',
+    },*/
+    {
+      bioPic: '',
+      name: 'Requita McNeil',
+      scrollId: 'RequitaMcNeil',
+      title: 'Board Secretary and Parent Member',
+      bio: '',
     },
+    {
+      bioPic: '',
+      name: "Michael D'Alessandro",
+      scrollId: 'MichaelDAlessandro',
+      title: 'Board Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
+      name: 'Nichelle Henderson',
+      scrollId: 'NichelleHenderson',
+      title: 'Board Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
+      name: 'Doug McElhaney',
+      scrollId: 'DougMcElhaney',
+      title: 'Board Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
+      name: 'Dr. Gabrielle Swisher',
+      scrollId: 'DrGabrielleSwisher',
+      title: 'Board Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
+      name: 'David Ware',
+      scrollId: 'DavidWare',
+      title: 'Board Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
+      name: 'Carla Watson',
+      scrollId: 'CarlaWatson',
+      title: 'Board Member',
+      bio: '',
+    },
+    {
+      bioPic: '',
+      name: 'Marc White',
+      scrollId: 'MarcWhite',
+      title: 'Parent Member',
+      bio: '',
+    }
   ];
 
   boardMeetings: any;
