@@ -68,6 +68,11 @@ export class AwardsComponent implements OnInit {
       src: 'assets/images/awards/clarck-foundation.png',
       url: 'https://clarkfoundationdc.org/',
     },
+    {
+      name: 'A. James & Alice B. Clark Foundation',
+      src: 'assets/images/awards/CHCF_SpringGrantRecipient_1080x1080_v2.png',
+      url: 'https://capitolhillcommunityfoundation.org/',
+    },
   ];
 
   ngOnInit(): void {
