@@ -115,7 +115,7 @@ export class TeamComponent implements OnInit {
       scrollId: 'annaScudiero',
     },
     {
-      name: 'Brittany Carder',
+      name: 'Brittany Carter',
       title: 'Director of Student Services',
       bio:
         `
