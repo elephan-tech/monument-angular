@@ -177,6 +177,11 @@ export class TopnavigationComponent implements OnInit {
       href: '/family-resources',
     },
     {
+      name: 'Public Information',
+      code: 'publicInformation',
+      href: '/public-information',
+    },
+    {
       name: 'Donate',
       code: 'donate',
       href: '/donate',

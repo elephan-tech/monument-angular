@@ -1,0 +1,538 @@
+// Documents Section
+.documents-section {
+  padding: 0;
+
+  // Integrated intro block
+  .intro-block {
+    padding: 2.5rem 1rem 1rem;
+    text-align: center;
+
+    .intro-text {
+      color: var(--ion-color-medium);
+      font-size: 1.1rem;
+      line-height: 1.7;
+      margin: 0;
+    }
+  }
+
+  .section-block {
+    padding: 4rem 2rem;
+    background-color: white;
+    border-radius: 24px;
+    margin-bottom: 1.5rem;
+
+    &.alt-bg {
+      background-color: #f8f9fa;
+    }
+
+    &.highlight-section {
+      background: linear-gradient(135deg, var(--ion-color-primary) 0%, var(--ion-color-primary-shade) 100%);
+
+      .section-header {
+        .icon-badge {
+          background-color: var(--ion-color-secondary);
+
+          ion-icon {
+            color: white;
+          }
+        }
+
+        .header-text {
+          h2 {
+            color: white;
+          }
+
+          p {
+            color: rgba(255, 255, 255, 0.85);
+          }
+        }
+      }
+
+      .subsection-title {
+        color: white;
+
+        .title-text {
+          border-bottom-color: var(--ion-color-secondary);
+        }
+      }
+
+      // Remove spacing for subsections in highlight section
+      .subsections-container {
+        margin-top: 1.5rem;
+      }
+
+      .subsection {
+        margin-bottom: 1.5rem;
+      }
+
+      .subsection-title {
+        margin-bottom: 1rem;
+      }
+    }
+  }
+
+  .section-header-row {
+    margin-bottom: 2rem;
+  }
+
+  .section-header {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.25rem;
+
+    .icon-badge {
+      width: 64px;
+      height: 64px;
+      min-width: 64px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--ion-color-tertiary) 0%, var(--ion-color-tertiary-shade) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+
+      ion-icon {
+        font-size: 2rem;
+        color: white;
+      }
+    }
+
+    .header-text {
+      flex: 1;
+
+      h2 {
+        margin: 0 0 0.5rem;
+        color: var(--ion-color-primary);
+        font-size: 1.75rem;
+        font-weight: 700;
+        line-height: 1.2;
+      }
+
+      p {
+        margin: 0;
+        color: var(--ion-color-medium);
+        font-size: 1rem;
+        line-height: 1.5;
+      }
+    }
+  }
+
+  .documents-row {
+    margin-top: 1rem;
+  }
+}
+
+// Document Cards
+.document-card {
+  background: white;
+  border-radius: 16px;
+  padding: 1.5rem;
+  height: 100%;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--ion-color-tertiary), var(--ion-color-secondary));
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.15);
+    border-color: var(--ion-color-secondary);
+
+    &::before {
+      opacity: 1;
+    }
+
+    .doc-icon {
+      transform: scale(1.1);
+      background: var(--ion-color-secondary);
+
+      ion-icon {
+        color: var(--ion-color-primary);
+      }
+    }
+
+    .card-footer {
+      opacity: 1;
+    }
+  }
+
+  &.link-card {
+    &::before {
+      background: linear-gradient(90deg, var(--ion-color-primary), var(--ion-color-tertiary));
+    }
+
+    .doc-icon {
+      background: linear-gradient(135deg, var(--ion-color-primary-tint) 0%, var(--ion-color-primary) 100%);
+    }
+
+    &:hover {
+      border-color: var(--ion-color-tertiary);
+
+      .doc-icon {
+        background: var(--ion-color-tertiary);
+
+        ion-icon {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .card-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .doc-icon {
+    width: 56px;
+    height: 56px;
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--ion-color-tertiary-tint) 0%, var(--ion-color-tertiary) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 1rem;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    ion-icon {
+      font-size: 1.5rem;
+      color: white;
+    }
+
+    &.link-icon {
+      background: linear-gradient(135deg, var(--ion-color-primary-tint) 0%, var(--ion-color-primary) 100%);
+    }
+  }
+
+  .doc-title {
+    margin: 0;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--ion-color-primary);
+    line-height: 1.4;
+    flex: 1;
+    display: flex;
+    align-items: center;
+  }
+
+  .card-footer {
+    margin-top: 1rem;
+    padding-top: 0.75rem;
+    border-top: 1px solid rgba(0, 0, 0, 0.06);
+    opacity: 0.7;
+    transition: opacity 0.3s ease;
+
+    .download-hint,
+    .link-hint {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      font-size: 0.8rem;
+      color: var(--ion-color-tertiary);
+      font-weight: 500;
+
+      ion-icon {
+        font-size: 1rem;
+      }
+    }
+
+    .link-hint {
+      color: var(--ion-color-primary);
+    }
+  }
+}
+
+// Subsections
+.subsections-container {
+  margin-top: 1rem;
+}
+
+.subsection {
+  margin-bottom: 2.5rem;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+.subsection-title {
+  margin: 0 0 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--ion-color-primary);
+
+  .title-text {
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    border-bottom: 3px solid var(--ion-color-secondary);
+  }
+}
+
+// Contact Section
+.contact-section {
+  padding: 2.5rem 1rem;
+  margin: 0;
+  width: 100%;
+  border-radius: 0;
+  background: linear-gradient(135deg, var(--ion-color-tertiary) 0%, var(--ion-color-tertiary-shade) 100%);
+  text-align: center;
+
+  ion-grid {
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+  }
+
+  ion-row {
+    width: 100%;
+  }
+
+  ion-col {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+
+  app-animated {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+  }
+
+  h2 {
+    color: white;
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+    text-align: center;
+  }
+
+  .underline-stroke {
+    max-width: 150px;
+    margin: 0 auto 1rem;
+    filter: brightness(0) invert(1);
+    display: block;
+  }
+
+  p {
+    color: rgba(255, 255, 255, 0.9);
+    font-size: 1rem;
+    margin-bottom: 1.25rem;
+    text-align: center;
+    max-width: 600px;
+  }
+
+  .contact-buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.75rem;
+    flex-wrap: wrap;
+    width: 100%;
+
+    ion-button {
+      --border-radius: 30px;
+      --padding-start: 1.5rem;
+      --padding-end: 1.5rem;
+      font-weight: 600;
+      font-size: 0.95rem;
+
+      &.contact-btn {
+        --background: white;
+        --color: var(--ion-color-primary);
+        --box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+      }
+
+      &.phone-btn {
+        --background: transparent;
+        --color: white;
+        --border-style: solid;
+        --border-width: 2px;
+        --border-color: white;
+        --box-shadow: none;
+      }
+    }
+  }
+}
+
+// Responsive adjustments
+@media (max-width: 992px) {
+  .documents-section {
+    .section-block {
+      padding: 3rem 1.5rem;
+      border-radius: 20px;
+    }
+
+    .section-header {
+      .icon-badge {
+        width: 56px;
+        height: 56px;
+        min-width: 56px;
+        border-radius: 14px;
+
+        ion-icon {
+          font-size: 1.75rem;
+        }
+      }
+
+      .header-text h2 {
+        font-size: 1.5rem;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .intro-section {
+    padding: 2rem 0;
+
+    .intro-content {
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  .documents-section {
+    padding: 0 0.5rem;
+
+    .section-block {
+      padding: 2rem 1rem;
+      border-radius: 16px;
+      margin-bottom: 1rem;
+    }
+
+    .section-header {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+
+      .icon-badge {
+        width: 60px;
+        height: 60px;
+        min-width: 60px;
+      }
+
+      .header-text {
+        h2 {
+          font-size: 1.35rem;
+        }
+
+        p {
+          font-size: 0.95rem;
+        }
+      }
+    }
+  }
+
+  .document-card {
+    min-height: 160px;
+    padding: 1.25rem;
+
+    .doc-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+
+      ion-icon {
+        font-size: 1.25rem;
+      }
+    }
+
+    .doc-title {
+      font-size: 0.9rem;
+    }
+  }
+
+  .contact-section {
+    padding: 2rem 1rem;
+    margin: 0 0.5rem 1rem;
+    border-radius: 16px;
+
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+
+    .contact-buttons {
+      flex-direction: column;
+      align-items: center;
+
+      ion-button {
+        width: 100%;
+        max-width: 280px;
+      }
+    }
+  }
+}
+
+@media (max-width: 480px) {
+  .section-header {
+    .icon-badge {
+      width: 50px;
+      height: 50px;
+      min-width: 50px;
+      border-radius: 12px;
+
+      ion-icon {
+        font-size: 1.5rem;
+      }
+    }
+
+    .header-text h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  .document-card {
+    min-height: 140px;
+    padding: 1rem;
+
+    .doc-icon {
+      width: 44px;
+      height: 44px;
+    }
+
+    .doc-title {
+      font-size: 0.85rem;
+    }
+
+    .card-footer {
+      .download-hint,
+      .link-hint {
+        font-size: 0.75rem;
+      }
+    }
+  }
+}

@@ -41,6 +41,7 @@ import { AuthGuard } from './guards/auth.guard';
 import { AdminLoginComponent } from './pages/admin-login/admin-login.component';
 import { MenusComponent } from './pages/menus/menus.component';
 import {AcademyCelebrateComponent} from './pages/programs/academy-celebrate/academy-celebrate.component';
+import { PublicInformationComponent } from './pages/public-information/public-information.component';
 
 const routes: Routes = [
   { path: '', component: HomeComponent }, // this makes the landing page
@@ -95,6 +96,7 @@ const routes: Routes = [
   { path: 'careers', component: CareersComponent },
   { path: 'enrollment', component: EnrollmentComponent },
   { path: 'family-resources', component: FamilyResourcesComponent },
+  { path: 'public-information', component: PublicInformationComponent },
   {
     path: 'knowledge-center',
     component: KnowledgeCenterComponent,

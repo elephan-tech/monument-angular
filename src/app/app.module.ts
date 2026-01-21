@@ -73,6 +73,7 @@ import { MenusComponent } from './pages/menus/menus.component';
 import { StartCasePipe } from './pipes/start-case.pipe';
 import { TimePipe } from './pipes/time.pipe';
 import { AcademyCelebrateComponent } from './pages/programs/academy-celebrate/academy-celebrate.component';
+import { PublicInformationComponent } from './pages/public-information/public-information.component';
 
 @NgModule({
   declarations: [
@@ -123,6 +124,7 @@ import { AcademyCelebrateComponent } from './pages/programs/academy-celebrate/ac
     MenusComponent,
     UserPopoverComponent,
     AcademyCelebrateComponent,
+    PublicInformationComponent,
   ],
   imports: [
     BrowserModule,
