@@ -46,7 +46,7 @@ export class PublicInformationComponent implements OnInit {
       description: 'View our academic calendar and important dates',
       expanded: false,
       documents: [
-        { title: 'SY25-26 School Calendar', url: 'assets/documents/public-information/1. School Calendar .pdf', isExternal: true },
+        { title: 'SY25-26 School Calendar', url: 'assets/documents/public-information/1.%20School%20Calendar%20.pdf', isExternal: true },
         { title: 'View Interactive Calendar', url: '/updates-calendar', isRouterLink: true },
       ],
     },
@@ -56,7 +56,7 @@ export class PublicInformationComponent implements OnInit {
       description: 'Policies and information for students and families including discipline policy, attendance policy, grievance procedures, non-discrimination policy, FERPA notice, and more',
       expanded: false,
       documents: [
-        { title: 'SY25-26 Family and Student Handbook', url: 'assets/documents/public-information/2. SY25-26 Family and Student Handbook.pdf', isExternal: true },
+        { title: 'SY25-26 Family and Student Handbook', url: 'assets/documents/public-information/2.%20SY25-26%20Family%20and%20Student%20Handbook.pdf', isExternal: true },
       ],
     },
     {
@@ -65,7 +65,7 @@ export class PublicInformationComponent implements OnInit {
       description: 'Contact information for Title IX Coordinator, McKinney-Vento Coordinator, Special Education Contact, and Safety Contact',
       expanded: false,
       documents: [
-        { title: 'Key School Staff Directory', url: 'assets/documents/public-information/3. Key School Staff.pdf', isExternal: true },
+        { title: 'Key School Staff Directory', url: 'assets/documents/public-information/3.%20Key%20School%20Staff.pdf', isExternal: true },
       ],
     },
     {
@@ -74,7 +74,7 @@ export class PublicInformationComponent implements OnInit {
       description: 'Staff handbook including sexual harassment policy, equal opportunity policy, drug-free workplace policy, complaint resolution process, and whistleblower policy',
       expanded: false,
       documents: [
-        { title: 'Staff Handbook', url: 'assets/documents/public-information/4. Employee Policies (Staff Handbook)', isExternal: true },
+        { title: 'Staff Handbook', url: 'assets/documents/public-information/4.%20Employee%20Policies%20%28Staff%20Handbook%29.pdf', isExternal: true },
       ],
     },
     {
@@ -87,24 +87,24 @@ export class PublicInformationComponent implements OnInit {
         {
           title: 'Board Information',
           documents: [
-            { title: 'SY25-26 Board Roster', url: 'assets/documents/public-information/5a. SY25-26 Board Roster Public.pdf', isExternal: true },
-            { title: 'Board Contact Information', url: 'assets/documents/public-information/5b. Board Contact information.pdf', isExternal: true },
-            { title: 'SY25-26 Board Meeting Calendar', url: 'assets/documents/public-information/5c. SY25-26 Board Meeting Calendar (1).pdf', isExternal: true },
+            { title: 'SY25-26 Board Roster', url: 'assets/documents/public-information/5a.%20SY25-26%20Board%20Roster%20Public.pdf', isExternal: true },
+            { title: 'Board Contact Information', url: 'assets/documents/public-information/5b.%20Board%20Contact%20information.pdf', isExternal: true },
+            { title: 'SY25-26 Board Meeting Calendar', url: 'assets/documents/public-information/5c.%20SY25-26%20Board%20Meeting%20Calendar%20%281%29.pdf', isExternal: true },
           ],
         },
         {
           title: 'Meeting Agendas',
           documents: [
-            { title: 'Board Retreat Agenda', url: 'assets/documents/public-information/5di. Board Retreat Agenda (2).pdf', isExternal: true },
-            { title: '9/10/25 Board Meeting Agenda', url: 'assets/documents/public-information/5dii. AGENDA 9.10.25 Board Meeting.pdf', isExternal: true },
-            { title: '12/10/25 Board Meeting Agenda', url: 'assets/documents/public-information/5diii. December Board Meeting Agenda 12.10.25.pdf', isExternal: true },
+            { title: 'Board Retreat Agenda', url: 'assets/documents/public-information/5di.%20Board%20Retreat%20Agenda%20%282%29.pdf', isExternal: true },
+            { title: '9/10/25 Board Meeting Agenda', url: 'assets/documents/public-information/5dii.%20AGENDA%209.10.25%20Board%20Meeting.pdf', isExternal: true },
+            { title: '12/10/25 Board Meeting Agenda', url: 'assets/documents/public-information/5diii.%20December%20Board%20Meeting%20Agenda%2012.10.25.pdf', isExternal: true },
           ],
         },
         {
           title: 'Meeting Minutes',
           documents: [
-            { title: '9/06/25 Board Retreat Minutes', url: 'assets/documents/public-information/5ei. 9.06.25 Board Retreat Minutes.pdf', isExternal: true },
-            { title: '9/10/25 Board Meeting Minutes', url: 'assets/documents/public-information/5eii. 9.10.25 Board Meeting Minutes.pdf', isExternal: true },
+            { title: '9/06/25 Board Retreat Minutes', url: 'assets/documents/public-information/5ei.%209.06.25%20Board%20Retreat%20Minutes.pdf', isExternal: true },
+            { title: '9/10/25 Board Meeting Minutes', url: 'assets/documents/public-information/5eii.%209.10.25%20Board%20Meeting%20Minutes.pdf', isExternal: true },
           ],
         },
       ],
@@ -115,7 +115,7 @@ export class PublicInformationComponent implements OnInit {
       description: 'Teacher and counselor salary scales',
       expanded: false,
       documents: [
-        { title: 'Teacher & Counselor Pay Scale', url: 'assets/documents/public-information/6. Pay Scales MAPCS_Teacher_and_Counselor_Pay_Scalepdf', isExternal: true },
+        { title: 'Teacher & Counselor Pay Scale', url: 'assets/documents/public-information/6.%20Pay%20Scales%20MAPCS_Teacher_and_Counselor_Pay_Scale.pdf', isExternal: true },
       ],
     },
     {
@@ -124,7 +124,7 @@ export class PublicInformationComponent implements OnInit {
       description: 'Annual school budgets',
       expanded: false,
       documents: [
-        { title: 'FY26 Budget', url: 'assets/documents/public-information/7a. FY26 Budget.pdf', isExternal: true },
+        { title: 'FY26 Budget', url: 'assets/documents/public-information/7a.%20FY26%20Budget.pdf', isExternal: true },
       ],
     },
     {
@@ -133,9 +133,9 @@ export class PublicInformationComponent implements OnInit {
       description: 'Annual IRS Form 990 filings',
       expanded: false,
       documents: [
-        { title: 'Form 990 - 2023', url: 'assets/documents/public-information/8a. 2023 990 .pdf', isExternal: true },
-        { title: 'Form 990 - 2022', url: 'assets/documents/public-information/8b. 2022 990.pdf', isExternal: true },
-        { title: 'Form 990 - 2021', url: 'assets/documents/public-information/8c. 2021 990.pdf', isExternal: true },
+        { title: 'Form 990 - 2023', url: 'assets/documents/public-information/8a.%202023%20990%20.pdf', isExternal: true },
+        { title: 'Form 990 - 2022', url: 'assets/documents/public-information/8b.%202022%20990.pdf', isExternal: true },
+        { title: 'Form 990 - 2021', url: 'assets/documents/public-information/8c.%202021%20990.pdf', isExternal: true },
       ],
     },
     {
@@ -144,7 +144,16 @@ export class PublicInformationComponent implements OnInit {
       description: 'Monument Academy Annual Reports',
       expanded: false,
       documents: [
-        { title: 'Annual Report SY24-25', url: 'assets/documents/public-information/9. Annual Report for PCSB_SY 24-25.pdf', isExternal: true },
+        { title: 'Annual Report SY24-25', url: 'assets/documents/public-information/9.%20Annual%20Report%20for%20PCSB_SY%2024-25.pdf', isExternal: true },
+      ],
+    },
+    {
+      title: 'Results of the School\'s Annual Water Testing for Lead',
+      icon: 'water-outline',
+      description: 'Annual water testing results for lead compliance',
+      expanded: false,
+      documents: [
+        { title: 'Annual Water Testing Results', url: 'assets/documents/public-information/10.%20Annual%20Water%20Testing%20Results.pdf', isExternal: true },
       ],
     },
     {
