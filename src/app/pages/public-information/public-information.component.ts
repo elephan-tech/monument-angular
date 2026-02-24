@@ -74,7 +74,7 @@ export class PublicInformationComponent implements OnInit {
       description: 'Staff handbook including sexual harassment policy, equal opportunity policy, drug-free workplace policy, complaint resolution process, and whistleblower policy',
       expanded: false,
       documents: [
-        { title: 'Staff Handbook', url: 'assets/documents/public-information/4.%20Employee%20Policies%20%28Staff%20Handbook%29.pdf', isExternal: true },
+        { title: 'Employee Policies SY25-26', url: 'assets/documents/public-information/4.%20Employee%20Policies%20MAPCS_SY2526.pdf', isExternal: true },
       ],
     },
     {
@@ -163,6 +163,7 @@ export class PublicInformationComponent implements OnInit {
       expanded: false,
       documents: [
         { title: 'View Enrollment Information', url: '/enrollment', isRouterLink: true },
+        { title: 'SY26-27 Enrollment Document List', url: 'assets/documents/public-information/SY2627%20Enrollment%20Document%20List.pdf', isExternal: true },
       ],
     },
   ];
