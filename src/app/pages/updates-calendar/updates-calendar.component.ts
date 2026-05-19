@@ -13,6 +13,10 @@ export class UpdatesCalendarComponent implements OnInit {
   ];
   calendar = [
     {
+      year: '2026-27',
+      pdf: '../../../assets/documents/2026-2027 Monument Academy Calendar.pdf',
+    },
+    {
       year: '2025-26',
       pdf: '../../../assets/documents/2025-2026 Monument Academy Calendar_External-Facing.pdf',
     }

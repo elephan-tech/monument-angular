@@ -3,7 +3,7 @@ import { isEmpty } from 'lodash';
 import { ApiService } from 'src/app/services/api/api.service';
 import { Component, OnDestroy,OnInit } from '@angular/core';
 import { map } from 'rxjs/operators';
-import { PDFProgressData } from 'ng2-pdf-viewer';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-national-school-lunch-program',
@@ -49,7 +49,7 @@ export class NationalSchoolLunchProgramComponent implements OnInit, OnDestroy {
   }
  }
 
-  constructor(private api: ApiService) {}
+  constructor(private api: ApiService, private sanitizer: DomSanitizer) {}
 
   ngOnInit(): void {
     this.uploadUrl = environment.apiUrl;
@@ -72,13 +72,18 @@ export class NationalSchoolLunchProgramComponent implements OnInit, OnDestroy {
   }
 
   collapseMenu(item) {
-    if(!item.collapsed) this.loadingPdf = true;
-
     item.collapsed = !item.collapsed;
   }
 
-  onProgress({loaded}: PDFProgressData) {
-    if (loaded) { this.loadingPdf = false }
+  getMenuUrl(name: string): string | null {
+    return this.hardcoded
+      ? this.menuData?.[name]?.url || null
+      : this.menuData?.[name]?.value?.[0]?.url || null;
+  }
+
+  getMenuPreviewUrl(name: string): SafeResourceUrl | null {
+    const url = this.getMenuUrl(name);
+    return url ? this.sanitizer.bypassSecurityTrustResourceUrl(url) : null;
   }
 
 }
