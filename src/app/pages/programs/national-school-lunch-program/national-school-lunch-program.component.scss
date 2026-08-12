@@ -1,18 +1,54 @@
-ol {
-  padding-left: 1.2em;
-}
+.nondiscrimination-statement {
+  max-width: 48rem;
+  margin: 0 auto;
+  color: #042f54;
 
-li {
-  padding-left: 5em;
-}
+  .statement-title {
+    font-family: "Oswald", sans-serif;
+    font-size: 1.75rem;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.02em;
+    margin: 0 0 1.5rem;
+    color: #042f54;
+  }
 
-ol > li::marker {
-  content: "(" counter(list-item) ")";
-}
+  p {
+    text-align: left;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin: 0 0 1.15rem;
+    color: #042f54;
+  }
 
-p.no-margin {
-  margin-bottom: 1px;
-  margin-top: 1px;
+  .equal-opportunity {
+    font-weight: 600;
+    margin-bottom: 1.75rem;
+  }
+
+  .dc-rights-block {
+    background: rgba(255, 255, 255, 0.72);
+    border-left: 4px solid #042f54;
+    border-radius: 0 12px 12px 0;
+    padding: 1.25rem 1.5rem;
+    margin: 0 0 1.75rem;
+
+    p:last-child {
+      margin-bottom: 0;
+    }
+  }
+
+  .title-ix {
+    padding-top: 1.25rem;
+    border-top: 1px solid rgba(4, 47, 84, 0.18);
+    margin-bottom: 0;
+  }
+
+  a {
+    font-weight: 600 !important;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+  }
 }
 
 ion-card > ion-card-content {
