@@ -28,7 +28,7 @@
         <ion-buttons slot="end" fill="solid">
           <div class="event-link">
             <ion-button color="primary" fill="outline" *ngIf="meeting?.agenda?.value?.url"
-              [href]="meeting?.agenda?.value?.url" target="_blank" rel="nofollow">
+              [href]="fileHref(meeting?.agenda?.value?.url)" target="_blank" rel="nofollow">
               <ion-icon slot="start" name="list-outline"></ion-icon>
               Agenda
             </ion-button>
@@ -42,7 +42,7 @@
           </div>
           <div class="event-link">
             <ion-button color="primary" fill="outline" *ngIf="meeting?.minutes?.value?.url"
-              [href]="meeting?.minutes?.value?.url" target="_blank" rel="nofollow">
+              [href]="fileHref(meeting?.minutes?.value?.url)" target="_blank" rel="nofollow">
               <ion-icon slot="start" name="time-outline"></ion-icon>
               Minutes
             </ion-button>
