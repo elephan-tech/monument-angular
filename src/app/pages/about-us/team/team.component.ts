@@ -83,16 +83,17 @@ export class TeamComponent implements OnInit {
       scrollId: 'katriceWhitaker',
     },
     {
-      name: 'Danielle Nelson',
-      title: 'Chief of Well-Being',
+      name: 'Dr. Hope Beavers',
+      title: 'Director of Well-Being',
       bio:
         `
-          <p>Danielle Nelson, LICSW, LCSW-C, is a dual-licensed clinical social worker in Washington, DC, and Maryland. She is currently pursuing her doctoral degree in Educational Leadership and Organizational Innovation (Ed.D.) at Marymount University, where her research examines the impact of social and emotional learning, specifically, mindfulness-based interventions on youth well-being in urban schools. Mrs. Nelson obtained her undergraduate degree in Psychology from Trinity University and her graduate degree in Social Work from Howard University. She is a member of the Phi Beta Kappa Society, Psi Chi National Honor Society in Psychology, and Phi Alpha Honor Society in Social Work.</p>
-          <p>As a native Washingtonian, Mrs. Nelson is proud of her dedication to the residents of Washington, DC. She has 20 years of social work experience working with youth and families, and she continues to help her community transform obstacles into opportunities. Throughout Mrs. Nelson’s career, she has served and held various leadership positions in schools, behavioral health agencies, and social service agencies in Washington, DC, and she maintains strong partnerships with key agencies to ensure comprehensive services are provided to all stakeholders.</p>
-          <p>Currently, Mrs. Nelson enjoys her work in the capacity of a trauma-informed educator as she raises awareness about the impact of trauma, adverse childhood experiences, and resilience. She is often found helping others with a smile, creating opportunities for coaching and mentorship, and promoting wellness.</p>
+          <p>Dr. Hope Beavers is a licensed clinical social worker with over a decade of experience in her field. She leverages her extensive background to assist individuals, families, and organizations in navigating the healing journey from trauma and adversity.</p>
+          <p>Raised in the culturally vibrant areas of Washington, D.C., and PG County, MD, her dedication to healing is deeply connected to her own life experiences and academic achievements. She holds a Ph.D. in Social Work Administration from Walden University, a Master of Social Work from Howard University, and a Bachelor of Arts in Sociology from Fayetteville State University. Dr. Hope infuses her personal journey into her practice, fostering hope and resilience in every interaction, both personal and professional.</p>
+          <p>In addition to her professional role, Dr. Hope embraces multiple identities - wife, mother, clinician, sister, friend, CEO, visionary, and collaborator - blending her professional expertise with personal growth. Beyond her work with individuals and families, she is particularly passionate about supporting the “strong friend,” advocating for those who continuously uplift others, believing they too should receive support.</p>
+          <p><a href="assets/documents/Dr_Hope-Beavers-Bio.pdf" target="_blank" rel="noopener noreferrer">View Dr. Beavers’ bio (PDF)</a></p>
         `,
-      pic: 'assets/images/team/Danielle-Nelson.jpeg',
-      scrollId: 'danielleNelson',
+      pic: 'assets/images/team/Dr_Hope-Beavers.jpeg',
+      scrollId: 'drHopeBeavers',
     },
     {
       name: 'Jeff McHugh',
