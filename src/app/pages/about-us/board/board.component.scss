@@ -1,4 +1,14 @@
 @import "../../../../styles.scss";
+.member-initials {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  background: var(--ion-color-primary);
+  color: white;
+  font-size: 32px;
+}
 mat-expansion-panel {
   margin-bottom: 1em !important;
   box-shadow: $shadow !important;

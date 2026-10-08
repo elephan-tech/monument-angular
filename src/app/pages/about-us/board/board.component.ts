@@ -191,8 +191,9 @@ export class BoardComponent implements OnInit, AfterViewInit {
     },
     {
       bioPic: '',
-      name: 'Marc White',
-      scrollId: 'MarcWhite',
+      name: 'Contessa Allen-Starks',
+      scrollId: 'ContessaAllenStarks',
+      initials: 'CA',
       title: 'Parent Member',
       bio: '',
     }
